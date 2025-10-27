@@ -9,7 +9,10 @@ from fastapi import APIRouter, Depends, WebSocket
 from sqlalchemy.ext.asyncio import AsyncSession
 from starlette.websockets import WebSocketDisconnect
 
-router = APIRouter()
+router = APIRouter(
+    prefix="",
+    tags=["Analysis"],
+)
 
 
 @router.get("/ws-info", include_in_schema=True)

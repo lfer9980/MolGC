@@ -52,7 +52,10 @@ def register_job_relationships():
 def register_cleanup_relationships():
     """Defines relationships for cleanup Model."""
     CleanupModelSQL.job = relationship(
-        "JobModelSQL", back_populates="cleanup", passive_deletes=True
+        "JobModelSQL",
+        back_populates="cleanup",
+        passive_deletes=True,
+        uselist=False
     )
 
 
