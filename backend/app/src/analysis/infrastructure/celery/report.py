@@ -1,6 +1,5 @@
 import asyncio
 
-# TODO: try to understand why the FUCK I need import this piece of shit on every declared task
 from app.infrastructure.celery.celery_app import celery
 from app.infrastructure.database import DatabaseSession
 from app.src.analysis.infrastructure.celery.subtasks import (

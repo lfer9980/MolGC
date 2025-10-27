@@ -23,7 +23,6 @@ class FileSize(ElementalValueObject):
     def value(self) -> int:
         return self._value
 
-    # TODO: make validation
     @staticmethod
     def _validate(value: int) -> int:
         if not value:

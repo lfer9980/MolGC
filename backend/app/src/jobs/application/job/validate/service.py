@@ -5,7 +5,6 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from .exceptions import InvalidJobIDError
 
 
-# TODO: move this service to shared folder
 class ValidateJobService:
     @staticmethod
     async def execute(session: AsyncSession, job_id: str) -> JobEntity:

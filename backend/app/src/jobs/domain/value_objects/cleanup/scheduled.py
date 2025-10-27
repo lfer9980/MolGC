@@ -25,7 +25,6 @@ class CleanupScheduled(ElementalValueObject):
     def value(self) -> datetime:
         return self._value
 
-    # TODO: make validation
     @staticmethod
     def _validate(value: datetime) -> datetime:
         if not value:

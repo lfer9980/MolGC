@@ -33,7 +33,6 @@ class CreateMAEGeneralService:
         report_data = ReportEntity(**report_metadata)
         report_entity = await self.repository_report.create(report_data)
 
-        # TODO: check if this validation is necessary
         if report_entity.id is None:
             raise ReportNotCreatedError()
 

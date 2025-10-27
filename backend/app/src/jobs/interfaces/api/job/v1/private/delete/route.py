@@ -28,25 +28,3 @@ async def delete_job(
     await service.execute(job_id)
 
     return f"Successfully deleted {job_id}"
-
-    # TODO: DELETE THIS TEST CODE
-
-    # # service cleanup declaration
-    # repository_cleanup = CleanupRepositorySQL(session)
-    # service_cleanup = GetDueCleanupService(repository_cleanup)
-    #
-    # # get all pending cleanup jobs
-    # due_cleanup_jobs = await service_cleanup.execute()
-    #
-    # if len(due_cleanup_jobs) == 0:
-    #     return f"No jobs to clean right now!"
-    #
-    # # service job declaration
-    # repository_job = JobRepositorySQL(session)
-    # service_job = DeleteMassiveJobService(repository_job)
-    #
-    # # delete all jobs
-    # delete_jobs_list = [job.job_id for job in due_cleanup_jobs]
-    # deleted = await service_job.execute(delete_jobs_list)
-    #
-    # return f"Deleted {deleted} items"

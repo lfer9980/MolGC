@@ -23,7 +23,6 @@ class RMSDValue(ElementalValueObject):
     def value(self) -> float:
         return self._value
 
-    # TODO: make validation
     @staticmethod
     def _validate(value: float) -> float:
         if not value:

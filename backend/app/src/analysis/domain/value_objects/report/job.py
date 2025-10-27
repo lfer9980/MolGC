@@ -23,7 +23,6 @@ class ReportJob(ElementalValueObject):
     def value(self) -> str:
         return self._value
 
-    # TODO: make validation
     @staticmethod
     def _validate(value: str) -> str:
         if not value:
