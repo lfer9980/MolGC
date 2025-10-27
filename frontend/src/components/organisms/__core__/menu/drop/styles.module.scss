@@ -1,0 +1,114 @@
+/* 
+*/
+
+@use 'styles/vars' as *;
+
+.menu {
+	// #region general
+	display: flex;
+	justify-content: flex-end;
+	user-select: none;
+	width: fit-content;
+	position: relative;
+	@include fontSizeMobile;
+	// #endregion
+
+
+	// #region unit elements
+	&_main {
+		flex-direction: column;
+		gap: 1.6rem;
+		z-index: -1;
+		position: absolute;
+		height: fit-content;
+		width: 28rem;
+		padding: 1.6rem;
+		margin: 1.2rem 1.6rem;
+		font-size: $p1;
+		background-color: var(--background-secondary);
+		@include shadow;
+		@include borderRadius;
+	}
+
+	&_list {
+		display: grid;
+		gap: 1.6rem;
+	}
+
+	li {
+		display: flex;
+		align-items: center;
+		gap: 0.8rem;
+		list-style: none;
+		text-decoration: none;
+	}
+
+	&_item {
+		width: fit-content;
+		color: var(--content);
+		border-bottom: 1px solid transparent;
+	}
+
+	// #endregion
+
+
+	// #region others 
+	&_item:hover {
+		font-weight: bold;
+		color: var(--primary);
+		border-color: var(--border-selected);
+	}
+
+	// #endregion
+
+
+	// #region derived states 
+	&.fixed {
+		position: fixed;
+		right: 0.8rem;
+		bottom: calc(5.8rem + 0.8rem);
+		z-index: 20;
+	}
+
+	.top {
+		bottom: 0;
+	}
+
+	.bottom {
+		top: 0;
+	}
+
+	.left {
+		right: 0;
+		bottom: 0;
+	}
+
+	.right {
+		left: 0;
+		bottom: 0;
+	}
+
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {
+		&.fixed {
+			right: 3.2rem;
+			bottom: 3.2rem;
+		}
+	}
+
+	@include desktop {
+		&.fixed {
+			right: 4.8rem;
+			bottom: 3.2rem;
+		}
+
+		@include fontSizeDesktop;
+	}
+
+	@include large {}
+
+	// #endregion
+}

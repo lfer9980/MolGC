@@ -1,0 +1,77 @@
+/* 
+*/
+
+@use 'styles/vars' as *;
+
+.calendar {
+	// #region general
+	width: 100%;
+	max-width: 900px;
+	margin: 40px auto;
+	padding: 20px;
+	background: #f7f7f7;
+	border-radius: 8px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+	@include fontSizeMobile;
+	// #endregion
+
+
+	// #region unit elements
+	&_main {
+		:global(.rbc-toolbar-label) {
+			background-color: #333;
+			color: #fff;
+			padding: 10px;
+			border-radius: 4px;
+			margin-bottom: 10px;
+
+			button {
+				background: #61dafb;
+				color: #000;
+				border: none;
+				padding: 5px 10px;
+				margin: 0 5px;
+				cursor: pointer;
+				border-radius: 3px;
+
+				&:hover {
+					background: #4db1e8;
+				}
+			}
+		}
+
+		:global(.rbc-event) {
+			background-color: #61dafb !important;
+			color: #000 !important;
+			border-radius: 4px;
+			padding: 2px 5px;
+			font-weight: bold;
+		}
+
+		:global(.rbc-today) {
+			background-color: rgba(97, 218, 251, 0.2) !important;
+		}
+	}
+
+	// #endregion
+
+
+	// #region others 
+	// #endregion
+
+
+	// #region derived states 
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {}
+
+	@include desktop {
+		@include fontSizeDesktop;
+	}
+
+	@include large {}
+
+	// #endregion
+}

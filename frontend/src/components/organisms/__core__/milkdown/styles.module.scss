@@ -1,0 +1,164 @@
+/* 
+*/
+@use './dark';
+@use './light';
+@use 'sass:list';
+@use 'styles/vars' as *;
+
+.editor {
+	&_edit {
+		display: flex;
+		justify-content: flex-end;
+		gap: 1.6rem;
+	}
+
+	&_buttons {
+		width: fit-content;
+	}
+
+	&_header,
+	&_footer {
+		display: none;
+	}
+
+	:global(.milkdown) {
+		$font-code: 'Space Mono', Fira Code, Menlo, Monaco, 'Courier New', Courier, monospace;
+		position: relative;
+		font-family: $font-second;
+
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		button,
+		input {
+			border: none;
+			background: none;
+			box-shadow: none;
+
+			&:focus {
+				outline: none;
+			}
+		}
+
+		:focus-visible {
+			outline: none;
+		}
+
+		:global(.ProseMirror-focused) {
+			outline: none;
+		}
+
+
+		:global(.ProseMirror) {
+			padding: 4.8rem;
+
+			:global(.ProseMirror-selectednode) {
+				outline: none;
+			}
+
+			img {
+				vertical-align: bottom;
+				max-width: 100%;
+			}
+
+			h1,
+			h2,
+			h3,
+			h4,
+			h5,
+			h6 {
+				font-family: $font-main;
+				font-weight: 400;
+				padding: 0.2rem 0;
+			}
+
+			$heading-sizes: (
+				h1: ($h1, $h1 * 1.2, 3.2rem),
+				h2: ($h2, $h2 * 1.2, 2.4rem),
+				h3: ($h3, $h3 * 1.2, 2.4rem),
+				h4: ($h4, $h4 * 1.2, 1.8rem),
+				h5: ($h5, $h5 * 1.2, 1.6rem),
+				h6: ($h6, $h6 * 1.2, 1.6rem, 700)
+			);
+
+		@each $tag, $props in $heading-sizes {
+			#{$tag} {
+				font-size: list.nth($props, 1);
+				line-height: list.nth($props, 2);
+				margin-block: list.nth($props, 3);
+
+				@if list.length($props)>3 {
+					font-weight: list.nth($props, 4);
+				}
+			}
+		}
+
+		p {
+			font-size: $p2;
+			padding: 0.8rem 0;
+		}
+
+		code {
+			display: inline-block;
+			font-family: $font-code;
+			padding: 0 1.2rem;
+			font-size: 87.5%;
+			line-height: 1.4286;
+			@include borderRadius;
+		}
+
+		a {
+			text-decoration: underline;
+		}
+
+		pre {
+			padding: 10px;
+			border-radius: 4px;
+
+			code {
+				padding: 0;
+			}
+		}
+
+		blockquote {
+			position: relative;
+			padding-left: 40px;
+			margin: 4px 0;
+
+			&::before {
+				content: '';
+				width: 4px;
+				left: 0;
+				top: 4px;
+				bottom: 4px;
+				position: absolute;
+				border-radius: 100px;
+			}
+		}
+
+		hr {
+			border: none;
+			padding: 6px 0;
+			height: 13px;
+			position: relative;
+
+			&:global(.ProseMirror-selectednode) {
+				outline: none;
+
+				&::before {
+					content: '';
+					position: absolute;
+					left: 0;
+					top: 0;
+					bottom: 0;
+					right: 0;
+					pointer-events: none;
+				}
+			}
+		}
+	}
+}
+}

@@ -1,0 +1,26 @@
+import colors from 'lib/__core__/JSON/colors.json';
+
+export const colorsApp = {
+	black: colors.palette?.black,
+	white: colors.palette?.white,
+	transparent: 'transparent',
+	blue: colors.palette?.blue30,
+	gray: colors.palette?.gray30,
+	purple: colors.palette?.purple30,
+	green: colors.palette?.green30,
+	orange: colors.palette?.auxOrange30,
+	red: colors.palette?.red30,
+	dark_blue: colors.palette?.blue20,
+	dark_gray: colors.palette?.gray20,
+	dark_purple: colors.palette?.purple20,
+	dark_green: colors.palette?.green20,
+	dark_orange: colors.palette?.orange20,
+	dark_red: colors.palette?.red20,
+	odd: colors.palette?.gray00,
+	odd_inverse: colors.palette?.gray70,
+	disabled: colors.palette?.gray10,
+	skeleton: colors.palette?.gray05,
+	skeleton_inverse: colors.palette?.gray50,
+	background_first: colors.palette?.blue70,
+	background_second: colors.palette?.gray70,
+};

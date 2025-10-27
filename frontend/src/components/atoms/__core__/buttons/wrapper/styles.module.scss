@@ -1,0 +1,52 @@
+/* 
+*/
+@use 'styles/vars' as *;
+
+.hub {
+	// #region general
+	display: flex;
+	width: 100%;
+	padding-block: 1.6rem;
+	// #endregion
+
+
+	// #region unit elements
+	&.column {
+		gap: 1.6rem;
+		margin-block-end: 2.4rem;
+		flex-direction: column;
+	}
+
+	&.row {
+		display: flex;
+		gap: 1.6rem;
+		flex-direction: row;
+		flex-wrap: wrap;
+		max-width: 100%;
+	}
+
+	&.accent {
+		padding: 1.6rem;
+		border-bottom: 0.1rem solid var(--border);
+	}
+
+	// #endregion
+
+
+	// #region others 
+	// #endregion
+
+
+	// #region derived states 
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {}
+
+	@include desktop {}
+
+	@include large {}
+
+	// #endregion
+}

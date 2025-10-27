@@ -1,0 +1,76 @@
+@use 'styles/vars' as *;
+
+.page {
+	// #region general
+	@include fontSizeMobile;
+	// #endregion
+
+
+	// #region unit elements
+	&_heading {
+		&_main {
+			display: flex;
+			align-items: center;
+			gap: 1.6rem;
+		}
+
+		&_head {
+			margin-block-start: 1.6rem;
+		}
+	}
+
+	&_form {
+		padding-block-end: 9.1rem;
+
+		&_main {
+			display: flex;
+			flex-direction: column;
+			gap: 1.6rem;
+			margin-block-end: 4.8rem;
+		}
+
+		&_files_resume {
+			font-size: $p1;
+			font-weight: 700;
+			text-align: right;
+			color: $blue10;
+			margin-block: 1.6rem;
+		}
+	}
+
+	&_loading {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+		height: 40svh;
+
+		&_main {
+			width: 100%;
+			margin-block-end: 6.4rem;
+		}
+
+	}
+
+	// #endregion
+
+
+	// #region others 
+	// #endregion
+
+
+	// #region derived states 
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {}
+
+	@include desktop {
+		@include fontSizeDesktop;
+	}
+
+	@include large {}
+
+	// #endregion
+}

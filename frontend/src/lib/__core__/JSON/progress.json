@@ -1,0 +1,100 @@
+[
+  {
+    "categoria": "Tutoriales",
+    "pantalla": "tutorial_id",
+    "url": "/FAQs/tutorial_id",
+    "estado": "En desarrollo",
+    "color": "#0F60A7"
+  },
+  {
+    "categoria": "Tutoriales",
+    "pantalla": "FAQs",
+    "url": "/FAQs",
+    "estado": "En desarrollo",
+    "color": "#0F60A7"
+  },
+  {
+    "categoria": "Acerca de",
+    "pantalla": "about",
+    "url": "/about",
+    "estado": "En desarrollo",
+    "color": "#0F60A7"
+  },
+  {
+    "categoria": "Analisis",
+    "pantalla": "analysis",
+    "url": "/analysis",
+    "estado": "En desarrollo",
+    "color": "#0F60A7"
+  },
+  {
+    "categoria": "Configuracion",
+    "pantalla": "configuration",
+    "url": "/configuration",
+    "estado": "En desarrollo",
+    "color": "#0F60A7"
+  },
+  {
+    "categoria": "Dashboard",
+    "pantalla": "variant_id",
+    "url": "/dashboard/family_id/variant_id",
+    "estado": "En desarrollo",
+    "color": "#0F60A7"
+  },
+  {
+    "categoria": "Dashboard",
+    "pantalla": "family_id",
+    "url": "/dashboard/family_id",
+    "estado": "En desarrollo",
+    "color": "#0F60A7"
+  },
+  {
+    "categoria": "Dashboard",
+    "pantalla": "dashboard",
+    "url": "/dashboard",
+    "estado": "En desarrollo",
+    "color": "#0F60A7"
+  },
+  {
+    "categoria": "Archivos",
+    "pantalla": "auto",
+    "url": "/files/auto",
+    "estado": "En desarrollo",
+    "color": "#0F60A7"
+  },
+  {
+    "categoria": "Archivos",
+    "pantalla": "manual",
+    "url": "/files/manual",
+    "estado": "En desarrollo",
+    "color": "#0F60A7"
+  },
+  {
+    "categoria": "Archivos",
+    "pantalla": "files",
+    "url": "/files",
+    "estado": "En desarrollo",
+    "color": "#0F60A7"
+  },
+  {
+    "categoria": "Sin Categoria",
+    "pantalla": "landing - entrypoint",
+    "url": "/",
+    "estado": "En desarrollo",
+    "color": "#0F60A7"
+  },
+  {
+    "categoria": "Reportes",
+    "pantalla": "report",
+    "url": "/report",
+    "estado": "En desarrollo",
+    "color": "#0F60A7"
+  },
+  {
+    "categoria": "Resumen",
+    "pantalla": "resume",
+    "url": "/resume",
+    "estado": "En desarrollo",
+    "color": "#0F60A7"
+  }
+]

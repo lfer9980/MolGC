@@ -1,0 +1,39 @@
+/* 
+*/
+
+@use 'styles/vars' as *;
+
+.wrap {
+	// #region general
+	display: grid;
+	width: 100%;
+	gap: 1.6rem;
+	grid-template-columns: 1fr;
+	// #endregion
+
+
+	// #region unit elements
+	// #endregion
+
+
+	// #region others 
+	// #endregion
+
+
+	// #region derived states 
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {
+		gap: 2.4rem;
+	}
+
+	@include desktop {
+		grid-template-columns: 1fr 1fr;
+	}
+
+	@include large {}
+
+	// #endregion
+}

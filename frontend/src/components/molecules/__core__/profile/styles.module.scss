@@ -1,0 +1,79 @@
+/* 
+*/
+
+@use 'styles/vars' as *;
+
+.profile {
+	// #region general
+	display: flex;
+	position: relative;
+	width: 100%;
+	@include fontSizeMobile;
+	// #endregion
+
+
+	// #region unit elements
+	&_main {
+		display: flex;
+		align-items: center;
+		height: 100%;
+		gap: 1.6rem;
+	}
+
+	&_menu {
+		display: flex;
+		flex-direction: column;
+		position: absolute;
+		width: 100%;
+		z-index: 1000;
+		background-color: var(--background);
+		@include borderRadius;
+		@include shadow;
+	}
+
+	&_label {
+		color: var(--content);
+		user-select: none;
+	}
+
+	// #endregion
+
+
+	// #region others 
+	&_main:hover {
+		opacity: 0.6;
+		cursor: pointer;
+	}
+
+	// #endregion
+
+
+	// #region derived states 
+	.white {
+		p {
+			color: $white;
+		}
+	}
+
+	.top {
+		bottom: calc(100% + 1.6rem);
+	}
+
+	.bottom {
+		top: calc(100% + 1.6rem);
+	}
+
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {}
+
+	@include desktop {
+		@include fontSizeDesktop;
+	}
+
+	@include large {}
+
+	// #endregion
+}

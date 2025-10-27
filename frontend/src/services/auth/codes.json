@@ -1,0 +1,37 @@
+{
+	"empty": {
+		"title": "Revisa los datos faltantes en el formulario",
+		"label": "Algunos campos del formulario no fueron completados, revisa y vuelve a intentarlo",
+		"description": "empty request"
+	},
+	"null": {
+		"title": "No pudimos procesar la solicitud",
+		"label": "No recibimos respuesta del servidor, por favor intenta mas tarde",
+		"description": "Receive null response"
+	},
+	"200": {
+		"title": "Completado con exito!",
+		"label": "",
+		"description": "OK"
+	},
+	"400": {
+		"title": "Informacion incompleta o repetida",
+		"label": "Ocurrio un error al procesar tu solicitud",
+		"description": "Bad Request"
+	},
+	"401": {
+		"title": "Usuario y/o contraseña incorrectos",
+		"label": "por favor intenta nuevamente",
+		"description": "Unauthorized"
+	},
+	"404": {
+		"title": "Usuario no encontrado",
+		"label": "Revisa tus datos y vuelve a intentarlo",
+		"description": "Not Found"
+	},
+	"422": {
+		"title": "Informacion incompleta o corrupta",
+		"label": "La informacion que se envio en tu solicitud no pudo ser procesada correctamente",
+		"description": "Unprocessable Content"
+	}
+}

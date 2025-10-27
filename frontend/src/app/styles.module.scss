@@ -1,0 +1,123 @@
+@use 'styles/vars' as *;
+
+.page {
+	// #region general
+	@include fontSizeMobile;
+	// #endregion
+
+
+	// #region unit elements
+	&_hero {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 3.2rem;
+
+		&_description {
+			font-size: $p1;
+			color: $white;
+			text-align: center;
+		}
+
+		&_more {
+			position: absolute;
+			left: 0;
+			right: 0;
+			bottom: 2.4rem;
+		}
+	}
+
+
+	&_section {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		padding-block-start: 9.6rem;
+	}
+
+	&_select {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		margin-block-start: 8rem;
+		gap: 3.2rem;
+
+		&_right {
+			display: flex;
+			justify-content: flex-end;
+			width: 100%;
+		}
+
+		&_left {
+			display: flex;
+			justify-content: flex-start;
+			width: 100%;
+		}
+
+		button {
+			width: 28rem;
+		}
+	}
+
+	&_background {
+		position: relative;
+		width: 100%;
+		height: 100svh;
+		overflow: hidden;
+
+		&_image {
+			position: absolute;
+			inset: 0;
+			background: url('/images/background_molecule.png') center/cover no-repeat;
+			filter: blur(2px);
+			transform: scale(1.05);
+			opacity: 0.25;
+			z-index: -1;
+		}
+
+		&_overlay {
+			position: absolute;
+			inset: 0;
+			background: var(--background-overlay);
+			z-index: 1;
+		}
+	}
+
+	&_link {
+		position: fixed;
+		bottom: 2.4rem;
+		left: 1.6rem;
+	}
+
+	// #endregion
+
+
+	// #region others 
+	// #endregion
+
+
+	// #region derived states 
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {
+		&_link {
+			left: 2.4rem;
+		}
+	}
+
+	@include desktop {
+		@include fontSizeDesktop;
+	}
+
+	@include large {
+		&_link {
+			left: 3.2rem;
+		}
+	}
+
+	// #endregion
+}

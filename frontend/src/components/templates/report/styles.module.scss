@@ -1,0 +1,53 @@
+@use 'styles/vars' as *;
+
+.report {
+	// #region general
+	width: 100vw;
+	padding: 2.4rem;
+	background-color: $white !important;
+	@include fontSizeMobile;
+	// #endregion
+
+
+	// #region unit elements
+	&_header,
+	&_head,
+	&_main {
+		display: flex;
+		justify-content: space-between;
+		gap: 1.6rem;
+	}
+
+	&_head {
+		margin-block-start: 2.4rem;
+	}
+
+	&_reference {
+		color: $red30;
+		font-weight: 700;
+	}
+
+
+	// #endregion
+
+
+	// #region others 
+	// #endregion
+
+
+	// #region derived states 
+
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {}
+
+	@include desktop {
+		@include fontSizeDesktop;
+	}
+
+	@include large {}
+
+	// #endregion
+}

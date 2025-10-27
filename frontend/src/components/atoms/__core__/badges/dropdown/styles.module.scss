@@ -1,0 +1,151 @@
+/* 
+*/
+@use 'styles/vars' as *;
+
+.badge {
+	// #region general
+	display: flex;
+	place-content: center;
+	width: fit-content;
+	position: relative;
+	font-weight: 500;
+	@include fontSizeMobile;
+	// #endregion
+
+
+	// #region unit elements
+	&_summary {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		cursor: pointer;
+		user-select: none;
+		width: 100%;
+
+		&_wrap {
+			display: flex;
+			align-items: center;
+			gap: 0.8rem;
+		}
+	}
+
+	&_label {
+		display: grid;
+		place-content: center;
+		text-align: center;
+		min-width: 2.4rem;
+	}
+
+	&_symbol {
+		display: block;
+	}
+
+	&_drop {
+		display: grid;
+		place-content: center;
+	}
+
+	&_main {
+		position: absolute;
+		z-index: 1000;
+		overflow-y: auto;
+		min-width: 15rem;
+		width: 100%;
+		max-height: 20rem;
+		background: var(--background-secondary);
+		cursor: pointer;
+		@include shadow;
+		@include borderRadius;
+
+		&_item {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 1.2rem;
+			padding: 1.6rem;
+
+			&_wrap {
+				display: inherit;
+				gap: 0.8rem;
+			}
+
+			p:nth-of-type(2) {
+				color: var(--content-secondary);
+			}
+		}
+	}
+
+	// #endregion
+
+
+	// #region others  
+	.border {
+		border: 0.1rem solid var(--border);
+	}
+
+	&.padding {
+		padding: 1.2rem;
+	}
+
+	&_summary:hover {
+		opacity: 0.8;
+		font-weight: 700;
+	}
+
+
+	&_main_item:hover {
+		background-color: var(--background-hover);
+
+		p:nth-of-type(1) {
+			font-weight: 700;
+		}
+	}
+
+	// #endregion
+
+
+	// #region derived states 
+	.black {
+		color: var(--content);
+	}
+
+	.white {
+		color: $white;
+	}
+
+	.top {
+		bottom: calc(100% + 1.2rem);
+	}
+
+	.bottom {
+		top: calc(100% + 1.2rem);
+	}
+
+	.left {
+		top: 0;
+		right: calc(100% + 1.2rem);
+	}
+
+	.right {
+		top: 0;
+		left: calc(100% + 1.2rem);
+	}
+
+	&.rounded {
+		border-radius: 50%;
+	}
+
+	// #endregion
+
+
+	// #region media queries
+	@include desktop {
+		&_main_item_wrap {
+			gap: 1.2rem;
+		}
+
+		@include fontSizeDesktop;
+	}
+
+	// #endregion
+}

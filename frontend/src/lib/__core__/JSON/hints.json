@@ -1,0 +1,114 @@
+{
+	"__others__": {
+		"warning": {
+			"label": "",
+			"log": "warning"
+		},
+		"error": {
+			"label": "",
+			"log": "error"
+		},
+		"done": {
+			"label": "",
+			"log": "done"
+		}
+	},
+	"upload": {
+		"warning": {
+			"label": "esto esta tardando mas de lo que deberia",
+			"log": "warning"
+		},
+		"error": {
+			"label": "ocurrio un error al subir el archivo, intente de nuevo",
+			"log": "error"
+		},
+		"done": {
+			"label": "completado con exito!",
+			"log": "done"
+		}
+	},
+	"phone": {
+		"warning": {
+			"label": "",
+			"log": "warning"
+		},
+		"error": {
+			"label": "El telefono ingresado no es valido",
+			"log": "error"
+		},
+		"done": {
+			"label": "El telefono es valido",
+			"log": "done"
+		}
+	},
+	"maxChar": {
+		"warning": {
+			"label": "",
+			"log": "warning"
+		},
+		"error": {
+			"label": "Caracteres maximos alcanzados",
+			"log": "error"
+		},
+		"done": {
+			"label": "",
+			"log": "done"
+		}
+	},
+	"files": {
+		"warning": {
+			"label": "no podemos subir tus archivos debido a que sobrepasan el limite permitido",
+			"log": "warning"
+		},
+		"error": {
+			"label": "limite de archivos alcanzado",
+			"log": "error"
+		},
+		"done": {
+			"label": "",
+			"log": "done"
+		}
+	},
+	"matchPassword": {
+		"warning": {
+			"label": "",
+			"log": "warning"
+		},
+		"error": {
+			"label": "La contrasena no es igual, verifica nuevamente.",
+			"log": "error"
+		},
+		"done": {
+			"label": "La contrasena coincide",
+			"log": "done"
+		}
+	},
+	"pin": {
+		"warning": {
+			"label": "",
+			"log": "warning"
+		},
+		"error": {
+			"label": "El PIN ingresado no es valido",
+			"log": "error"
+		},
+		"done": {
+			"label": "PIN validado correctamente",
+			"log": "done"
+		}
+	},
+	"schedule": {
+		"warning": {
+			"label": "",
+			"log": "warning"
+		},
+		"error": {
+			"label": "Alcanzaste el limite de horarios permitidos",
+			"log": "error"
+		},
+		"done": {
+			"label": "",
+			"log": "done"
+		}
+	}
+}

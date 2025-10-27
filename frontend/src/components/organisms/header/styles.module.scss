@@ -1,0 +1,50 @@
+@use 'styles/vars' as *;
+
+.header {
+	// #region general
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	position: fixed;
+	width: 100%;
+	z-index: 100;
+	padding-block: 1.6rem;
+	background-color: var(--background);
+	@include paddingMobile;
+	@include fontSizeMobile;
+	// #endregion
+
+
+	// #region unit elements
+	&.transparent {
+		background-color: transparent !important;
+	}
+
+	// #endregion
+
+
+	// #region others 
+
+	// #endregion
+
+
+	// #region derived states 
+
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {
+		@include paddingTablet;
+	}
+
+	@include desktop {
+		@include fontSizeDesktop;
+	}
+
+	@include large {
+		@include paddingLarge;
+	}
+
+	// #endregion
+}

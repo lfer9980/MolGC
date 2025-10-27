@@ -1,0 +1,157 @@
+/* 
+*/
+
+@use 'styles/vars' as *;
+
+.time {
+	// #region general
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	@include widthMobile;
+	// #endregion
+
+
+	// #region unit elements
+	&_wrap {
+		display: inherit;
+		align-items: center;
+		justify-content: space-between;
+		padding-block: 1.2rem;
+	}
+
+
+	&_left,
+	&_right {
+		display: grid;
+		gap: 1.2rem;
+	}
+
+
+	&_main {
+		display: grid;
+		place-content: center;
+		gap: 1.6rem;
+
+		span {
+			cursor: pointer;
+		}
+	}
+
+	&_years,
+	&_months {
+		display: flex;
+		flex: 0 0 auto;
+		gap: 3.2rem;
+		padding-inline: 1.6rem;
+	}
+
+	&_years {
+		font-size: $p1;
+	}
+
+	&_months {
+		font-size: $small;
+	}
+
+	&_element {
+		user-select: none;
+	}
+
+	&_scroll {
+		display: flex;
+		justify-content: center;
+		overflow-x: hidden;
+		white-space: nowrap;
+	}
+
+
+	&_button {
+		font-size: 1.2rem;
+		cursor: pointer;
+		width: 2.4rem;
+		height: 2.4rem;
+		border: none;
+		background-color: transparent;
+		color: var(--primary);
+	}
+
+	// #endregion
+
+
+	// #region others 
+	&_button:hover {
+		opacity: 0.5;
+	}
+
+	/* vertical styling */
+	&_wrap.vertical {
+		flex-direction: column;
+	}
+
+	&_main.vertical {
+		display: flex;
+	}
+
+	&_right.vertical,
+	&_left.vertical {
+		display: flex;
+		flex-direction: row;
+	}
+
+	&_years.vertical,
+	&_months.vertical {
+		flex-direction: column;
+	}
+
+	&_scroll.vertical {
+		display: flex;
+		flex-direction: column;
+		overflow-y: hidden;
+		white-space: nowrap;
+		width: fit-content;
+		height: 26rem;
+	}
+
+	// #endregion
+
+
+	// #region derived states 
+	.active {
+		font-weight: bold;
+	}
+
+	&_element.active {
+		color: var(--primary);
+	}
+
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {
+		&_wrap {
+			width: 75%;
+			gap: 2.4rem;
+		}
+
+		&_years {
+			font-size: $p2;
+		}
+
+		&_months {
+			font-size: $p1;
+		}
+	}
+
+	@include desktop {
+		&_wrap {
+			width: fit-content;
+			gap: 4.8rem;
+		}
+	}
+
+	@include large {}
+
+	// #endregion
+}

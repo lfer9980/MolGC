@@ -1,0 +1,138 @@
+/* 
+*/
+
+@use 'styles/vars' as *;
+
+.welcome {
+	// #region general
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 20rem;
+	@include fontSizeMobile;
+	// #endregion
+
+	// #region unit elements
+	.divider {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		height: 0;
+		width: 1px;
+		background-color: #000;
+		transform: translateY(-50%) translateX(-50%);
+		animation: expandDivider 2s 2s forwards;
+	}
+
+	&_isologo_wrapper,
+	&_logotipo_wrapper {
+		position: absolute;
+		top: 50%;
+		width: 10rem;
+		height: 5rem;
+		transform: translateY(-50%);
+	}
+
+	&_isologo_wrapper {
+		width: 10rem;
+		height: 10rem;
+	}
+
+	&_logotipo_wrapper {
+		width: 20rem;
+		height: 10rem;
+	}
+
+	.isologo {
+		object-fit: contain;
+		animation: zoomIn 1s ease-out, moveLeft 1s 2s forwards;
+	}
+
+	.logotipo {
+		position: absolute;
+		top: 50%;
+		left: 100%;
+		opacity: 0;
+		object-fit: contain;
+		transform: translateX(-50%);
+		animation: moveLogotipo 2s 3s forwards;
+	}
+
+	&_label_wrap {
+		position: relative;
+		bottom: -10rem;
+	}
+
+	// #endregion
+
+
+	// #region others 
+	// #endregion
+
+
+	// #region derived states 
+	&.full {
+		height: 100vh;
+	}
+
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {}
+
+	@include desktop {
+		@include fontSizeDesktop;
+	}
+
+	@include large {}
+
+	// #endregion
+}
+
+
+
+//#region animations
+@keyframes zoomIn {
+	0% {
+		transform: scale(0);
+	}
+
+	100% {
+		transform: scale(1);
+	}
+}
+
+@keyframes moveLeft {
+	0% {
+		transform: scale(1) translateX(0);
+	}
+
+	100% {
+		transform: scale(1) translateX(-10rem);
+	}
+}
+
+@keyframes expandDivider {
+	0% {
+		height: 0;
+	}
+
+	100% {
+		height: 5rem;
+	}
+}
+
+@keyframes moveLogotipo {
+	0% {
+		transform: translateX(0);
+	}
+
+	100% {
+		transform: translateX(30%);
+		opacity: 1;
+	}
+}
+
+// #endregion

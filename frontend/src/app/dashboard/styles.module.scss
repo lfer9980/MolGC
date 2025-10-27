@@ -1,0 +1,46 @@
+@use 'styles/vars' as *;
+
+.page {
+	// #region general
+	@include fontSizeMobile;
+	// #endregion
+
+
+	// #region unit elements
+	&_list {
+		display: flex;
+		flex-direction: column;
+		margin-block-end: 2.4rem;
+	}
+
+	&_buttons {
+		display: flex;
+		flex-direction: column;
+		gap: 2.4rem;
+		margin-block: 6.4rem;
+	}
+
+	// #endregion
+
+
+	// #region others 
+
+	// #endregion
+
+
+	// #region derived states 
+
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {}
+
+	@include desktop {
+		@include fontSizeDesktop;
+	}
+
+	@include large {}
+
+	// #endregion
+}

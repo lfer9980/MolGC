@@ -1,0 +1,110 @@
+/* 
+*/
+
+@use 'styles/vars' as *;
+
+.header {
+	// #region general
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 1000;
+	@include fontSizeMobile;
+	// #endregion
+
+
+	// #region unit elements
+	&_main {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1.6rem;
+		@include paddingMobile;
+	}
+
+	&_symbol,
+	&_date,
+	&_options {
+		display: inherit;
+		align-items: center;
+		justify-content: space-between;
+		gap: 2.4rem;
+
+		&_more {
+			display: none;
+		}
+	}
+
+	&_date {
+		display: none;
+	}
+
+	&_toggle {
+		position: absolute;
+		top: calc(100% + 1.6rem);
+		right: 1.6rem;
+	}
+
+	&_profile {
+		display: none;
+	}
+	
+	&_symbol {
+		padding-block: 0.8rem;
+	}
+
+	// #endregion
+
+
+	// #region others 
+	// #endregion
+
+
+	// #region derived states 
+	&.fixed {
+		position: fixed;
+		z-index: 1000;
+	}
+
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {
+		&_main {
+			@include paddingTablet;
+		}
+
+		&_toggle {
+			right: 3.2rem;
+		}
+
+		&_date {
+			display: block;
+		}
+
+		&_profile {
+			display: block;
+		}
+	}
+
+	@include desktop {
+
+		&_options {
+			&_more {
+				display: flex;
+				gap: 1.6rem;
+			}
+		}
+
+		@include fontSizeDesktop;
+	}
+
+	@include large {
+		&_main {
+			@include paddingLarge;
+		}
+	}
+
+	// #endregion
+}

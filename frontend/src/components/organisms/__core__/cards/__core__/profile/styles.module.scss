@@ -1,0 +1,13 @@
+/* 
+	
+*/
+
+@use 'styles/vars' as *;
+
+.flexend {
+	justify-content: flex-end;
+}
+
+.border {
+	border-bottom: 0.1rem solid var(--border);
+}

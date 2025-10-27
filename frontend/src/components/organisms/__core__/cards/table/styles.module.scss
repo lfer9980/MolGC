@@ -1,0 +1,83 @@
+/* 
+*/
+
+@use 'styles/vars' as *;
+
+.card {
+	// #region general
+	display: flex;
+	gap: 1.6rem;
+	padding-block: 1.6rem;
+	@include widthMobile;
+	@include fontSizeMobile;
+	// #endregion
+
+
+	// #region unit elements
+	&_main {
+		width: 100%;
+	}
+
+	&_title {
+		font-weight: bold;
+		padding-block-end: 0.8rem;
+		margin-block-end: 0.8rem;
+		border-bottom: 1px solid var(--border);
+		color: var(--accent);
+	}
+
+	&_label {
+		padding-block-end: 0.8rem;
+		margin-block-end: 1.6rem;
+	}
+
+	&_table {
+		width: 100%;
+		height: fit-content;
+
+		&_category {
+			color: var(--content-secondary);
+		}
+
+		&_label {
+			text-align: right;
+			font-weight: 700;
+			padding-block-end: 0.8rem;
+			color: var(--content);
+		}
+	}
+
+	td {
+		font-size: $small;
+	}
+
+	// #endregion
+
+
+	// #region others 
+	// #endregion
+
+
+	// #region derived states 
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {
+		gap: 2.4rem;
+
+		td {
+			font-size: $p1;
+		}
+
+		@include widthTablet;
+	}
+
+	@include desktop {
+		@include fontSizeDesktop;
+	}
+
+	@include large {}
+
+	// #endregion
+}

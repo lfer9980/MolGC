@@ -1,0 +1,61 @@
+@use 'styles/vars' as *;
+@use 'styles/components/buttons' as *;
+
+.button {
+	// #region general
+	background-color: transparent;
+	will-change: font-weight;
+	user-select: none;
+	@include widthMobile;
+	@include buttonStyles;
+	// #endregion
+
+
+	// #region unit elements
+	.icon {
+		display: grid;
+		place-content: center;
+	}
+
+	&_label {
+		@include fontSizeDesktop;
+	}
+
+	// #endregion
+
+
+	// #region others 
+
+	// #endregion
+
+
+	// #region derived states 
+	&:hover {
+		opacity: 0.6;
+		font-weight: 800;
+	}
+
+	&.left {
+		display: flex;
+		justify-content: flex-start;
+		gap: 1.2rem;
+	}
+
+	&.right {
+		display: flex;
+		justify-content: flex-end;
+		gap: 1.2rem;
+	}
+
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {}
+
+	@include desktop {}
+
+	@include large {}
+
+	// #endregion
+}

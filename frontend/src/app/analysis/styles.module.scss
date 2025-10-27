@@ -1,0 +1,52 @@
+@use 'styles/vars' as *;
+
+.page {
+	// #region general
+	height: 100svh;
+	@include fontSizeMobile;
+	// #endregion
+
+
+	// #region unit elements
+	&_footer {
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: 2.4rem;
+		@include paddingMobile;
+	}
+
+	// #endregion
+
+
+	// #region others 
+	// #endregion
+
+
+	// #region derived states 
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {
+		&_footer {
+			@include paddingTablet;
+		}
+	}
+
+	@include desktop {
+		&_footer {
+			@include paddingDesktop;
+		}
+
+		@include fontSizeDesktop;
+	}
+
+	@include large {
+		&_footer {
+			@include paddingLarge;
+		}
+	}
+
+	// #endregion
+}

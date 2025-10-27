@@ -1,0 +1,58 @@
+[application]
+app_env = "development"
+host = "localhost"
+port = 8000
+app_name = "MolGC"
+app_version = '1.0.0'
+debug = true
+
+
+secret_key = "403e206e431ece53446cdbbf6b91277512a7f058a5d1ed7d14c284e2bab37210"
+
+cors_origins = ['*']
+cors_allow_credentials = true
+cors_allow_methods = ['*']
+cors_allow_headers = ['*']
+max_age = 3600
+
+storage_path = "files"
+ws_channel_prefix = "ws_channel"
+use_celery = true
+
+[jwt]
+algorithm = "HS256"
+access_token_expire_seconds = 0
+access_token_expire_minutes = 0
+access_token_expire_hours = 24
+access_token_expire_days = 0
+refresh_token_expire_seconds = 0
+refresh_token_expire_minutes = 0
+refresh_token_expire_hour = 0
+refresh_token_expire_days = 7
+
+
+[database]
+driver = "sqlite+aiosqlite"
+host = ""
+port = ""
+name = "molgc.db"
+password = ""
+user = ""
+
+
+[mail]
+username = "username"
+password = "password"
+server = "app.debugmail.io"
+port = 9025
+use_tls = true
+use_ssl = false
+sender = "development@gmail.com"
+
+
+[celery]
+use_redis = true
+use_database = true
+redis_url = "redis://localhost:6379/0"
+celery_broker_url = "redis://localhost:6379/1"
+celery_result_backend = "redis://localhost:6379/2"

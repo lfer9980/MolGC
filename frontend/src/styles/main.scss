@@ -1,0 +1,165 @@
+@use 'styles/vars' as *;
+
+
+// #region reset factory settings
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	font-size: 62.5%;
+	font-family: $font-main;
+	scroll-behavior: smooth;
+	overflow-x: hidden;
+}
+
+// #endregion
+
+
+// #region theme palette
+body {
+	color: var(--content);
+	background-color: var(--background);
+}
+
+// #endregion
+
+
+// #region elements font sizing
+.hero2 {
+	font-family: $font-second;
+	font-weight: 400;
+	font-size: $hero2;
+	line-height: $hero2 * 1.5;
+}
+
+.hero {
+	font-family: $font-second;
+	font-weight: 400;
+	font-size: $hero;
+	line-height: $hero * 1.5;
+}
+
+h1 {
+	font-family: $font-second;
+	font-weight: 200;
+	font-size: $h1;
+	line-height: $h1 * 1.5;
+}
+
+h2 {
+	font-family: $font-second;
+	font-weight: 400;
+	font-size: $h2;
+	line-height: $h2 * 1.5;
+}
+
+h3 {
+	font-family: $font-second;
+	font-weight: 400;
+	font-size: $h3;
+	line-height: $h3 * 1.5;
+}
+
+h4 {
+	width: 100%;
+	font-family: $font-second;
+	font-weight: 600;
+	font-size: $h4;
+	line-height: $h4 * 1.5;
+}
+
+h4 .regular {
+	font-family: $font-main;
+	font-weight: 400;
+	font-size: $h4;
+	line-height: $h4 * 1.25;
+	margin: 0;
+}
+
+h5 {
+	font-family: $font-main;
+	font-weight: 600;
+	font-size: $h5;
+	line-height: $h5 * 1.5;
+	margin: 0;
+}
+
+h6 {
+	font-family: $font-main;
+	font-weight: 600;
+	font-size: $h6;
+	color: $gray50;
+	line-height: $h6 * 1.5;
+	margin: 0;
+}
+
+a {
+	text-decoration: none;
+}
+
+p {
+	margin: 0;
+}
+
+.p {
+	font-style: normal;
+
+	&3 {
+		font-size: $p3;
+		line-height: $p3 * 1.25;
+	}
+
+	&2 {
+		font-size: $p2;
+		line-height: $p2 * 1.25;
+	}
+
+	&1 {
+		font-size: $p1;
+		line-height: $p1 * 1.25;
+	}
+
+	&small {
+		font-size: $small;
+	}
+
+}
+
+button,
+input {
+	font-family: $font-main;
+	font-size: $p1;
+}
+
+hr {
+	border-color: var(--border);
+	margin-block: 1.6rem 3.2rem;
+}
+
+// #endregion
+
+@include tablet {
+
+	// #region scrollbar styles
+	::-webkit-scrollbar {
+		width: 0.4rem;
+		height: 0.8rem;
+	}
+
+	::-webkit-scrollbar-track {
+		background: var(--backround-secondary);
+	}
+
+	::-webkit-scrollbar-thumb {
+		background: var(--shadow);
+	}
+
+	::-webkit-scrollbar-thumb:hover {
+		background: var(--primary);
+	}
+
+	// #endregion
+}

@@ -1,0 +1,58 @@
+/* 
+*/
+
+@use 'styles/vars' as *;
+
+.footer {
+	// #region general
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	border-block-start: 0.1rem solid var(--border);
+	padding-block-start: 1.6rem;
+	@include paddingMobile;
+	@include fontSizeMobile;
+	// #endregion
+
+
+	// #region unit elements
+	&_content,
+	&_subcontent {
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-end;
+		width: 100%;
+	}
+
+	&_subcontent {
+		align-items: flex-end;
+		text-align: end;
+	}
+
+	// #endregion
+
+
+	// #region others 
+	// #endregion
+
+
+	// #region derived states 
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {
+		@include paddingTablet;
+	}
+
+	@include desktop {
+		@include paddingDesktop;
+		@include fontSizeDesktop;
+	}
+
+	@include large {
+		@include paddingLarge;
+	}
+
+	// #endregion
+}

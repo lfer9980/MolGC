@@ -1,0 +1,64 @@
+/* 
+*/
+
+@use 'styles/vars' as *;
+
+.magnifier {
+	// #region general
+	position: relative;
+	@include fontSizeMobile;
+	// #endregion
+
+
+	// #region unit elements
+	&_main {
+		position: relative;
+		width: 100%;
+		margin-block-end: 1.6rem;
+	}
+
+	&_image {
+		object-fit: contain;
+	}
+
+	&_square {
+		display: none;
+		position: absolute;
+		pointer-events: none;
+		background-repeat: no-repeat;
+		background-color: var(--background);
+		border: 0.1rem solid var(--border);
+	}
+
+
+	&_label {
+		text-align: center;
+		color: var(--content-secondary);
+	}
+
+	// #endregion
+
+
+	// #region others 
+	// #endregion
+
+
+	// #region derived states 
+	.show {
+		display: block;
+	}
+
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {}
+
+	@include desktop {
+		@include fontSizeDesktop;
+	}
+
+	@include large {}
+
+	// #endregion
+}

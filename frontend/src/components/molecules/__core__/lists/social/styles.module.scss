@@ -1,0 +1,61 @@
+/* 
+*/
+
+@use 'styles/vars' as *;
+
+
+
+.theme-dark .list {
+	&_image {
+		filter: invert(95%) sepia(95%) saturate(1%) hue-rotate(193deg) brightness(105%) contrast(100%);
+	}
+}
+
+
+.list {
+	// #region general
+	@include fontSizeMobile;
+	// #endregion
+
+
+	// #region unit elements
+	&_main {
+		display: flex;
+		gap: 1.6rem;
+		margin-block-end: 1.6rem;
+		position: relative;
+	}
+
+	&_element {
+		list-style: none;
+		color: var(--content);
+	}
+
+	// #endregion
+
+
+	// #region others 
+
+	&_element:hover {
+		opacity: 0.6;
+	}
+
+	// #endregion
+
+
+	// #region derived states 
+
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {}
+
+	@include desktop {
+		@include fontSizeDesktop;
+	}
+
+	@include large {}
+
+	// #endregion
+}

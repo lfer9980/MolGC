@@ -1,0 +1,145 @@
+/* 
+*/
+
+@use 'styles/vars' as *;
+
+.portal {
+	// #region general
+	position: fixed;
+	z-index: 1000;
+	// #endregion
+
+
+	// #region unit elements
+	&_main {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+		gap: 2.4rem;
+	}
+
+	// #endregion
+
+
+	// #region others 
+	// #endregion
+
+
+	// #region derived states 
+	&.first {
+		display: grid;
+		place-items: center;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		padding-inline: 1.6rem;
+		width: 100%;
+		background-color: var(--background-overlay);
+	}
+
+	&.second {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-end;
+		justify-content: flex-start;
+		top: 6.4rem;
+		right: 0;
+		padding-inline: 1.6rem;
+	}
+
+	&.third {
+		bottom: 1.6rem;
+		right: 0;
+		align-items: flex-end;
+		justify-content: flex-end;
+		padding-inline: 1.6rem;
+	}
+
+	&.first:has(.portal_main) {
+		height: 100vh;
+		overflow-y: scroll;
+
+		& .portal_main {
+			position: relative;
+			top: 6.4rem;
+			margin-block-end: 6.4rem;
+		}
+	}
+
+	&.second:has(.portal_main) {
+		overflow-y: scroll;
+		width: fit-content;
+		max-height: 100vh;
+		padding-block-end: 12.1rem;
+	}
+
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {
+		&_main {
+			width: fit-content;
+			padding-inline: 0;
+		}
+
+		&.first {
+			padding-inline: 2.4rem;
+		}
+
+		&.second {
+			top: 8.1rem;
+			padding-inline: 2.4rem;
+		}
+
+		&.third {
+			width: fit-content;
+			bottom: 2.4rem;
+			padding-inline: 2.4rem;
+		}
+
+		&.first:has(.portal_main) {
+
+			& .portal_main {
+				width: 100% !important;
+			}
+		}
+	}
+
+	@include desktop {
+		&.first {
+			padding-inline: 3.2rem;
+		}
+
+		&.second {
+			padding-inline: 3.2rem;
+		}
+
+		&.third {
+			padding-inline: 3.2rem;
+		}
+
+		&.first:has(.portal_main) {
+
+			& .portal_main {
+				width: 80% !important;
+			}
+		}
+
+		&.second:has(.portal_main) {
+			padding-block-end: 14.1rem;
+		}
+	}
+
+	@include large {
+		&.first:has(.portal_main) {
+
+			& .portal_main {
+				width: 60% !important;
+			}
+		}
+	}
+
+	// #endregion
+}

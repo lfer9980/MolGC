@@ -1,0 +1,54 @@
+@use 'styles/vars' as *;
+
+.footer {
+	// #region general
+
+	text-align: end;
+	@include fontSizeMobile;
+	// #endregion
+
+
+	// #region unit elements
+	&_header {
+		font-weight: 700;
+		margin-block-end: 0.4rem;
+	}
+
+	&_label {
+		margin-block-end: 1.2rem;
+	}
+
+	&_version {
+		color: var(--accent);
+	}
+
+	&.margin {
+		margin-block: 2.4rem;
+	}
+
+	// #endregion
+
+
+	// #region others 
+	// #endregion
+
+
+	// #region derived states 
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {}
+
+	@include desktop {
+		@include fontSizeDesktop;
+	}
+
+	@include large {}
+
+	// #endregion
+}
+
+.light {
+	color: $black !important;
+}

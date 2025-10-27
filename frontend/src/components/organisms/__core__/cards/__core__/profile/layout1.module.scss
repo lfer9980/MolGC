@@ -1,0 +1,59 @@
+/* 
+*/
+
+@use 'styles/vars' as *;
+
+.card {
+	// #region general
+	@include fontSizeMobile;
+	@include widthMobile;
+	// #endregion
+
+
+	// #region unit elements
+	&_header {
+		display: flex;
+		margin-block-end: 1.2rem;
+	}
+
+	&_main {
+		display: flex;
+		align-items: flex-start;
+		text-align: center;
+		gap: 2.4rem;
+		margin-block-end: 0.8rem;
+	}
+
+	&_content {
+		width: fit-content;
+	}
+
+	&_subcontent {
+		width: 100%;
+	}
+
+	// #endregion
+
+
+	// #region others 
+	// #endregion
+
+
+	// #region derived states 
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {
+		@include widthTablet;
+	}
+
+	@include desktop {
+		@include fontSizeDesktop;
+		@include widthDesktop;
+	}
+
+	@include large {}
+
+	// #endregion
+}

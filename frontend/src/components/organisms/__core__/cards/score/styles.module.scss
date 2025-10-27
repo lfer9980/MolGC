@@ -1,0 +1,36 @@
+/* 
+*/
+
+@use 'styles/vars' as *;
+
+.card {
+	// #region general
+	padding: 1.6rem;
+	@include shadow;
+	@include fontSizeMobile;
+	// #endregion
+
+
+	// #region unit elements
+	// #endregion
+
+
+	// #region others 
+	// #endregion
+
+
+	// #region derived states 
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {}
+
+	@include desktop {
+		@include fontSizeDesktop;
+	}
+
+	@include large {}
+
+	// #endregion
+}

@@ -1,0 +1,42 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# uv
+uv.lock
+
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# IntelliJ IDEA out directory
+out/
+.idea/
+*.iml
+*.iws
+*.ipr
+
+
+# Web stuff:
+*.log
+local_settings.py
+db.sqlite3
+*.db
+*sqlite3
+db.sqlite3-journal
+
+logs/
+
+# files ignore
+app/files/
+
+# celery
+celerybeat*

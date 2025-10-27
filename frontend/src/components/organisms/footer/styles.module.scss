@@ -1,0 +1,49 @@
+@use 'styles/vars' as *;
+
+.footer {
+	// #region general
+	@include fontSizeMobile;
+	// #endregion
+
+
+	// #region unit elements
+	&_header {
+		display: flex;
+		justify-content: space-between;
+		margin-block-end: 2.4rem;
+	}
+
+	&_main {
+		margin-block-end: 2.4rem;
+	}
+
+	&_love {
+		width: 100%;
+		text-align: right;
+		font-weight: 700;
+	}
+
+	// #endregion
+
+
+	// #region others 
+
+	// #endregion
+
+
+	// #region derived states 
+
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {}
+
+	@include desktop {
+		@include fontSizeDesktop;
+	}
+
+	@include large {}
+
+	// #endregion
+}

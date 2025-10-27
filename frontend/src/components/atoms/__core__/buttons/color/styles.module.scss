@@ -1,0 +1,82 @@
+/* 
+*/
+@use 'styles/vars' as *;
+@use 'styles/components/buttons' as *;
+
+.button {
+	// #region general
+	will-change: font-weight;
+	will-change: border;
+	@include buttonStyles;
+	@include widthMobile;
+	// #endregion
+
+
+	// #region unit elements
+	.arrow {
+		position: relative;
+		right: 0;
+	}
+
+	.line {
+		min-width: 4rem;
+		border-bottom: 0.2rem solid;
+	}
+
+	&:has(.icon) {
+		padding-block: 1.2rem;
+	}
+
+	// #endregion
+
+
+	// #region others 
+	&:not(.disabled):hover {
+		font-weight: 800;
+
+		.arrow {
+			right: -0.8rem;
+		}
+
+		.line {
+			width: 6rem;
+		}
+	}
+
+	// #endregion
+
+
+	// #region derived states 
+	&.black {
+		color: var(--content);
+	}
+
+	&.white {
+		color: $white;
+	}
+
+	&.disabled {
+		cursor: not-allowed;
+		color: var(--content-disabled) !important;
+		background-color: var(--background-disabled) !important;
+	}
+
+	&.center {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+	}
+
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {}
+
+	@include desktop {}
+
+	@include large {}
+
+	// #endregion
+}

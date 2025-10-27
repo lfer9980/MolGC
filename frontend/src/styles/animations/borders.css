@@ -1,0 +1,28 @@
+.borderChange {
+	border-bottom: 2px solid transparent;
+	transition: border-bottom-color 0.3s ease-in-out;
+}
+
+.borderChange:hover {
+	animation: borderColorChange 1s forwards;
+}
+
+
+@keyframes borderColorChange {
+	0% {
+		border-bottom-color: transparent;
+		border-bottom-width: 2px;
+		border-left-width: 2px;
+	}
+
+	50% {
+		border-bottom-width: 2px;
+		border-bottom-color: var(--border-selected);
+	}
+
+	100% {
+		border-bottom-color: var(--border-selected);
+		border-bottom-width: 2px;
+		border-right-width: 2px;
+	}
+}

@@ -1,0 +1,33 @@
+site_name: MolGC Web App
+site_description: Documentación oficial de Mi Proyecto
+site_author: Abimael Guzman | Javier Camarillo | Angel Fernandez
+site_url: https://molgc.eonia.io
+
+# Tema (puedes usar el tema "material" si lo instalas)
+theme:
+  name: material
+  language: es
+
+# Navegación del sitio
+nav:
+  - Inicio: index.md
+  - Guía rápida: getting-started.md
+  - Guía:
+      - Instalación: guide/installation.md
+      - Uso: guide/usage.md
+
+# Configuración extra
+markdown_extensions:
+  - toc:
+      permalink: true
+  - admonition
+  - codehilite
+  - footnotes
+  - def_list
+  - attr_list
+
+# Plugins opcionales (requieren instalación)
+plugins:
+  - search
+  # - mkdocstrings
+  # - git-revision-date

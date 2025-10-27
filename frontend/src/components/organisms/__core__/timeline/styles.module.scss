@@ -1,0 +1,42 @@
+/* 
+*/
+
+@use 'styles/vars' as *;
+
+.timeline {
+	// #region general
+	display: block;
+	width: 100%;
+	height: 70rem;
+	overflow-y: scroll;
+	margin-block: 1.6rem;
+	// #endregion
+
+
+	// #region unit elements
+	&_main {
+		margin-block-end: 3.6rem;
+	}
+
+	// #endregion
+
+
+	// #region others 
+	// #endregion
+
+
+	// #region derived states 
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {
+		height: 60rem;
+	}
+
+	@include desktop {}
+
+	@include large {}
+
+	// #endregion
+}

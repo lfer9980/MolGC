@@ -1,0 +1,48 @@
+/* 
+*/
+
+@use 'styles/vars' as *;
+
+.navigator {
+	// #region general
+	width: fit-content;
+	height: 100%;
+	border-inline-end: 0.1rem solid var(--border);
+	@include fontSizeMobile;
+	// #endregion
+
+
+	// #region unit elements
+	&_wrap {
+		top: 5rem;
+		position: sticky;
+		z-index: 1000;
+	}
+
+	&_ul {
+		display: flex;
+		flex-direction: column;
+	}
+
+	// #endregion
+
+
+	// #region others 
+	// #endregion
+
+
+	// #region derived states 
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {}
+
+	@include desktop {
+		@include fontSizeDesktop;
+	}
+
+	@include large {}
+
+	// #endregion
+}

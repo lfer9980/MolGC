@@ -1,0 +1,105 @@
+/* 
+*/
+
+@use 'styles/vars' as *;
+
+.element {
+	// #region general
+	width: 100%;
+	margin-block: 1.2rem;
+	color: var(--content);
+	@include fontSizeMobile;
+	// #endregion
+
+
+	// #region unit elements
+	&_title {
+		color: var(--content-secondary);
+		font-weight: 500;
+
+		&_wrap {
+			display: flex;
+			align-items: center;
+			gap: 1.2rem;
+			margin-block-end: 0.8rem;
+		}
+	}
+
+	&_subtitle {
+		font-weight: 700;
+		margin-block-end: 0.8rem;
+	}
+
+	&_label {
+		display: block;
+		word-wrap: break-word;
+		min-height: 2.5rem;
+	}
+
+	&_link {
+		color: var(--secondary);
+		font-weight: 700;
+		text-decoration: underline;
+	}
+
+	// #endregion
+
+
+	// #region others 
+	&_link:hover {
+		opacity: 0.5;
+	}
+
+	// #endregion
+
+
+	// #region derived states 
+	.bold {
+		font-weight: 700;
+	}
+
+	.line {
+		text-decoration: line-through;
+	}
+
+	.second,
+	.third {
+		font-weight: 700;
+	}
+
+	.third {
+		color: var(--accent);
+	}
+
+	.fourth {
+		font-weight: 700;
+		color: var(--negative);
+	}
+
+	&.disabled {
+
+		a,
+		div,
+		p {
+			color: var(--content-disabled) !important;
+			text-decoration: none;
+			pointer-events: none;
+		}
+	}
+
+	&.center {
+		text-align: center;
+	}
+
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {}
+
+	@include desktop {
+		@include fontSizeDesktop;
+	}
+
+	// #endregion
+}

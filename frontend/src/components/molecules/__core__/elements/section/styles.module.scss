@@ -1,0 +1,32 @@
+/* 
+*/
+
+@use 'styles/vars' as *;
+
+.element {
+	// #region general
+	display: block;
+	// #endregion
+
+
+	// #region unit elements
+	// #endregion
+
+
+	// #region others 
+	// #endregion
+
+
+	// #region derived states 
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {}
+
+	@include desktop {}
+
+	@include large {}
+
+	// #endregion
+}

@@ -1,0 +1,397 @@
+{
+	"empty": {
+		"title": "",
+		"label": "",
+		"description": "empty request"
+	},
+	"null": {
+		"title": "",
+		"label": "",
+		"description": "Receive null response"
+	},
+	"100": {
+		"title": "",
+		"label": "",
+		"description": "Continue"
+	},
+	"101": {
+		"title": "",
+		"label": "",
+		"description": "Switching Protocols"
+	},
+	"102": {
+		"title": "",
+		"label": "",
+		"description": "Processing"
+	},
+	"103": {
+		"title": "",
+		"label": "",
+		"description": "Early Hints"
+	},
+	"200": {
+		"title": "",
+		"label": "",
+		"description": "OK"
+	},
+	"201": {
+		"title": "",
+		"label": "",
+		"description": "Created"
+	},
+	"202": {
+		"title": "",
+		"label": "",
+		"description": "Accepted"
+	},
+	"203": {
+		"title": "",
+		"label": "",
+		"description": "Non-Authoritative Information"
+	},
+	"204": {
+		"title": "",
+		"label": "",
+		"description": "No Content"
+	},
+	"205": {
+		"title": "",
+		"label": "",
+		"description": "Reset Content"
+	},
+	"206": {
+		"title": "",
+		"label": "",
+		"description": "Partial Content"
+	},
+	"207": {
+		"title": "",
+		"label": "",
+		"description": "Multi-Status"
+	},
+	"208": {
+		"title": "",
+		"label": "",
+		"description": "Already Reported"
+	},
+	"214": {
+		"title": "",
+		"label": "",
+		"description": "Transformation Applied"
+	},
+	"226": {
+		"title": "",
+		"label": "",
+		"description": "IM Used"
+	},
+	"300": {
+		"title": "",
+		"label": "",
+		"description": "Multiple Choices"
+	},
+	"301": {
+		"title": "",
+		"label": "",
+		"description": "Moved Permanently"
+	},
+	"302": {
+		"title": "",
+		"label": "",
+		"description": "Found"
+	},
+	"303": {
+		"title": "",
+		"label": "",
+		"description": "See Other"
+	},
+	"304": {
+		"title": "",
+		"label": "",
+		"description": "Not Modified"
+	},
+	"305": {
+		"title": "",
+		"label": "",
+		"description": "Use Proxy"
+	},
+	"307": {
+		"title": "",
+		"label": "",
+		"description": "Temporary Redirect"
+	},
+	"308": {
+		"title": "",
+		"label": "",
+		"description": "Permanent Redirect"
+	},
+	"400": {
+		"title": "",
+		"label": "",
+		"description": "Bad Request"
+	},
+	"401": {
+		"title": "",
+		"label": "",
+		"description": "Unauthorized"
+	},
+	"402": {
+		"title": "",
+		"label": "",
+		"description": "Payment Required"
+	},
+	"403": {
+		"title": "",
+		"label": "",
+		"description": "Forbidden"
+	},
+	"404": {
+		"title": "",
+		"label": "",
+		"description": "Not Found"
+	},
+	"405": {
+		"title": "",
+		"label": "",
+		"description": "Method Not Allowed"
+	},
+	"406": {
+		"title": "",
+		"label": "",
+		"description": "Not Acceptable"
+	},
+	"407": {
+		"title": "",
+		"label": "",
+		"description": "Proxy Authentication Required"
+	},
+	"408": {
+		"title": "",
+		"label": "",
+		"description": "Request Timeout"
+	},
+	"409": {
+		"title": "",
+		"label": "",
+		"description": "Conflict"
+	},
+	"410": {
+		"title": "",
+		"label": "",
+		"description": "Gone"
+	},
+	"411": {
+		"title": "",
+		"label": "",
+		"description": "Length Required"
+	},
+	"412": {
+		"title": "",
+		"label": "",
+		"description": "Precondition Failed"
+	},
+	"413": {
+		"title": "",
+		"label": "",
+		"description": "Payload Too Large"
+	},
+	"414": {
+		"title": "",
+		"label": "",
+		"description": "URI Too Long"
+	},
+	"415": {
+		"title": "",
+		"label": "",
+		"description": "Unsupported Media Type"
+	},
+	"416": {
+		"title": "",
+		"label": "",
+		"description": "Range Not Satisfiable"
+	},
+	"417": {
+		"title": "",
+		"label": "",
+		"description": "Expectation Failed"
+	},
+	"419": {
+		"title": "",
+		"label": "",
+		"description": "I'm a teapot"
+	},
+	"420": {
+		"title": "",
+		"label": "",
+		"description": "Enhance Your Calm"
+	},
+	"421": {
+		"title": "",
+		"label": "",
+		"description": "Misdirected Request"
+	},
+	"422": {
+		"title": "",
+		"label": "",
+		"description": "Unprocessable Content"
+	},
+	"423": {
+		"title": "",
+		"label": "",
+		"description": "Locked"
+	},
+	"424": {
+		"title": "",
+		"label": "",
+		"description": "Failed Dependency"
+	},
+	"425": {
+		"title": "",
+		"label": "",
+		"description": "Too Early"
+	},
+	"426": {
+		"title": "",
+		"label": "",
+		"description": "Upgrade Required"
+	},
+	"428": {
+		"title": "",
+		"label": "",
+		"description": "Precondition Required"
+	},
+	"429": {
+		"title": "",
+		"label": "",
+		"description": "Too Many Requests"
+	},
+	"431": {
+		"title": "",
+		"label": "",
+		"description": "Request Header Fields Too Large"
+	},
+	"444": {
+		"title": "",
+		"label": "",
+		"description": "No Response"
+	},
+	"450": {
+		"title": "",
+		"label": "",
+		"description": "Blocked by Windows Parental Controls"
+	},
+	"451": {
+		"title": "",
+		"label": "",
+		"description": "Unavailable For Legal Reasons"
+	},
+	"495": {
+		"title": "",
+		"label": "",
+		"description": "SSL Certificate Error"
+	},
+	"496": {
+		"title": "",
+		"label": "",
+		"description": "SSL Certificate Required"
+	},
+	"497": {
+		"title": "",
+		"label": "",
+		"description": "HTTP Request Sent to HTTPS Port"
+	},
+	"498": {
+		"title": "",
+		"label": "",
+		"description": "Token expired/invalid"
+	},
+	"499": {
+		"title": "",
+		"label": "",
+		"description": "Client Closed Request"
+	},
+	"500": {
+		"title": "",
+		"label": "",
+		"description": "Internal Server Error"
+	},
+	"501": {
+		"title": "",
+		"label": "",
+		"description": "Not implemented"
+	},
+	"502": {
+		"title": "",
+		"label": "",
+		"description": "Bad Gateway"
+	},
+	"503": {
+		"title": "",
+		"label": "",
+		"description": "Service Unavailable"
+	},
+	"504": {
+		"title": "",
+		"label": "",
+		"description": "Gateway Timeout"
+	},
+	"506": {
+		"title": "",
+		"label": "",
+		"description": "Variant Also Negotiates"
+	},
+	"507": {
+		"title": "",
+		"label": "",
+		"description": "Insufficient Storage"
+	},
+	"508": {
+		"title": "",
+		"label": "",
+		"description": "Loop Detected"
+	},
+	"509": {
+		"title": "",
+		"label": "",
+		"description": "Bandwidth Limit Exceeded"
+	},
+	"510": {
+		"title": "",
+		"label": "",
+		"description": "Not Extended"
+	},
+	"511": {
+		"title": "",
+		"label": "",
+		"description": "Network Authentication Required"
+	},
+	"521": {
+		"title": "",
+		"label": "",
+		"description": "Web Server Is Down"
+	},
+	"522": {
+		"title": "",
+		"label": "",
+		"description": "Connection Timed Out"
+	},
+	"523": {
+		"title": "",
+		"label": "",
+		"description": "Origin Is Unreachable"
+	},
+	"525": {
+		"title": "",
+		"label": "",
+		"description": "SSL Handshake Failed"
+	},
+	"530": {
+		"title": "",
+		"label": "",
+		"description": "Site Frozen"
+	},
+	"599": {
+		"title": "",
+		"label": "",
+		"description": "Network Connect Timeout Error"
+	}
+}

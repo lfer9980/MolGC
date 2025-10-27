@@ -1,0 +1,135 @@
+/* 
+*/
+
+@use 'styles/vars' as *;
+
+.aside {
+	// #region general
+	position: fixed;
+	z-index: 100;
+	width: 100%;
+	background-color: var(--background-secondary);
+	height: 100vh;
+	animation-duration: 0.2s !important;
+	@include paddingMobile;
+	@include fontSizeMobile;
+	// #endregion
+
+
+	// #region unit elements
+	&_wrap {
+		display: flex;
+	}
+
+	&_navigator {
+		display: none;
+	}
+
+	&_title {
+		display: flex;
+		justify-content: space-between;
+		gap: 2.4rem;
+		padding-block-start: 2.4rem;
+	}
+
+	&_search {
+		margin-block-end: 2.4rem;
+	}
+
+	&_scroll {
+		display: flex;
+		flex-direction: column;
+		overflow-y: scroll;
+		max-height: 60%;
+		border-block-end: 0.1rem solid var(--border);
+		position: relative;
+
+		&_symbol {
+			position: sticky;
+			bottom: 1.6rem;
+			color: var(--accent);
+		}
+	}
+
+	&_second {
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: 1.6rem;
+		@include paddingMobile;
+	}
+
+	&_button {
+		position: fixed;
+		top: calc(5rem + 1.6rem);
+		right: 1.6rem;
+		z-index: 1000;
+
+		&_aux {
+			display: none;
+		}
+	}
+
+	// #endregion
+
+
+	// #region others 
+	// #endregion
+
+
+	// #region derived states 
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {
+		left: 6.4rem;
+		width: 32rem;
+		@include paddingTablet;
+
+		&_navigator {
+			display: block;
+		}
+
+		&_scroll {
+			max-height: 48rem;
+		}
+
+		&_button {
+			display: none;
+
+			&_aux {
+				display: block;
+			}
+		}
+	}
+
+	@include desktop {
+		position: sticky;
+		top: 5rem;
+		border-inline-end: 0.1rem solid var(--border);
+		width: 28rem;
+
+		&_profile {
+			display: none;
+		}
+
+		&_scroll {
+			max-height: 80%;
+		}
+
+		&_button {
+			&_aux {
+				display: none;
+			}
+		}
+
+		@include fontSizeDesktop;
+	}
+
+	@include large {
+		width: 32rem;
+	}
+
+	// #endregion
+}

@@ -1,0 +1,87 @@
+/* 
+*/
+
+@use 'styles/vars' as *;
+
+.element {
+	// #region general
+	width: 100%;
+	overflow-x: hidden;
+	@include fontSizeMobile;
+	// #endregion
+
+
+	// #region unit elements
+	&_side {
+		margin-block-end: 1.2rem;
+		padding-block-end: 1.2rem;
+		border-bottom: 0.1 solid var(--border);
+	}
+
+	&_line {
+		width: 0.2rem;
+		display: none;
+	}
+
+	// #endregion
+
+
+	// #region others 
+	// #endregion
+
+
+	// #region derived states
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {
+		display: flex;
+		padding-inline-end: 1.6rem;
+
+		&_main {
+			width: 100%;
+		}
+
+		&_side {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			padding: 0;
+			margin: 0 1.6rem 0 0;
+			border: none;
+		}
+
+		&_line {
+			display: block;
+
+			&__up {
+				height: 1.6rem;
+				margin-block-end: 0.4rem;
+			}
+
+			&__down {
+				height: calc(100% - 2.4rem);
+				margin-block-start: 0.4rem;
+			}
+		}
+	}
+
+	@include desktop {
+		padding-inline-end: 1.6rem;
+
+		&_side {
+			margin-inline-end: 2.4rem;
+		}
+
+		&_line {
+			&__up {
+				height: 2.4rem;
+			}
+		}
+	}
+
+	@include large {}
+
+	// #endregion
+}

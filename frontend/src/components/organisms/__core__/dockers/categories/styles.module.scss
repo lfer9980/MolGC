@@ -1,0 +1,87 @@
+/* 
+	
+*/
+
+@use 'styles/vars' as *;
+
+.docker {
+	// #region general
+	margin-block-end: 1.6rem;
+	@include fontSizeMobile;
+	// #endregion
+
+
+	// #region unit elements
+	&_main {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		justify-content: flex-end;
+		gap: 2.4rem;
+		padding-block-end: 1.6rem;
+		border-bottom: 0.1rem solid var(--border);
+	}
+
+	&_content {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		gap: 1.6rem;
+	}
+
+	&_tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 2.4rem;
+		margin-block-start: 1.6rem;
+
+		&_wrap {
+			display: flex;
+			justify-content: space-between;
+		}
+	}
+
+	&_subcontent {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-end;
+	}
+
+	&_content,
+	&_subcontent {
+		width: 100%;
+	}
+
+	&_clear {
+		display: flex;
+		align-items: flex-end;
+	}
+
+	// #endregion
+
+
+	// #region others 
+	// #endregion
+
+
+	// #region derived states 
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {
+		&_main {
+			flex-direction: row;
+			align-items: flex-start;
+			justify-content: space-between;
+		}
+	}
+
+	@include desktop {
+		@include fontSizeDesktop;
+	}
+
+	@include large {}
+
+	// #endregion
+}

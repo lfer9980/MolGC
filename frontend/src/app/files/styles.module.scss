@@ -1,0 +1,54 @@
+@use 'styles/vars' as *;
+
+.page {
+	// #region general
+	@include fontSizeMobile;
+	// #endregion
+
+
+	// #region unit elements
+	&_main {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 75vh;
+	}
+
+	&_link {
+		position: fixed;
+		bottom: 2.4rem;
+		left: 1.6rem;
+	}
+
+	// #endregion
+
+
+	// #region others 
+
+	// #endregion
+
+
+	// #region derived states 
+
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {
+		&_link {
+			left: 2.4rem;
+		}
+	}
+
+	@include desktop {
+		@include fontSizeDesktop;
+	}
+
+	@include large {
+		&_link {
+			left: 3.2rem;
+		}
+	}
+
+	// #endregion
+}

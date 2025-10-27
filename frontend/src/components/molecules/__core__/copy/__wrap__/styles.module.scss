@@ -1,0 +1,51 @@
+/* 
+*/
+
+@use 'styles/vars' as *;
+
+.copy {
+	// #region general
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	@include widthMobile;
+	@include fontSizeMobile;
+	// #endregion
+
+
+	// #region unit elements
+	&_actions {
+		display: flex;
+		justify-content: flex-end;
+		width: fit-content;
+	}
+
+	&.second {
+		display: flex;
+		flex-direction: row-reverse;
+		align-items: flex-start;
+		gap: 1.6rem;	
+	}
+
+	// #endregion
+
+
+	// #region others 
+	// #endregion
+
+
+	// #region derived states 
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {}
+
+	@include desktop {
+		@include fontSizeDesktop;
+	}
+
+	@include large {}
+
+	// #endregion
+}

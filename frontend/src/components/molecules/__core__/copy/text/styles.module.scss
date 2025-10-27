@@ -1,0 +1,40 @@
+/* 
+*/
+
+@use 'styles/vars' as *;
+
+.copy {
+	// #region general
+	@include fontSizeMobile;
+	// #endregion
+
+
+	// #region unit elements
+	&_label {
+		margin-block: 1.6rem;
+		padding-block-end: 1.2rem;
+		border-bottom: 0.1rem solid var(--border);
+	}
+
+	// #endregion
+
+
+	// #region others 
+	// #endregion
+
+
+	// #region derived states 
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {}
+
+	@include desktop {
+		@include fontSizeDesktop;
+	}
+
+	@include large {}
+
+	// #endregion
+}

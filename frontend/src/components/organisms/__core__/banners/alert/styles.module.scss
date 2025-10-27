@@ -1,0 +1,94 @@
+/* 
+*/
+@use 'styles/vars' as *;
+
+.banner {
+	// #region general
+	display: flex;
+	align-items: center;
+	width: 100%;
+	background-color: var(--background-secondary);
+	@include shadow;
+	// #endregion
+
+
+	// #region unit elements
+	&_main {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		font-size: $p1;
+		width: 100%;
+		padding: 1.6rem 0 1.6rem 1.6rem;
+	}
+
+	&_title {
+		font-weight: 700;
+		margin-block-end: 0.4rem;
+	}
+
+	&_id {
+		font-size: $small;
+		font-style: italic;
+		margin-block: 0.4rem;
+	}
+
+	&_timer {
+		position: relative;
+	}
+
+	&_symbol {
+		display: none;
+	}
+
+	// #endregion
+
+
+	// #region others 
+	// #endregion
+
+
+	// #region derived states 
+	.info {
+		color: var(--accent);
+	}
+
+	.done {
+		color: var(--positive);
+	}
+
+	.warning {
+		color: var(--warning);
+	}
+
+	.error {
+		color: var(--negative);
+	}
+
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {
+		gap: 2.4rem;
+
+		&_main {
+			padding: 0;
+		}
+
+		&_symbol {
+			display: block;
+		}
+
+
+		&_content {
+			min-width: 30rem;
+		}
+	}
+
+	@include desktop {}
+
+	@include large {}
+
+	// #endregion
+}

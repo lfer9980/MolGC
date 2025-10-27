@@ -1,0 +1,41 @@
+/* 
+*/
+
+@use 'styles/vars' as *;
+
+.picker {
+	// #region general
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	width: fit-content;
+	gap: 1.6rem;
+	@include fontSizeMobile;
+	// #endregion
+
+
+	// #region unit elements
+	// #endregion
+
+
+	// #region others 
+	// #endregion
+
+
+	// #region derived states 
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {
+		gap: 2.4rem;
+		grid-template-columns: 1fr 1fr 1fr 1fr;
+	}
+
+	@include desktop {
+		@include fontSizeDesktop;
+	}
+
+	@include large {}
+
+	// #endregion
+}

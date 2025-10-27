@@ -1,0 +1,77 @@
+/* 
+*/
+
+@use 'styles/vars' as *;
+
+.wrap {
+	// #region general
+	display: flex;
+	width: 100%;
+	// #endregion
+
+
+	// #region unit elements
+	&.column {
+		flex-direction: column;
+	}
+
+	&.row {
+		flex-direction: row;
+	}
+
+	&.padding {
+		@include paddingMobile;
+	}
+
+	&.margin {
+		padding-block-start: 9.6rem;
+	}
+
+	&.full {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
+		height: 100svh;
+	}
+
+	&.center {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
+		height: 100%;
+	}
+
+	// #endregion
+
+
+	// #region others 
+	// #endregion
+
+
+	// #region derived states 
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {
+		&.padding {
+			@include paddingTablet;
+		}
+	}
+
+	@include desktop {
+		&.padding {
+			@include paddingDesktop;
+		}
+	}
+
+	@include large {
+		&.padding {
+			@include paddingLarge;
+		}
+	}
+
+	// #endregion
+}

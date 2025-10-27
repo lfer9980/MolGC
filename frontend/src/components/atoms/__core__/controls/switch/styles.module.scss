@@ -1,0 +1,103 @@
+/* 
+*/
+
+@use 'styles/vars' as *;
+
+.control {
+	// #region general
+	position: relative;
+	width: 3.2rem;
+	height: 2rem;
+	// #endregion
+
+
+	// #region unit elements
+	&_element {
+		opacity: 0;
+		width: 0;
+		height: 0;
+	}
+
+	&_slider {
+		position: absolute;
+		cursor: pointer;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		-webkit-transition: .3s;
+		transition: .3s;
+		background-color: var(--background-hover);
+
+		&:before {
+			position: absolute;
+			top: -3px;
+			content: '';
+			height: 1.56rem;
+			width: 1.56rem;
+			left: -0.2rem;
+			bottom: 0.2rem;
+			stroke-width: 0.5px;
+			transition: .3s;
+			background-color: $white;
+			fill: $white;
+			stroke: var(--shadow);
+			filter:
+				drop-shadow(0px 1px 1px rgba($color: $black, $alpha: 0.24)) drop-shadow(0px 0px 1px rgba($color: $black, $alpha: 0.24));
+		}
+	}
+
+	&_element:checked+&_slider:before {
+		-webkit-transform: translateX(2rem);
+		-ms-transform: translateX(2rem);
+		transform: translateX(2rem);
+	}
+
+	&_slider {
+		border-radius: 42px;
+		height: 14px;
+		width: 34px;
+	}
+
+	&_slider:before {
+		border-radius: 50%;
+		height: 20px;
+		width: 20px;
+	}
+
+	// #endregion
+
+
+	// #region others
+	&_element:checked+.control_slider {
+		background-color: var(--background-accent);
+	}
+
+	// #endregion
+
+
+	// #region derived states 
+	&.disabled {
+		.control {
+			&_slider {
+				cursor: not-allowed;
+				background-color: var(--background-disabled);
+
+				&::before {
+					background-color: var(--background-disabled);
+				}
+			}
+
+			&_element:checked+.control_slider {
+				background-color: var(--background-overlay-accent);
+			}
+
+		}
+	}
+
+	// #endregion
+
+
+	// #region media queries
+	// #endregion
+}

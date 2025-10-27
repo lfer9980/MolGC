@@ -1,0 +1,93 @@
+/* 
+	
+*/
+
+@use 'styles/vars' as *;
+
+.docker {
+	// #region general
+	margin-block-end: 1.6rem;
+	@include fontSizeMobile;
+	// #endregion
+
+
+	// #region unit elements
+	&_header {
+		border-bottom: 0.1rem solid var(--border);
+		margin-block-end: 1.6rem;
+	}
+
+	&_main {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		justify-content: flex-end;
+		gap: 2.4rem;
+		margin-block-end: 1.6rem;
+	}
+
+	&_subcontent {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-end;
+	}
+
+	&_input {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+		gap: 1.6rem;
+	}
+
+	&_content,
+	&_subcontent {
+		width: 100%;
+	}
+
+	// #endregion
+
+
+	// #region others 
+	// #endregion
+
+
+	// #region derived states 
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {
+		&_main {
+			flex-direction: row;
+			align-items: flex-end;
+			flex-wrap: wrap;
+			justify-content: space-between;
+		}
+
+		&_content,
+		&_subcontent {
+			width: fit-content;
+		}
+
+		&_input {
+			flex-direction: row;
+			flex-wrap: nowrap;
+		}
+	}
+
+	@include desktop {
+		&_main {
+			flex-wrap: nowrap;
+		}
+
+		&_input {
+			width: 50rem;
+		}
+
+		@include fontSizeDesktop;
+	}
+
+	@include large {}
+
+	// #endregion
+}

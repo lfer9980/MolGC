@@ -1,0 +1,133 @@
+/* 
+*/
+
+@use 'styles/vars' as *;
+
+.title {
+	// #region general
+	color: var(--content);
+	margin-block-end: 1.6rem;
+	@include fontSizeMobile;
+	// #endregion
+
+
+	// #region unit elements
+	&_head,
+	&_subtitle {
+		display: flex;
+		align-items: center;
+		gap: 0.4rem;
+		font-family: $font-second;
+	}
+
+	&_subtitle {
+		margin-block: 0.8rem;
+	}
+
+	&_link {
+		text-decoration: underline;
+		margin-block-start: 0.8rem;
+		font-size: $p1;
+		font-weight: 700;
+		width: fit-content;
+		color: var(--accent);
+	}
+
+	&_main {
+		display: flex;
+		flex-direction: column;
+	}
+
+	// #endregion
+
+
+	// #region others 
+	&_link:hover {
+		opacity: 0.6;
+	}
+
+	&_heading {
+		font-size: $p2;
+		font-weight: 700;
+		font-family: $font-second;
+	}
+
+	&_subheading {
+		font-size: $p2;
+		font-weight: 700;
+		margin-block-start: 0.8rem;
+		font-family: $font-second;
+		margin-block-end: 1.2rem;
+	}
+
+	&_title {
+		font-size: $p2;
+		font-weight: 700;
+	}
+
+	&_subtitle {
+		color: var(--accent);
+		font-size: $p1;
+		font-weight: 600;
+	}
+
+	&_label {
+		margin-block-start: 0.8rem;
+		color: var(--content-tertiary);
+	}
+
+	// #endregion
+
+
+	// #region derived states 
+	.center {
+		justify-content: center;
+		text-align: center;
+	}
+
+	.accent {
+		color: var(--accent);
+
+		span {
+			color: var(--accent);
+		}
+	}
+
+	.border {
+		padding-block-end: 0.8rem;
+		border-bottom: 0.1rem solid var(--border);
+	}
+
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {
+		@include fontSizeDesktop;
+
+		&_head,
+		&_subtitle {
+			gap: 0.8rem;
+		}
+
+	}
+
+	@include desktop {
+
+		&_title {
+			font-size: $h4;
+		}
+
+		&_heading {
+			font-size: $p3;
+		}
+
+		&_subheading {
+			font-size: $p3;
+		}
+	}
+
+	@include large {}
+
+	// #endregion
+}
