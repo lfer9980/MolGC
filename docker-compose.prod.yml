@@ -1,0 +1,30 @@
+services:
+  backend:
+    container_name: ${APP_NAME}_backend
+    image: ${REGISTRY}/${IMAGE_NAME_BACKEND}:latest
+    restart: always
+    volumes:
+      - sqlite_data:/app/db
+    depends_on: []
+    networks:
+      - app_net
+    ports:
+      - 5002:5000
+
+  frontend: 
+    container_name: ${APP_NAME}_frontend
+    image: ${REGISTRY}/${IMAGE_NAME_FRONTEND}:latest
+    environment:
+      - NODE_ENV=production
+    depends_on:
+      - backend
+    networks:
+      - app_net
+    ports:
+      - 3002:3000
+
+volumes:
+  sqlite_data:
+
+networks:
+  app_net:
