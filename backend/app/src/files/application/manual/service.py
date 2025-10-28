@@ -1,3 +1,4 @@
+import os
 import hashlib
 from pathlib import Path
 
@@ -15,11 +16,10 @@ from fastapi import UploadFile
 class ManualFileService:
     def __init__(self, repository: FileRepository):
         self.repository = repository
-        # TODO: change this logic to a docker volume on production
         self.storage_path = (
             Path(__file__).resolve().parent.parent.parent.parent.parent
             / settings.application.storage_path
-        )
+        ) if not os.getenv("STORAGE_PATH") else Path(os.getenv("STORAGE_PATH"))
         self.max_size = settings.application.max_file_size
 
     async def execute(

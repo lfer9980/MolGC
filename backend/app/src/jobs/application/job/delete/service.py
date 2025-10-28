@@ -1,3 +1,4 @@
+import os
 import shutil
 from pathlib import Path
 
@@ -10,10 +11,9 @@ from app.src.jobs.domain.repositories.job_repository import JobRepository
 class DeleteJobService:
     def __init__(self, repository: JobRepository):
         self.repository = repository
-        # TODO: change this logic to a docker volume on production
         self.storage_path = (
             Path(__file__).resolve().parents[5] / settings.application.storage_path
-        )
+        ) if not os.getenv("STORAGE_PATH") else Path(os.getenv("STORAGE_PATH"))
 
     async def execute(self, job_id: str) -> JobEntity:
         job_folder = (self.storage_path / job_id).resolve()

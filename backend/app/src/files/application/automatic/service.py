@@ -1,3 +1,4 @@
+import os
 import hashlib
 import shutil
 import tempfile
@@ -23,10 +24,9 @@ from fastapi import UploadFile
 class AutomaticFileService:
     def __init__(self, repository: FileRepository):
         self.repository = repository
-        # TODO: change this logic to a docker volume on production
         self.storage_path = (
             Path(__file__).resolve().parents[4] / settings.application.storage_path
-        )
+        ) if not os.getenv("STORAGE_PATH") else Path(os.getenv("STORAGE_PATH"))
         self.max_size = settings.application.max_file_size
 
     async def execute(self, job_id: str, new_zip_file: UploadFile) -> list[str]:

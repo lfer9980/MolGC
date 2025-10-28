@@ -1,18 +1,69 @@
+version: "3.8"
+
 services:
-  backend:
-    container_name: ${APP_NAME}_backend
-    image: ${REGISTRY}/${IMAGE_NAME_BACKEND}:latest
+  redis:
+    image: redis:7
+    container_name: ${APP_NAME}_redis
     restart: always
     volumes:
+      - redis_data:/data
+    networks:
+      - app_net
+
+  backend:
+    image: ${REGISTRY}/${IMAGE_NAME_BACKEND}:latest
+    container_name: ${APP_NAME}_backend
+    restart: always
+    env_file:
+      - .env 
+    environment:
+      - STORAGE_PATH=/data/files
+      - ALEMBIC_AUTO_UPGRADE=${ALEMBIC_AUTO_UPGRADE:-false}
+    volumes:
+      - files_data:/data/files
       - sqlite_data:/app/db
-    depends_on: []
     networks:
       - app_net
     ports:
-      - 5005:5000
+      - "5005:5000"
+    depends_on:
+      - redis
+
+  celery_worker:
+    image: ${REGISTRY}/${IMAGE_NAME_BACKEND}:latest
+    container_name: ${APP_NAME}_celery_worker
+    restart: always
+    env_file:
+      - .env
+    command: ["celery", "-A", "app.celery_app", "worker", "--loglevel=info"]
+    volumes:
+      - files_data:/data/files
+      - sqlite_data:/app/db
+    depends_on:
+      - redis
+    networks:
+      - app_net
+
+  celery_beat:
+    image: ${REGISTRY}/${IMAGE_NAME_BACKEND}:latest
+    container_name: ${APP_NAME}_celery_beat
+    restart: always
+    env_file:
+      - .env
+    command: ["celery", "-A", "app.celery_app", "beat", "--loglevel=info"]
+    volumes:
+      - files_data:/data/files
+      - sqlite_data:/app/db
+    depends_on:
+      - redis
+    networks:
+      - app_net
 
 volumes:
   sqlite_data:
+  redis_data:
+  files_data:
 
 networks:
   app_net:
+    driver: bridge
