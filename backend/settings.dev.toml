@@ -40,6 +40,13 @@ password = ""
 user = ""
 
 
+#driver = "postgresql+asyncpg"
+#host = "localhost"
+#port = "5432"
+#name = "molgc"
+#password = "PASSWORD"
+#user = "postgres"
+
 [mail]
 username = "username"
 password = "password"
