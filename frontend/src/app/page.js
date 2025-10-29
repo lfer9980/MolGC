@@ -39,6 +39,7 @@ import { useWelcome } from './useWelcome';
 
 
 // #region contexts & stores
+import { useServiceCreateJob } from 'services/job';
 // #endregion
 
 
@@ -54,6 +55,10 @@ export default function App() {
 		view,
 		handlerRedirect,
 	} = useWelcome({});
+
+	const {
+		handlerCreateJob,
+	} = useServiceCreateJob();
 	// #endregion
 
 	// #region skeletons
@@ -111,7 +116,7 @@ export default function App() {
 							initial={{ y: 50, opacity: 0 }}
 							animate={{ y: 0, opacity: 1 }}
 							exit={{ y: -50, opacity: 0 }}
-							transition={{ duration: 0.5, ease: "easeInOut" }}
+							transition={{ duration: 0.2, ease: "easeOut" }}
 							className={styles.page_section}
 						>
 							<WrapSection padding>
@@ -130,7 +135,7 @@ export default function App() {
 											symbol='arrow_right_alt'
 											color={colorsApp.dark_red}
 											direction={STYLE_DIR_ENUM.RIGHT}
-											handler={() => handlerRedirect('/files/auto')}
+											handler={() => handlerCreateJob({ uploadType: "automatic", handler: handlerRedirect })}
 											size={24}
 										/>
 									</div>
@@ -141,7 +146,7 @@ export default function App() {
 											symbol='arrow_left_alt'
 											color={colorsApp.dark_blue}
 											direction={STYLE_DIR_ENUM.LEFT}
-											handler={() => handlerRedirect('/files/manual')}
+											handler={() => handlerCreateJob({ uploadType: "manual", handler: handlerRedirect })}
 											size={24}
 										/>
 									</div>
