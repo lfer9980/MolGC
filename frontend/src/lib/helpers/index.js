@@ -1,6 +1,7 @@
 export * from './helperConvertHexToRGBA';
 export * from './helperAutomaticCategories';
 export * from './helperCreateDataset';
+export * from './helperEmptyObjectValues';
 export * from './helperExtractMarkdown';
 export * from './helperFindJSON';
 export * from './helperFormatDates';

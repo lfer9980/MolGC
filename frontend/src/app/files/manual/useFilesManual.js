@@ -5,7 +5,6 @@ Hook for handling upload manual files
 
 // #region libraries
 import { useEffect, useReducer, useState } from 'react';
-import { useRouter } from 'next/navigation';
 // #endregion
 
 
@@ -47,12 +46,11 @@ import { useNotificationStore } from 'store/__core__/notifications';
 
 
 // #region requests
-import { useServiceUpload } from 'services/upload/useServiceUpload';
+import { useServiceUpload } from 'services/upload';
 // #endregion
 
 function useFilesManual({ }) {
 	// #region references
-	const router = useRouter();
 	// #endregion
 
 
@@ -119,7 +117,6 @@ function useFilesManual({ }) {
 
 
 	// #region handlers
-	const handlerRedirect = (href) => router.push(href);
 	const handlerProgress = (newProgress) => setProgress(newProgress);
 
 	const postFiles = () => {
@@ -128,7 +125,6 @@ function useFilesManual({ }) {
 		handlerUploadManual({
 			files: files,
 			metadata: metadata,
-			handler: handlerRedirect,
 			handlerProgress: handlerProgress
 		});
 	};

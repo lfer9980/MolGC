@@ -44,7 +44,7 @@ import { useWelcome } from './useWelcome';
 
 
 // #region contexts & stores
-import { useServiceCreateJob } from 'services/job';
+import { useServiceJob } from 'services/job';
 // #endregion
 
 
@@ -58,13 +58,12 @@ export default function App() {
 	// #region hooks & others
 	const {
 		view,
-		handlerRedirect,
 	} = useWelcome({});
 
 	const {
 		loading,
 		handlerCreateJob,
-	} = useServiceCreateJob();
+	} = useServiceJob({});
 
 
 	// #endregion
@@ -152,14 +151,14 @@ export default function App() {
 													color={colorsApp.blue}
 													size={24}
 													center
-													handler={() => handlerCreateJob({ uploadType: "automatic", handler: handlerRedirect })}
+													handler={() => handlerCreateJob({ uploadType: "automatic" })}
 												/>
 												<ButtonColor
 													label='Subir archivos Manualmente'
 													symbol='upload'
 													color={colorsApp.green}
 													center
-													handler={() => handlerCreateJob({ uploadType: "manual", handler: handlerRedirect })}
+													handler={() => handlerCreateJob({ uploadType: "manual" })}
 													size={24}
 												/>
 											</div>

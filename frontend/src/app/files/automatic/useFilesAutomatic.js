@@ -5,7 +5,6 @@ Hook for handling upload automatic files
 
 // #region libraries
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
 // #endregion
 
 
@@ -29,13 +28,12 @@ import { useRouter } from 'next/navigation';
 
 
 // #region requests
-import { useServiceUpload } from 'services/upload/useServiceUpload';
+import { useServiceUpload } from 'services/upload';
 // #endregion
 
 
 function useFilesAutomatic({ }) {
 	// #region references
-	const router = useRouter();
 	// #endregion
 
 
@@ -70,7 +68,6 @@ function useFilesAutomatic({ }) {
 
 
 	// #region handlers
-	const handlerRedirect = (href) => router.push(href);
 	const handlerProgress = (newProgress) => setProgress(newProgress);
 
 	const postFiles = () => {
@@ -78,7 +75,6 @@ function useFilesAutomatic({ }) {
 
 		handlerUploadAutomatic({
 			files: files,
-			handler: handlerRedirect,
 			handlerProgress: handlerProgress
 		});
 	};

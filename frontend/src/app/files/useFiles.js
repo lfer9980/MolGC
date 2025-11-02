@@ -29,12 +29,12 @@ import { JOB_STATUS_ENUM } from 'lib/enums';
 
 // #region contexts & stores
 import { useJobStore } from 'store/job';
-import { useServiceResumeUpload } from 'services/upload';
-import { useServiceDeleteJob } from 'services/job';
 // #endregion
 
 
 // #region requests
+import { useServiceJob } from 'services/job';
+import { useServiceUpload } from 'services/upload';
 // #endregion
 
 
@@ -53,11 +53,11 @@ function useFiles({ }) {
 	const {
 		loading,
 		handlerGetResumeFiles,
-	} = useServiceResumeUpload({});
+	} = useServiceUpload({});
 
 	const {
 		handlerDeleteJob,
-	} = useServiceDeleteJob({});
+	} = useServiceJob({});
 	// #endregion
 
 

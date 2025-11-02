@@ -12,6 +12,7 @@ import React from 'react';
 import {
 	ButtonPrimary,
 	HeadingTitle,
+	Hint,
 	InputSelect
 } from 'components/atoms';
 
@@ -39,18 +40,20 @@ import { useConfiguration } from './useConfiguration';
 
 // #region styles
 import styles from './styles.module.scss';
+import { STYLE_LOG_ENUM } from 'lib/helpers';
 // #endregion
 
 
 export default function Configuration({ }) {
 	// #region hooks & others
 	const {
-		analysis,
-		reference,
+		router,
+		config,
 		viewReference,
-		handlerAnalysis,
-		handlerReference,
-		references,
+		dispatchConfig,
+		REFERENCES,
+		ACTION_REDUCER_CONFIG,
+		handlerStartAnalysis
 	} = useConfiguration({});
 	// #endregion
 
@@ -64,22 +67,37 @@ export default function Configuration({ }) {
 			/>
 
 			<div className={styles.page_section}>
-				<InputSelect
-					label='Tipo de Analisis'
-					placeholder='Analisis Individual / Validacion Cruzada'
-					options={ANALYSIS_OPTIONS}
-					value={analysis}
-					handler={handlerAnalysis}
-					help='Tipo de analisis a ejecutar'
-				/>
+				<div>
+
+					<InputSelect
+						label='Tipo de Analisis'
+						placeholder='Analisis Individual / Validacion Cruzada'
+						options={ANALYSIS_OPTIONS}
+						value={config.analysis_type}
+						handler={(value) => dispatchConfig({
+							type: ACTION_REDUCER_CONFIG.UPDATE,
+							payload: { analysis_type: value }
+						})}
+						disabled
+					/>
+					{/* TODO: delete this warning when cross validation done */}
+					<Hint
+						label='Por el momento, solo esta disponible el analisis individual'
+						state={STYLE_LOG_ENUM.WARNING}
+						theme='dark'
+					/>
+				</div>
 
 				{viewReference &&
 					<InputSelect
 						label='Referencia de analisis'
 						placeholder='Elige la referencia que utilizaras para tu analisis individual'
-						value={reference}
-						handler={handlerReference}
-						options={references}
+						value={config.reference}
+						handler={(value) => dispatchConfig({
+							type: ACTION_REDUCER_CONFIG.UPDATE,
+							payload: { reference: value }
+						})}
+						options={REFERENCES}
 						help='Referencia utilizada para el analisis individual'
 					/>
 				}
@@ -98,6 +116,7 @@ export default function Configuration({ }) {
 				<ButtonPrimary
 					symbol='not_started'
 					label='Comenzar Analisis'
+					handler={handlerStartAnalysis}
 				/>
 			</div>
 		</form>

@@ -42,7 +42,6 @@ function useWelcome({ }) {
 
 
 	// #region variables
-	const router = useRouter();
 	// #endregion
 
 
@@ -64,9 +63,6 @@ function useWelcome({ }) {
 
 
 	// #region handlers
-	const handlerRedirect = (href) => {
-		router.push(href);
-	};
 	// #endregion
 
 
@@ -75,7 +71,6 @@ function useWelcome({ }) {
 		let touchStartY = 0;
 		let touchStartX = 0;
 		let isSwiping = false;
-		let lastScrollTime = 0;
 		let accumulatedDelta = 0;
 		let lastDirection = 0;
 		let ticking = false;
@@ -156,7 +151,6 @@ function useWelcome({ }) {
 	// #region main
 	return {
 		view,
-		handlerRedirect,
 	};
 	// #endregion
 }
