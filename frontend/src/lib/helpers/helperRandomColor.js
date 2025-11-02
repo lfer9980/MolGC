@@ -13,7 +13,7 @@ import { colorsApp } from 'lib/utils';
  * `colorsApp` object based on the specified count and allowed colors. If no allowed colors are
  * specified, it will use all colors from the `colorsApp` object.
  */
-export function helperRandomColor({ count, allowed = [] }) {
+export function helperRandomColor({ count, allowed }) {
 	const keys = allowed || Object.keys(colorsApp);
 
 	const availableColors = keys

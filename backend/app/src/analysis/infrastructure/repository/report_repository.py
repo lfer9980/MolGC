@@ -20,7 +20,7 @@ class ReportRepositorySQL(ReportRepository):
         return ReportEntity(**report_model.model_dump())
 
     async def create_massive(
-        self, report_list: List[ReportEntity]
+            self, report_list: List[ReportEntity]
     ) -> List[ReportEntity]:
         records_bulk = [item.model_dump() for item in report_list]
         saved_items = await self._bulk_insert(records=records_bulk, return_ids=True)
@@ -47,7 +47,6 @@ class ReportRepositorySQL(ReportRepository):
 
         response = []
         for category_name, reports in grouped_report.items():
-
             grouped_variant: Dict[str, List[ReportModelSQL]] = defaultdict(list)
             for r in reports:
                 grouped_variant[r.variant or "General"].append(r)
@@ -81,4 +80,5 @@ class ReportRepositorySQL(ReportRepository):
 
             response.append(item)
 
+        response.sort(key=lambda x: 0 if x["title"] == "Reporte General" else 1)
         return response

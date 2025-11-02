@@ -114,19 +114,19 @@ function useConfiguration({ }) {
 	const handlerStartAnalysis = async () => {
 		if (helperHasNoEmptyValues(config)) {
 			await handlerUpdateJob({ data: config });
-		}
-		else {
-			handlerAddMessage({
-				content: {
-					log: STYLE_LOG_ENUM.WARNING,
-					title: 'Revisa los campos de tu formulario',
-					label: 'Algunos datos no fueron completados de forma correcta...',
-					labelButton: 'ENTENDIDO',
-					timer: 5000,
-				},
-				type: MESSAGE_ENUM.NOTIFICATION
-			});
+			return router.push('/analysis');
 		};
+
+		handlerAddMessage({
+			content: {
+				log: STYLE_LOG_ENUM.WARNING,
+				title: 'Revisa los campos de tu formulario',
+				label: 'Algunos datos no fueron completados de forma correcta...',
+				labelButton: 'ENTENDIDO',
+				timer: 5000,
+			},
+			type: MESSAGE_ENUM.NOTIFICATION
+		});
 	};
 	// #endregion
 

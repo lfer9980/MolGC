@@ -24,6 +24,7 @@ import { MoleculeViewer } from 'components/templates';
 
 
 // #region hooks
+import { useAnalysis } from './useAnalysis';
 // #endregion
 
 
@@ -38,6 +39,10 @@ import styles from './styles.module.scss';
 
 export default function Analysis({ }) {
 	// #region hooks & others
+	const {
+		messages,
+	} = useAnalysis({});
+
 	// #endregion
 
 	//#region main UI
@@ -57,8 +62,8 @@ export default function Analysis({ }) {
 				/>
 
 				<LoaderBar
-					label='Ejecutando analisis...'
-					progress={75}
+					label={messages.message}
+					progress={messages.progress}
 					maxValue={100}
 				/>
 			</footer>

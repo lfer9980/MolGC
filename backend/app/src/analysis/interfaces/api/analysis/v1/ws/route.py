@@ -29,17 +29,23 @@ def ws_info():
 
 @router.websocket("/ws")
 async def ws_analysis(
-    websocket: WebSocket,
-    session: AsyncSession = Depends(get_session_dependency),
+        websocket: WebSocket,
+        session: AsyncSession = Depends(get_session_dependency),
 ):
     # Auth
     auth_header = websocket.headers.get("Authorization")
+    token = None
 
-    if not auth_header or not auth_header.startswith("Bearer "):
+    if auth_header and auth_header.startswith("Bearer"):
+        token = auth_header.split(" ")[1]
+
+    if not token:
+        token = websocket.query_params.get("token")
+
+    if not token:
         await websocket.close(code=1008)
         return
 
-    token = auth_header.split(" ")[1]
     try:
         payload = await get_current_user_payload(token)
     except InvalidTokenError:

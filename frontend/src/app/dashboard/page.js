@@ -12,7 +12,10 @@ import React from 'react';
 import { WrapMain } from 'components/__common__';
 import {
 	ButtonColor,
-	HeadingTitle
+	ButtonPill,
+	HeadingTitle,
+	Loader,
+	LOADER_ENUM
 } from 'components/atoms';
 
 import { Breadcrumbs, List } from 'components/molecules';
@@ -31,10 +34,12 @@ import {
 
 // #region utils
 import { colorsApp } from 'lib/utils';
+import { STYLE_ENUM } from 'lib/helpers';
 // #endregion
 
 
 // #region hooks
+import { useDashboard } from './useDashboard';
 // #endregion
 
 
@@ -49,7 +54,15 @@ import styles from './styles.module.scss';
 
 export default function Dashboard({ }) {
 	// #region hooks & others
-	const category_id = '12345';
+	const {
+		loading,
+		resume,
+		nav,
+		colors,
+		handlerNav,
+	} = useDashboard({});
+
+	console.log(resume)
 	// #endregion
 
 	//#region main UI
@@ -58,73 +71,98 @@ export default function Dashboard({ }) {
 			<HeaderMolGC />
 
 			<WrapMain margin padding>
-				<Breadcrumbs />
+				{loading ?
+					<Loader
+						size={28}
+						type={LOADER_ENUM.DOTS}
+						number={3}
+					/>
+					:
+					<>
+						<Breadcrumbs />
 
-				<div className={styles.page}>
-					<HeadingTitle
-						symbol='bar_chart'
-						title='Resultados obtenidos'
-					>
-						ID. del resultado: <span className={styles.page_id}> 1234567 </span>
-					</HeadingTitle>
-
-
-					<div className={styles.page_section}>
-						<HeadingTitle
-							subtitle='Analisis Individual'
-						/>
-						<div className={styles.page_list}>
-							<List
-								title='Reporte General'
-								label='20 reportes generados'
+						<div className={styles.page}>
+							<HeadingTitle
 								symbol='bar_chart'
-								href={`/dashboard/${category_id}`}
-							/>
+								title='Resultados obtenidos'
+							>
+								ID. del resultado: <span className={styles.page_id}> {resume[0]?.job_id} </span>
+							</HeadingTitle>
 
-							<List
-								title='FLUOROQUINOLES'
-								label='20 reportes generados'
-								symbol='biotech'
-								href={`/dashboard/${category_id}`}
-							/>
 
-							<List
-								title='NITROFURANOS'
-								label='20 reportes generados'
-								symbol='biotech'
-								href={`/dashboard/${category_id}`}
-							/>
+							<div className={styles.page_section}>
 
-							<List
-								title='QUINOLES'
-								label='20 reportes generados'
-								symbol='biotech'
-								href={`/dashboard/${category_id}`}
-							/>
+
+								<div className={styles.page_heading_main}>
+									{nav !== 0 &&
+										<ButtonPill
+											symbol='arrow_left_alt'
+											color={colorsApp.transparent}
+											handler={() => handlerNav(0)}
+										/>
+									}
+
+									<div className={styles.page_heading_head}>
+										<HeadingTitle
+											subtitle={resume[0]?.analysis_type}
+										/>
+									</div>
+								</div>
+
+								<div className={styles.page_list}>
+									{resume?.length > 0 &&
+										<>
+											{nav === 0 && resume?.map((item, i) => (
+												<List
+													key={i}
+													title={item?.title}
+													label={`${item?.size} reportes generados`}
+													symbol={`${item?.title === 'Reporte General' ? 'bar_chart' : 'data_table'}`}
+													color={`${item?.title === 'Reporte General' ? colorsApp.blue : colors[i]}`}
+													labelButton='Detalles'
+													handler={() => handlerNav(i)}
+													aspect={STYLE_ENUM.SECOND}
+												/>
+											))}
+
+											{nav !== 0 && resume[nav]?.children?.map((item, i) => (
+												<List
+													key={i}
+													title={item?.title}
+													label={`${item?.size} reporte(s) generado(s)`}
+													color={colorsApp.dark_blue}
+													labelButton='Ver Reporte'
+													aspect={STYLE_ENUM.SECOND}
+												/>
+											))
+											}
+										</>
+									}
+								</div>
+							</div>
+
+
+							<div className={styles.page_buttons}>
+								<ButtonColor
+									label='Generar reporte global en PDF'
+									symbol='data_table'
+									color={colorsApp.blue}
+									center
+								/>
+
+								<ButtonColor
+									label='Nuevo Analisis'
+									symbol='open_in_new'
+									color={colorsApp.green}
+									center
+								/>
+							</div>
+
+							<FooterSimpleMolGC />
 						</div>
-					</div>
-
-
-					<div className={styles.page_buttons}>
-						<ButtonColor
-							label='Generar reporte global en PDF'
-							symbol='data_table'
-							color={colorsApp.blue}
-							center
-						/>
-
-						<ButtonColor
-							label='Nuevo Analisis'
-							symbol='open_in_new'
-							color={colorsApp.green}
-							center
-						/>
-					</div>
-
-					<FooterSimpleMolGC />
-				</div>
+					</>
+				}
 			</WrapMain>
-
 			<FooterMolGC />
 		</>
 	);

@@ -162,7 +162,6 @@ function useServiceJob({ }) {
 			};
 
 			handlerUpdateJobStore({ data: response.data });
-			/* redirect according to upload type */
 		} catch {
 			console.warn('ocurrio el siguiente error:', e);
 		};

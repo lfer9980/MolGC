@@ -7,6 +7,18 @@
 
 
 	// #region unit elements
+	&_heading {
+		&_main {
+			display: flex;
+			align-items: center;
+			gap: 1.6rem;
+		}
+
+		&_head {
+			margin-block-start: 1.6rem;
+		}
+	}
+
 	&_list {
 		display: flex;
 		flex-direction: column;
