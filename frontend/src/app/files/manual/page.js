@@ -10,8 +10,8 @@ import React from 'react';
 
 // #region components
 import {
-	ButtonColor,
 	ButtonPrimary,
+	HeadingTitle,
 	InputText,
 	LoaderBar
 } from 'components/atoms';
@@ -26,7 +26,6 @@ import { UploadX } from 'components/organisms';
 
 
 // #region utils
-import { colorsApp } from 'lib/utils';
 // #endregion
 
 
@@ -48,32 +47,34 @@ export default function FilesManual({ }) {
 	// #region hooks & others
 	const {
 		view,
-		files,
 		loading,
+		files,
+		metadata,
 		progress,
 		setFiles,
+		postFiles,
+		dispatchMetadata,
+		ACTION_REDUCER_METADATA,
 	} = useFilesManual({});
 	// #endregion
 
 	//#region main UI
 	return (
 		<>
-
 			{loading ?
 				<div className={styles.page_loading}>
 					<div className={styles.page_loading_main}>
+						<HeadingTitle
+							subtitle='Subiendo archivos...'
+							accent
+						/>
+
 						<LoaderBar
 							label
-							progress={progress}
+							progress={progress.progress}
 							maxValue={100}
 						/>
 					</div>
-
-					<ButtonColor
-						symbol='cancel'
-						label='CANCELAR'
-						color={colorsApp.red}
-					/>
 				</div >
 				:
 				<form className={styles.page_form}>
@@ -84,7 +85,7 @@ export default function FilesManual({ }) {
 						<UploadX
 							title='Sube tu primer archivo y visualizalo aqui.'
 							filesAccepted='.log,.castep,.out'
-							maxFiles={20}
+							maxFiles={1}
 							files={files}
 							handler={setFiles}
 						/>
@@ -102,30 +103,55 @@ export default function FilesManual({ }) {
 
 						<div className={styles.page_form_main}>
 							<InputText
-								label='Algoritmo'
-								value={'CASTEP'}
+								label='Software'
 								help='Este valor se calcula de forma automatica.'
+								value={metadata.software}
+								handler={(value) => {
+									dispatchMetadata({
+										type: ACTION_REDUCER_METADATA.UPDATE,
+										payload: { software: value }
+									})
+								}}
 								theme='dark'
 								disabled
 							/>
 
 							<InputText
 								label='Familia'
-								value={'FLUOROQUINOLES'}
+								value={metadata.family}
 								symbol='grain'
+								handler={(value) => {
+									dispatchMetadata({
+										type: ACTION_REDUCER_METADATA.UPDATE,
+										payload: { family: value }
+									})
+								}}
 								theme='dark'
 							/>
 
 							<InputText
 								label='Variante'
-								value={'ciproflaxin'}
+								value={metadata.variant}
 								symbol='co2'
+								handler={(value) => {
+									dispatchMetadata({
+										type: ACTION_REDUCER_METADATA.UPDATE,
+										payload: { variant: value }
+									})
+								}}
 								theme='dark'
 							/>
 
 							<InputText
 								label='Funcional'
-								value={'LDA + OBS'}
+								value={metadata.functional}
+								symbol='label'
+								handler={(value) => {
+									dispatchMetadata({
+										type: ACTION_REDUCER_METADATA.UPDATE,
+										payload: { functional: value }
+									})
+								}}
 								theme='dark'
 							/>
 						</div>
@@ -133,6 +159,8 @@ export default function FilesManual({ }) {
 						<ButtonPrimary
 							label='Agregar Archivos'
 							symbol='add'
+							handler={postFiles}
+							disabled={files.length === 0}
 						/>
 					</ListSummary>
 				</form>

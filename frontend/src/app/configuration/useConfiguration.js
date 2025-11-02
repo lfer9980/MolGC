@@ -4,6 +4,7 @@
 */
 
 // #region libraries
+import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 // #endregion
 
@@ -26,6 +27,7 @@ import { ANALYSIS_OPTIONS } from 'lib/data/options/analysis';
 
 
 // #region contexts & stores
+import { useJobStore } from 'store/job';
 // #endregion
 
 
@@ -35,14 +37,19 @@ import { ANALYSIS_OPTIONS } from 'lib/data/options/analysis';
 
 function useConfiguration({ }) {
 	// #region references
+	const router = useRouter();
 	// #endregion
 
 
 	// #region contexts & hooks
+	const {
+		job,
+	} = useJobStore();
 	// #endregion
 
 
 	// #region variables
+	const references = JSON.parse(job.references);
 	// #endregion
 
 
@@ -89,6 +96,7 @@ function useConfiguration({ }) {
 		viewReference,
 		handlerAnalysis,
 		handlerReference,
+		references,
 	};
 	// #endregion
 }

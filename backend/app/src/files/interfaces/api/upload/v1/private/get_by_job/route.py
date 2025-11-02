@@ -16,8 +16,8 @@ router = APIRouter()
 
 @router.get("/", response_model=CreateResponse)
 async def get_by_job(
-    session: AsyncSession = Depends(get_session_dependency),
-    payload: Dict[str, Any] = Depends(get_current_user_payload),
+        session: AsyncSession = Depends(get_session_dependency),
+        payload: Dict[str, Any] = Depends(get_current_user_payload),
 ) -> CreateResponse:
     # validate if session exists
     job_id = payload["id"]
@@ -33,6 +33,6 @@ async def get_by_job(
     repository = FileRepositorySQL(session)
     service = GetByJobFileService(repository)
 
-    files_resume, software_variant = await service.execute(job_id)
+    files_resume, references = await service.execute(job_id)
 
-    return CreateResponse(grouped_files=files_resume, software_variant=software_variant)
+    return CreateResponse(data=files_resume, references=references)

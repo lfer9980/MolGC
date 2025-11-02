@@ -1,7 +1,7 @@
 // ESTADO: En desarrollo
 'use client';
 /* 
-ROUTES - FILES
+	ROUTES - RESUME 
 */
 // #region libraries
 import React from 'react';
@@ -9,11 +9,23 @@ import React from 'react';
 
 
 // #region components
-import { Loader, LOADER_ENUM } from 'components/atoms';
+import { WrapScroll } from 'components/__common__';
+import {
+	ButtonColor,
+	ButtonPrimary,
+	HeadingSubtitle,
+	HeadingTitle,
+	Loader,
+	LOADER_ENUM,
+} from 'components/atoms';
+
+import { ElementLink, More } from 'components/molecules';
+import { CardTable } from 'components/organisms';
 // #endregion
 
 
 // #region assets
+import { colorsApp } from 'lib/utils';
 // #endregion
 
 
@@ -22,6 +34,7 @@ import { Loader, LOADER_ENUM } from 'components/atoms';
 
 
 // #region hooks
+import { useFiles } from './useFiles';
 // #endregion
 
 
@@ -36,18 +49,82 @@ import styles from './styles.module.scss';
 
 export default function Files({ }) {
 	// #region hooks & others
-	/* TODO: implement check if there any files, if not, redirect to upload files automatic */
+	const {
+		router,
+		loading,
+		resume,
+		addMoreVisibility,
+		handlerDeleteJob,
+	} = useFiles({});
 	// #endregion
 
 	//#region main UI
+	if (loading) return (
+		<section className={styles.page_loading}>
+			<Loader
+				type={LOADER_ENUM.DOTS}
+				number={29}
+				size={32}
+				label='cargando'
+			/>
+		</section>
+	);
+
 	return (
 		<div className={styles.page}>
+			<HeadingTitle
+				title='Archivos cargados'
+				label='Este es el resumen de los archivos que cargaste'
+				symbol='upload'
+			/>
+
+			<HeadingSubtitle
+				subtitle='Resumen de familias agregadas'
+			/>
+
 			<div className={styles.page_main}>
-				<Loader
-					type={LOADER_ENUM.DOTS}
-					number={29}
-					size={32}
-					label='Cargando...'
+				<WrapScroll margin>
+					{resume?.map((item, i) => (
+						<CardTable
+							key={i}
+							title={item.family}
+							symbol='biotech'
+							color={colorsApp.background_second}
+							elements={item.variants}
+						/>
+					))}
+				</WrapScroll>
+			</div>
+
+			{addMoreVisibility &&
+				<More
+					label='Agregar nuevo'
+					handler={() => router.push('/files/manual')}
+				/>
+			}
+
+			<div className={styles.page_buttons}>
+				<ButtonPrimary
+					symbol='not_started'
+					label='Continuar'
+					handler={() => router.push('/configuration')}
+				/>
+
+				<ButtonColor
+					label='Cancelar operacion'
+					color={colorsApp.dark_red}
+					symbol='cancel'
+					handler={handlerDeleteJob}
+					outline
+					center
+				/>
+			</div>
+
+			<div className={styles.page_link}>
+				<ElementLink
+					href='/FAQs'
+					label='Documentacion y tutoriales de uso'
+					symbol='help'
 				/>
 			</div>
 		</div>

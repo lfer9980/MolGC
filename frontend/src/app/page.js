@@ -11,7 +11,13 @@ import { AnimatePresence, motion } from 'framer-motion';
 
 // #region components
 import { WrapMain, WrapSection } from 'components/__common__';
-import { ButtonDrag, HeadingTitle } from 'components/atoms';
+import {
+	ButtonColor,
+	HeadingTitle,
+	Loader,
+	LOADER_ENUM
+} from 'components/atoms';
+
 import {
 	ElementImage,
 	ElementLabel,
@@ -29,7 +35,6 @@ import { HeaderMolGC, VideoBackground } from 'components/organisms';
 
 // #region utils
 import { colorsApp } from 'lib/utils';
-import { STYLE_DIR_ENUM } from 'lib/helpers';
 // #endregion
 
 
@@ -57,8 +62,11 @@ export default function App() {
 	} = useWelcome({});
 
 	const {
+		loading,
 		handlerCreateJob,
 	} = useServiceCreateJob();
+
+
 	// #endregion
 
 	// #region skeletons
@@ -69,7 +77,6 @@ export default function App() {
 	return (
 		<>
 			<HeaderMolGC second transparent />
-
 			{view === 0 &&
 				<VideoBackground>
 					<WrapMain padding>
@@ -105,11 +112,9 @@ export default function App() {
 				</VideoBackground>
 			}
 
-
 			{view === 1 &&
 				<div className={styles.page_background}>
 					<div className={styles.page_background_image} />
-					{/* TODO: try to make the click for select manual or auto sliding to left or right */}
 					<AnimatePresence mode="wait">
 						<motion.section
 							key={view}
@@ -129,34 +134,61 @@ export default function App() {
 								/>
 
 								<div className={styles.page_select}>
-									<div className={styles.page_select_right}>
-										<ButtonDrag
-											label='Subir archivos Automaticamente'
-											symbol='arrow_right_alt'
-											color={colorsApp.dark_red}
-											direction={STYLE_DIR_ENUM.RIGHT}
-											handler={() => handlerCreateJob({ uploadType: "automatic", handler: handlerRedirect })}
-											size={24}
-										/>
-									</div>
+									{loading ?
+										<div className={styles.page_select_loading}>
+											<Loader
+												type={LOADER_ENUM.DOTS}
+												number={29}
+												size={32}
+												label='cargando'
+											/>
+										</div>
+										:
+										<>
+											<div className={styles.page_select_panel}>
+												<ButtonColor
+													label='Subir archivos Automaticamente'
+													symbol='backup'
+													color={colorsApp.blue}
+													size={24}
+													center
+													handler={() => handlerCreateJob({ uploadType: "automatic", handler: handlerRedirect })}
+												/>
+												<ButtonColor
+													label='Subir archivos Manualmente'
+													symbol='upload'
+													color={colorsApp.green}
+													center
+													handler={() => handlerCreateJob({ uploadType: "manual", handler: handlerRedirect })}
+													size={24}
+												/>
+											</div>
 
-									<div className={styles.page_select_left}>
-										<ButtonDrag
-											label='Subir archivos Manualmente'
-											symbol='arrow_left_alt'
-											color={colorsApp.dark_blue}
-											direction={STYLE_DIR_ENUM.LEFT}
-											handler={() => handlerCreateJob({ uploadType: "manual", handler: handlerRedirect })}
-											size={24}
-										/>
-									</div>
+											<hr />
+
+											<div className={styles.page_select_second}>
+												<ElementLabel
+													title='MolGC en accion'
+													label='Juega con MolGC, con un archivo de prueba que tenemos preparado.'
+												/>
+
+												<ButtonColor
+													label='Prueba MolGC'
+													symbol='play_arrow'
+													color={colorsApp.dark_purple}
+													center
+													outline
+													size={24}
+												/>
+											</div>
+										</>
+									}
 								</div>
 							</WrapSection>
 						</motion.section>
 					</AnimatePresence >
 				</div>
 			}
-
 
 			{view === 1 &&
 				<div className={styles.page_link}>

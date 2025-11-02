@@ -8,8 +8,8 @@
 import {
 	createContext,
 	useContext,
+	useEffect,
 	useReducer,
-	useState
 } from 'react';
 // #endregion
 
@@ -23,12 +23,13 @@ import {
 
 
 // #region utils
-import { ReducerAuth } from './reducer';
-import { JOB_INITIAL_DATA } from './__data__';
+import { ACTION_REDUCER_JOB, INITIAL_JOB } from './model';
 // #endregion
 
 
 // #region hooks
+import { ReducerJob } from './reducer';
+import { useLocalStorage } from 'hooks/__core__';
 // #endregion
 
 
@@ -38,8 +39,16 @@ import { JOB_INITIAL_DATA } from './__data__';
 
 const JobStoreContext = createContext();
 
-export function JobStoreProvider({ children }) {
+export function JobStoreProvider({ name = 'JOB_V1', children }) {
 	// #region contexts
+	const {
+		getLocalStorage,
+		setLocalStorage,
+		deleteLocalStorage,
+	} = useLocalStorage({
+		name: name,
+		initial: INITIAL_JOB,
+	});
 	// #endregion
 
 
@@ -51,10 +60,15 @@ export function JobStoreProvider({ children }) {
 	// #endregion
 
 	// #region states
-	const [state, dispatch] = useReducer(ReducerAuth, Job_INITIAL_DATA);
-	const [loading, setLoading] = useState(false);
+	const [job, dispatchJob] = useReducer(
+		ReducerJob,
+		INITIAL_JOB,
+		(initial) => {
+			const localData = getLocalStorage({ name });
+			return localData || initial;
+		}
+	);
 	// #endregion
-
 
 	// #region memos & callbacks
 	// #endregion
@@ -69,12 +83,34 @@ export function JobStoreProvider({ children }) {
 
 
 	// #region handlers
-	const handlerState = () => console.log('hola mundo!');
-	const handlerLoading = () => setLoading(prev => !prev);
+	const handlerCreateJobStore = ({ data }) => {
+		if (data) dispatchJob({
+			type: ACTION_REDUCER_JOB.CREATE,
+			payload: data,
+		});
+	};
+
+	const handlerUpdateJobStore = ({ data }) => {
+		if (data) dispatchJob({
+			type: ACTION_REDUCER_JOB.UPDATE,
+			payload: data,
+		});
+	};
+
+	const handlerDeleteJobStore = () => {
+		dispatchJob({
+			type: ACTION_REDUCER_JOB.DELETE,
+		});
+		deleteLocalStorage({ name: name });
+	};
+
 	// #endregion
 
 
 	// #region effects
+	useEffect(() => {
+		if (job) setLocalStorage({ name, data: job });
+	}, [job]);
 	// #endregion
 
 
@@ -86,10 +122,10 @@ export function JobStoreProvider({ children }) {
 	return (
 		<JobStoreContext.Provider
 			value={{
-				state,
-				loading,
-				handlerState,
-				handlerLoading,
+				job,
+				handlerCreateJobStore,
+				handlerUpdateJobStore,
+				handlerDeleteJobStore,
 			}}
 		>
 			{children}
@@ -104,9 +140,10 @@ export function useJobStore() {
 
 	if (!context) {
 		return {
-			state: JOB_INITIAL_DATA,
-			handlerState: () => console.warn('handlerState llamado sin contexto'),
-			handlerLoading: () => console.warn('handlerLoading llamado sin contexto'),
+			job: INITIAL_JOB,
+			handlerCreateJobStore: () => console.warn('handlerCreateJobStore llamado sin contexto'),
+			handlerUpdateJobStore: () => console.warn('handlerUpdateJobStore llamado sin contexto'),
+			handlerDeleteJobStore: () => console.warn('handlerDeleteJobStore llamado sin contexto'),
 		};
 	};
 

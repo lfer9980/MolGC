@@ -1,10 +1,11 @@
 'use client';
 /* 
-	Hook for handling upload automatic files
+Hook for handling upload automatic files
 */
 
 // #region libraries
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 // #endregion
 
 
@@ -28,15 +29,21 @@ import { useEffect, useState } from 'react';
 
 
 // #region requests
+import { useServiceUpload } from 'services/upload/useServiceUpload';
 // #endregion
 
 
 function useFilesAutomatic({ }) {
 	// #region references
+	const router = useRouter();
 	// #endregion
 
 
 	// #region contexts & hooks
+	const {
+		loading,
+		handlerUploadAutomatic,
+	} = useServiceUpload({});
 	// #endregion
 
 
@@ -46,7 +53,7 @@ function useFilesAutomatic({ }) {
 
 	// #region states
 	const [files, setFiles] = useState([]);
-
+	const [progress, setProgress] = useState({ progress: 0, event: null, type: '' });
 	// #endregion
 
 
@@ -63,6 +70,18 @@ function useFilesAutomatic({ }) {
 
 
 	// #region handlers
+	const handlerRedirect = (href) => router.push(href);
+	const handlerProgress = (newProgress) => setProgress(newProgress);
+
+	const postFiles = () => {
+		if (files.length <= 0) return;
+
+		handlerUploadAutomatic({
+			files: files,
+			handler: handlerRedirect,
+			handlerProgress: handlerProgress
+		});
+	};
 	// #endregion
 
 
@@ -76,8 +95,11 @@ function useFilesAutomatic({ }) {
 
 	// #region main
 	return {
+		loading,
 		files,
 		setFiles,
+		postFiles,
+		progress,
 	};
 	// #endregion
 }

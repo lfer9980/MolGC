@@ -43,7 +43,7 @@ function InputText({
 	size = 24,
 	maxChar = 1000,
 	help = '',
-	placeholder = 'placeholder',
+	placeholder = '',
 	bold = false,
 	required = false,
 	upperCase = false,

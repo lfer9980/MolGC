@@ -25,6 +25,7 @@ export const EndpointHTTP = async ({
 	isBlob = false,
 	isMultiForm = false,
 	isBaseURL = true,
+	onProgress, // (progress: number, event: ProgressEvent, type: 'upload/download') => void
 }) => {
 
 	const baseURL = config.baseURL;
@@ -67,6 +68,28 @@ export const EndpointHTTP = async ({
 			},
 			data: bodyRequest,
 			responseType: responseType,
+			onUploadProgress: (event) => {
+				if (onProgress && event.lengthComputable) {
+					const percent = Math.round((event.loaded * 100) / event.total);
+
+					onProgress({
+						progress: percent,
+						event: event,
+						type: 'upload'
+					});
+				}
+			},
+			onDownloadProgress: (event) => {
+				if (onProgress && event.lengthComputable) {
+					const percent = Math.round((event.loaded * 100) / event.total);
+
+					onProgress({
+						progress: percent,
+						event: event,
+						type: 'download'
+					});
+				}
+			},
 		};
 
 		data = await axios(url, config);

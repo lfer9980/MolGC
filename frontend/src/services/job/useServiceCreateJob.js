@@ -28,6 +28,7 @@ import { helperFindJSON } from 'lib/helpers';
 
 
 // #region contexts & stores
+import { useJobStore } from 'store/job';
 import { MESSAGE_ENUM } from 'store/__core__/notifications/model';
 import { useNotificationStore } from 'store/__core__/notifications';
 // #endregion
@@ -48,6 +49,10 @@ function useServiceCreateJob() {
 	const {
 		handlerAddMessage,
 	} = useNotificationStore({});
+
+	const {
+		handlerCreateJobStore,
+	} = useJobStore();
 	// #endregion
 
 
@@ -74,8 +79,9 @@ function useServiceCreateJob() {
 
 	// #region handlers
 	const handlerCreateJob = async ({ uploadType = '', handler }) => {
-		/* make th Job Creation via POST */
+		/* make the Job Creation via POST */
 		setLoading(true);
+		let newStatus;
 		const endpoint = config.jobURL;
 		const JSONData = { "upload_type": uploadType };
 
@@ -107,13 +113,12 @@ function useServiceCreateJob() {
 				return;
 			};
 
+			handlerCreateJobStore({ data: response.data });
 			/* redirect according to upload type */
 			handler(`/files/${uploadType}`);
 		} catch {
 			console.warn('ocurrio el siguiente error:', e);
-		} finally {
-			setLoading(false);
-		}
+		};
 	};
 	// #endregion
 

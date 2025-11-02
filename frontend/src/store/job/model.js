@@ -3,12 +3,20 @@
 */
 
 // #region initials
-export const JOB_INITIAL_DATA = {
+export const INITIAL_JOB = {
+	access_token: '',
+	upload_type: '',
+	status: '',
+	expires_at: '',
+	references: '',
 };
 // #endregion
 
 
 // #region actions
 export const ACTION_REDUCER_JOB = {
+	CREATE: 'create',
+	UPDATE: 'update',
+	DELETE: 'delete',
 };
 // #endregion

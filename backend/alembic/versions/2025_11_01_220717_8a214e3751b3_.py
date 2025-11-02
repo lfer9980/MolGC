@@ -1,8 +1,8 @@
-"""expires_at_correction on cleanup
+"""empty message
 
-Revision ID: 51f877aa85f3
+Revision ID: 8a214e3751b3
 Revises: 
-Create Date: 2025-10-28 09:36:53.802120
+Create Date: 2025-11-01 22:07:17.159998
 
 """
 from typing import Sequence, Union
@@ -12,7 +12,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision: str = '51f877aa85f3'
+revision: str = '8a214e3751b3'
 down_revision: Union[str, None] = None
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
@@ -27,16 +27,16 @@ def upgrade() -> None:
     sa.Column('reference', sa.String(), nullable=True),
     sa.Column('expires_at', sa.DateTime(timezone=True), nullable=False),
     sa.Column('id', sa.String(length=36), nullable=False),
-    sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=False),
-    sa.Column('updated_at', sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=False),
+    sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=False),
+    sa.Column('updated_at', sa.DateTime(timezone=True), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=False),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('Cleanup',
     sa.Column('scheduled_at', sa.DateTime(timezone=True), nullable=False),
     sa.Column('job_id', sa.String(length=36), nullable=False),
     sa.Column('id', sa.String(length=36), nullable=False),
-    sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=False),
-    sa.Column('updated_at', sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=False),
+    sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=False),
+    sa.Column('updated_at', sa.DateTime(timezone=True), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=False),
     sa.ForeignKeyConstraint(['job_id'], ['Job.id'], ondelete='CASCADE'),
     sa.PrimaryKeyConstraint('id')
     )
@@ -51,8 +51,8 @@ def upgrade() -> None:
     sa.Column('size', sa.Integer(), nullable=False),
     sa.Column('job_id', sa.String(length=36), nullable=False),
     sa.Column('id', sa.String(length=36), nullable=False),
-    sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=False),
-    sa.Column('updated_at', sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=False),
+    sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=False),
+    sa.Column('updated_at', sa.DateTime(timezone=True), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=False),
     sa.ForeignKeyConstraint(['job_id'], ['Job.id'], ondelete='CASCADE'),
     sa.PrimaryKeyConstraint('id')
     )
@@ -64,8 +64,8 @@ def upgrade() -> None:
     sa.Column('title', sa.String(), nullable=False),
     sa.Column('job_id', sa.String(length=36), nullable=False),
     sa.Column('id', sa.String(length=36), nullable=False),
-    sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=False),
-    sa.Column('updated_at', sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=False),
+    sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=False),
+    sa.Column('updated_at', sa.DateTime(timezone=True), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=False),
     sa.ForeignKeyConstraint(['job_id'], ['Job.id'], ondelete='CASCADE'),
     sa.PrimaryKeyConstraint('id')
     )
@@ -74,8 +74,8 @@ def upgrade() -> None:
     sa.Column('data', sa.String(), nullable=False),
     sa.Column('report_id', sa.String(length=36), nullable=False),
     sa.Column('id', sa.String(length=36), nullable=False),
-    sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=False),
-    sa.Column('updated_at', sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=False),
+    sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=False),
+    sa.Column('updated_at', sa.DateTime(timezone=True), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=False),
     sa.ForeignKeyConstraint(['report_id'], ['Report.id'], ondelete='CASCADE'),
     sa.PrimaryKeyConstraint('id')
     )
@@ -83,8 +83,8 @@ def upgrade() -> None:
     sa.Column('data', sa.String(), nullable=False),
     sa.Column('report_id', sa.String(length=36), nullable=False),
     sa.Column('id', sa.String(length=36), nullable=False),
-    sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=False),
-    sa.Column('updated_at', sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=False),
+    sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=False),
+    sa.Column('updated_at', sa.DateTime(timezone=True), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=False),
     sa.ForeignKeyConstraint(['report_id'], ['Report.id'], ondelete='CASCADE'),
     sa.PrimaryKeyConstraint('id')
     )
@@ -97,8 +97,8 @@ def upgrade() -> None:
     sa.Column('value', sa.Float(), nullable=False),
     sa.Column('report_id', sa.String(length=36), nullable=False),
     sa.Column('id', sa.String(length=36), nullable=False),
-    sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=False),
-    sa.Column('updated_at', sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=False),
+    sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=False),
+    sa.Column('updated_at', sa.DateTime(timezone=True), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=False),
     sa.ForeignKeyConstraint(['report_id'], ['Report.id'], ondelete='CASCADE'),
     sa.PrimaryKeyConstraint('id')
     )
@@ -111,8 +111,8 @@ def upgrade() -> None:
     sa.Column('value', sa.Float(), nullable=False),
     sa.Column('report_id', sa.String(length=36), nullable=False),
     sa.Column('id', sa.String(length=36), nullable=False),
-    sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=False),
-    sa.Column('updated_at', sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=False),
+    sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=False),
+    sa.Column('updated_at', sa.DateTime(timezone=True), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=False),
     sa.ForeignKeyConstraint(['report_id'], ['Report.id'], ondelete='CASCADE'),
     sa.PrimaryKeyConstraint('id')
     )
@@ -123,8 +123,8 @@ def upgrade() -> None:
     sa.Column('data', sa.String(), nullable=True),
     sa.Column('report_id', sa.String(length=36), nullable=False),
     sa.Column('id', sa.String(length=36), nullable=False),
-    sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=False),
-    sa.Column('updated_at', sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=False),
+    sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=False),
+    sa.Column('updated_at', sa.DateTime(timezone=True), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=False),
     sa.ForeignKeyConstraint(['report_id'], ['Report.id'], ondelete='CASCADE'),
     sa.PrimaryKeyConstraint('id')
     )
@@ -137,8 +137,8 @@ def upgrade() -> None:
     sa.Column('ranking', sa.Integer(), nullable=False),
     sa.Column('report_id', sa.String(length=36), nullable=False),
     sa.Column('id', sa.String(length=36), nullable=False),
-    sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=False),
-    sa.Column('updated_at', sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=False),
+    sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=False),
+    sa.Column('updated_at', sa.DateTime(timezone=True), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=False),
     sa.ForeignKeyConstraint(['report_id'], ['Report.id'], ondelete='CASCADE'),
     sa.PrimaryKeyConstraint('id')
     )

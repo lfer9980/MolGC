@@ -29,6 +29,19 @@
 		}
 	}
 
+	&_loading {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+		height: 40svh;
+
+		&_main {
+			width: 100%;
+			margin-block-end: 6.4rem;
+		}
+	}
+
 	// #endregion
 
 

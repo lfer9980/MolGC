@@ -1,3 +1,2 @@
-export { useServiceAutoUpload } from './useServiceAutoUpload';
-export { useServiceManualUpload } from './useServiceManualUpload';
+export { useServiceUpload } from './useServiceUpload';
 export { useServiceResumeUpload } from './useServiceResumeUpload';

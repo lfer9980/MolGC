@@ -10,7 +10,7 @@ import React from 'react';
 // #region components
 import { WrapMain } from 'components/__common__';
 import { HeaderMolGC } from 'components/organisms';
-import { Breadcrumbs, ElementLink } from 'components/molecules';
+import { Breadcrumbs } from 'components/molecules';
 // #endregion
 
 
@@ -32,7 +32,6 @@ import config from 'config';
 
 
 // #region styles
-import styles from './styles.module.scss';
 // #endregion
 
 
@@ -99,14 +98,6 @@ export default function LayoutFiles({
 
 				{children}
 			</WrapMain>
-
-			<div className={styles.page_link}>
-				<ElementLink
-					href='/FAQs'
-					label='Documentacion y tutoriales de uso'
-					symbol='help'
-				/>
-			</div>
 		</>
 	);
 	// #endregion

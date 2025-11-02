@@ -50,6 +50,7 @@ export default function Configuration({ }) {
 		viewReference,
 		handlerAnalysis,
 		handlerReference,
+		references,
 	} = useConfiguration({});
 	// #endregion
 
@@ -78,6 +79,7 @@ export default function Configuration({ }) {
 						placeholder='Elige la referencia que utilizaras para tu analisis individual'
 						value={reference}
 						handler={handlerReference}
+						options={references}
 						help='Referencia utilizada para el analisis individual'
 					/>
 				}
