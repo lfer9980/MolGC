@@ -169,13 +169,15 @@ jobs:
             ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.WORK_DIR }}/docker-compose.prod.yml
 
       - name: Create .env file for remote
-        run: |
-          echo "${{ secrets.ENV_BACKEND }}" > env_remote.tmp
-          echo "GIT_SHA=${{ github.sha }}" >> env_remote.tmp
-          echo "REGISTRY=${{ env.REGISTRY }}" >> env_remote.tmp
-          echo "IMAGE_NAME_BACKEND=${{ env.IMAGE_NAME_BACKEND }}" >> env_remote.tmp
-          echo "IMAGE_NAME_FRONTEND=${{ env.IMAGE_NAME_FRONTEND }}" >> env_remote.tmp
-          echo "IMAGE_NAME_DOCS=${{ env.IMAGE_NAME_DOCS }}" >> env_remote.tmp
+        run: |  
+            cat > env_remote.tmp <<'EOF'
+            ${{ secrets.ENV_BACKEND }}
+            EOF
+            echo "GIT_SHA=${{ github.sha }}" >> env_remote.tmp
+            echo "REGISTRY=${{ env.REGISTRY }}" >> env_remote.tmp
+            echo "IMAGE_NAME_BACKEND=${{ env.IMAGE_NAME_BACKEND }}" >> env_remote.tmp
+            echo "IMAGE_NAME_FRONTEND=${{ env.IMAGE_NAME_FRONTEND }}" >> env_remote.tmp
+            echo "IMAGE_NAME_DOCS=${{ env.IMAGE_NAME_DOCS }}" >> env_remote.tmp
 
       - name: Upload .env to remote
         run: |
