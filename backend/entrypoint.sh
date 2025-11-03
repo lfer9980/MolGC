@@ -3,4 +3,4 @@ set -e
 
 echo "Starting MolGC Backend..."
 
-exec python -m app.main
+exec python -m main
