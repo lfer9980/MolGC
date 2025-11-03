@@ -1,30 +1,144 @@
+version: "3.8"
+
 services:
-  backend:
-    container_name: ${APP_NAME}_backend
-    image: ${REGISTRY}/${IMAGE_NAME_BACKEND}:latest
-    restart: always
+  redis:
+    image: redis:7-alpine
+    container_name: ${APP_NAME}_redis
+    restart: unless-stopped
     volumes:
-      - sqlite_data:/app/db
-    depends_on: []
+      - redis_data:/data
+    networks:
+      - app_net
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+
+  backend:
+    image: ${REGISTRY}/${IMAGE_NAME_BACKEND}:latest
+    container_name: ${APP_NAME}_backend
+    restart: unless-stopped
+    extra_hosts: 
+      - "host.docker.internal:host-gateway"
+    env_file:
+      - .env
+    environment:
+      - STORAGE_PATH=/data/files
+      - ALEMBIC_AUTO_UPGRADE=false
+      - elementalback_application__app_env=production
+    volumes:
+      - files_data:/data/files
     networks:
       - app_net
     ports:
-      - 5002:5000
+      - "4005:4000"
+    depends_on:
+      redis:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:4000/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
 
-  frontend: 
-    container_name: ${APP_NAME}_frontend
+  celery_worker:
+    image: ${REGISTRY}/${IMAGE_NAME_BACKEND}:latest
+    container_name: ${APP_NAME}_celery_worker
+    restart: unless-stopped
+    extra_hosts: 
+      - "host.docker.internal:host-gateway"
+    env_file:
+      - .env
+    environment:
+      - STORAGE_PATH=/data/files
+      - elementalback_application__app_env=production
+    command: ["celery", "-A", "app.celery_app", "worker", "--loglevel=info", "--concurrency=2"]
+    volumes:
+      - files_data:/data/files
+    networks:
+      - app_net
+    depends_on:
+      redis:
+        condition: service_healthy
+      backend:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "celery -A app.celery_app inspect ping -d celery@$$HOSTNAME"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+
+  celery_beat:
+    image: ${REGISTRY}/${IMAGE_NAME_BACKEND}:latest
+    container_name: ${APP_NAME}_celery_beat
+    restart: unless-stopped
+    extra_hosts: 
+      - "host.docker.internal:host-gateway"
+    env_file:
+      - .env
+    environment:
+      - STORAGE_PATH=/data/files
+      - elementalback_application__app_env=production
+    command: ["celery", "-A", "app.celery_app", "beat", "--loglevel=info"]
+    volumes:
+      - files_data:/data/files
+      - celery_beat_data:/var/lib/celery
+    networks:
+      - app_net
+    depends_on:
+      redis:
+        condition: service_healthy
+      backend:
+        condition: service_healthy
+
+  frontend:
     image: ${REGISTRY}/${IMAGE_NAME_FRONTEND}:latest
+    container_name: ${APP_NAME}_frontend
+    restart: unless-stopped
+    env_file:
+      - .env
     environment:
       - NODE_ENV=production
-    depends_on:
-      - backend
+      - NEXT_PUBLIC_API_URL=http://localhost:4005
     networks:
       - app_net
     ports:
-      - 3002:3000
+      - "3005:3000"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  docs:
+    image: ${REGISTRY}/${IMAGE_NAME_DOCS}:latest
+    container_name: ${APP_NAME}_docs
+    restart: unless-stopped
+    env_file:
+      - .env
+    networks:
+      - app_net
+    ports:
+      - "8005:8000"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
 
 volumes:
-  sqlite_data:
+  redis_data:
+    driver: local
+  files_data:
+    driver: local
+  celery_beat_data:
+    driver: local
 
 networks:
   app_net:
+    driver: bridge

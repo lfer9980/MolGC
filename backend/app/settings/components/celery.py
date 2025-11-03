@@ -11,5 +11,4 @@ class CelerySettings(BaseSettings):
     celery_result_backend: str = "redis://localhost:6379/2"
 
     class Config:
-        env_file = "settings.dev.toml"
         extra = "ignore"
