@@ -71,6 +71,30 @@ jobs:
           cache-from: type=registry,ref=${{ env.REGISTRY }}/${{ env.IMAGE_NAME_DOCS }}:latest
           cache-to: type=inline
 
+  sqlite-tests:
+    name: Fast tests (SQLite, in-memory)
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.12"
+
+      - name: Install backend deps
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r backend/requirements.txt
+          pip install pytest
+
+      - name: Run fast tests (sqlite in-memory, non-integration)
+        run: |
+          export DATABASE_URL=sqlite+aiosqlite:///:memory:
+          pytest -q -m "not integration"
+        working-directory: ./backend
+
   integration-postgres:
     name: Integration tests (Postgres + migrations)
     needs: build
@@ -124,7 +148,7 @@ jobs:
     name: Deploy to VPS
     needs: [integration-postgres]
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/dep  loy'
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/deploy'
 
     steps:
       - uses: actions/checkout@v3
