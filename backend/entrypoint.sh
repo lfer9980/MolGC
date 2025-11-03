@@ -2,5 +2,4 @@
 set -e
 
 echo "Starting MolGC Backend..."
-
-exec python -m main
+exec uvicorn app.gateways.web:app --host 0.0.0.0 --port 4000
