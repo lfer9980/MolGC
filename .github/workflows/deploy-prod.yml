@@ -165,7 +165,7 @@ jobs:
 
       - name: Copy docker-compose to remote
         run: |
-          scp deploy/docker-compose.prod.yml \
+          scp docker-compose.prod.yml \
             ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.WORK_DIR }}/docker-compose.prod.yml
 
       - name: Create .env file for remote
