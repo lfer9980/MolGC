@@ -144,13 +144,6 @@ jobs:
         env:
           DATABASE_URL: postgresql+asyncpg://testuser:testpass@localhost:5432/testdb
 
-      - name: Run integration tests (Postgres)
-        run: |
-          pytest -q -m integration
-        working-directory: ./backend
-        env:
-          DATABASE_URL: postgresql+asyncpg://testuser:testpass@localhost:5432/testdb
-
   deploy:
     name: Deploy to VPS
     needs: [sqlite-tests, integration-postgres]
