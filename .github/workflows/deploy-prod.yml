@@ -255,7 +255,7 @@ jobs:
             RETRY_COUNT=0
             
             while [ $RETRY_COUNT -lt $MAX_RETRIES ]; do
-              if curl -f http://localhost:4005/health > /dev/null 2>&1; then
+              if curl -f http://localhost:4005/api/health > /dev/null 2>&1; then
                 echo "✅ Backend is healthy!"
                 break
               fi
