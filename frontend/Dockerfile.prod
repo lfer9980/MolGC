@@ -69,10 +69,12 @@ COPY --from=builder /app/node_modules ./node_modules
 # Copiar build output completo
 COPY --from=builder --chown=nextjs:nodejs /app/.next ./.next
 
+COPY entrypoint.sh /app/entrypoint.sh
+RUN chmod +x /app/entrypoint.sh
+
 # Cambiar a usuario non-root
 USER nextjs
 
 EXPOSE 3000
 
-# Comando directo (sin entrypoint necesario)
-CMD ["npm", "start"]
+CMD ["/app/entrypoint.sh"]
