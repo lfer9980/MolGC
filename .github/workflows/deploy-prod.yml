@@ -62,8 +62,8 @@ jobs:
       - name: Build & Push Docs Image
         uses: docker/build-push-action@v4
         with:
-          context: ./docs
-          file: ./docs/Dockerfile.prod
+          context: ./guidebook
+          file: ./guidebook/Dockerfile.prod
           push: true
           tags: |
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME_DOCS }}:latest
