@@ -138,8 +138,9 @@ jobs:
           pip install alembic asyncpg sqlalchemy pytest
 
       - name: Run Alembic migrations against Postgres
+        working-directory: ./backend
         run: |
-          alembic -c backend/alembic.ini upgrade head
+          alembic -c alembic.ini upgrade head
         env:
           DATABASE_URL: postgresql+asyncpg://testuser:testpass@localhost:5432/testdb
 
