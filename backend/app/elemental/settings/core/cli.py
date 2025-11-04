@@ -7,6 +7,8 @@ class CliAppSettings(BaseSettings):
     debug: bool = False
     secret_key: str = "some_secret_key"
     app_version: str = "0.0.0"
+    
+    ws_channel_prefix: str = "ws_channel"
 
     class Config:
         extra = "ignore"
