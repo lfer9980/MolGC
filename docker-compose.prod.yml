@@ -51,7 +51,7 @@ services:
     environment:
       - STORAGE_PATH=/data/files
       - elementalback_application__app_env=production
-    command: ["celery", "-A", "app.celery_app", "worker", "--loglevel=info", "--concurrency=2"]
+    command: ["celery", "-A", "app.infrastructure.celery.celery_app", "worker", "--loglevel=info", "--concurrency=2"]
     volumes:
       - files_data:/data/files
     networks:
@@ -78,7 +78,7 @@ services:
     environment:
       - STORAGE_PATH=/data/files
       - elementalback_application__app_env=production
-    command: ["celery", "-A", "app.celery_app", "beat", "--loglevel=info"]
+    command: ["celery", "-A", "app.infrastructure.celery.celery_app", "beat", "--loglevel=info"]
     volumes:
       - files_data:/data/files
       - celery_beat_data:/var/lib/celery
