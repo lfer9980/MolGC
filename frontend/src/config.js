@@ -9,7 +9,7 @@ const getWSURL = () => {
 	return `${protocol}//${window.location.host}`;
 };
 
-const baseURL = process.env.NEXT_PUBLIC_API_URL || '/api';
+const baseURL = process.env.NEXT_PUBLIC_API_URL || '';
 const baseWSURL = typeof window !== 'undefined' ? getWSURL() + baseURL : '';
 
 const config = {
