@@ -10,7 +10,7 @@ services:
       - app_net
     healthcheck:
       test: ["CMD", "redis-cli", "ping"]
-      interval: 10s
+      interval: 45s
       timeout: 3s
       retries: 3
 
@@ -35,7 +35,7 @@ services:
         condition: service_healthy
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:4000/api/health"]
-      interval: 10s
+      interval: 45s
       timeout: 5s
       retries: 5
       start_period: 30s
@@ -61,7 +61,7 @@ services:
         condition: service_healthy
     healthcheck:
       test: ["CMD-SHELL", "celery -A app.infrastructure.celery.celery_app inspect ping -d celery@$$HOSTNAME"]
-      interval: 30s
+      interval: 45s
       timeout: 10s
       retries: 3
       start_period: 30s

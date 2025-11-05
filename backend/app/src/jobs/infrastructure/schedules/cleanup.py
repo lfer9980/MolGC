@@ -46,7 +46,7 @@ async def _run_cleanup_async():
 
 beat_schedules = {
     "cleanup-expired-jobs": {
-        "task": "app.src.auth.infrastructure.schedules.cleanup.run_cleanup_jobs",
+        "task": "app.src.jobs.infrastructure.schedules.cleanup.run_cleanup_jobs",
         "schedule": timedelta(hours=24),
     },
 }
