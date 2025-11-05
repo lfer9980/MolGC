@@ -6,10 +6,9 @@ class CelerySettings(BaseSettings):
 
     use_redis: bool = True
     use_database: bool = True
-    redis_url: str = "redis://localhost:6379/0"
-    celery_broker_url: str = "redis://localhost:6379/1"
-    celery_result_backend: str = "redis://localhost:6379/2"
+    redis_url: str = "redis://redis:6379/0"
+    celery_broker_url: str = "redis://redis:6379/1"
+    celery_result_backend: str = "redis://redis:6379/2"
 
     class Config:
-        env_file = "settings.dev.toml"
         extra = "ignore"

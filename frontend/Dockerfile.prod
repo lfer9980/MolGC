@@ -13,23 +13,68 @@ COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* ./
 RUN \
 	if [ -f yarn.lock ]; then yarn --frozen-lockfile; \
 	elif [ -f package-lock.json ]; then npm ci; \
-	elif [ -f pnpm-lock.yaml ]; then yarn global add pnpm && pnpm i --frozen-lockfile; \
+	elif [ -f pnpm-lock.yaml ]; then corepack enable pnpm && pnpm i --frozen-lockfile; \
 	else echo "Lockfile not found." && exit 1; \
 	fi
 
-#for hot reloading dev
-FROM base AS runner
+# Builder stage - aquí se hace el build de Next.js con las variables
+FROM base AS builder
+
 WORKDIR /app
+
+# Copiar dependencias instaladas
 COPY --from=deps /app/node_modules ./node_modules
+
+# Copiar código fuente
 COPY . .
+
+# Declarar build args
+ARG NEXT_PUBLIC_API_URL=/api
+ARG NODE_ENV=production
+
+# Establecer como ENV para que Next.js las use durante el build
+ENV NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL \
+    NODE_ENV=$NODE_ENV \
+    NEXT_TELEMETRY_DISABLED=1
+
+# Build de Next.js
 RUN yarn build
 
+# Production runner stage
+FROM base AS runner
 
-# Copia los archivos y establece el entrypoint en un script
-COPY entrypoint.sh /frontend/entrypoint.sh
-RUN chmod +x /frontend/entrypoint.sh
+WORKDIR /app
+
+# Instalar curl para health checks
+RUN apk add --no-cache curl
+
+# Crear usuario non-root para seguridad
+RUN addgroup --system --gid 1001 nodejs && \
+    adduser --system --uid 1001 nextjs
+
+# Establecer NODE_ENV
+ENV NODE_ENV=production \
+    NEXT_TELEMETRY_DISABLED=1 \
+    PORT=3000 \
+    HOSTNAME="0.0.0.0"
+
+# Copiar archivos necesarios desde builder
+COPY --from=builder /app/next.config.* ./
+COPY --from=builder /app/public ./public
+COPY --from=builder /app/package.json ./package.json
+
+# Copiar node_modules de producción
+COPY --from=builder /app/node_modules ./node_modules
+
+# Copiar build output completo
+COPY --from=builder --chown=nextjs:nodejs /app/.next ./.next
+
+COPY entrypoint.sh /app/entrypoint.sh
+RUN chmod +x /app/entrypoint.sh
+
+# Cambiar a usuario non-root
+USER nextjs
 
 EXPOSE 3000
 
-# Usa el entrypoint en lugar de CMD
-ENTRYPOINT ["/frontend/entrypoint.sh"]
+CMD ["/app/entrypoint.sh"]
