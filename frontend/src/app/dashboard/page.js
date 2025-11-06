@@ -60,9 +60,8 @@ export default function Dashboard({ }) {
 		nav,
 		colors,
 		handlerNav,
+		handlerRedirect,
 	} = useDashboard({});
-
-	console.log(resume)
 	// #endregion
 
 	//#region main UI
@@ -70,7 +69,7 @@ export default function Dashboard({ }) {
 		<>
 			<HeaderMolGC />
 
-			<WrapMain margin padding>
+			<WrapMain margin padding full={loading}>
 				{loading ?
 					<Loader
 						size={28}
@@ -91,8 +90,6 @@ export default function Dashboard({ }) {
 
 
 							<div className={styles.page_section}>
-
-
 								<div className={styles.page_heading_main}>
 									{nav !== 0 &&
 										<ButtonPill
@@ -119,8 +116,15 @@ export default function Dashboard({ }) {
 													label={`${item?.size} reportes generados`}
 													symbol={`${item?.title === 'Reporte General' ? 'bar_chart' : 'data_table'}`}
 													color={`${item?.title === 'Reporte General' ? colorsApp.blue : colors[i]}`}
-													labelButton='Detalles'
-													handler={() => handlerNav(i)}
+													labelButton={`${item?.title === 'Reporte General' ? 'Ver Reporte' : 'Detalles'}`}
+													/* TODO: this logic does not look good, try to refactor */
+													handler={() => {
+														handlerNav(i);
+														if (i === 0) handlerRedirect({
+															family: item?.title,
+															variant: item?.children[0]?.title
+														})
+													}}
 													aspect={STYLE_ENUM.SECOND}
 												/>
 											))}
@@ -133,6 +137,10 @@ export default function Dashboard({ }) {
 													color={colorsApp.dark_blue}
 													labelButton='Ver Reporte'
 													aspect={STYLE_ENUM.SECOND}
+													handler={() => handlerRedirect({
+														family: resume[nav]?.title,
+														variant: item?.title
+													})}
 												/>
 											))
 											}

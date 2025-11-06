@@ -10,7 +10,15 @@ const getWSURL = () => {
 };
 
 const baseURL = process.env.NEXT_PUBLIC_API_URL || '';
-const baseWSURL = typeof window !== 'undefined' ? getWSURL() + baseURL : '/api';
+
+let baseWSURL = '/api';
+if (typeof window !== 'undefined') {
+	if (baseURL.startsWith('http')) {
+		baseWSURL = baseURL.replace(/^http/, 'ws');
+	} else {
+		baseWSURL = getWSURL() + baseURL;
+	}
+}
 
 const config = {
 	appName: 'MolGC Web App',
@@ -22,7 +30,7 @@ const config = {
 	baseURL,
 	baseWSURL,
 
-	// API Endpoints (construidos a partir de baseURL)
+	// API Endpoints
 	jobURL: `/job/v1/`,
 	uploadURL: `/upload/v1/`,
 	uploadAutoURL: `/upload/v1/automatic`,

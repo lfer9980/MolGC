@@ -6,8 +6,7 @@
 
 // #region libraries
 import { useEffect, useState } from 'react';
-import { useServiceReport } from 'services/report';
-import { useJobStore } from 'store/job';
+import { useRouter } from 'next/navigation';
 // #endregion
 
 
@@ -28,24 +27,28 @@ import { helperRandomColor } from 'lib/helpers';
 
 
 // #region contexts & stores
+import { useJobStore } from 'store/job';
 // #endregion
 
 
 // #region requests
+import { useServiceReport } from 'services/report';
 // #endregion
 
 
 function useDashboard({ }) {
 	// #region references
+	const router = useRouter();
 	// #endregion
 
 
 	// #region contexts & hooks
 	const {
-		job,
+		handlerUpdateJobStore,
 	} = useJobStore();
 
 	const {
+		loading,
 		handlerGetResumeReport,
 	} = useServiceReport({});
 
@@ -58,7 +61,6 @@ function useDashboard({ }) {
 
 
 	// #region states
-	const [loading, setLoading] = useState(false);
 	const [colors, setColors] = useState([]);
 	const [resume, setResume] = useState([]);
 	const [nav, setNav] = useState(0);
@@ -79,6 +81,10 @@ function useDashboard({ }) {
 
 	// #region handlers
 	const handlerNav = (view) => setNav(view);
+
+	const handlerRedirect = ({ family, variant }) => {
+		return router.push(`/dashboard/${family ? family : ''}/${variant ? variant : ''}`);
+	};
 	// #endregion
 
 
@@ -88,6 +94,9 @@ function useDashboard({ }) {
 			const data = await handlerGetResumeReport();
 			if (data) {
 				setResume(data);
+				
+				const resume = { resume: JSON.stringify(data) };
+				handlerUpdateJobStore({ data: resume });
 
 				const colorsList = helperRandomColor({
 					count: data.length,
@@ -110,7 +119,6 @@ function useDashboard({ }) {
 
 
 	// #region others
-
 	// #endregion
 
 
@@ -121,6 +129,7 @@ function useDashboard({ }) {
 		nav,
 		colors,
 		handlerNav,
+		handlerRedirect,
 	};
 	// #endregion
 }

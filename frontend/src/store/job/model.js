@@ -9,6 +9,7 @@ export const INITIAL_JOB = {
 	status: '',
 	expires_at: '',
 	references: '',
+	resume: '',
 };
 // #endregion
 

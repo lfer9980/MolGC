@@ -141,6 +141,9 @@ function useServiceAnalysis({ }) {
 			return;
 		};
 
+		console.log(config.baseWSURL)
+		console.log(config.analysisURL)
+
 		const wsURL = `${config.baseWSURL}${config.analysisWSURL}?token=${token}`;
 		const socket = new WebSocket(wsURL);
 

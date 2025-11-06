@@ -11,3 +11,4 @@ export * from './helperRandomColor';
 export * from './helpersBreadcrumbs';
 export * from './helperSelectStyle';
 export * from './helperSplitString';
+export * from './helperReports';

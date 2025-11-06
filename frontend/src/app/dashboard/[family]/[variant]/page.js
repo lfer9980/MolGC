@@ -46,10 +46,7 @@ import styles from './styles.module.scss';
 export default function DashboardVariant({ }) {
 	// #region hooks & others
 	const {
-		nav,
-		structure,
-		customLayout,
-		handlerNav
+
 	} = useVariant({});
 
 	const tabs = [
@@ -67,7 +64,7 @@ export default function DashboardVariant({ }) {
 	//#region main UI
 	return (
 		<div className={styles.page_main}>
-			<div className={styles.page_title}>
+			{/* <div className={styles.page_title}>
 				<HeadingSubtitle
 					title='Ciprofloxacin'
 					label={`Referencia: M06 Gaussian`}
@@ -124,7 +121,7 @@ export default function DashboardVariant({ }) {
 			<ButtonPrimary
 				label='Generar Reporte Individual en PDF'
 				symbol='data_table'
-			/>
+			/> */}
 		</div>
 	);
 	//#endregion

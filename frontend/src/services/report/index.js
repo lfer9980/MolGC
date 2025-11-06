@@ -61,7 +61,7 @@ function useServiceReport({ }) {
 
 
 	// #region states
-	const [loading, setLoading] = useState(false);
+	const [loading, setLoading] = useState(true);
 	// #endregion
 
 
@@ -80,7 +80,6 @@ function useServiceReport({ }) {
 	// #region handlers
 	const handlerGetResumeReport = async () => {
 		/* get the report resume via GET */
-		setLoading(true);
 		let newStatus;
 
 		const endpoint = config.reportResumeURL;

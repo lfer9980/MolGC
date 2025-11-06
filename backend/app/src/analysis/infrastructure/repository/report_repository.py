@@ -1,4 +1,4 @@
-from collections import defaultdict
+from collections import defaultdict, OrderedDict
 from typing import Any, Dict, List, Optional
 
 from app.src.analysis.domain.entities.report_entity import ReportEntity
@@ -50,6 +50,12 @@ class ReportRepositorySQL(ReportRepository):
             grouped_variant: Dict[str, List[ReportModelSQL]] = defaultdict(list)
             for r in reports:
                 grouped_variant[r.variant or "General"].append(r)
+
+            if "General" in grouped_variant:
+                grouped_variant = OrderedDict(
+                    [("General", grouped_variant["General"])]
+                    + [(k, v) for k, v in grouped_variant.items() if k != "General"]
+                )
 
             # group and generates categories for variants
             variant_children = []

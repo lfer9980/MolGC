@@ -47,7 +47,6 @@ import { STYLE_LOG_ENUM } from 'lib/helpers';
 export default function Configuration({ }) {
 	// #region hooks & others
 	const {
-		router,
 		config,
 		viewReference,
 		dispatchConfig,
