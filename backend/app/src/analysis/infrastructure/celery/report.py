@@ -1,6 +1,6 @@
 import asyncio
 
-from app.infrastructure.celery.celery_app import celery
+from app.infrastructure.celery.celery_app import celery, get_or_create_event_loop
 from app.infrastructure.database import DatabaseSession
 from app.src.analysis.infrastructure.celery.subtasks import (
     save_mae_family_data,
@@ -11,9 +11,8 @@ from app.src.analysis.infrastructure.celery.subtasks import (
     save_topsis_data,
     update_job_status,
 )
-from app.src.analysis.infrastructure.repository.report_repository import (
-    ReportRepositorySQL,
-)
+from app.src.analysis.infrastructure.repository.report_repository import ReportRepositorySQL
+
 from celery import shared_task
 
 ReportsType = tuple[list[dict], list[dict], str, list[dict]]
@@ -79,8 +78,6 @@ def create_report_task(self, new_data: ReportsType, job_id: str):
                 session=session,
                 job_id=job_id,
             )
-    
-    from app.infrastructure.celery_app import get_or_create_event_loop
-    
+        
     loop = get_or_create_event_loop()
     return loop.run_until_complete(run_task())
