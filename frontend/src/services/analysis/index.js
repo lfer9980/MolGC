@@ -157,6 +157,7 @@ function useServiceAnalysis({ }) {
 						progress: 100,
 						message: data?.message
 					});
+					
 					socket.close(1000);
 
 					setTimeout(() => {

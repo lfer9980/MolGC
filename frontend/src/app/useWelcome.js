@@ -4,8 +4,8 @@
 */
 
 // #region libraries
-import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { useState, useEffect, useCallback } from "react";
 // #endregion
 
 
@@ -17,6 +17,7 @@ import { useRouter } from "next/navigation";
 // #endregion
 
 // #region utils
+import { JOB_STATUS_ENUM } from "lib/enums";
 // #endregion
 
 
@@ -25,10 +26,13 @@ import { useRouter } from "next/navigation";
 
 
 // #region contexts & stores
+import { useJobStore } from "store/job";
 // #endregion
 
 
 // #region requests
+import { useServiceJob } from 'services/job';
+import { useServiceUpload } from "services/upload";
 // #endregion
 
 
@@ -38,19 +42,44 @@ function useWelcome({ }) {
 
 
 	// #region contexts & hooks
+	const {
+		job,
+	} = useJobStore({});
+
+	const {
+		loading,
+		handlerCreateJob,
+		handlerValidateJob,
+	} = useServiceJob({});
+
+	const {
+		handlerUploadAutomatic,
+	} = useServiceUpload({});
 	// #endregion
 
 
 	// #region variables
+	const router = useRouter();
 	// #endregion
 
 
 	// #region states
 	const [view, setView] = useState(0);
+	const [isDemo, setIsDemo] = useState(false);
+	const [validate, setValidate] = useState(false);
+	const [progress, setProgress] = useState({ progress: 0, event: null, type: '' });
 	// #endregion
 
 
 	// #region memos & callbacks
+	const validateJobCallback = useCallback(async () => {
+		if (job?.status === JOB_STATUS_ENUM.COMPLETED) {
+			const isValid = await handlerValidateJob();
+			return setValidate(isValid);
+		};
+
+		setValidate(false);
+	}, []);
 	// #endregion
 
 
@@ -63,6 +92,44 @@ function useWelcome({ }) {
 
 
 	// #region handlers
+	const _handlerProgress = (newProgress) => setProgress(newProgress);
+
+	const handlerStartDemo = async () => {
+		try {
+			setIsDemo(true);
+
+			const newToken = await handlerCreateJob({
+				uploadType: "automatic",
+				redirect: false,
+			});
+
+			if (!newToken) {
+				throw new Error('No se pudo crear la sesión');
+			}
+
+			const response = await fetch('/api/file');
+
+			if (!response.ok) {
+				throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+			}
+
+			const blob = await response.blob();
+			const file = new File([blob], "molecules.zip", {
+				type: "application/zip",
+				lastModified: Date.now()
+			});
+
+			await handlerUploadAutomatic({
+				files: [file],
+				handlerProgress: _handlerProgress,
+				explicitToken: newToken,
+			});
+
+			setIsDemo(false);
+		} catch (e) {
+			console.error('Error al iniciar el demo:', e);
+		};
+	};
 	// #endregion
 
 
@@ -141,6 +208,11 @@ function useWelcome({ }) {
 			window.removeEventListener("wheel", handleWheel);
 		};
 	}, [setView]);
+
+
+	useEffect(() => {
+		validateJobCallback();
+	}, []);
 	// #endregion
 
 
@@ -150,7 +222,14 @@ function useWelcome({ }) {
 
 	// #region main
 	return {
+		router,
 		view,
+		isDemo,
+		validate,
+		loading,
+		progress,
+		handlerCreateJob,
+		handlerStartDemo,
 	};
 	// #endregion
 }

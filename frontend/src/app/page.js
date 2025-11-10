@@ -15,7 +15,9 @@ import {
 	ButtonColor,
 	HeadingTitle,
 	Loader,
-	LOADER_ENUM
+	LOADER_ENUM,
+	LoaderBar,
+	TooltipClose
 } from 'components/atoms';
 
 import {
@@ -40,11 +42,11 @@ import { colorsApp } from 'lib/utils';
 
 // #region hooks
 import { useWelcome } from './useWelcome';
+import { useActivateAnimation } from 'hooks';
 // #endregion
 
 
 // #region contexts & stores
-import { useServiceJob } from 'services/job';
 // #endregion
 
 
@@ -57,18 +59,24 @@ import styles from './styles.module.scss';
 export default function App() {
 	// #region hooks & others
 	const {
+		router,
 		view,
-	} = useWelcome({});
-
-	const {
+		isDemo,
+		validate,
 		loading,
+		progress,
 		handlerCreateJob,
-	} = useServiceJob({});
-
-
+		handlerStartDemo,
+	} = useWelcome({});
 	// #endregion
 
 	// #region skeletons
+	const {
+		animationBase,
+		animation
+	} = useActivateAnimation({
+		animationName: 'animate__flash'
+	});
 	// #endregion
 
 
@@ -98,6 +106,25 @@ export default function App() {
 								center
 							/>
 						</div>
+
+						{validate &&
+							<div className={styles.page_tooltip}>
+								<TooltipClose
+									symbol='book'
+									label='Resultados'
+									color={colorsApp.green}
+									handler={() => router.push('/dashboard')}
+								/>
+
+								<p className={`${styles.page_title} ${animationBase} ${animation}`}>
+									<span className='material-symbols-outlined'>
+										keyboard_backspace
+									</span>
+
+									Tu ultimo reporte
+								</p>
+							</div>
+						}
 
 						<div className={styles.page_hero_more}>
 							<More
@@ -144,42 +171,62 @@ export default function App() {
 										</div>
 										:
 										<>
-											<div className={styles.page_select_panel}>
-												<ButtonColor
-													label='Subir archivos Automaticamente'
-													symbol='backup'
-													color={colorsApp.blue}
-													size={24}
-													center
-													handler={() => handlerCreateJob({ uploadType: "automatic" })}
-												/>
-												<ButtonColor
-													label='Subir archivos Manualmente'
-													symbol='upload'
-													color={colorsApp.green}
-													center
-													handler={() => handlerCreateJob({ uploadType: "manual" })}
-													size={24}
-												/>
-											</div>
+											{!isDemo ?
+												<>
+													<div className={styles.page_select_panel}>
+														<ButtonColor
+															label='Subir archivos Automaticamente'
+															symbol='backup'
+															color={colorsApp.blue}
+															size={24}
+															center
+															handler={() => handlerCreateJob({ uploadType: "automatic" })}
+														/>
+														<ButtonColor
+															label='Subir archivos Manualmente'
+															symbol='upload'
+															color={colorsApp.green}
+															center
+															handler={() => handlerCreateJob({ uploadType: "manual" })}
+															size={24}
+														/>
+													</div>
 
-											<hr />
+													<hr />
 
-											<div className={styles.page_select_second}>
-												<ElementLabel
-													title='MolGC en accion'
-													label='Juega con MolGC, con un archivo de prueba que tenemos preparado.'
-												/>
+													<div className={styles.page_select_second}>
+														<ElementLabel
+															title='MolGC en accion'
+															label='Juega con MolGC, con un archivo de prueba que tenemos preparado.'
+														/>
 
-												<ButtonColor
-													label='Prueba MolGC'
-													symbol='play_arrow'
-													color={colorsApp.dark_purple}
-													center
-													outline
-													size={24}
-												/>
-											</div>
+														<ButtonColor
+															label='Prueba MolGC'
+															symbol='play_arrow'
+															color={colorsApp.dark_purple}
+															handler={handlerStartDemo}
+															center
+															outline
+															size={24}
+														/>
+													</div>
+												</>
+												:
+												<div className={styles.page_loading}>
+													<div className={styles.page_loading_main}>
+														<HeadingTitle
+															subtitle='Subiendo archivos...'
+															accent
+														/>
+
+														<LoaderBar
+															label
+															progress={progress.progress}
+															maxValue={100}
+														/>
+													</div>
+												</div >
+											}
 										</>
 									}
 								</div>

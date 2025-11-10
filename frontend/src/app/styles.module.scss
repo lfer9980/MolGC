@@ -97,6 +97,38 @@
 		left: 1.6rem;
 	}
 
+
+	&_tooltip {
+		display: flex;
+		align-items: center;
+		gap: 2.4rem;
+		bottom: 12rem;
+		left: 1.6rem;
+		position: fixed;
+	}
+
+	&_title {
+		display: flex;
+		align-items: center;
+		gap: 1.6rem;
+		color: var(--content-secondary);
+	}
+
+	&_loading {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+		height: 40svh;
+		width: 100%;
+
+		&_main {
+			width: 100%;
+			margin-block-end: 6.4rem;
+		}
+	}
+
+
 	// #endregion
 
 

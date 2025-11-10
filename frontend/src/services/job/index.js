@@ -82,7 +82,7 @@ function useServiceJob({ }) {
 
 
 	// #region handlers
-	const handlerCreateJob = async ({ uploadType = '' }) => {
+	const handlerCreateJob = async ({ uploadType = '', redirect = true }) => {
 		/* make the Job Creation via POST */
 		setLoading(true);
 		let newStatus;
@@ -119,10 +119,14 @@ function useServiceJob({ }) {
 
 			handlerCreateJobStore({ data: response.data });
 			/* redirect according to upload type */
-			router.push(`/files/${uploadType}`);
+			if (redirect) router.push(`/files/${uploadType}`);
+
+			return response.data.access_token;
 		} catch {
 			console.warn('ocurrio el siguiente error:', e);
-		};
+		} finally {
+			setLoading(false);
+		}
 	};
 
 	const handlerUpdateJob = async ({ data }) => {
@@ -207,6 +211,46 @@ function useServiceJob({ }) {
 			console.warn('ocurrio el siguiente error:', e);
 		};
 	};
+
+
+	const handlerValidateJob = async () => {
+		let newStatus;
+		const endpoint = config.jobURL;
+		const token = job.access_token;
+
+		try {
+			const response = await EndpointHTTP({
+				method: HTTP_METHODS_ENUMS.GET,
+				endpoint: endpoint,
+				token: token,
+			});
+
+			/* handles if response status is null or not OK */
+			if (!response || response?.status !== 200) {
+				newStatus = helperFindJSON({
+					object: HTTP_CODES,
+					property: !response ? 'null' : response.status,
+				});
+
+				handlerAddMessage({
+					content: {
+						icon: 'error',
+						title: newStatus?.title,
+						label: newStatus?.label,
+						allowOutsideClick: false,
+						timer: null,
+						navigateTo: '/',
+					},
+					type: MESSAGE_ENUM.ALERT
+				});
+				return false;
+			};
+
+			return true;
+		} catch (e) {
+			console.warn('ocurrio el siguiente error:', e);
+		};
+	};
 	// #endregion
 
 
@@ -223,7 +267,8 @@ function useServiceJob({ }) {
 		loading,
 		handlerCreateJob,
 		handlerUpdateJob,
-		handlerDeleteJob
+		handlerDeleteJob,
+		handlerValidateJob,
 	};
 	// #endregion
 }

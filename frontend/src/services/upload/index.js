@@ -81,18 +81,21 @@ function useServiceUpload({ }) {
 
 
 	// #region handlers
-	const handlerUploadAutomatic = async ({ files, handlerProgress }) => {
+	const handlerUploadAutomatic = async ({ files, handlerProgress, explicitToken }) => {
 		/* make upload files automatically via POST */
 		setLoading(true);
 		let newStatus;
 
 		const endpoint = config.uploadAutoURL;
-		const token = job.access_token;
+		const token = explicitToken || job.access_token;
 		const formData = new FormData();
 
 		for (const file of files) {
 			formData.append("zip_file", file);
 		};
+
+		console.log(token)
+		console.log(files)
 
 		try {
 			const response = await EndpointHTTP({
