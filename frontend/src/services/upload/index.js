@@ -94,9 +94,6 @@ function useServiceUpload({ }) {
 			formData.append("zip_file", file);
 		};
 
-		console.log(token)
-		console.log(files)
-
 		try {
 			const response = await EndpointHTTP({
 				method: HTTP_METHODS_ENUMS.POST,

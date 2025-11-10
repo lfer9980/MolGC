@@ -6,7 +6,6 @@ app_name = "MolGC"
 app_version = '1.0.0'
 debug = true
 
-
 secret_key = "403e206e431ece53446cdbbf6b91277512a7f058a5d1ed7d14c284e2bab37210"
 
 cors_origins = ['*']
@@ -39,13 +38,6 @@ name = "molgc.db"
 password = ""
 user = ""
 
-
-#driver = "postgresql+asyncpg"
-#host = "localhost"
-#port = "5432"
-#name = "molgc"
-#password = "PASSWORD"
-#user = "postgres"
 
 [mail]
 username = "username"

@@ -151,7 +151,6 @@ function useVariant({ }) {
 
 	// #region handlers
 	const handlerNav = (value) => setNav(value);
-	console.log(data)
 	// #endregion
 
 
@@ -166,7 +165,6 @@ function useVariant({ }) {
 
 
 	// #region others
-	console.log(data);
 	// #endregion
 
 
