@@ -11,10 +11,14 @@ from app.settings import settings as app_settings
 from app.settings.components.celery import CelerySettings
 from celery import Celery
 from celery.signals import worker_process_init, worker_shutdown
+from threading import Lock
 
 settings = CelerySettings()
 
 _logger = None
+
+_worker_loop = None
+_loop_lock = Lock()
 
 
 def get_celery_logger():
@@ -51,6 +55,16 @@ def make_celery():
 
 celery = make_celery()
 
+def get_or_create_event_loop():
+    """Get or create a persistent event loop for the worker process."""
+    global _worker_loop
+    
+    with _loop_lock:
+        if _worker_loop is None or _worker_loop.is_closed():
+            _worker_loop = asyncio.new_event_loop()
+            asyncio.set_event_loop(_worker_loop)
+        return _worker_loop
+
 
 @worker_process_init.connect
 def init_worker_db(**kwargs):
@@ -63,7 +77,9 @@ def init_worker_db(**kwargs):
             db_settings = app_settings.database
             logger.info("Initializing database for worker process...")
 
-            asyncio.run(init_database(db_settings))
+            loop = get_or_create_event_loop()
+            loop.run_until_complete(init_database(db_settings))
+
             logger.info("Database initialized successfully.")
         else:
             logger.info("Skipping database initialization (use_database=False).")
@@ -78,10 +94,19 @@ def shutdown_worker_db(**kwargs):
     the flag "use_database" is true."""
     logger = get_celery_logger()
 
+    global _worker_loop
+
     try:
         if getattr(settings, "use_database", False):
             logger.info("Closing database connection...")
-            asyncio.run(close_database())
+
+            loop = get_or_create_event_loop()
+            loop.run_until_complete(close_database())
+
+            if _worker_loop and not _worker_loop.is_closed():
+                _worker_loop.close()
+                _worker_loop = None
+
             logger.info("Database connection closed.")
         else:
             logger.info("Skipping database shutdown (use_database=False).")

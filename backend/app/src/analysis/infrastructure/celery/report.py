@@ -79,16 +79,8 @@ def create_report_task(self, new_data: ReportsType, job_id: str):
                 session=session,
                 job_id=job_id,
             )
-
-    try:
-        loop = asyncio.get_event_loop()
-        if loop.is_running():
-            loop = asyncio.new_event_loop()
-            asyncio.set_event_loop(loop)
-            result = loop.run_until_complete(run_task())
-            loop.close()
-            return result
-        else:
-            return loop.run_until_complete(run_task())
-    except RuntimeError:
-        return asyncio.run(run_task())
+    
+    from app.infrastructure.celery_app import get_or_create_event_loop
+    
+    loop = get_or_create_event_loop()
+    return loop.run_until_complete(run_task())
