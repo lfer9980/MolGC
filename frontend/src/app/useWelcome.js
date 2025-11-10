@@ -107,7 +107,7 @@ function useWelcome({ }) {
 				throw new Error('No se pudo crear la sesión');
 			}
 
-			const response = await fetch('/api/file');
+			const response = await fetch('/api/internal/file');
 
 			if (!response.ok) {
 				throw new Error(`HTTP ${response.status}: ${response.statusText}`);
