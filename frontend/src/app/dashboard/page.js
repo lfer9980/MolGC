@@ -117,6 +117,7 @@ export default function Dashboard({ }) {
 													symbol={`${item?.title === 'Reporte General' ? 'bar_chart' : 'data_table'}`}
 													color={`${item?.title === 'Reporte General' ? colorsApp.blue : colors[i]}`}
 													labelButton={`${item?.title === 'Reporte General' ? 'Ver Reporte' : 'Detalles'}`}
+													aspect={`${item?.title === 'Reporte General' ? STYLE_ENUM.FOURTH : STYLE_ENUM.SECOND}`}
 													/* TODO: this logic does not look good, try to refactor */
 													handler={() => {
 														handlerNav(i);
@@ -125,7 +126,6 @@ export default function Dashboard({ }) {
 															variant: item?.children[0]?.title
 														})
 													}}
-													aspect={STYLE_ENUM.SECOND}
 												/>
 											))}
 
@@ -133,15 +133,16 @@ export default function Dashboard({ }) {
 												<List
 													key={i}
 													title={item?.title}
-													label={`${item?.size} reporte(s) generado(s)`}
 													color={colorsApp.dark_blue}
 													labelButton='Ver Reporte'
-													aspect={STYLE_ENUM.SECOND}
+													aspect={`${item?.title === 'General' ? STYLE_ENUM.FOURTH : STYLE_ENUM.SECOND}`}
 													handler={() => handlerRedirect({
 														family: resume[nav]?.title,
 														variant: item?.title
 													})}
-												/>
+												>
+													<p className={styles.page_list_label}>{`${item?.size} reporte(s) generado(s)`}</p>
+												</List>
 											))
 											}
 										</>

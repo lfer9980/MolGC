@@ -42,8 +42,8 @@ class DataReport:
 
             mae_np = (
                 (
-                    data[ref_idx].energy["save_info"]["distance"]
-                    - item.energy["save_info"]["distance"]
+                        data[ref_idx].energy["save_info"]["distance"]
+                        - item.energy["save_info"]["distance"]
                 )
                 .abs()
                 .mean()
@@ -126,7 +126,7 @@ class DataReport:
         return rmsd_values
 
     def mae_topsis_chart(
-        self, data: list[ReportVariantModel]
+            self, data: list[ReportVariantModel]
     ) -> tuple[str, list[dict]]:
         """Generates the data structure for the MAE general report.
 
@@ -165,6 +165,10 @@ class DataReport:
                     }
                 )
 
+        # generates TOPSIS
+        topsis = TopsisUW(mae_values)
+        topsis_data = topsis()
+
         # Calculates general mean per functional
         grouped_mean: defaultdict[str, list[float]] = defaultdict(list)
         for element in mae_values:
@@ -172,17 +176,14 @@ class DataReport:
 
         for functional, means in grouped_mean.items():
             overall = sum(means) / len(means)
-            mae_values.append(
+            mae_values.insert(
+                0,
                 {
-                    "family": "average",
+                    "family": "AVERAGE",
                     "functional": functional,
                     "mean": overall,
                 }
             )
-
-        # generates TOPSIS
-        topsis = TopsisUW(mae_values)
-        topsis_data = topsis()
 
         # Prepare data
         chart_data = self._prepare_mae_general_chart(mae_values)
@@ -205,12 +206,15 @@ class DataReport:
         for item in mae_values:
             grouped_by_family[item["family"]][item["functional"]] = item["mean"]
 
-            # create datasets
+        # create datasets
         datasets = []
         for family, functional_data in grouped_by_family.items():
             dataset_values = [functional_data.get(label, 0) for label in labels]
-
-            datasets.append({"type": "bar", "label": family, "data": dataset_values})
+            datasets.append({
+                "type": f"{'bar' if family != 'average' else 'line'}",
+                "label": family,
+                "data": dataset_values
+            })
 
         return {
             "labels": labels,

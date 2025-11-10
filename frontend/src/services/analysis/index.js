@@ -141,9 +141,6 @@ function useServiceAnalysis({ }) {
 			return;
 		};
 
-		console.log(config.baseWSURL)
-		console.log(config.analysisURL)
-
 		const wsURL = `${config.baseWSURL}${config.analysisWSURL}?token=${token}`;
 		const socket = new WebSocket(wsURL);
 
@@ -162,10 +159,10 @@ function useServiceAnalysis({ }) {
 					});
 					socket.close(1000);
 
-					const status = { status: JOB_STATUS_ENUM.COMPLETED };
-					handlerUpdateJobStore({ data: status });
-
-					return router.push('/dashboard');
+					setTimeout(() => {
+						const status = { status: JOB_STATUS_ENUM.COMPLETED };
+						handlerUpdateJobStore({ data: status });
+					}, 3000);
 				}
 
 				setMessages({

@@ -9,13 +9,21 @@ import React from 'react';
 
 
 // #region components
-import Plot from 'react-plotly.js';
-import { ButtonPrimary, HeadingSubtitle } from 'components/atoms';
 import {
+	ButtonPrimary,
+	HeadingSubtitle,
+	Loader,
+	LOADER_ENUM
+} from 'components/atoms';
+
+import { PlotStructure } from 'components/molecules';
+import {
+	ChartBar,
 	ChartLine,
-	ChartRadar,
 	ChartWrap,
-	NavigatorTabs
+	NavigatorTabs,
+	RowsTOPSIS,
+	TableX
 } from 'components/organisms';
 // #endregion
 
@@ -25,7 +33,8 @@ import {
 
 
 // #region utils
-import { CHART_BAR_LEGEND_ENUM } from 'lib/enums/charts';
+import { COLUMNS_TOPSIS } from 'lib/data/tables/TOPSIS';
+import { CHART_BAR_LEGEND_ENUM, CHART_ENUM } from 'lib/enums/charts';
 // #endregion
 
 
@@ -46,28 +55,34 @@ import styles from './styles.module.scss';
 export default function DashboardVariant({ }) {
 	// #region hooks & others
 	const {
-
+		tabs,
+		job,
+		nav,
+		data,
+		variant,
+		loading,
+		handlerNav
 	} = useVariant({});
-
-	const tabs = [
-		{
-			symbol: 'bar_chart',
-			label: 'Graficas',
-		},
-		{
-			symbol: 'deployed_code',
-			label: 'Vista 3D',
-		},
-	];
 	// #endregion
 
 	//#region main UI
+	if (loading) return (
+		<section className={styles.page_loading}>
+			<Loader
+				type={LOADER_ENUM.DOTS}
+				number={29}
+				size={32}
+				label='cargando resultados...'
+			/>
+		</section>
+	);
+
 	return (
 		<div className={styles.page_main}>
-			{/* <div className={styles.page_title}>
+			<div className={styles.page_title}>
 				<HeadingSubtitle
-					title='Ciprofloxacin'
-					label={`Referencia: M06 Gaussian`}
+					title={variant}
+					label={`Referencia: ${job?.reference}`}
 				/>
 
 				<NavigatorTabs
@@ -78,50 +93,75 @@ export default function DashboardVariant({ }) {
 				/>
 			</div>
 
-			{nav === 0 &&
-				<div className={styles.page_section}>
+			<div className={styles.page_section} style={{ display: nav === 0 ? "block" : "none" }}>
+				{data['mae_family'] &&
 					<ChartWrap
 						title='Bond Lenghts'
-						label='MAE Functional vs Gaussian M06'
+						label={data['mae_family'].data.title}
 					>
-						<ChartRadar
+						<ChartBar
 							positionLegend={CHART_BAR_LEGEND_ENUM.BOTTOM}
-							random
+							data={data['mae_family'].data}
 						/>
 					</ChartWrap>
+				}
 
+				{data['mae_general'] &&
 					<ChartWrap
-						title='RMSD'
-						label='Functional Vs Gaussian M06'
+						title='Bond Lenghts'
+						label={data['mae_general'].data.title}
+					>
+						<ChartBar
+							positionLegend={CHART_BAR_LEGEND_ENUM.BOTTOM}
+							aspect={CHART_ENUM.STACKED}
+							data={data['mae_general'].data}
+							transparency
+						/>
+					</ChartWrap>
+				}
+
+				{data['mae_variant'] &&
+					<ChartWrap
+						title='Bond Lenghts'
+						label={data['mae_variant'].data.title}
 					>
 						<ChartLine
 							positionLegend={CHART_BAR_LEGEND_ENUM.BOTTOM}
-							random
+							data={data['mae_variant'].data}
 						/>
 					</ChartWrap>
-				</div>
-			}
+				}
 
-			{nav === 1 &&
-				<div className={styles.page_section}>
-					<div className={styles.page_structure}>
-						{structure &&
-							<Plot
-								data={structure?.data}
-								layout={customLayout}
-								config={{ responsive: true }}
-								style={{ width: "100%", height: "100%" }}
-								useResizeHandler={true}
-							/>
-						}
-					</div>
-				</div>
-			}
+				{data['rmsd'] &&
+					<ChartWrap
+						title='RMSD'
+						label={data['mae_variant'].data.title}
+					>
+						<ChartLine
+							positionLegend={CHART_BAR_LEGEND_ENUM.BOTTOM}
+							data={data['rmsd'].data}
+						/>
+					</ChartWrap>
+				}
+			</div>
+
+			<div className={styles.page_section} style={{ display: nav === 1 ? "block" : "none" }}>
+				{data['structure'] && <PlotStructure structure={data['structure']} />}
+
+				{data['topsis'] &&
+					<TableX
+						data={data['topsis'].data}
+						columns={COLUMNS_TOPSIS}
+					>
+						{(props) => <RowsTOPSIS {...props} />}
+					</TableX>
+				}
+			</div>
 
 			<ButtonPrimary
 				label='Generar Reporte Individual en PDF'
 				symbol='data_table'
-			/> */}
+			/>
 		</div>
 	);
 	//#endregion

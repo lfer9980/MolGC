@@ -82,7 +82,7 @@ class MoleculesPlotter:
             )
             fig.add_traces(
                 self._draw_bonds(
-                    bonds, f"{item.software} - {item.functional}", "black", 0.2
+                    bonds, f"{item.software} - {item.functional}", "gray", 0.2
                 )
             )
 

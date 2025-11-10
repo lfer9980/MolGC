@@ -4,11 +4,14 @@ ROUTES - DASHBOARD / FAMILY / VARIANT | LAYOUT
 'use client';
 // #region libraries
 import React from 'react';
+import { useRouter } from 'next/navigation';
 // #endregion
 
 
 // #region components
+import { WrapMain } from 'components/__common__';
 import { ButtonPill, HeadingTitle } from 'components/atoms';
+import { HeaderMolGC } from 'components/organisms';
 // #endregion
 
 
@@ -42,6 +45,7 @@ export default function LayoutDashboardVariant({
 
 
 	// #region references
+	const router = useRouter();
 	// #endregion
 
 
@@ -83,27 +87,32 @@ export default function LayoutDashboardVariant({
 
 	// #region main
 	return (
-		<section className={styles.page}>
-			<div className={styles.page_heading}>
-				<div className={styles.page_heading_main}>
-					<ButtonPill
-						symbol='arrow_left_alt'
-						color={colorsApp.black}
-						handler={() => router.push('/files')}
-					/>
+		<>
+			<HeaderMolGC />
 
-					<div className={styles.page_heading_head}>
-						<HeadingTitle
-							symbol='bar_chart'
-							title='Reporte por Variante'
-							theme='dark'
-						/>
+			<WrapMain padding margin>
+				<section className={styles.page}>
+					<div className={styles.page_heading}>
+						<div className={styles.page_heading_main}>
+							<ButtonPill
+								symbol='arrow_left_alt'
+								color={colorsApp.black}
+								handler={() => router.push('/dashboard')}
+							/>
+
+							<div className={styles.page_heading_head}>
+								<HeadingTitle
+									title='Detalle del reporte'
+									theme='dark'
+								/>
+							</div>
+						</div>
 					</div>
-				</div>
-			</div>
 
-			{children}
-		</section>
+					{children}
+				</section>
+			</WrapMain>
+		</>
 	);
 	// #endregion
 };

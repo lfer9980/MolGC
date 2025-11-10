@@ -58,8 +58,8 @@ class TopsisUW:
         original_criteria = self.df.iloc[:, 1:]
 
         result_df = pd.concat([self.ids, metrics_df], axis=1)
-        result_df = result_df.sort_values(by="ranking").reset_index(drop=True)
         result_df["criteria"] = original_criteria.to_dict(orient="records")
+        result_df = result_df.sort_values(by="ranking").reset_index(drop=True)
 
         result_df = result_df[
             ["functional", "criteria", "d_not_ideal", "d_ideal", "closeness", "ranking"]

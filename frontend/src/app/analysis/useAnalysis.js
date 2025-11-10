@@ -92,13 +92,16 @@ function useAnalysis({ }) {
 			};
 
 			if (job.status === JOB_STATUS_ENUM.COMPLETED) {
-				return router.push('/dashboard')
+				return router.push('/dashboard');
 			};
 
-			router.push('/');
+			if (job.status === JOB_STATUS_ENUM.UPLOAD_PENDING) {
+				return router.push('/');
+			}
 		};
+
 		startAnalysis();
-	}, []);
+	}, [job.status]);
 	// #endregion
 
 

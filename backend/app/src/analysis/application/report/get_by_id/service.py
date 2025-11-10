@@ -170,7 +170,7 @@ class GetByIDReportService:
 
     @classmethod
     def _prepare_mae_variant_chart(
-        cls, data: List[MAEVariantEntity], report_entity: ReportEntity
+            cls, data: List[MAEVariantEntity], report_entity: ReportEntity
     ) -> dict:
         """Prepare the Chart.js-compatible data structure for MAE General.
 
@@ -189,7 +189,7 @@ class GetByIDReportService:
             "labels": labels,
             "datasets": [
                 {
-                    "type": "bar",
+                    "type": "line",
                     "label": report_entity.variant,
                     "data": values,
                 }
