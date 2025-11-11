@@ -3,7 +3,7 @@
 	TEMPLATE - REPORT
 */
 // #region libraries
-import React from 'react';
+import React, { useEffect } from 'react';
 // #endregion
 
 
@@ -35,7 +35,6 @@ import { CHART_BAR_LEGEND_ENUM } from 'lib/enums/charts';
 
 
 // #region hooks
-import { useReport } from './useReport';
 // #endregion
 
 
@@ -48,11 +47,14 @@ import styles from './styles.module.scss';
 // #endregion
 
 
-function ReportMolGC({ }) {
+function ReportMolGC({ onRendered }) {
 	// #region hooks & others
-	const {
-		loading,
-	} = useReport({});
+	useEffect(() => {
+		const t = setTimeout(() => {
+			try { onRendered?.(); } catch (e) { /* ignore */ }
+		}, 600);
+		return () => clearTimeout(t);
+	}, [onRendered]);
 	// #endregion
 
 
@@ -133,8 +135,6 @@ function ReportMolGC({ }) {
 					/>
 				</ChartWrap>
 			</section>
-
-
 
 			<hr />
 			<div className={styles.report_head}>

@@ -109,7 +109,7 @@ export function JobStoreProvider({ name = 'JOB_V1', children }) {
 
 	// #region effects
 	useEffect(() => {
-		if (job) setLocalStorage({ name, data: job });
+		if (job) setLocalStorage({ name: name, data: job });
 	}, [job]);
 	// #endregion
 

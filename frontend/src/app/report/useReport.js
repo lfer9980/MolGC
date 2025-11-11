@@ -1,11 +1,12 @@
 'use client';
+import html2pdf from 'html2pdf.js';
 /* 
 	Hook for element: 
 	brief description about what this hook does
 */
 
 // #region libraries
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 // #endregion
 
 
@@ -35,6 +36,7 @@ import { useState } from 'react';
 
 function useReport({ }) {
 	// #region references
+	const reportRef = useRef();
 	// #endregion
 
 
@@ -63,7 +65,20 @@ function useReport({ }) {
 	// #endregion
 
 
-	// #region handlers
+	// #region handlers 
+	const handlerGeneratePDF = async () => {
+		const element = reportRef.current;
+
+		const opt = {
+			margin: [0, 0, 0, 0],
+			filename: "MolGC_Report.pdf",
+			image: { type: "jpeg", quality: 1 },
+			html2canvas: { scale: 2, useCORS: true },
+			jsPDF: { unit: "px", format: "a4", orientation: "portrait" },
+		};
+
+		await html2pdf().from(element).set(opt).save();
+	};
 	// #endregion
 
 
@@ -77,7 +92,9 @@ function useReport({ }) {
 
 	// #region main
 	return {
-		loading
+		loading,
+		reportRef,
+		handlerGeneratePDF
 	};
 	// #endregion
 }

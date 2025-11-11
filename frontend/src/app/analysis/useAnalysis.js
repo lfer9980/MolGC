@@ -6,7 +6,7 @@ brief description about what this hook does
 
 // #region libraries
 import { useRouter } from 'next/navigation';
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 // #endregion
 
 
