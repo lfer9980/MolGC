@@ -7,13 +7,11 @@ from datetime import timedelta
 import app.src as app
 from app.elemental.logging import get_logger
 from app.infrastructure.database.sql import close_database, init_database
-from app.settings import settings as app_settings
-from app.settings.components.celery import CelerySettings
+from app.settings import settings
 from celery import Celery
 from celery.signals import worker_process_init, worker_shutdown
 from threading import Lock
 
-settings = CelerySettings()
 
 _logger = None
 
@@ -38,9 +36,9 @@ def make_celery():
         enable_utc=True,
     )
 
-    if getattr(settings, "use_redis", False):
-        broker_url = settings.celery_broker_url
-        backend_url = settings.celery_result_backend
+    if getattr(settings.celery, "use_redis", False):
+        broker_url = settings.celery.broker_url
+        backend_url = settings.celery.result_backend
 
         celery_app.conf.update(base_config)
         celery_app.conf.update(broker_url=broker_url, result_backend=backend_url)
@@ -74,7 +72,7 @@ def init_worker_db(**kwargs):
 
     try:
         if getattr(settings, "use_database", False):
-            db_settings = app_settings.database
+            db_settings = settings.database
             logger.info("Initializing database for worker process...")
 
             loop = get_or_create_event_loop()

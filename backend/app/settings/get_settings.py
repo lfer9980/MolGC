@@ -4,7 +4,6 @@ import sys
 from app.elemental.settings.elemental import CliAppSettings, WebAppSettings
 
 from .application import ApplicationSettings
-from .components.celery import CelerySettings
 
 
 def is_running_web() -> bool:
@@ -16,10 +15,7 @@ def is_running_web() -> bool:
 
 def get_settings() -> ApplicationSettings:
     if is_running_web():
-        app_settings = ApplicationSettings(
-            application=WebAppSettings(), celery=CelerySettings()
-        )
-
+        app_settings = ApplicationSettings(application=WebAppSettings())
     else:
         app_settings = ApplicationSettings(application=CliAppSettings())
 

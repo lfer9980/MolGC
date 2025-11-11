@@ -51,8 +51,8 @@ def get_cover(runtime: str) -> None:
             if settings.celery.use_redis:
                 config_items.update(
                     {
-                        "Celery broker": f"{settings.celery.celery_broker_url}",
-                        "Celery Backend": (f"{settings.celery.celery_result_backend}"),
+                        "Celery broker": f"{settings.celery.broker_url}",
+                        "Celery Backend": (f"{settings.celery.result_backend}"),
                     }
                 )
             else:
