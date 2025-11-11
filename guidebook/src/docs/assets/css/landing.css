@@ -1,0 +1,148 @@
+.pp-hero {
+    display: flex;
+    /* Arrange children with flexbox */
+    flex-direction: column;
+    /* Stack items vertically */
+    align-items: center;
+    /* Center items horizontally */
+    padding-bottom: 50px;
+    /* Space below hero section */
+}
+
+.pp-hero img {
+    width: 500px;
+    /* Default width */
+    max-width: 100%;
+    /* Scale down on smaller screens */
+    border: 1px solid gray;
+    /* Image border */
+    margin-top: 2em;
+    /* Space above image */
+    margin-bottom: 5em;
+    /* Space below image */
+}
+
+.pp-hero h1 {
+    margin: 0;
+    /* Remove default margins */
+    font-weight: 600;
+    /* Semi-bold */
+    font-size: 40px;
+    /* Large heading size */
+    font-family: -apple-system, ui-sans-serif, system-ui;
+    /* System-friendly sans serif font stack */
+    color: var(--md-default-fg-color);
+    /* Uses MkDocs theme’s main foreground color */
+}
+
+.pp-hero h2 {
+    margin: 0;
+    padding: 0 2px;
+    /* Tiny horizontal padding */
+    font-weight: 600;
+    font-size: 32px;
+    font-family: same as above;
+    color: var(--md-default-fg-color--light);
+    /* Slightly lighter foreground */
+}
+
+/* Container for buttons/links */
+.pp-hero div {
+    margin-top: 0.5em;
+    display: flex;
+    /* Align multiple links horizontally */
+}
+
+/* Default link/button style */
+.pp-hero a {
+    margin: 0.5em;
+    padding: 0.8em;
+    font-size: 1.75em;
+    /* Large button text */
+    width: 10em;
+    /* Fixed button width */
+    display: block;
+    border-radius: 999em;
+    /* Pill-shaped button */
+    text-align: center;
+    background-color: var(--md-primary-fg-color);
+    /* Theme’s primary color */
+    transition-property: transform;
+    /* Smooth scaling effect */
+    transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+    transition-duration: .15s;
+    font-weight: 700;
+    color: white;
+    border: 2px solid rgba(0, 0, 0, 0);
+    /* Invisible border for layout stability */
+}
+
+/* Hover effect for links */
+.pp-hero a:hover {
+    background-color: color-mix(in srgb, var(--md-primary-fg-color) 90%, transparent);
+    /* Slightly lighter version of primary color */
+}
+
+/* Pressed (active) button effect */
+.pp-hero a:active {
+    transform: scale(.98, .98);
+    /* Subtle "pressed" shrink */
+}
+
+/* Alternate “inverted” button style */
+.pp-hero a.inverted {
+    background-color: rgba(0, 0, 0, 0);
+    /* Transparent background */
+    border-color: rgba(0, 0, 0, 0.2);
+    /* Subtle border */
+    color: var(--md-default-fg-color);
+    /* Dark text */
+}
+
+/* Hover + active states for inverted buttons */
+.pp-hero a.inverted:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.pp-hero a.inverted:active {
+    background-color: rgba(0, 0, 0, 0.15);
+}
+
+
+/* Override layout so main content is stacked vertically */
+.md-main__inner.md-grid {
+    flex-direction: column;
+}
+
+/* Default content block */
+.md-content {}
+
+/* Contrast mode for content block */
+.md-content.contrast {
+    background-color: var(--md-default-fg-color--lightest);
+    /* Light background */
+}
+
+/* All images inside content */
+.md-content img {
+    margin: 5px;
+    width: 400px;
+}
+
+/* Floating image helpers */
+.md-content img.float-right {
+    float: right;
+}
+
+.md-content img.float-left {
+    float: left;
+}
+
+
+/* On very large screens (min 76.25em ≈ 1220px wide) */
+@media screen and (min-width: 76.25em) {
+    .md-sidebar {
+        display: none;
+        /* Hide sidebar for wide screens */
+    }
+}

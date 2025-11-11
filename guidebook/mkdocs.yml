@@ -3,12 +3,17 @@ site_description: Documentación oficial de Mi Proyecto
 site_author: Abimael Guzman | Javier Camarillo | Angel Fernandez
 site_url: https://molgc.eonia.io
 
-# Tema (puedes usar el tema "material" si lo instalas)
+docs_dir: src/docs
+
+extra_css:
+  - assets/css/styling.css
+
 theme:
   name: material
+  custom_dir: overrides
+  logo: assets/images/logotipo_bw.png
   language: es
 
-# Navegación del sitio
 nav:
   - Inicio: index.md
   - Guía rápida: getting-started.md
@@ -16,7 +21,6 @@ nav:
       - Instalación: guide/installation.md
       - Uso: guide/usage.md
 
-# Configuración extra
 markdown_extensions:
   - toc:
       permalink: true
@@ -26,7 +30,6 @@ markdown_extensions:
   - def_list
   - attr_list
 
-# Plugins opcionales (requieren instalación)
 plugins:
   - search
   # - mkdocstrings

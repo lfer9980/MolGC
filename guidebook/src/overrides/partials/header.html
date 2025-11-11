@@ -1,0 +1,31 @@
+{# --- Assign a CSS class name for the header --- #}
+{% set class = "md-header" %}
+
+<header class="{{ class }}" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="{{ lang.t('header') }}">
+
+    {# --- Logo: clickable link back to homepage --- #}
+    <a href="{{ config.extra.homepage | d(nav.homepage.url, true) | url }}"
+       title="{{ config.site_name | e }}"
+       class="md-header__button md-logo"
+       aria-label="{{ config.site_name }}"
+       data-md-component="logo">
+      {% include "partials/logo.html" %}
+    </a>
+
+    {# --- Primary navigation tabs (inline with logo/title) --- #}
+    {% include "partials/tabs.html" %}
+
+    {# --- Spacer: pushes following icons to the far right --- #}
+    <div class="pp-header-spacer"></div>
+
+    {# --- Search button and search dialog --- #}
+    {% if "material/search" in config.plugins %}
+      <label class="md-header__button md-icon" for="__search">
+        {% set icon = config.theme.icon.search or "material/magnify" %}
+        {% include ".icons/" ~ icon ~ ".svg" %}
+      </label>
+      {% include "partials/search.html" %}
+    {% endif %}
+  </nav>
+</header>

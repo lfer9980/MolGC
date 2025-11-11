@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{# --- custom landing section on the front page --- #}
+{% block hero %}
+<div class="pp-hero">
+    <!-- Hero image -->
+    <img src="assets/images/enstructions.png"/>
+
+    <!-- Main title -->
+    <h1>eNstructions</h1>
+
+    <!-- Subtitle / tagline -->
+    <h2>Interactive Installation Instructions for Faster Training, Higher Efficiency, and Improved Quality</h2>
+
+    <!-- Call-to-action buttons -->
+    <div>
+        <a href="user_guide/overview">User guide</a>
+        <a class="inverted" href="developer_guide/overview">Developer guide</a>
+    </div>
+</div>
+{% endblock %}
+
+{# --- Container block: intentionally empty to remove default content area
+(so only the hero is shown on the landing page) --- #}
+{% block container %}
+{% endblock %}
+
+{# --- Add custom styles for the front page --- #}
+{% block site_meta %}
+{{super()}}   {# Include base metadata first #}
+<link rel="stylesheet" href="{{ 'assets/css/landing.css' | url }}">
+{% endblock %}
+
+{# --- Override site navigation sidebar --- #}
+{% block site_nav %}
+{% if nav %}
+{# Allow hiding the navigation via page metadata --- #}
+{% if page.meta and page.meta.hide %}
+{% set hidden = "hidden" if "navigation" in page.meta.hide %}
+{% endif %}
+
+<!-- Primary sidebar -->
+<div class="md-sidebar md-sidebar--primary"
+     data-md-component="sidebar"
+     data-md-type="navigation"
+     {{ hidden }}>
+    <div class="md-sidebar__scrollwrap">
+        <div class="md-sidebar__inner">
+            {# Include the main navigation list --- #}
+            {% include "partials/nav.html" %}
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endblock %}
