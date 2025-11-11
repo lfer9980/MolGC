@@ -25,6 +25,8 @@ import {
 	FooterSimpleMolGC,
 	HeaderMolGC
 } from 'components/organisms';
+
+import { ReportMolGC } from 'components/templates';
 // #endregion
 
 
@@ -39,6 +41,7 @@ import { STYLE_ENUM } from 'lib/helpers';
 
 
 // #region hooks
+import { useGenerateReport } from './hooks';
 import { useDashboard } from './useDashboard';
 // #endregion
 
@@ -55,6 +58,7 @@ import styles from './styles.module.scss';
 export default function Dashboard({ }) {
 	// #region hooks & others
 	const {
+		router,
 		loading,
 		resume,
 		nav,
@@ -62,6 +66,15 @@ export default function Dashboard({ }) {
 		handlerNav,
 		handlerRedirect,
 	} = useDashboard({});
+
+	const {
+        isGenerating,
+        handlerGeneratePDF,
+	} = useGenerateReport({
+		reportComponent: ReportMolGC,
+		resume: resume,
+	});
+
 	// #endregion
 
 	//#region main UI
@@ -150,12 +163,13 @@ export default function Dashboard({ }) {
 								</div>
 							</div>
 
-
 							<div className={styles.page_buttons}>
 								<ButtonColor
 									label='Generar reporte global en PDF'
 									symbol='data_table'
 									color={colorsApp.blue}
+									disabled={isGenerating}
+									handler={handlerGeneratePDF}
 									center
 								/>
 
@@ -163,6 +177,7 @@ export default function Dashboard({ }) {
 									label='Nuevo Analisis'
 									symbol='open_in_new'
 									color={colorsApp.green}
+									handler={() => router.push('/')}
 									center
 								/>
 							</div>

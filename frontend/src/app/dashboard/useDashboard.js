@@ -124,6 +124,7 @@ function useDashboard({ }) {
 
 	// #region main
 	return {
+		router,
 		loading,
 		resume,
 		nav,

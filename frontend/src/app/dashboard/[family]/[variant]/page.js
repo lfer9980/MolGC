@@ -25,6 +25,8 @@ import {
 	RowsTOPSIS,
 	TableX
 } from 'components/organisms';
+
+import { ReportMolGC } from 'components/templates';
 // #endregion
 
 
@@ -39,6 +41,7 @@ import { CHART_BAR_LEGEND_ENUM, CHART_ENUM } from 'lib/enums/charts';
 
 
 // #region hooks
+import { useGenerateReport } from './hooks';
 import { useVariant } from './useVariant';
 // #endregion
 
@@ -63,6 +66,14 @@ export default function DashboardVariant({ }) {
 		loading,
 		handlerNav
 	} = useVariant({});
+
+	const {
+        isGenerating,
+        handlerGeneratePDF,
+	} = useGenerateReport({
+		reportComponent: ReportMolGC,
+		data: data,
+	});
 	// #endregion
 
 	//#region main UI
@@ -158,10 +169,14 @@ export default function DashboardVariant({ }) {
 				}
 			</div>
 
-			<ButtonPrimary
-				label='Generar Reporte Individual en PDF'
-				symbol='data_table'
-			/>
+			<div className={styles.page_buttons}>
+				<ButtonPrimary
+					label='Generar Reporte Individual en PDF'
+					disabled={isGenerating}
+					handler={handlerGeneratePDF}
+					symbol='data_table'
+				/>
+			</div>
 		</div>
 	);
 	//#endregion
