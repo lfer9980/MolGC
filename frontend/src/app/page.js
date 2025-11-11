@@ -100,7 +100,7 @@ export default function App() {
 							</p>
 
 							<ElementLabel
-								label='Descubre como funciona el algoritmo'
+								label='Descubre cómo funciona el algoritmo'
 								href='/about'
 								color={colorsApp.red}
 								center
@@ -154,8 +154,8 @@ export default function App() {
 								<HeadingTitle
 									symbol='precision_manufacturing'
 									title='Modo de uso'
-									subtitle='Manual / Automatico'
-									label='MolGC puede leer tus archivos de forma automatica, pero si lo prefieres, puedes cargar tus archivos y categorizarlos de forma manual.'
+									subtitle='Manual / Automático'
+									label='MolGC puede leer tus archivos de forma automática, pero si lo prefieres, puedes cargar tus archivos y categorizarlos de forma manual.'
 									theme='dark'
 								/>
 
@@ -175,7 +175,7 @@ export default function App() {
 												<>
 													<div className={styles.page_select_panel}>
 														<ButtonColor
-															label='Subir archivos Automaticamente'
+															label='Subir archivos automáticamente'
 															symbol='backup'
 															color={colorsApp.blue}
 															size={24}
@@ -196,7 +196,7 @@ export default function App() {
 
 													<div className={styles.page_select_second}>
 														<ElementLabel
-															title='MolGC en accion'
+															title='MolGC en acción'
 															label='Juega con MolGC, con un archivo de prueba que tenemos preparado.'
 														/>
 
@@ -240,7 +240,7 @@ export default function App() {
 				<div className={styles.page_link}>
 					<ElementLink
 						href='/FAQs'
-						label='Documentacion y tutoriales de uso'
+						label='Documentación y tutoriales de uso'
 						symbol='help'
 					/>
 				</div>

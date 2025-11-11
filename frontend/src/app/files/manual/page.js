@@ -83,7 +83,7 @@ export default function FilesManual({ }) {
 						opened={view === 0}
 					>
 						<UploadX
-							title='Sube tu primer archivo y visualizalo aqui.'
+							title='Sube tu primer archivo y visualízalo aquí'
 							filesAccepted='.log,.castep,.out'
 							maxFiles={1}
 							files={files}
@@ -92,7 +92,7 @@ export default function FilesManual({ }) {
 					</ListSummary>
 
 					<ListSummary
-						title='Clasificacion de archivos'
+						title='Clasificación de archivos'
 						opened={view === 1}
 					>
 						{files.length > 0 &&
@@ -104,7 +104,7 @@ export default function FilesManual({ }) {
 						<div className={styles.page_form_main}>
 							<InputText
 								label='Software'
-								help='Este valor se calcula de forma automatica.'
+								help='Este valor se calcula de forma automática'
 								value={metadata.software}
 								handler={(value) => {
 									dispatchMetadata({

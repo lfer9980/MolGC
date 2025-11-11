@@ -56,8 +56,8 @@ export default function Analysis({ }) {
 
 			<footer className={styles.page_footer}>
 				<HeadingTitle
-					title='Analisis en curso'
-					label='Te avisaremos cuando este listo...'
+					title='Análisis en curso'
+					label='Te avisaremos cuando esté listo...'
 					symbol='account_tree'
 				/>
 

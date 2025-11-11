@@ -60,7 +60,7 @@ export default function Configuration({ }) {
 	return (
 		<form className={styles.page}>
 			<HeadingTitle
-				title='Configuracion Final'
+				title='Configuración Final'
 				symbol='not_started'
 				label='Indica el tipo de Algoritmo y la referencia de ser necesario.'
 			/>
@@ -69,8 +69,8 @@ export default function Configuration({ }) {
 				<div>
 
 					<InputSelect
-						label='Tipo de Analisis'
-						placeholder='Analisis Individual / Validacion Cruzada'
+						label='Tipo de Análisis'
+						placeholder='Análisis Individual / Validacion Cruzada'
 						options={ANALYSIS_OPTIONS}
 						value={config.analysis_type}
 						handler={(value) => dispatchConfig({
@@ -81,7 +81,7 @@ export default function Configuration({ }) {
 					/>
 					{/* TODO: delete this warning when cross validation done */}
 					<Hint
-						label='Por el momento, solo esta disponible el analisis individual'
+						label='Por el momento, solo está disponible el análisis individual'
 						state={STYLE_LOG_ENUM.WARNING}
 						theme='dark'
 					/>
@@ -90,14 +90,14 @@ export default function Configuration({ }) {
 				{viewReference &&
 					<InputSelect
 						label='Referencia de analisis'
-						placeholder='Elige la referencia que utilizaras para tu analisis individual'
+						placeholder='Elige la referencia que utilizarás para tu análisis individual'
 						value={config.reference}
 						handler={(value) => dispatchConfig({
 							type: ACTION_REDUCER_CONFIG.UPDATE,
 							payload: { reference: value }
 						})}
 						options={REFERENCES}
-						help='Referencia utilizada para el analisis individual'
+						help='Referencia utilizada para el análisis individual'
 					/>
 				}
 			</div>
@@ -107,14 +107,14 @@ export default function Configuration({ }) {
 				<div className={styles.page_link}>
 					<ElementLink
 						href='/FAQs'
-						label='Documentacion y tutoriales de uso'
+						label='Documentación y tutoriales de uso'
 						symbol='help'
 					/>
 				</div>
 
 				<ButtonPrimary
 					symbol='not_started'
-					label='Comenzar Analisis'
+					label='Comenzar Análisis'
 					handler={handlerStartAnalysis}
 				/>
 			</div>

@@ -93,7 +93,7 @@ function UploadX({
 						/>
 
 						<p className={styles.upload_title}>
-							Puedes subir hasta máximo {maxFiles} archivos por solicitud
+							Puedes subir hasta máximo {maxFiles} archivo(s) por solicitud
 						</p>
 
 						<div className={styles.upload_main}>

@@ -99,7 +99,7 @@ export default function LayoutFilesAuto({
 					<div className={styles.page_heading_head}>
 						<HeadingTitle
 							symbol='precision_manufacturing'
-							title='Modo Automatico'
+							title='Modo Automático'
 							theme='dark'
 						/>
 					</div>

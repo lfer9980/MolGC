@@ -111,7 +111,7 @@ export default function Files({ }) {
 				/>
 
 				<ButtonColor
-					label='Cancelar operacion'
+					label='Cancelar operación'
 					color={colorsApp.dark_red}
 					symbol='cancel'
 					handler={handlerDeleteJob}
@@ -123,7 +123,7 @@ export default function Files({ }) {
 			<div className={styles.page_link}>
 				<ElementLink
 					href='/FAQs'
-					label='Documentacion y tutoriales de uso'
+					label='Documentación y tutoriales de uso'
 					symbol='help'
 				/>
 			</div>

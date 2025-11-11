@@ -74,7 +74,7 @@ export default function FilesAuto({ }) {
 				<form className={styles.page_form}>
 					<div className={styles.page_form_main}>
 						<UploadX
-							title='Sube tu primer archivo y visualizalo aqui.'
+							title='Sube tu primer archivo y visualízalo aquí'
 							filesAccepted='.zip,.rar,.7z,.tar,.tar.gz,.tgz'
 							maxFiles={1}
 							files={files}
@@ -89,13 +89,13 @@ export default function FilesAuto({ }) {
 						<div className={styles.page_form_structure}>
 							<Tree
 								title='Estructura general'
-								label='Te presentamos la estructura que debe contener tu archivo comprimido, con esta estructura, MolGC sera capaz de leer tus archivos de forma automatica.'
+								label='Te presentamos la estructura que debe contener tu archivo comprimido, con esta estructura, MolGC sera capaz de leer tus archivos de forma automática.'
 								elements={TREE_FILES_STRUCTURE}
 								prefix='|-- '
 							/>
 
 							<Tree
-								title='Ejemplo practico'
+								title='Ejemplo práctico'
 								elements={TREE_FILES_STRUCTURE_EXAMPLE}
 								prefix='|-- '
 							/>

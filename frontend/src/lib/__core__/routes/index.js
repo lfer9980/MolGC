@@ -7,10 +7,10 @@ export const ROUTE_NAMES = {
 	'tutorials': 'Tutoriales',
 	'files': 'Archivos',
 	'manual': 'Modo Manual',
-	'automatic': 'Modo Automatico',
+	'automatic': 'Modo Automático',
 	'about': 'Sobre MOLGC',
-	'FAQs': 'Documentacion',
+	'FAQs': 'Documentación',
 	'resume': 'Resumen',
-	'configuration': 'Configuracion del analisis',
+	'configuration': 'Configuración del analisis',
 	'dashboard': 'Resultados',
 };

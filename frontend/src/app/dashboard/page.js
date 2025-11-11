@@ -174,7 +174,7 @@ export default function Dashboard({ }) {
 								/>
 
 								<ButtonColor
-									label='Nuevo Analisis'
+									label='Nuevo Análisis'
 									symbol='open_in_new'
 									color={colorsApp.green}
 									handler={() => router.push('/')}

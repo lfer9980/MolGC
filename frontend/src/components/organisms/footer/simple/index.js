@@ -35,7 +35,7 @@ import { useThemeStore } from 'context';
 
 
 function FooterSimpleMolGC({
-	label = 'Fisico Quimica Computacional Labs / UACH',
+	label = 'Fisicoquímica Computacional Labs / UACH',
 	noMargin = false,
 	theme = ''
 }) {
