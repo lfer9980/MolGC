@@ -5,7 +5,7 @@
 
 // #region libraries
 import { useParams } from 'next/navigation';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 // #endregion
 
 
@@ -37,6 +37,35 @@ import { HTTP_METHODS_ENUMS } from 'lib/requests/http/methods';
 // #endregion
 
 
+const TABS_VARIANT = [
+	{
+		symbol: 'bar_chart',
+		label: 'Graficas',
+	},
+	{
+		symbol: 'deployed_code',
+		label: 'Vista 3D',
+	},
+];
+
+const TABS_FAMILY = [
+	{
+		symbol: 'bar_chart',
+		label: 'Graficas',
+	},
+];
+
+const TABS_GENERAL = [
+	{
+		symbol: 'bar_chart',
+		label: 'Graficas',
+	},
+	{
+		symbol: 'table',
+		label: 'TOPSIS',
+	},
+];
+
 function useVariant({ }) {
 	// #region references
 	const params = useParams();
@@ -51,35 +80,6 @@ function useVariant({ }) {
 
 
 	// #region variables
-	const TABS_VARIANT = [
-		{
-			symbol: 'bar_chart',
-			label: 'Graficas',
-		},
-		{
-			symbol: 'deployed_code',
-			label: 'Vista 3D',
-		},
-	];
-
-	const TABS_FAMILY = [
-		{
-			symbol: 'bar_chart',
-			label: 'Graficas',
-		},
-	];
-
-	const TABS_GENERAL = [
-		{
-			symbol: 'bar_chart',
-			label: 'Graficas',
-		},
-		{
-			symbol: 'table',
-			label: 'TOPSIS',
-		},
-	];
-
 	const { family, variant } = params;
 	// #endregion
 
@@ -93,51 +93,52 @@ function useVariant({ }) {
 
 
 	// #region memos & callbacks
-	const handlerRequests = useCallback(async ({ family, variant }) => {
-		const token = job?.access_token;
-
-		if (family && variant && job?.resume) {
-			const resume = JSON.parse(job?.resume);
-			const endpoints = getReportUrls(resume, family, variant);
-
-			const results = await Promise.allSettled(
-				endpoints.map((item) => EndpointHTTP({
-					token: token,
-					method: HTTP_METHODS_ENUMS.GET,
-					endpoint: `${config.reportURL}${item?.url}`
-				}))
-			);
-
-			const formatted = results.reduce((acc, result, index) => {
-				const endpoint = endpoints[index];
-
-				acc[endpoint.type] = {
-					id: endpoint.id,
-					status: result.status,
-					data:
-						result.status === 'fulfilled'
-							? result.value.data.data
-							: result.reason,
-				};
-
-				return acc;
-			}, {});
-
-			const keys = Object.keys(formatted);
-			if (keys.includes('mae_general')) setTabs(TABS_GENERAL);
-			else if (keys.includes('mae_family')) setTabs(TABS_FAMILY);
-			else setTabs(TABS_VARIANT);
-
-			setData(formatted);
-			setLoading(false);
+	const resumeMemo = useMemo(() => {
+		try {
+			return job?.resume ? JSON.parse(job.resume) : null;
+		} catch {
+			return null;
 		}
+	}, [job?.resume]);
+
+	const handlerRequests = useCallback(async (family, variant, token, resume) => {
+		if (!family || !variant || !resume) return;
+
+		const endpoints = getReportUrls(resume, family, variant);
+		const requests = endpoints.map((item) =>
+			EndpointHTTP({
+				token,
+				method: HTTP_METHODS_ENUMS.GET,
+				endpoint: `${config.reportURL}${item.url}`
+			})
+		);
+
+		const results = await Promise.allSettled(requests);
+
+		const formatted = endpoints.reduce((acc, endpoint, i) => {
+			const result = results[i];
+			acc[endpoint.type] = {
+				id: endpoint.id,
+				status: result.status,
+				data: result.status === 'fulfilled'
+					? result.value.data.data
+					: result.reason
+			};
+			return acc;
+		}, { metadata: { family, variant } });
+
+		const keys = Object.keys(formatted);
+		setTabs(
+			keys.includes('mae_general')
+				? TABS_GENERAL
+				: keys.includes('mae_family')
+					? TABS_FAMILY
+					: TABS_VARIANT
+		);
+
+		setData(formatted);
+		setLoading(false);
 	}, []);
-
-	useEffect(() => {
-		if (nav === 1) {
-			setTimeout(() => window.dispatchEvent(new Event("resize")), 150);
-		}
-	}, [nav]);
 	// #endregion
 
 
@@ -156,11 +157,16 @@ function useVariant({ }) {
 
 	// #region effects
 	useEffect(() => {
-		handlerRequests({
-			family: family,
-			variant: variant
-		});
-	}, [family, variant]);
+		if (nav === 1) {
+			const id = setTimeout(() => window.dispatchEvent(new Event("resize")), 300);
+			return () => clearTimeout(id);
+		}
+	}, [nav]);
+
+	useEffect(() => {
+		if (!job?.resume) return;
+		handlerRequests(family, variant, job.access_token, resumeMemo);
+	}, [family, variant, job?.access_token]);
 	// #endregion
 
 
@@ -174,6 +180,7 @@ function useVariant({ }) {
 		job,
 		nav,
 		data,
+		family,
 		variant,
 		loading,
 		handlerNav

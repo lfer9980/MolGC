@@ -41,8 +41,8 @@ import { STYLE_ENUM } from 'lib/helpers';
 
 
 // #region hooks
-import { useGenerateReport } from './hooks';
 import { useDashboard } from './useDashboard';
+import { useGenerateReport } from 'hooks';
 // #endregion
 
 
@@ -68,8 +68,8 @@ export default function Dashboard({ }) {
 	} = useDashboard({});
 
 	const {
-        isGenerating,
-        handlerGeneratePDF,
+		isGenerating,
+		handlerGeneratePDF,
 	} = useGenerateReport({
 		reportComponent: ReportMolGC,
 		resume: resume,

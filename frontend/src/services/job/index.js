@@ -232,17 +232,7 @@ function useServiceJob({ }) {
 					property: !response ? 'null' : response.status,
 				});
 
-				handlerAddMessage({
-					content: {
-						icon: 'error',
-						title: newStatus?.title,
-						label: newStatus?.label,
-						allowOutsideClick: false,
-						timer: null,
-						navigateTo: '/',
-					},
-					type: MESSAGE_ENUM.ALERT
-				});
+				handlerDeleteJobStore();
 				return false;
 			};
 

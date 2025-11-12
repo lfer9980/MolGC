@@ -41,7 +41,7 @@ import { CHART_BAR_LEGEND_ENUM, CHART_ENUM } from 'lib/enums/charts';
 
 
 // #region hooks
-import { useGenerateReport } from './hooks';
+import { useGenerateReport } from 'hooks';
 import { useVariant } from './useVariant';
 // #endregion
 
@@ -62,17 +62,19 @@ export default function DashboardVariant({ }) {
 		job,
 		nav,
 		data,
+		family,
 		variant,
 		loading,
 		handlerNav
 	} = useVariant({});
 
 	const {
-        isGenerating,
-        handlerGeneratePDF,
+		isGenerating,
+		handlerGeneratePDF,
 	} = useGenerateReport({
 		reportComponent: ReportMolGC,
 		data: data,
+		name: `${family}_${variant}`,
 	});
 	// #endregion
 
@@ -83,10 +85,11 @@ export default function DashboardVariant({ }) {
 				type={LOADER_ENUM.DOTS}
 				number={29}
 				size={32}
-				label='cargando resultados...'
+				label='cargando...'
 			/>
 		</section>
 	);
+
 
 	return (
 		<div className={styles.page_main}>
@@ -105,18 +108,6 @@ export default function DashboardVariant({ }) {
 			</div>
 
 			<div className={styles.page_section} style={{ display: nav === 0 ? "block" : "none" }}>
-				{data['mae_family'] &&
-					<ChartWrap
-						title='Bond Lenghts'
-						label={data['mae_family'].data.title}
-					>
-						<ChartBar
-							positionLegend={CHART_BAR_LEGEND_ENUM.BOTTOM}
-							data={data['mae_family'].data}
-						/>
-					</ChartWrap>
-				}
-
 				{data['mae_general'] &&
 					<ChartWrap
 						title='Bond Lenghts'
@@ -127,6 +118,18 @@ export default function DashboardVariant({ }) {
 							aspect={CHART_ENUM.STACKED}
 							data={data['mae_general'].data}
 							transparency
+						/>
+					</ChartWrap>
+				}
+
+				{data['mae_family'] &&
+					<ChartWrap
+						title='Bond Lenghts'
+						label={data['mae_family'].data.title}
+					>
+						<ChartBar
+							positionLegend={CHART_BAR_LEGEND_ENUM.BOTTOM}
+							data={data['mae_family'].data}
 						/>
 					</ChartWrap>
 				}
@@ -157,7 +160,9 @@ export default function DashboardVariant({ }) {
 			</div>
 
 			<div className={styles.page_section} style={{ display: nav === 1 ? "block" : "none" }}>
-				{data['structure'] && <PlotStructure structure={data['structure']} />}
+				{data['structure'] &&
+					<PlotStructure structure={data['structure']} />
+				}
 
 				{data['topsis'] &&
 					<TableX

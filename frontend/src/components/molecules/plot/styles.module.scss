@@ -12,11 +12,14 @@
 
 	// #region unit elements
 	&_structure {
-		height: 70rem;
 		width: 100%;
-		margin-block-start: 3.2rem;
 		position: relative;
+
+		&.full {
+			height: 70rem;
+		}
 	}
+
 
 	// #endregion
 

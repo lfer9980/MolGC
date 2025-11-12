@@ -178,7 +178,7 @@ body[data-md-color-scheme=slate] {
 }
 
 .md-header__button.md-logo {
-    width: auto;
+    width: 15rem;
     /* Resize logo button */
 }
 

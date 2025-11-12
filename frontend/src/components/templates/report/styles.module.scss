@@ -2,8 +2,6 @@
 
 .report {
 	// #region general
-	width: 100vw;
-	padding: 2.4rem;
 	background-color: $white !important;
 	@include fontSizeMobile;
 	// #endregion
@@ -19,15 +17,14 @@
 	}
 
 	&_head {
-		margin-block-start: 2.4rem;
+		margin-block-start: 1.6rem;
 	}
 
 	&_reference {
 		color: $red30;
 		font-weight: 700;
+		text-align: end;
 	}
-
-
 	// #endregion
 
 

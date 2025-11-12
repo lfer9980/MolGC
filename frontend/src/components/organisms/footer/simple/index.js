@@ -66,7 +66,7 @@ function FooterSimpleMolGC({
 			</p>
 
 			<p className={styles.footer_version}>
-				{config?.version}
+				v{config?.version}
 			</p>
 		</div>
 	);

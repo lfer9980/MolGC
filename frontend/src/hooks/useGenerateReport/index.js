@@ -32,7 +32,7 @@ import ReactDOM from 'react-dom/client';
 // #endregion
 
 
-function useGenerateReport({ reportComponent, resume, data }) {
+function useGenerateReport({ reportComponent, name, resume, data }) {
     // #region references
     // #endregion
 
@@ -42,6 +42,7 @@ function useGenerateReport({ reportComponent, resume, data }) {
 
 
     // #region variables
+    const reportName = `Reporte_${name ?? 'General'}`;
     // #endregion
 
 
@@ -63,7 +64,7 @@ function useGenerateReport({ reportComponent, resume, data }) {
 
 
     // #region handlers
-    const _handlerCopyStylesToPopup = ({ source, target }) => {
+    const _handlerCopyStylesToPopup = async ({ source, target }) => {
         const promises = [];
 
         const links = Array.from(source.querySelectorAll('link[rel="stylesheet"]'));
@@ -103,7 +104,7 @@ function useGenerateReport({ reportComponent, resume, data }) {
         return Promise.all(promises);
     };
 
-    const _handlerOpenPopup = ({
+    const _handlerOpenPopup = async ({
         component,
         props = {},
         width = 1000,
@@ -141,11 +142,11 @@ function useGenerateReport({ reportComponent, resume, data }) {
         <html>
           <head>
             <meta charset="utf-8" />
-            <title>Reporte</title>
+             <title>${reportName}</title>
             <meta name="viewport" content="width=device-width, initial-scale=1" />
             <style>
-              @page { size: A4; margin: 15mm; }
-              body { margin: 0; -webkit-print-color-adjust: exact; font-family: Arial, sans-serif; }
+              @page { size: A4; margin: 10mm; }
+              body { margin: 0; -webkit-print-color-adjust: exact; font-family: "Roboto", Arial, sans-serif; }
             </style>
           </head>
           <body>
@@ -179,7 +180,7 @@ function useGenerateReport({ reportComponent, resume, data }) {
         } catch (e) { };
 
         try {
-            await _handlerCopyStylesToPopup(document, newWindow.document);
+            await _handlerCopyStylesToPopup({ source: document, target: newWindow.document });
         } catch (err) {
             console.warn('_handlerCopyStylesToPopup fallo:', err);
         };
@@ -207,7 +208,7 @@ function useGenerateReport({ reportComponent, resume, data }) {
                     clearInterval(id);
                     resolve(null);
                 };
-                
+
             }, intervalMs);
         });
 
@@ -222,13 +223,32 @@ function useGenerateReport({ reportComponent, resume, data }) {
         const onRendered = () => {
             try {
                 newWindow.focus();
+
                 setTimeout(() => {
-                    try { newWindow.print(); } catch (e) { console.error('Error print:', e); }
-                    if (closeAfterPrint) setTimeout(() => { try { newWindow.close(); } catch (e) { } }, 500);
-                }, 300);
+                    try {
+                        const svgs = newWindow.document.querySelectorAll('.main-svg');
+
+                        svgs.forEach(svg => {
+                            const hasPlotLayer = svg.querySelector('.cartesianlayer, .plot, .legend');
+                            if (!hasPlotLayer) {
+                                svg.remove();
+                            }
+                        });
+
+                        newWindow.print();
+
+                        if (closeAfterPrint) {
+                            setTimeout(() => {
+                                try { newWindow.close(); } catch (e) { }
+                            }, 500);
+                        }
+                    } catch (e) {
+                        console.error('Error al imprimir:', e);
+                    }
+                }, 1000);
             } catch (err) {
                 console.error('onRendered error:', err);
-            };
+            }
         };
 
         /* render component */
@@ -251,24 +271,24 @@ function useGenerateReport({ reportComponent, resume, data }) {
     };
 
     const handlerGeneratePDF = async () => {
-		setIsGenerating(true);
+        setIsGenerating(true);
 
-		try {
-			await _handlerOpenPopup({
-				component: reportComponent,
-				props: { resume: resume, data: data },
-				width: 1000,
-				height: 900,
-				closeAfterPrint: false
-			});
+        try {
+            await _handlerOpenPopup({
+                component: reportComponent,
+                props: { resume: resume, data: data },
+                width: 800,
+                height: 900,
+                closeAfterPrint: false
+            });
 
-		} catch (err) {
-			console.error('Error al abrir popup:', err);
-			alert(err.message || 'Error al generar el reporte');
-		} finally {
-			setIsGenerating(false);
-		};
-	};
+        } catch (err) {
+            console.error('Error al abrir popup:', err);
+            alert(err.message || 'Error al generar el reporte');
+        } finally {
+            setIsGenerating(false);
+        };
+    };
     // #endregion
 
 

@@ -10,13 +10,12 @@ extra_css:
 
 theme:
   name: material
-  custom_dir: overrides
+  custom_dir: src/overrides
   logo: assets/images/logotipo_bw.png
   language: es
 
 nav:
   - Inicio: index.md
-  - Guía rápida: getting-started.md
   - Guía:
       - Instalación: guide/installation.md
       - Uso: guide/usage.md

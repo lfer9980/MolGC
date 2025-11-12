@@ -1,2 +1,2 @@
 export * from './__core__';
-export { useGenerateReport } from './useReport';
+export { useGenerateReport } from './useGenerateReport';

@@ -75,12 +75,5 @@
     "url": "/",
     "estado": "En desarrollo",
     "color": "#0F60A7"
-  },
-  {
-    "categoria": "Reportes",
-    "pantalla": "report",
-    "url": "/report",
-    "estado": "Desconocido",
-    "color": "#F25238"
   }
 ]

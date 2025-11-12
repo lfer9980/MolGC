@@ -71,7 +71,7 @@ def init_worker_db(**kwargs):
     logger = get_celery_logger()
 
     try:
-        if getattr(settings, "use_database", False):
+        if getattr(settings.celery, "use_database", False):
             db_settings = settings.database
             logger.info("Initializing database for worker process...")
 
@@ -95,7 +95,7 @@ def shutdown_worker_db(**kwargs):
     global _worker_loop
 
     try:
-        if getattr(settings, "use_database", False):
+        if getattr(settings.celery, "use_database", False):
             logger.info("Closing database connection...")
 
             loop = get_or_create_event_loop()

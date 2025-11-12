@@ -247,7 +247,6 @@ export const helperCreateDatasetScatter = ({
 			}
 		});
 
-
 		return {
 			datasets: newData,
 		}

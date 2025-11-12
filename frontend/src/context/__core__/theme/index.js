@@ -91,7 +91,8 @@ export function ThemeStoreProvider({ children }) {
 	useEffect(() => {
 		const storedTheme = localStorage.getItem('theme');
 		const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-		const initialTheme = storedTheme || (prefersDark ? THEME_ENUM.DARK : THEME_ENUM.LIGHT);
+		/* important note: this line is on purpose to always force dark theme */
+		const initialTheme = storedTheme || (prefersDark ? THEME_ENUM.DARK : THEME_ENUM.DARK);
 
 		setSystemPrefersDark(prefersDark);
 		setTheme(initialTheme);

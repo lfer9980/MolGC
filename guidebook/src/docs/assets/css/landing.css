@@ -29,7 +29,7 @@
     /* Semi-bold */
     font-size: 40px;
     /* Large heading size */
-    font-family: -apple-system, ui-sans-serif, system-ui;
+    font-family: 'Roboto';
     /* System-friendly sans serif font stack */
     color: var(--md-default-fg-color);
     /* Uses MkDocs theme’s main foreground color */
@@ -41,7 +41,7 @@
     /* Tiny horizontal padding */
     font-weight: 600;
     font-size: 32px;
-    font-family: same as above;
+    font-family: 'Roboto';
     color: var(--md-default-fg-color--light);
     /* Slightly lighter foreground */
 }
