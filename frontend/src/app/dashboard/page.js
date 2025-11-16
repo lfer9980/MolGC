@@ -13,6 +13,7 @@ import { WrapMain } from 'components/__common__';
 import {
 	ButtonColor,
 	ButtonPill,
+	ButtonPrimary,
 	HeadingTitle,
 	Loader,
 	LOADER_ENUM
@@ -26,7 +27,7 @@ import {
 	HeaderMolGC
 } from 'components/organisms';
 
-import { ReportMolGC } from 'components/templates';
+import { ProgressOverlay, ReportMolGC } from 'components/templates';
 // #endregion
 
 
@@ -72,6 +73,8 @@ export default function Dashboard({ }) {
 	const {
 		isGenerating,
 		handlerGeneratePDF,
+		progress,
+		totalImages,
 	} = useGenerateReport({
 		reportComponent: ReportMolGC,
 		name: 'general',
@@ -167,7 +170,7 @@ export default function Dashboard({ }) {
 							</div>
 
 							<div className={styles.page_buttons}>
-								<ButtonColor
+								<ButtonPrimary
 									label='Generar reporte global en PDF'
 									symbol='data_table'
 									color={colorsApp.blue}
@@ -191,6 +194,19 @@ export default function Dashboard({ }) {
 				}
 			</WrapMain>
 			<FooterMolGC />
+
+			<ProgressOverlay
+				isVisible={isGenerating}
+				progress={progress}
+				total={totalImages}
+				message={
+					progress === 0
+						? 'Iniciando generación...'
+						: progress === totalImages && totalImages > 0
+							? 'Abriendo reporte...'
+							: 'Procesando gráficos...'
+				}
+			/>
 		</>
 	);
 	//#endregion

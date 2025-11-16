@@ -30,8 +30,6 @@ import ReactDOM from 'react-dom/client';
 
 // #region requests
 // #endregion
-
-
 function useGenerateReport({
     reportComponent,
     name,
@@ -41,6 +39,8 @@ function useGenerateReport({
 }) {
     // #region states
     const [isGenerating, setIsGenerating] = useState(false);
+    const [progress, setProgress] = useState(0);
+    const [totalImages, setTotalImages] = useState(0);
     // #endregion
 
     // #region variables
@@ -48,6 +48,52 @@ function useGenerateReport({
     // #endregion
 
     // #region handlers
+    const _plotlyToImage = async (structure, { format = 'svg', width = 1000, height = 600 } = {}) => {
+        const Plotly = (await import('plotly.js-dist-min')).default || (await import('plotly.js-dist-min'));
+        const gd = document.createElement('div');
+
+        gd.style.position = 'fixed';
+        gd.style.left = '-9999px';
+        gd.style.top = '-9999px';
+        gd.style.width = `${width}px`;
+        gd.style.height = `${height}px`;
+        document.body.appendChild(gd);
+
+        try {
+            await Plotly.newPlot(
+                gd,
+                structure.data.data,
+                {
+                    ...structure.data.layout,
+                    width,
+                    height
+                },
+                {
+                    responsive: false,
+                    staticPlot: true
+                }
+            );
+
+            await new Promise(resolve => requestAnimationFrame(resolve));
+            await new Promise(resolve => setTimeout(resolve, 50));
+
+            const imgData = await Plotly.toImage(gd, { format, width, height, scale: 1 });
+
+            return imgData;
+        } catch (error) {
+            console.error('Error generando imagen de Plotly:', error);
+            throw error;
+        } finally {
+            try {
+                Plotly.purge(gd);
+            } catch (e) { /* ignore */ }
+
+            try {
+                document.body.removeChild(gd);
+            } catch (e) { /* ignore */ }
+        }
+    };
+
     const _handlerCopyStylesToPopup = async ({ source, target }) => {
         const promises = [];
 
@@ -96,7 +142,6 @@ function useGenerateReport({
         closeAfterPrint = false,
         maxWaitForRootMs = 3000
     } = {}) => {
-        /* calculates open position */
         const dualScreenLeft = window.screenLeft !== undefined ? window.screenLeft : window.screenX;
         const dualScreenTop = window.screenTop !== undefined ? window.screenTop : window.screenY;
         const windowWidth = window.innerWidth || document.documentElement.clientWidth || screen.width;
@@ -121,7 +166,6 @@ function useGenerateReport({
         const newWindow = window.open('', '_blank', features);
         if (!newWindow) throw new Error('Popup bloqueada. Permite ventanas emergentes.');
 
-        /* HTML skeleton with loading spinner */
         newWindow.document.write(`<!doctype html>
         <html>
           <head>
@@ -136,7 +180,6 @@ function useGenerateReport({
                 font-family: "Roboto", Arial, sans-serif; 
               }
               
-              /* Loading overlay styles */
               #loading-overlay {
                 position: fixed;
                 top: 0;
@@ -177,7 +220,6 @@ function useGenerateReport({
                 font-size: 16px;
               }
               
-              /* Hide loading overlay when printing */
               @media print {
                 #loading-overlay {
                   display: none !important;
@@ -188,7 +230,7 @@ function useGenerateReport({
           <body>
             <div id="loading-overlay">
               <div class="spinner"></div>
-              <div class="loading-text">Generando reporte...</div>
+              <div class="loading-text">Preparando reporte...</div>
             </div>
             <div id="root"></div>
           </body>
@@ -196,7 +238,6 @@ function useGenerateReport({
 
         newWindow.document.close();
 
-        /* avoid error with lockdown-install.js with infinite loops */
         try {
             let errorCount = 0;
             const MAX_ERRORS = 5;
@@ -225,7 +266,6 @@ function useGenerateReport({
             console.warn('_handlerCopyStylesToPopup fallo:', err);
         };
 
-        /* wait to #root element on popup */
         const rootEl = await new Promise((resolve) => {
             const intervalMs = 80;
             let waited = 0;
@@ -259,10 +299,8 @@ function useGenerateReport({
 
         const root = ReactDOM.createRoot(rootEl);
 
-        /* callback to hide loading and indicate that component finishes the renderization */
         const onRendered = () => {
             try {
-                // Hide loading overlay
                 const loadingOverlay = newWindow.document.getElementById('loading-overlay');
                 if (loadingOverlay) {
                     loadingOverlay.classList.add('hidden');
@@ -300,7 +338,6 @@ function useGenerateReport({
             }
         };
 
-        /* render component */
         try {
             root.render(React.createElement(component, { ...props, onRendered }));
         } catch (err) {
@@ -309,7 +346,6 @@ function useGenerateReport({
             throw err;
         };
 
-        /* clean all if user closes the window */
         try {
             newWindow.addEventListener('beforeunload', () => {
                 try { root.unmount(); } catch (_) { }
@@ -320,23 +356,64 @@ function useGenerateReport({
     };
 
     const handlerGeneratePDF = async () => {
-        setIsGenerating(true);
+        setTimeout(async () => {
+            setIsGenerating(true);
+            setProgress(0);
 
-        try {
-            await _handlerOpenPopup({
-                component: reportComponent,
-                props: { job: job, records: records, showResume: showResume },
-                width: 800,
-                height: 900,
-                closeAfterPrint: false
-            });
+            await new Promise(resolve => setTimeout(resolve, 100));
 
-        } catch (err) {
-            console.error('Error al abrir popup:', err);
-            alert(err.message || 'Error al generar el reporte');
-        } finally {
-            setIsGenerating(false);
-        };
+            try {
+                const recordsForPrint = JSON.parse(JSON.stringify(records || {}));
+
+                const elementsToProcess = [];
+                (recordsForPrint.children || []).forEach((family, fi) => {
+                    (family.children || []).forEach((variant, vi) => {
+                        (variant.children || []).forEach((el, ei) => {
+                            if (['rmsd', 'mae_general', 'mae_family', 'mae_variant', 'structure'].includes(el.type)) {
+                                elementsToProcess.push({ el, fi, vi, ei });
+                            }
+                        });
+                    });
+                });
+
+                setTotalImages(elementsToProcess.length);
+
+                for (let i = 0; i < elementsToProcess.length; i++) {
+                    const { el } = elementsToProcess[i];
+
+                    const opts = el.type === 'structure'
+                        ? { format: 'svg', width: 1200, height: 800 }
+                        : { format: 'svg', width: 1000, height: 500 };
+
+                    try {
+                        const img = await _plotlyToImage(el, opts);
+                        el.staticImage = img;
+                    } catch (err) {
+                        console.warn(`Error generando imagen del chart ${el.type}:`, err);
+                        el.staticImage = null;
+                    }
+
+                    setProgress(i + 1);
+                    await new Promise(resolve => setTimeout(resolve, 200));
+                }
+
+                await _handlerOpenPopup({
+                    component: reportComponent,
+                    props: { job, records: recordsForPrint, showResume },
+                    width: 800,
+                    height: 900,
+                    closeAfterPrint: false
+                });
+
+            } catch (err) {
+                console.error('Error al abrir popup:', err);
+                alert(err.message || 'Error al generar el reporte');
+            } finally {
+                setIsGenerating(false);
+                setProgress(0);
+                setTotalImages(0);
+            }
+        }, 0);
     };
     // #endregion
 
@@ -344,6 +421,8 @@ function useGenerateReport({
     return {
         isGenerating,
         handlerGeneratePDF,
+        progress,
+        totalImages,
     };
     // #endregion
 }

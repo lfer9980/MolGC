@@ -211,7 +211,7 @@ class DataReport:
         for family, functional_data in grouped_by_family.items():
             dataset_values = [functional_data.get(label, 0) for label in labels]
             datasets.append({
-                "type": f"{'bar' if family != 'average' else 'line'}",
+                "type": f"{'bar' if family != 'AVERAGE' else 'line'}",
                 "label": family,
                 "data": dataset_values
             })

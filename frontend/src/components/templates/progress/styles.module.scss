@@ -1,0 +1,67 @@
+@use 'styles/vars' as *;
+
+.progress {
+	// #region general
+	background-color: white;
+	padding: 1.6rem;
+	text-align: center;
+	animation: scaleIn 0.3s ease-out;
+	gap: 2.4rem;
+	width: 100%;
+	max-width: 30rem;
+	align-self: center;
+	border-radius: 0.8rem;
+	@include shadow;
+	// #endregion
+
+
+	// #region unit elements
+	&_loader {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 3.2rem;
+	}
+
+	&_bar {
+		width: 100%;
+	}
+
+	&_label {
+		margin-block-start: 1.6rem;
+		font-size: 1.6rem;
+		color: var(--content-secondary);
+	}
+
+	// #endregion
+
+
+	// #region others 
+	// #endregion
+
+
+	// #region derived states 
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {}
+
+	@include desktop {}
+
+	@include large {}
+
+	// #endregion
+}
+
+@keyframes scaleIn {
+	from {
+		opacity: 0;
+		transform: scale(0.8);
+	}
+
+	to {
+		opacity: 1;
+		transform: scale(1);
+	}
+}

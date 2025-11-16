@@ -34,12 +34,12 @@ import { THEME_ENUM } from 'context/__core__/theme/__data__';
 // #region styles
 import styles from './styles.module.scss';
 // #endregion
-
 function PlotStructure({
 	structure,
 	isStatic = false,
 	hideLegend = false,
 	theme = '',
+	imageSrc = null,
 	onMount,
 }) {
 	// #region hooks & others
@@ -65,9 +65,55 @@ function PlotStructure({
 	const appliedTheme = theme || globalTheme;
 
 	const fullStyle = !isStatic ? styles.full : '';
+
+	if (imageSrc) {
+		return (
+			<div className={`${styles.page_structure} ${fullStyle}`} style={{ position: 'relative' }}>
+				<img
+					src={imageSrc}
+					alt={structure?.data?.title || 'plot'}
+					style={{
+						width: '100%',
+						height: 'auto',
+						display: 'block',
+						maxWidth: '100%'
+					}}
+				/>
+			</div>
+		);
+	}
+
+	if (isStatic) {
+		if (!structure) return null;
+
+		return (
+			<div className={`${styles.page_structure} ${fullStyle}`}>
+				<Plot
+					data={structure.data?.data}
+					layout={{
+						...structure.data?.layout,
+						autosize: true,
+						showlegend: !hideLegend,
+						paper_bgcolor: "rgba(0,0,0,0)",
+						plot_bgcolor: "rgba(0,0,0,0)",
+					}}
+					config={{
+						staticPlot: true,
+						displayModeBar: false,
+						displaylogo: false,
+					}}
+					style={{
+						width: "100%",
+						height: "100%",
+						position: "relative",
+					}}
+					useResizeHandler
+				/>
+			</div>
+		);
+	}
 	// #endregion
 
-	// #region main UI
 	const plotFigure = useMemo(() => {
 		if (!structure) return null;
 
@@ -126,14 +172,14 @@ function PlotStructure({
 				},
 			margin: { l: 0, r: 0, t: 40, b: 0, pad: 0 },
 			autosize: true,
-			dragmode: isStatic ? false : "orbit",
+			dragmode: "orbit",
 		};
 
 		const config = {
 			responsive: true,
-			displayModeBar: !isStatic ? true : false,
-			scrollZoom: !isStatic,
-			doubleClick: !isStatic ? "reset" : false,
+			displayModeBar: true,
+			scrollZoom: true,
+			doubleClick: "reset",
 			displaylogo: false,
 			modeBarButtonsToRemove: [
 				"zoom2d",
@@ -163,7 +209,7 @@ function PlotStructure({
 				useResizeHandler={true}
 			/>
 		);
-	}, [structure, isSmall, appliedTheme, hideLegend, isStatic]);
+	}, [structure, isSmall, appliedTheme, hideLegend]);
 
 	return (
 		<div className={`${styles.page_structure} ${fullStyle}`}>

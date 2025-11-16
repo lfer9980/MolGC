@@ -1,5 +1,3 @@
-/* 
-*/
 @use 'styles/vars' as *;
 
 .bar {
@@ -53,10 +51,11 @@
 	}
 
 	&_main::-webkit-progress-value {
-		background-color: var(--background-accent);
+		background: linear-gradient(90deg,
+				var(--primary),
+				var(--secondary));
 		transition: width 0.5s ease-in-out;
 	}
-
 	// #endregion
 
 

@@ -14,10 +14,8 @@ import {
 	CardTable,
 	ChartBar,
 	ChartLine,
-	ChartRadar,
 	ChartWrap,
 	FooterSimpleMolGC,
-	RowsProgress,
 	RowsTOPSIS,
 	TableX
 } from 'components/organisms';
@@ -62,7 +60,6 @@ function ReportMolGC({
 		onRendered: onRendered,
 		records: records,
 	});
-
 
 	function renderChart(el, key) {
 		const common = {
@@ -138,6 +135,7 @@ function ReportMolGC({
 							isStatic
 							hideLegend
 							theme='light'
+							imageSrc={el.staticImage || null}
 						/>
 					</div>
 				);
@@ -147,7 +145,6 @@ function ReportMolGC({
 	};
 
 	// #endregion
-
 
 	// #region main UI
 	return (

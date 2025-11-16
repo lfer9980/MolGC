@@ -25,7 +25,7 @@ import {
 	TableX
 } from 'components/organisms';
 
-import { ReportMolGC } from 'components/templates';
+import { ProgressOverlay, ReportMolGC } from 'components/templates';
 // #endregion
 
 
@@ -35,7 +35,7 @@ import { ReportMolGC } from 'components/templates';
 
 // #region utils
 import { COLUMNS_TOPSIS } from 'lib/data/tables/TOPSIS';
-import { CHART_BAR_LEGEND_ENUM, CHART_ENUM } from 'lib/enums/charts';
+import { CHART_BAR_LEGEND_ENUM } from 'lib/enums/charts';
 // #endregion
 
 
@@ -73,6 +73,8 @@ export default function DashboardVariant({ }) {
 	const {
 		isGenerating,
 		handlerGeneratePDF,
+		progress,
+		totalImages,
 	} = useGenerateReport({
 		reportComponent: ReportMolGC,
 		records: records,
@@ -92,7 +94,6 @@ export default function DashboardVariant({ }) {
 					<ChartWrap title="Bond Lengths" {...common} key={key}>
 						<ChartBar
 							positionLegend={CHART_BAR_LEGEND_ENUM.BOTTOM}
-							aspect={CHART_ENUM.STACKED}
 							data={item.data}
 							transparency
 						/>
@@ -196,38 +197,54 @@ export default function DashboardVariant({ }) {
 	);
 
 	return (
-		<div className={styles.page_main}>
-			<div className={styles.page_title}>
-				<HeadingSubtitle
-					title={variant}
-					label={`Referencia: ${job?.reference}`}
-				/>
+		<>
+			<div className={styles.page_main}>
+				<div className={styles.page_title}>
+					<HeadingSubtitle
+						title={variant}
+						label={`Referencia: ${job?.reference}`}
+					/>
 
-				<NavigatorTabs
-					elements={tabs}
-					navPos={nav}
-					handler={handlerNav}
-					center
-				/>
+					<NavigatorTabs
+						elements={tabs}
+						navPos={nav}
+						handler={handlerNav}
+						center
+					/>
+				</div>
+
+				<div className={styles.page_section} style={{ display: nav === 0 ? "block" : "none" }}>
+					{charts.map((chart, idx) => renderChart(chart, `chart-${idx}`))}
+				</div>
+
+				<div className={styles.page_section} style={{ display: nav === 1 ? "block" : "none" }}>
+					{fullWidth.map((item, idx) => renderFull(item, `full-${idx}`))}
+				</div>
+
+				<div className={styles.page_buttons}>
+					<ButtonPrimary
+						label={isGenerating ? 'Generando...' : 'Generar Reporte Individual en PDF'}
+						loading={isGenerating}
+						handler={handlerGeneratePDF}
+						symbol='data_table'
+						disabled={isGenerating}
+					/>
+				</div>
 			</div>
 
-			<div className={styles.page_section} style={{ display: nav === 0 ? "block" : "none" }}>
-				{charts.map((chart, idx) => renderChart(chart, `chart-${idx}`))}
-			</div>
-
-			<div className={styles.page_section} style={{ display: nav === 1 ? "block" : "none" }}>
-				{fullWidth.map((item, idx) => renderFull(item, `full-${idx}`))}
-			</div>
-
-			<div className={styles.page_buttons}>
-				<ButtonPrimary
-					label='Generar Reporte Individual en PDF'
-					disabled={isGenerating}
-					handler={handlerGeneratePDF}
-					symbol='data_table'
-				/>
-			</div>
-		</div>
+			<ProgressOverlay
+				isVisible={isGenerating}
+				progress={progress}
+				total={totalImages}
+				message={
+					progress === 0
+						? 'Iniciando generación...'
+						: progress === totalImages && totalImages > 0
+							? 'Abriendo reporte...'
+							: 'Procesando gráficos...'
+				}
+			/>
+		</>
 	);
 	//#endregion
-};
+}
