@@ -10,6 +10,18 @@ const _themeSelect = (theme) => theme === 'dark'
 		colorsApp.dark_red,
 		colorsApp.dark_orange,
 		colorsApp.dark_purple,
+		colorsApp.aux_blue,
+		colorsApp.aux_purple,
+		colorsApp.aux_green,
+		colorsApp.aux_orange,
+		colorsApp.aux_red,
+		colorsApp.aux_green_2,
+		colorsApp.aux_jade,
+		colorsApp.aux_yellow,
+		colorsApp.aux_aqua,
+		colorsApp.aux_lemon,
+		colorsApp.aux_olive,
+		colorsApp.aux_olive,
 	]
 	: [
 		colorsApp.blue,
@@ -17,6 +29,18 @@ const _themeSelect = (theme) => theme === 'dark'
 		colorsApp.red,
 		colorsApp.orange,
 		colorsApp.purple,
+		colorsApp.aux_blue,
+		colorsApp.aux_purple,
+		colorsApp.aux_green,
+		colorsApp.aux_orange,
+		colorsApp.aux_red,
+		colorsApp.aux_green_2,
+		colorsApp.aux_jade,
+		colorsApp.aux_yellow,
+		colorsApp.aux_aqua,
+		colorsApp.aux_lemon,
+		colorsApp.aux_olive,
+		colorsApp.aux_olive,
 	];
 
 
@@ -94,7 +118,6 @@ export const helperCreateDataset = ({
 				data: item.data,
 				backgroundColor: colorPalette[i % colorPalette.length],
 				borderColor: colorPalette[i % colorPalette.length],
-				borderColor: colorsApp.transparent,
 				borderWidth: 2,
 				fill: false,
 			}
@@ -224,7 +247,6 @@ export const helperCreateDatasetScatter = ({
 			}
 		});
 
-
 		return {
 			datasets: newData,
 		}
@@ -332,7 +354,7 @@ export const helperCreateDatasetRadar = ({
 
 
 	if (data.length !== 0) {
-		const newData = data.datasets?.map((item) => {
+		const newData = data.datasets?.map((item, i) => {
 			return {
 				label: item.label,
 				data: item.data,

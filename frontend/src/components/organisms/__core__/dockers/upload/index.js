@@ -87,8 +87,8 @@ function DockerUpload({
 						:
 						<BannerFeedback
 							symbol='upload'
-							title='Sube tu primer archivo y visualizalo aqui.'
-							label='Aqui visualizaras los elementos'
+							title='Sube tu primer archivo y visualízalo aquí'
+							label='Aquí visualizaras los elementos'
 							size={48}
 						/>
 					}

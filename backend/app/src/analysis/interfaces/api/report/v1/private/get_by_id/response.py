@@ -1,6 +1,7 @@
 from typing import Optional, Union
 
 from app.elemental.common import ElementalSchema
+from app.src.analysis.domain.enums import ReportTypeEnum
 
 
 class CreateResponse(ElementalSchema):
@@ -8,6 +9,7 @@ class CreateResponse(ElementalSchema):
     report_id: str
     family: Optional[str] = None
     variant: Optional[str] = None
+    type: ReportTypeEnum
     data: Union[dict, list]
 
     model_config = {
@@ -18,6 +20,7 @@ class CreateResponse(ElementalSchema):
                     "report_id": "<REPORT_ID>",
                     "family": "<FAMILY_NAME>",
                     "variant": "<FAMILY_VARIANT>",
+                    "type": "<REPORT_TYPE>",
                     "data": "<JSON_DATA>",
                 }
             ]

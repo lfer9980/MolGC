@@ -7,3 +7,8 @@ elemental_router = APIRouter()
 # @elemental_router.get("/ping")
 # async def ping() -> bool:
 #     return True
+
+
+@elemental_router.get("/health")
+async def health_check():
+    return {"status": "healthy"}

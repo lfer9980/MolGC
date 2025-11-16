@@ -8,7 +8,7 @@ from pydantic_settings import (
     TomlConfigSettingsSource,
 )
 
-from ...settings.components.celery import CelerySettings
+from .core.celery import CelerySettings
 from .core.cli import CliAppSettings
 from .core.web import WebAppSettings
 

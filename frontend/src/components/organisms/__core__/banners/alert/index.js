@@ -45,7 +45,7 @@ function BannerAlert({
 	id = '',
 	title = 'ACTION REQUIRED',
 	label = '',
-	labelButton = 'ACTION',
+	labelButton = '',
 	arrowButton = true,
 	timer,
 	handler,
@@ -93,11 +93,6 @@ function BannerAlert({
 
 					{label || children}
 
-					{id &&
-						<p className={styles.banner_id}>
-							{id}
-						</p>
-					}
 
 					{timer &&
 						<LoaderBar

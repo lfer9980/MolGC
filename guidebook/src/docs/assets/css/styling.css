@@ -1,0 +1,425 @@
+/* ========= Header ========= */
+.md-header {
+    background-color: #103447 !important;
+    color: #ffffff !important;
+    /* Force header text/icons to white */
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .15);
+    /* Subtle drop shadow */
+}
+
+/* Logo, title, and icons all in white */
+.md-header a,
+.md-header__title,
+.md-header__button,
+.md-header .md-icon {
+    color: #ffffff !important;
+    /* White text/icons */
+    fill: currentColor !important;
+    /* Makes SVGs inherit the color */
+}
+
+/* Flexible spacer used in custom header layouts (if merged header.html adds it) */
+.pp-header-spacer {
+    flex: 1 1 auto;
+}
+
+
+/* ========= Tabs styling ========= */
+.md-tabs {
+    background: transparent !important;
+    /* Transparent row below header */
+    box-shadow: none !important;
+    /* Remove any default shadow */
+    border: 0;
+}
+
+.md-tabs__link {
+    color: #ffffff !important;
+    /* White tab text */
+    text-transform: none;
+    /* Keep normal casing (not uppercase) */
+    font-weight: 500;
+    transition: color .15s ease, border-color .15s ease;
+    border-bottom: 2px solid transparent;
+    /* Invisible underline for spacing */
+}
+
+/* Hover or active tab = underline in white */
+.md-tabs__link:hover,
+.md-tabs__link--active {
+    color: #ffffff !important;
+    border-bottom-color: #ffffff;
+}
+
+/* Extra spacing inside header row */
+.md-header__inner {
+    gap: 0.8rem;
+    /* Space between items */
+}
+
+.md-header__title {
+    font-weight: 600;
+    letter-spacing: .2px;
+}
+
+
+/* ========= Active page/section highlight ========= */
+
+/* Active link in the left sidebar */
+.md-nav__item .md-nav__link--active {
+    color: #103447 !important;
+    font-weight: 600;
+    /* Bold highlight */
+}
+
+/* Active link in the right-hand table of contents */
+.md-nav--secondary .md-nav__link--active {
+    color: #005da8 !important;
+    font-weight: 600;
+}
+
+/* Blue scrollspy indicator (bar on left of ToC item) */
+.md-nav--secondary .md-nav__link:before {
+    background-color: #005da8 !important;
+}
+
+
+/* ========= Theme variable overrides ========= */
+:root {
+    --md-primary-fg-color: #2c597d;
+    /* Primary brand blue */
+    --md-primary-fg-color--light: #2c597d8a;
+    /* Semi-transparent lighter variant */
+    --md-primary-fg-color--lighter: #2c597d52;
+    --md-primary-fg-color--lightest: #2c597d12;
+    --md-primary-fg-color--dark: #7b5729;
+    /* Alternate accent (brownish) */
+
+    --md-accent-fg-color: #4995d1;
+    /* Accent blue */
+    --md-accent-fg-color--light: #eeb25c;
+    /* Accent light (yellow) */
+    --md-accent-fg-color--dark: #7b5729;
+}
+
+/* Custom body variables */
+body {
+    --pp-code-bg-color: #ffffff00;
+    /* Transparent code bg */
+    --pp-demo-bg-color: var(--md-default-fg-color--lightest);
+    --pp-demo-toolbar-bg-color: #ffffff00;
+    --md-code-font: monospace;
+    /* Force monospace font */
+}
+
+/* Link colors for light & dark schemes */
+body[data-md-color-scheme=default],
+body[data-md-color-scheme=slate] {
+    --md-typeset-a-color: var(--md-accent-fg-color);
+    /* Accent blue links */
+}
+
+/* Dark theme adjustments */
+body[data-md-color-scheme=slate] {
+    --pp-code-bg-color: var(--md-code-bg-color);
+    --pp-demo-bg-color: #00000000;
+    /* Transparent */
+    --pp-demo-toolbar-bg-color: #ffffff0f;
+    /* Very light overlay */
+}
+
+
+/* ========= Content area tweaks ========= */
+.md-typeset h1 {
+    margin: 0 0 0.25em;
+    /* Tighten heading spacing */
+}
+
+.md-nav__link .md-ellipsis {
+    white-space: nowrap;
+    /* Prevent wrapping of nav items */
+}
+
+.md-main__inner {
+    max-width: none;
+    /* Full width layout */
+    margin-top: 0;
+}
+
+.md-content {
+    margin-top: 1.5rem;
+    /* Space below header */
+}
+
+.md-header__inner {
+    max-width: none;
+    /* Header spans full width */
+}
+
+.md-sidebar {
+    top: 48px !important;
+    /* Push sidebar below fixed header */
+}
+
+/* Sidebar borders */
+.md-sidebar--primary .md-sidebar__scrollwrap {
+    border-right: 1px solid var(--md-default-fg-color--lightest);
+}
+
+.md-sidebar--secondary .md-sidebar__scrollwrap {
+    border-left: 1px solid var(--md-default-fg-color--lightest);
+}
+
+/* Limit article width for readability */
+.md-content article>* {
+    max-width: 37rem;
+    margin-inline: auto !important;
+    /* Center inside content area */
+}
+
+.md-header__button.md-logo {
+    width: 15rem;
+    /* Resize logo button */
+}
+
+.pp-header-spacer {
+    flex: 1;
+    /* Flexible filler in header */
+}
+
+.md-grid {
+    max-width: none;
+    /* Allow full width grid */
+}
+
+
+/* ========= Docs/version selectors ========= */
+.docs_selector,
+.version_selector {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: end;
+    cursor: pointer;
+    border-radius: 2px;
+    font-family: monospace;
+    color: inherit;
+    width: 100%;
+}
+
+/* Hover highlight */
+.docs_selector:hover,
+.version_selector:hover {
+    background-color: #AAA6;
+    /* Semi-transparent gray */
+}
+
+/* Expand-more icon hidden by default */
+.docs_selector .expand-more-icon,
+.version_selector .expand-more-icon {
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+/* Show expand icon when enabled */
+.docs_selector.enabled .expand-more-icon,
+.version_selector.enabled .expand-more-icon {
+    opacity: 1;
+}
+
+/* Dropdown container for selectors */
+.selector_container {
+    display: none;
+    position: fixed;
+    padding: 1em 2px;
+    background-color: var(--md-default-bg-color);
+    border-radius: 0.5em;
+    z-index: 10;
+    box-shadow: #0000005e 0px 4px 7px 0px;
+}
+
+.selector_container.open {
+    display: block;
+}
+
+/* Dropdown list styles */
+.selector-content {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.65rem;
+}
+
+.selector-content a {
+    padding: 0.4em 1.2em;
+}
+
+.selector-content a:hover {
+    background-color: #4995d133;
+    /* Light blue hover */
+}
+
+.selector-content a:focus {
+    background-color: #4995d155;
+}
+
+/* Buttons inside selector dropdown */
+.selector_container button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 0.7rem;
+    border: 1px solid;
+    border-radius: 0.25rem;
+    width: 4rem;
+    opacity: 0.7;
+}
+
+.selector_container button:hover:not([disabled]) {
+    opacity: 1;
+}
+
+.selector_container span {
+    width: 100%;
+    font-size: 4rem;
+    /* Large span text */
+}
+
+
+/* ========= Tabs layering fix ========= */
+.md-tabs {
+    z-index: 0;
+    /* Avoid overlapping header */
+}
+
+/* Version selector small text layout */
+.version-select {
+    font-size: 0.6rem;
+    color: var(--md-primary-bg-color);
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    align-items: end;
+    border-right: 1px solid var(--md-default-fg-color-lightest);
+}
+
+.version-select .expand-more-icon {
+    height: 1em;
+    fill: currentColor;
+}
+
+
+/* ========= Dark mode image adjustment ========= */
+[data-md-color-scheme=slate] .contrasting-image img {
+    filter: contrast(0) brightness(2);
+    /* Invert-ish effect for dark bg */
+}
+
+
+/* ========= Footer styling ========= */
+.md-footer {
+    background: none;
+    color: inherit;
+}
+
+.md-footer nav {
+    color: var(--md-default-fg-color--light);
+}
+
+.md-footer__link {
+    align-items: center;
+    outline: 1px solid;
+    border-radius: 0.5em;
+    outline-color: var(--md-default-fg-color--lightest);
+    padding-left: 1em;
+    min-width: 14em;
+}
+
+/* Mobile: allow smaller footer links */
+@media screen and (max-width: 44.984375em) {
+    .md-footer__link {
+        min-width: unset;
+    }
+}
+
+.md-footer__link--prev {
+    padding-right: 1em;
+}
+
+.md-footer__link--nevt {
+    padding-left: 1em;
+}
+
+/* Footer hover/active/focus states */
+.md-footer__link:active,
+.md-footer__link:focus,
+.md-footer__link:hover {
+    opacity: 1;
+    outline-color: var(--md-default-fg-color--lighter);
+    background-color: var(--md-default-fg-color--lightest);
+}
+
+.md-footer__link:active {
+    outline-color: var(--md-accent-fg-color);
+    outline-width: 2px;
+}
+
+.md-footer__title {
+    margin: 1em 0;
+}
+
+.md-footer__direction,
+.md-footer__button.md-icon {
+    opacity: 1;
+    color: var(--md-default-fg-color--light);
+}
+
+
+/* ========= Search placeholder styling ========= */
+.md-search__placeholder {
+    position: absolute;
+    right: 0.25rem;
+    height: 1.2rem;
+    top: 0.4rem;
+    border: 1px solid;
+    border-radius: 0.25rem;
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    font-size: 0.6rem;
+    padding: 0.1rem;
+    opacity: 0.6;
+}
+
+
+/* ========= Highlighted <mark> animation ========= */
+.md-typeset mark {
+    animation: mark-background 8s;
+    /* Fade-out effect */
+    background: unset;
+    text-decoration: underline #dddf;
+}
+
+@keyframes mark-background {
+    from {
+        background-color: var(--md-typeset-mark-color);
+        text-decoration-color: #ddd0;
+    }
+
+    90% {
+        background-color: var(--md-typeset-mark-color);
+        text-decoration-color: #ddd0;
+    }
+
+    to {
+        background-color: #0000;
+        /* Fully transparent */
+        text-decoration-color: #dddf;
+    }
+}
+
+
+/* ========= Admonition note tweak ========= */
+.note.annotate summary {
+    overflow: visible;
+    /* Ensure annotations aren’t clipped */
+}

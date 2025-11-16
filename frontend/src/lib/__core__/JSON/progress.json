@@ -36,15 +36,8 @@
   },
   {
     "categoria": "Dashboard",
-    "pantalla": "variant_id",
-    "url": "/dashboard/family_id/variant_id",
-    "estado": "En desarrollo",
-    "color": "#0F60A7"
-  },
-  {
-    "categoria": "Dashboard",
-    "pantalla": "family_id",
-    "url": "/dashboard/family_id",
+    "pantalla": "variant",
+    "url": "/dashboard/family/variant",
     "estado": "En desarrollo",
     "color": "#0F60A7"
   },
@@ -57,8 +50,8 @@
   },
   {
     "categoria": "Archivos",
-    "pantalla": "auto",
-    "url": "/files/auto",
+    "pantalla": "automatic",
+    "url": "/files/automatic",
     "estado": "En desarrollo",
     "color": "#0F60A7"
   },
@@ -80,20 +73,6 @@
     "categoria": "Sin Categoria",
     "pantalla": "landing - entrypoint",
     "url": "/",
-    "estado": "En desarrollo",
-    "color": "#0F60A7"
-  },
-  {
-    "categoria": "Reportes",
-    "pantalla": "report",
-    "url": "/report",
-    "estado": "En desarrollo",
-    "color": "#0F60A7"
-  },
-  {
-    "categoria": "Resumen",
-    "pantalla": "resume",
-    "url": "/resume",
     "estado": "En desarrollo",
     "color": "#0F60A7"
   }

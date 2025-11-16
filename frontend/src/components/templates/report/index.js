@@ -3,34 +3,33 @@
 	TEMPLATE - REPORT
 */
 // #region libraries
-import React from 'react';
+import React, { Fragment } from 'react';
 // #endregion
 
 
 // #region components
-import { HeadingTitle } from 'components/atoms';
-import { ElementImage } from 'components/molecules';
+import { HeadingSubtitle, HeadingTitle } from 'components/atoms';
+import { ElementImage, PlotStructure } from 'components/molecules';
 import {
 	CardTable,
+	ChartBar,
 	ChartLine,
-	ChartRadar,
 	ChartWrap,
 	FooterSimpleMolGC,
-	RowsProgress,
+	RowsTOPSIS,
 	TableX
 } from 'components/organisms';
 // #endregion
 
 
 // #region assets
-/* TODO: change this to other method */
-import PROGRESO_DEV_FRONTEND from 'lib/__core__/JSON/progress.json';
-import { REPORT_COLUMNS_EXAMPLE, RESUME_TABLE } from 'demo/common';
+
 // #endregion
 
 
 // #region utils
-import { CHART_BAR_LEGEND_ENUM } from 'lib/enums/charts';
+import { COLUMNS_TOPSIS_REPORT } from 'lib/data/tables/TOPSIS';
+import { CHART_BAR_LEGEND_ENUM, CHART_ENUM } from 'lib/enums/charts';
 // #endregion
 
 
@@ -48,31 +47,121 @@ import styles from './styles.module.scss';
 // #endregion
 
 
-function ReportMolGC({ }) {
+function ReportMolGC({
+	onRendered,
+	job,
+	records,
+	showResume = false,
+}) {
 	// #region hooks & others
 	const {
-		loading,
-	} = useReport({});
+		resume
+	} = useReport({
+		onRendered: onRendered,
+		records: records,
+	});
+
+	function renderChart(el, key) {
+		const common = {
+			title: el.type === 'rmsd' ? 'RMSD' : 'Bond Lenghts',
+			label: el.data?.title,
+			theme: 'light',
+			noHover: true
+		};
+
+		switch (el.type) {
+			case 'mae_general':
+				return (
+					<ChartWrap {...common} key={key}>
+						<ChartBar
+							positionLegend={CHART_BAR_LEGEND_ENUM.BOTTOM}
+							aspect={CHART_ENUM.STACKED}
+							data={el.data}
+							transparency
+						/>
+					</ChartWrap>
+				);
+			case 'mae_family':
+				return (
+					<ChartWrap {...common} key={key}>
+						<ChartBar
+							positionLegend={CHART_BAR_LEGEND_ENUM.BOTTOM}
+							data={el.data}
+						/>
+					</ChartWrap>
+				);
+			case 'mae_variant':
+				return (
+					<ChartWrap {...common} key={key}>
+						<ChartLine
+							positionLegend={CHART_BAR_LEGEND_ENUM.BOTTOM}
+							data={el.data}
+						/>
+					</ChartWrap>
+				);
+			case 'rmsd':
+				return (
+					<ChartWrap {...common} key={key}>
+						<ChartLine
+							positionLegend={CHART_BAR_LEGEND_ENUM.BOTTOM}
+							data={el.data}
+						/>
+					</ChartWrap>
+				);
+			default:
+				return null;
+		};
+	};
+
+	function renderFull(el, key) {
+		switch (el.type) {
+			case 'topsis':
+				return (
+					<div className={styles.report_element_full} key={key}>
+						<TableX
+							data={el.data}
+							columns={COLUMNS_TOPSIS_REPORT}
+							theme='light'
+						>
+							{(props) => <RowsTOPSIS {...props} />}
+						</TableX>
+					</div>
+				);
+			case 'structure':
+				return (
+					<div className={styles.report_element_full} key={key}>
+						<PlotStructure
+							structure={el}
+							isStatic
+							hideLegend
+							theme='light'
+							imageSrc={el.staticImage || null}
+						/>
+					</div>
+				);
+			default:
+				return null;
+		}
+	};
+
 	// #endregion
-
-
-	// #region theme
-	// #endregion
-
-
-	// #region skeletons
-	// #endregion
-
 
 	// #region main UI
 	return (
-		<main className={`${styles.report}`}>
+		<main className={styles.report}>
 			<header className={styles.report_header}>
-				<ElementImage
-					image='/images/logotipo.png'
-					width={124}
-					height={46}
-				/>
+				<div className={styles.report_header_left}>
+					<ElementImage
+						image='/images/logotipo.png'
+						width={200}
+						height={100}
+					/>
+					<HeadingSubtitle
+						title='Reporte de análisis de MOLGC'
+						label={`${job?.analysis_type ? 'INDIVIDUAL POR VARIANTE' : ''}`}
+						theme='light'
+					/>
+				</div>
 
 				<FooterSimpleMolGC
 					noMargin
@@ -80,113 +169,81 @@ function ReportMolGC({ }) {
 				/>
 			</header>
 
-			<div className={styles.report_head}>
-				<HeadingTitle
-					title='Reporte de analisis de MOLGC'
-					subtitle='INDIVIDUAL'
-					theme='light'
-				/>
+			{records?.children?.map((item, i) => (
+				<Fragment key={`family-${i}`}>
+					<div className={styles.report_head}>
+						<div />
+						<div>
+							<HeadingSubtitle
+								title={`${decodeURIComponent(item?.family ?? '')}`}
+								center
+								theme='light'
+							>
+								<p className={styles.report_reference}>
+									Referencia: {job?.reference}
+								</p>
+							</HeadingSubtitle>
+						</div>
+					</div>
 
-				<p className={styles.report_reference}>
-					Referencia: Gaussian - M06
-				</p>
-			</div>
+					{item?.children?.map((element, j) => {
+						const children = element?.children ?? [];
 
-			<section className={styles.report_main}>
-				<CardTable
-					title='Familias'
-					elements={RESUME_TABLE}
-					theme='light'
-				/>
+						const charts = children.filter((c) =>
+							['mae_general', 'mae_family', 'mae_variant', 'rmsd'].includes(c.type)
+						);
 
-				<ChartWrap
-					label='General MAE Summary and TOPSIS Results'
-					theme='light'
-					mini
-				>
-					<ChartLine
-						random
-						theme='light'
-					/>
-				</ChartWrap>
-			</section>
+						const fullWidth = children.filter((c) =>
+							['topsis', 'structure'].includes(c.type)
+						);
 
-			<section className={styles.report_table}>
-				<TableX
-					data={PROGRESO_DEV_FRONTEND}
-					columns={REPORT_COLUMNS_EXAMPLE}
-					theme='light'
-				>
-					{(props) => <RowsProgress {...props} />}
-				</TableX>
-			</section>
+						return (
+							<section key={`variant-${i}-${j}`} className={styles.report_section}>
+								<div className={styles.report_head}>
+									<HeadingTitle
+										title={element?.variant ?? ''}
+										theme='light'
+										accent
+									/>
+								</div>
 
-			<section className={styles.report_chart}>
-				<ChartWrap
-					label='MAE General: FLUOROQUINOLES'
-					theme='light'
-					mini
-				>
-					<ChartLine
-						random
-						theme='light'
-					/>
-				</ChartWrap>
-			</section>
+								<div className={styles.report_main}>
+									{charts.length > 0 && (
+										<div className={styles.report_grid}>
+											{showResume && resume && i === 0 &&
+												<CardTable
+													title='Familias'
+													elements={resume}
+													theme='light'
+												/>
+											}
 
+											{charts.map((el, k) => (
+												<div
+													className={styles.report_element}
+													key={`chart-${i}-${j}-${k}`}
+												>
+													{renderChart(el, `chart-${i}-${j}-${k}`)}
+												</div>
+											))}
+										</div>
+									)}
 
+									{fullWidth.length > 0 && (
+										<div className={styles.report_list}>
+											{fullWidth.map((el, k) =>
+												renderFull(el, `full-${i}-${j}-${k}`)
+											)}
+										</div>
+									)}
+								</div>
 
-			<hr />
-			<div className={styles.report_head}>
-				<HeadingTitle
-					title='Reporte de analisis de MOLGC'
-					subtitle='INDIVIDUAL POR VARIANTE'
-					label='CIPROFLAXIN'
-					theme='light'
-				/>
-
-				<p className={styles.report_reference}>
-					Referencia: Gaussian - M06
-				</p>
-			</div>
-
-			<section className={styles.report_main}>
-				<ChartWrap
-					label='Bond Lengths MAE Functional'
-					theme='light'
-					mini
-				>
-					<ChartRadar
-						random
-						positionLegend={CHART_BAR_LEGEND_ENUM.BOTTOM}
-						theme='light'
-					/>
-				</ChartWrap>
-
-				<ChartWrap
-					label='RMSD'
-					theme='light'
-					mini
-				>
-					<ChartLine
-						random
-						theme='light'
-					/>
-				</ChartWrap>
-			</section>
-
-			<section className={styles.report_table}>
-				<ChartWrap
-					label='3D Structure'
-					theme='light'
-					mini
-				>
-					<ChartLine
-						random
-						theme='light'
-					/>
-				</ChartWrap>
-			</section>
+								<div className={styles.page_break} aria-hidden="true" />
+							</section>
+						);
+					})}
+				</Fragment>
+			))}
 		</main>
 	);
 	// #endregion

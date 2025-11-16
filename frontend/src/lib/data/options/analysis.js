@@ -1,4 +1,4 @@
 export const ANALYSIS_OPTIONS = [
-	'Analisis Individual',
-	'Validacion Cruzada',
+	'Individual Validation',
+	'Cross Validation',
 ];

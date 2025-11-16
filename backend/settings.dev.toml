@@ -1,11 +1,10 @@
 [application]
 app_env = "development"
 host = "localhost"
-port = 8000
+port = 4000
 app_name = "MolGC"
 app_version = '1.0.0'
 debug = true
-
 
 secret_key = "403e206e431ece53446cdbbf6b91277512a7f058a5d1ed7d14c284e2bab37210"
 
@@ -40,13 +39,6 @@ password = ""
 user = ""
 
 
-#driver = "postgresql+asyncpg"
-#host = "localhost"
-#port = "5432"
-#name = "molgc"
-#password = "PASSWORD"
-#user = "postgres"
-
 [mail]
 username = "username"
 password = "password"
@@ -61,5 +53,5 @@ sender = "development@gmail.com"
 use_redis = true
 use_database = true
 redis_url = "redis://localhost:6379/0"
-celery_broker_url = "redis://localhost:6379/1"
-celery_result_backend = "redis://localhost:6379/2"
+broker_url = "redis://localhost:6379/1"
+result_backend = "redis://localhost:6379/2"

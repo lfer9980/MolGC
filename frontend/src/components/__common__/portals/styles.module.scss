@@ -36,6 +36,7 @@
 		padding-inline: 1.6rem;
 		width: 100%;
 		background-color: var(--background-overlay);
+		backdrop-filter: blur(4px);
 	}
 
 	&.second {

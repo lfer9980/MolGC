@@ -1,12 +1,10 @@
-import asyncio
 from datetime import timedelta
 
 from app.infrastructure.database import DatabaseSession
+from app.infrastructure.celery.celery_app import get_or_create_event_loop
 from app.src.jobs.application.cleanup.get_due.service import GetDueCleanupService
 from app.src.jobs.application.job.delete_massive.service import DeleteMassiveJobService
-from app.src.jobs.infrastructure.repository.cleanup_repository import (
-    CleanupRepositorySQL,
-)
+from app.src.jobs.infrastructure.repository.cleanup_repository import CleanupRepositorySQL
 from app.src.jobs.infrastructure.repository.job_repository import JobRepositorySQL
 from celery import shared_task
 from celery.utils.log import get_task_logger
@@ -17,7 +15,10 @@ logger = get_task_logger(__name__)
 @shared_task(bind=True)
 def run_cleanup_jobs(self):
     logger.info("Starting cleanup jobs")
-    asyncio.run(_run_cleanup_async())
+
+    loop = get_or_create_event_loop()
+    loop.run_until_complete(_run_cleanup_async())
+
     logger.info("Cleanup jobs completed")
 
 
@@ -46,7 +47,7 @@ async def _run_cleanup_async():
 
 beat_schedules = {
     "cleanup-expired-jobs": {
-        "task": "app.src.auth.infrastructure.schedules.cleanup.run_cleanup_jobs",
+        "task": "app.src.jobs.infrastructure.schedules.cleanup.run_cleanup_jobs",
         "schedule": timedelta(hours=24),
     },
 }

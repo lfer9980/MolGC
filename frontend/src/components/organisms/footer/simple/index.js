@@ -35,7 +35,7 @@ import { useThemeStore } from 'context';
 
 
 function FooterSimpleMolGC({
-	label = 'Fisico Quimica Computacional Labs / UACH',
+	label = 'Fisicoquímica Computacional Labs / UACH',
 	noMargin = false,
 	theme = ''
 }) {
@@ -66,7 +66,7 @@ function FooterSimpleMolGC({
 			</p>
 
 			<p className={styles.footer_version}>
-				{config?.version}
+				v{config?.version}
 			</p>
 		</div>
 	);

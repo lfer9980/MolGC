@@ -7,17 +7,18 @@
 
 
 	// #region unit elements
-	&_main {
+	&_buttons {
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		height: 75vh;
+		flex-direction: column;
+		gap: 2.4rem;
+		width: 100%;
+		margin-block: 6.4rem;
 	}
 
 	&_link {
-		position: fixed;
-		bottom: 2.4rem;
-		left: 1.6rem;
+		margin-bottom: 2.4rem;
 	}
 
 	// #endregion
@@ -29,26 +30,23 @@
 
 
 	// #region derived states 
+	&_loading {
+		height: 70svh;
+		display: grid;
+		place-content: center;
+	}
 
 	// #endregion
 
 
 	// #region media queries
-	@include tablet {
-		&_link {
-			left: 2.4rem;
-		}
-	}
+	@include tablet {}
 
 	@include desktop {
 		@include fontSizeDesktop;
 	}
 
-	@include large {
-		&_link {
-			left: 3.2rem;
-		}
-	}
+	@include large {}
 
 	// #endregion
 }

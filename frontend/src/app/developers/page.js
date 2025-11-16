@@ -17,6 +17,7 @@ import {
 } from 'components/__common__';
 
 import { HeadingTitle } from 'components/atoms';
+import { ElementLabel } from 'components/molecules';
 import {
 	ChartPie,
 	ChartWrap,
@@ -46,7 +47,6 @@ import { useFilter } from 'hooks';
 
 // #region contexts & stores
 import { useLocale } from 'context/__core__';
-import { ElementLabel } from 'components/molecules';
 // #endregion
 
 

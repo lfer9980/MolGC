@@ -45,10 +45,12 @@ function ChartWrap({
 	children,
 	loading = false,
 	mini = false,
+	noHover = false,
 	theme = ''
 }) {
 	// #region hooks & others
 	const miniStyle = mini ? styles.mini : '';
+	const hoverStyle = !noHover ? styles.hover : '';
 	// #endregion
 
 
@@ -64,7 +66,7 @@ function ChartWrap({
 
 	// #region main UI
 	return (
-		<article className={`${styles.chart} theme-${appliedTheme} ${miniStyle}`}>
+		<article className={`${styles.chart} theme-${appliedTheme} ${miniStyle} ${hoverStyle}`}>
 			{(title || label) &&
 				<div className={styles.chart_title}>
 					{mini ?
@@ -76,6 +78,7 @@ function ChartWrap({
 						<HeadingTitle
 							title={title}
 							label={label}
+							theme={theme}
 						/>
 					}
 

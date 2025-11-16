@@ -1,11 +1,11 @@
 'use client';
 /* 
-Hook for transitioning from welcome to start analysis view: 
+`Hook for transitioning from welcome to start analysis view: 
 */
 
 // #region libraries
-import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
+import { useState, useEffect, useCallback } from "react";
 // #endregion
 
 
@@ -17,6 +17,7 @@ import { useRouter } from "next/navigation";
 // #endregion
 
 // #region utils
+import { JOB_STATUS_ENUM } from "lib/enums";
 // #endregion
 
 
@@ -25,20 +26,35 @@ import { useRouter } from "next/navigation";
 
 
 // #region contexts & stores
+import { useJobStore } from "store/job";
 // #endregion
 
 
 // #region requests
+import { useServiceJob } from 'services/job';
+import { useServiceUpload } from "services/upload";
 // #endregion
 
 
 function useWelcome({ }) {
 	// #region references
-	const touchStartY = useRef(0);
 	// #endregion
 
 
 	// #region contexts & hooks
+	const {
+		job,
+	} = useJobStore({});
+
+	const {
+		loading,
+		handlerCreateJob,
+		handlerValidateJob,
+	} = useServiceJob({});
+
+	const {
+		handlerUploadAutomatic,
+	} = useServiceUpload({});
 	// #endregion
 
 
@@ -49,10 +65,21 @@ function useWelcome({ }) {
 
 	// #region states
 	const [view, setView] = useState(0);
+	const [isDemo, setIsDemo] = useState(false);
+	const [validate, setValidate] = useState(false);
+	const [progress, setProgress] = useState({ progress: 0, event: null, type: '' });
 	// #endregion
 
 
 	// #region memos & callbacks
+	const validateJobCallback = useCallback(async () => {
+		if (job?.status === JOB_STATUS_ENUM.COMPLETED) {
+			const isValid = await handlerValidateJob();
+			return setValidate(isValid);
+		};
+
+		setValidate(false);
+	}, []);
 	// #endregion
 
 
@@ -65,8 +92,43 @@ function useWelcome({ }) {
 
 
 	// #region handlers
-	const handlerRedirect = (href) => {
-		router.push(href);
+	const _handlerProgress = (newProgress) => setProgress(newProgress);
+
+	const handlerStartDemo = async () => {
+		try {
+			setIsDemo(true);
+
+			const newToken = await handlerCreateJob({
+				uploadType: "automatic",
+				redirect: false,
+			});
+
+			if (!newToken) {
+				throw new Error('No se pudo crear la sesión');
+			}
+
+			const response = await fetch('/api/internal/file');
+
+			if (!response.ok) {
+				throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+			}
+
+			const blob = await response.blob();
+			const file = new File([blob], "molecules.zip", {
+				type: "application/zip",
+				lastModified: Date.now()
+			});
+
+			await handlerUploadAutomatic({
+				files: [file],
+				handlerProgress: _handlerProgress,
+				explicitToken: newToken,
+			});
+
+			setIsDemo(false);
+		} catch (e) {
+			console.error('Error al iniciar el demo:', e);
+		};
 	};
 	// #endregion
 
@@ -75,13 +137,29 @@ function useWelcome({ }) {
 	useEffect(() => {
 		let touchStartY = 0;
 		let touchStartX = 0;
+		let isSwiping = false;
+		let accumulatedDelta = 0;
+		let lastDirection = 0;
+		let ticking = false;
 
 		const handleTouchStart = (e) => {
 			touchStartY = e.touches[0].clientY;
 			touchStartX = e.touches[0].clientX;
+			isSwiping = true;
+		};
+
+		const handleTouchMove = (e) => {
+			if (!isSwiping) return;
+			const currentY = e.touches[0].clientY;
+			const deltaY = currentY - touchStartY;
+
+			if (window.scrollY === 0 && deltaY > 0) {
+				e.preventDefault();
+			}
 		};
 
 		const handleTouchEnd = (e) => {
+			isSwiping = false;
 			const touchEndY = e.changedTouches[0].clientY;
 			const touchEndX = e.changedTouches[0].clientX;
 
@@ -94,13 +172,46 @@ function useWelcome({ }) {
 			else if (deltaY > 50) setView(0);
 		};
 
-		window.addEventListener("touchstart", handleTouchStart, { passive: true });
+		const handleWheel = (e) => {
+			const direction = Math.sign(e.deltaY);
+			accumulatedDelta += e.deltaY;
+
+			if (direction !== lastDirection) {
+				accumulatedDelta = e.deltaY;
+				lastDirection = direction;
+			}
+
+			if (!ticking) {
+				window.requestAnimationFrame(() => {
+					if (accumulatedDelta > 50) {
+						setView(1);
+						accumulatedDelta = 0;
+					} else if (accumulatedDelta < -50) {
+						setView(0);
+						accumulatedDelta = 0;
+					}
+					ticking = false;
+				});
+				ticking = true;
+			}
+		};
+
+		window.addEventListener("touchstart", handleTouchStart, { passive: false });
+		window.addEventListener("touchmove", handleTouchMove, { passive: false });
 		window.addEventListener("touchend", handleTouchEnd);
+		window.addEventListener("wheel", handleWheel, { passive: true });
 
 		return () => {
 			window.removeEventListener("touchstart", handleTouchStart);
+			window.removeEventListener("touchmove", handleTouchMove);
 			window.removeEventListener("touchend", handleTouchEnd);
+			window.removeEventListener("wheel", handleWheel);
 		};
+	}, [setView]);
+
+
+	useEffect(() => {
+		validateJobCallback();
 	}, []);
 	// #endregion
 
@@ -111,8 +222,14 @@ function useWelcome({ }) {
 
 	// #region main
 	return {
+		router,
 		view,
-		handlerRedirect,
+		isDemo,
+		validate,
+		loading,
+		progress,
+		handlerCreateJob,
+		handlerStartDemo,
 	};
 	// #endregion
 }

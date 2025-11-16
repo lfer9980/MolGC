@@ -12,6 +12,7 @@ import React from 'react';
 import {
 	ButtonPrimary,
 	HeadingTitle,
+	Hint,
 	InputSelect
 } from 'components/atoms';
 
@@ -39,17 +40,19 @@ import { useConfiguration } from './useConfiguration';
 
 // #region styles
 import styles from './styles.module.scss';
+import { STYLE_LOG_ENUM } from 'lib/helpers';
 // #endregion
 
 
 export default function Configuration({ }) {
 	// #region hooks & others
 	const {
-		analysis,
-		reference,
+		config,
 		viewReference,
-		handlerAnalysis,
-		handlerReference,
+		dispatchConfig,
+		REFERENCES,
+		ACTION_REDUCER_CONFIG,
+		handlerStartAnalysis
 	} = useConfiguration({});
 	// #endregion
 
@@ -57,28 +60,44 @@ export default function Configuration({ }) {
 	return (
 		<form className={styles.page}>
 			<HeadingTitle
-				title='Configuracion Final'
+				title='Configuración Final'
 				symbol='not_started'
 				label='Indica el tipo de Algoritmo y la referencia de ser necesario.'
 			/>
 
 			<div className={styles.page_section}>
-				<InputSelect
-					label='Tipo de Analisis'
-					placeholder='Analisis Individual / Validacion Cruzada'
-					options={ANALYSIS_OPTIONS}
-					value={analysis}
-					handler={handlerAnalysis}
-					help='Tipo de analisis a ejecutar'
-				/>
+				<div>
+
+					<InputSelect
+						label='Tipo de Análisis'
+						placeholder='Análisis Individual / Validacion Cruzada'
+						options={ANALYSIS_OPTIONS}
+						value={config.analysis_type}
+						handler={(value) => dispatchConfig({
+							type: ACTION_REDUCER_CONFIG.UPDATE,
+							payload: { analysis_type: value }
+						})}
+						disabled
+					/>
+					{/* TODO: delete this warning when cross validation done */}
+					<Hint
+						label='Por el momento, solo está disponible el análisis individual'
+						state={STYLE_LOG_ENUM.WARNING}
+						theme='dark'
+					/>
+				</div>
 
 				{viewReference &&
 					<InputSelect
 						label='Referencia de analisis'
-						placeholder='Elige la referencia que utilizaras para tu analisis individual'
-						value={reference}
-						handler={handlerReference}
-						help='Referencia utilizada para el analisis individual'
+						placeholder='Elige la referencia que utilizarás para tu análisis individual'
+						value={config.reference}
+						handler={(value) => dispatchConfig({
+							type: ACTION_REDUCER_CONFIG.UPDATE,
+							payload: { reference: value }
+						})}
+						options={REFERENCES}
+						help='Referencia utilizada para el análisis individual'
 					/>
 				}
 			</div>
@@ -88,14 +107,15 @@ export default function Configuration({ }) {
 				<div className={styles.page_link}>
 					<ElementLink
 						href='/FAQs'
-						label='Documentacion y tutoriales de uso'
+						label='Documentación y tutoriales de uso'
 						symbol='help'
 					/>
 				</div>
 
 				<ButtonPrimary
 					symbol='not_started'
-					label='Comenzar Analisis'
+					label='Comenzar Análisis'
+					handler={handlerStartAnalysis}
 				/>
 			</div>
 		</form>

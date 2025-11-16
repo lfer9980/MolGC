@@ -1,0 +1,76 @@
+/* 
+*/
+
+@use 'styles/vars' as *;
+
+.cell {
+	// #region general
+	display: flex;
+	align-items: center;
+	@include fontSizeMobile;
+	// #endregion
+
+
+	// #region unit elements
+	&_link {
+		color: var(--accent);
+	}
+
+	&_bold {
+		font-weight: 700;
+	}
+
+	&_criteria_container {
+		display: flex;
+		flex-direction: column;
+		gap: 0.8rem;
+		width: 100%;
+	}
+
+	&_criteria_item {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 0.4rem 0.8rem;
+	}
+
+	&_criteria_label {
+		font-size: 1.2rem;
+		font-weight: 600;
+		color: var(--content-secondary);
+	}
+
+	&_criteria_value {
+		font-size: 1.3rem;
+		font-weight: 500;
+		color: var(--accent);
+		font-family: monospace;
+	}
+
+	// #endregion
+
+
+	// #region others 
+	&_link:hover {
+		opacity: 0.6;
+	}
+
+	// #endregion
+
+
+	// #region derived states 
+
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {}
+
+	@include desktop {
+		@include fontSizeDesktop;
+	}
+
+	@include large {}
+
+	// #endregion
+}

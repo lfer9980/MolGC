@@ -1,0 +1,29 @@
+<li class="md-nav__item">
+
+  {# --- Link to the current table-of-contents entry --- #}
+  <a href="{{ toc_item.url }}" class="md-nav__link">
+    <span class="md-ellipsis">
+      {{ toc_item.title }}   {# The heading text, truncated with ellipsis if too long #}
+    </span>
+  </a>
+
+  <!-- Table of contents list: render nested children if this item has them -->
+  {% if toc_item.children %}
+    <nav class="md-nav" aria-label="{{ toc_item.title | striptags }}">
+      <ul class="md-nav__list">
+
+        {# --- Loop over child headings of this TOC item --- #}
+        {% for toc_item in toc_item.children %}
+
+          {# --- Respect optional "toc_depth" from page metadata:
+                 - if not defined, include all levels
+                 - if defined, include only headings at or above that depth --- #}
+          {% if not page.meta.toc_depth or toc_item.level <= page.meta.toc_depth %}
+            {% include "partials/toc-item.html" %}
+          {% endif %}
+
+        {% endfor %}
+      </ul>
+    </nav>
+  {% endif %}
+</li>

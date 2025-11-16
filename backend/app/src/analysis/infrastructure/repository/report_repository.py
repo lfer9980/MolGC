@@ -1,4 +1,4 @@
-from collections import defaultdict
+from collections import defaultdict, OrderedDict
 from typing import Any, Dict, List, Optional
 
 from app.src.analysis.domain.entities.report_entity import ReportEntity
@@ -20,7 +20,7 @@ class ReportRepositorySQL(ReportRepository):
         return ReportEntity(**report_model.model_dump())
 
     async def create_massive(
-        self, report_list: List[ReportEntity]
+            self, report_list: List[ReportEntity]
     ) -> List[ReportEntity]:
         records_bulk = [item.model_dump() for item in report_list]
         saved_items = await self._bulk_insert(records=records_bulk, return_ids=True)
@@ -47,10 +47,15 @@ class ReportRepositorySQL(ReportRepository):
 
         response = []
         for category_name, reports in grouped_report.items():
-
             grouped_variant: Dict[str, List[ReportModelSQL]] = defaultdict(list)
             for r in reports:
                 grouped_variant[r.variant or "General"].append(r)
+
+            if "General" in grouped_variant:
+                grouped_variant = OrderedDict(
+                    [("General", grouped_variant["General"])]
+                    + [(k, v) for k, v in grouped_variant.items() if k != "General"]
+                )
 
             # group and generates categories for variants
             variant_children = []
@@ -81,4 +86,9 @@ class ReportRepositorySQL(ReportRepository):
 
             response.append(item)
 
+        response.sort(key=lambda x: 0 if x["title"] == "Reporte General" else 1)
         return response
+
+    async def get_all_by_job_id(self, job_id: str) -> List[ReportEntity]:
+        records = await self._filter_by(key="job_id", value=job_id)
+        return [ReportEntity(**item.model_dump()) for item in records]

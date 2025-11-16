@@ -99,7 +99,7 @@ function FooterMolGC({ theme = '' }) {
 			<SemSubcontent>
 				<div className={styles.footer_main}>
 					<HeadingTitle
-						subtitle='Indice general'
+						subtitle='Índice general'
 					/>
 
 					<List

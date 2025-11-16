@@ -39,7 +39,7 @@ function InputUpload({
 	handler,
 	height,
 	help = '',
-	placeholder = 'Arrastra tus archivos aqui...',
+	placeholder = 'Arrastra tus archivos aquí...',
 	maxFiles = 1,
 	filesAccepted = '',
 	bold = false,

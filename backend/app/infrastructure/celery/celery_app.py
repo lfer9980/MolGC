@@ -7,14 +7,16 @@ from datetime import timedelta
 import app.src as app
 from app.elemental.logging import get_logger
 from app.infrastructure.database.sql import close_database, init_database
-from app.settings import settings as app_settings
-from app.settings.components.celery import CelerySettings
+from app.settings import settings
 from celery import Celery
 from celery.signals import worker_process_init, worker_shutdown
+from threading import Lock
 
-settings = CelerySettings()
 
 _logger = None
+
+_worker_loop = None
+_loop_lock = Lock()
 
 
 def get_celery_logger():
@@ -34,9 +36,9 @@ def make_celery():
         enable_utc=True,
     )
 
-    if getattr(settings, "use_redis", False):
-        broker_url = settings.celery_broker_url
-        backend_url = settings.celery_result_backend
+    if getattr(settings.celery, "use_redis", False):
+        broker_url = settings.celery.broker_url
+        backend_url = settings.celery.result_backend
 
         celery_app.conf.update(base_config)
         celery_app.conf.update(broker_url=broker_url, result_backend=backend_url)
@@ -51,6 +53,16 @@ def make_celery():
 
 celery = make_celery()
 
+def get_or_create_event_loop():
+    """Get or create a persistent event loop for the worker process."""
+    global _worker_loop
+    
+    with _loop_lock:
+        if _worker_loop is None or _worker_loop.is_closed():
+            _worker_loop = asyncio.new_event_loop()
+            asyncio.set_event_loop(_worker_loop)
+        return _worker_loop
+
 
 @worker_process_init.connect
 def init_worker_db(**kwargs):
@@ -59,11 +71,13 @@ def init_worker_db(**kwargs):
     logger = get_celery_logger()
 
     try:
-        if getattr(settings, "use_database", False):
-            db_settings = app_settings.database
+        if getattr(settings.celery, "use_database", False):
+            db_settings = settings.database
             logger.info("Initializing database for worker process...")
 
-            asyncio.run(init_database(db_settings))
+            loop = get_or_create_event_loop()
+            loop.run_until_complete(init_database(db_settings))
+
             logger.info("Database initialized successfully.")
         else:
             logger.info("Skipping database initialization (use_database=False).")
@@ -78,10 +92,19 @@ def shutdown_worker_db(**kwargs):
     the flag "use_database" is true."""
     logger = get_celery_logger()
 
+    global _worker_loop
+
     try:
-        if getattr(settings, "use_database", False):
+        if getattr(settings.celery, "use_database", False):
             logger.info("Closing database connection...")
-            asyncio.run(close_database())
+
+            loop = get_or_create_event_loop()
+            loop.run_until_complete(close_database())
+
+            if _worker_loop and not _worker_loop.is_closed():
+                _worker_loop.close()
+                _worker_loop = None
+
             logger.info("Database connection closed.")
         else:
             logger.info("Skipping database shutdown (use_database=False).")

@@ -26,10 +26,9 @@ import config from 'config';
 
 
 // #region contexts & stores
-import { LocaleProvider } from 'context';
+import { JobStoreProvider } from 'store/job';
 import { ThemeStoreProvider } from 'context';
 import { ObserverProvider } from 'context';
-import { SessionStoreProvider } from 'store/__core__/session';
 import { NotificationStoreProvider } from 'store/__core__/notifications';
 // #endregion
 
@@ -58,16 +57,14 @@ export default function RootLayout({ children }) {
 		<html className={`${nunito.variable} ${openSans.variable}`} lang='es-MX'>
 			<body className='theme-dark'>
 				<ObserverProvider>
-					<LocaleProvider>
-						<SessionStoreProvider>
-							<ThemeStoreProvider>
-								<NotificationStoreProvider>
-									{children}
-									<div id='portal' />
-								</NotificationStoreProvider>
-							</ThemeStoreProvider>
-						</SessionStoreProvider>
-					</LocaleProvider>
+					<JobStoreProvider>
+						<ThemeStoreProvider>
+							<NotificationStoreProvider>
+								{children}
+								<div id='portal' />
+							</NotificationStoreProvider>
+						</ThemeStoreProvider>
+					</JobStoreProvider>
 				</ObserverProvider>
 			</body>
 		</html >

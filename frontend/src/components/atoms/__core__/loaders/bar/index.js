@@ -26,6 +26,7 @@ import { selectLogStyle, STYLE_LOG_ENUM } from 'lib/helpers';
 
 // #region styles
 import styles from './styles.module.scss';
+import { useThemeStore } from 'context';
 // #endregion
 
 
@@ -35,16 +36,21 @@ function LoaderBar({
 	width = 50,
 	label = '',
 	state = STYLE_LOG_ENUM.INFO,
+	theme = '',
 }) {
 	// #region hooks & others
 	const logStyle = selectLogStyle(state, styles);
 	// #endregion
 
+	// #region theme
+	const { theme: globalTheme } = useThemeStore();
+	const appliedTheme = theme || globalTheme;
+	// #endregion
 
 	// #region main UI
 	return (
 		<div
-			className={`${styles.bar} ${logStyle}`}
+			className={`${styles.bar} ${logStyle} theme-${appliedTheme}`}
 			style={{ minWidth: width }}
 		>
 			{label &&

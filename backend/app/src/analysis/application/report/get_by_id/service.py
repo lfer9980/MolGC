@@ -64,6 +64,7 @@ class GetByIDReportService:
             report_id=dataset[0].report_id,
             family=dataset[0].family,
             variant=dataset[0].variant,
+            type=report_entity.type,
             data=report_data,
         )
 
@@ -82,6 +83,7 @@ class GetByIDReportService:
 
         report_data = {
             **dataset.model_dump(),
+            "type": report_entity.type,
             "data": json.loads(dataset.data),
         }
 
@@ -102,6 +104,7 @@ class GetByIDReportService:
 
         report_data = {
             **dataset.model_dump(),
+            "type": report_entity.type,
             "data": json.loads(dataset.data),
         }
 
@@ -126,6 +129,7 @@ class GetByIDReportService:
             report_id=dataset[0].report_id,
             family=dataset[0].family,
             variant=dataset[0].variant,
+            type=report_entity.type,
             data=report_data,
         )
 
@@ -144,6 +148,7 @@ class GetByIDReportService:
 
         report_data = {
             **dataset.model_dump(),
+            "type": report_entity.type,
             "data": json.loads(dataset.data),
         }
 
@@ -165,12 +170,15 @@ class GetByIDReportService:
         report_data = [item.model_dump(exclude={"id", "report_id"}) for item in dataset]
 
         return ResponseReportDTO(
-            id=dataset[0].id, report_id=dataset[0].report_id, data=report_data
+            id=dataset[0].id,
+            report_id=dataset[0].report_id,
+            type=report_entity.type,
+            data=report_data
         )
 
     @classmethod
     def _prepare_mae_variant_chart(
-        cls, data: List[MAEVariantEntity], report_entity: ReportEntity
+            cls, data: List[MAEVariantEntity], report_entity: ReportEntity
     ) -> dict:
         """Prepare the Chart.js-compatible data structure for MAE General.
 
@@ -189,7 +197,7 @@ class GetByIDReportService:
             "labels": labels,
             "datasets": [
                 {
-                    "type": "bar",
+                    "type": "line",
                     "label": report_entity.variant,
                     "data": values,
                 }
