@@ -1,6 +1,4 @@
-import asyncio
-
-from app.infrastructure.celery.celery_app import celery, get_or_create_event_loop
+from app.infrastructure.celery.celery_app import get_or_create_event_loop
 from app.infrastructure.database import DatabaseSession
 from app.src.analysis.infrastructure.celery.subtasks import (
     save_mae_family_data,
@@ -78,6 +76,6 @@ def create_report_task(self, new_data: ReportsType, job_id: str):
                 session=session,
                 job_id=job_id,
             )
-        
+
     loop = get_or_create_event_loop()
     return loop.run_until_complete(run_task())
