@@ -106,7 +106,7 @@ export default function Configuration({ }) {
 			<div className={styles.page_buttons}>
 				<div className={styles.page_link}>
 					<ElementLink
-						href='/FAQs'
+						href='/docs'
 						label='Documentación y tutoriales de uso'
 						symbol='help'
 					/>

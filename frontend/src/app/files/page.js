@@ -122,7 +122,7 @@ export default function Files({ }) {
 
 			<div className={styles.page_link}>
 				<ElementLink
-					href='/FAQs'
+					href='/docs'
 					label='Documentación y tutoriales de uso'
 					symbol='help'
 				/>

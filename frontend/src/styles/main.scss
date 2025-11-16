@@ -135,7 +135,7 @@ input {
 
 hr {
 	border-color: var(--border);
-	margin-block: 1.6rem 3.2rem;
+	margin-block: 1.6rem 2.4rem;
 }
 
 // #endregion
@@ -158,6 +158,10 @@ hr {
 
 	::-webkit-scrollbar-thumb:hover {
 		background: var(--primary);
+	}
+
+	hr {
+		margin-block: 3.2rem;
 	}
 
 	// #endregion

@@ -33,6 +33,7 @@ import { useJobStore } from "store/job";
 // #region requests
 import { useServiceJob } from 'services/job';
 import { useServiceUpload } from "services/upload";
+import { useNotificationStore } from "store/__core__/notifications";
 // #endregion
 
 
@@ -55,6 +56,10 @@ function useWelcome({ }) {
 	const {
 		handlerUploadAutomatic,
 	} = useServiceUpload({});
+
+	const {
+		handlerAddMessage,
+	} = useNotificationStore();
 	// #endregion
 
 
@@ -96,28 +101,46 @@ function useWelcome({ }) {
 
 	const handlerStartDemo = async () => {
 		try {
-			setIsDemo(true);
-
 			const newToken = await handlerCreateJob({
 				uploadType: "automatic",
 				redirect: false,
 			});
 
 			if (!newToken) {
-				throw new Error('No se pudo crear la sesión');
-			}
+				return handlerAddMessage({
+					content: {
+						icon: 'error',
+						title: 'No se pudo crear la sesión',
+						text: 'Porfavor intenta nuevamente'
+					},
+					type: MESSAGE_ENUM.ALERT,
+				});
+			};
 
 			const response = await fetch('/api/internal/file');
 
 			if (!response.ok) {
-				throw new Error(`HTTP ${response.status}: ${response.statusText}`);
-			}
+				return handlerAddMessage({
+					content: {
+						icon: 'error',
+						title: 'Ocurrio un error al enviar los archivos...',
+						text: `${response.statusText}`
+					},
+					type: MESSAGE_ENUM.ALERT,
+				});
+			};
+
+			setIsDemo(true);
 
 			const blob = await response.blob();
-			const file = new File([blob], "molecules.zip", {
-				type: "application/zip",
-				lastModified: Date.now()
-			});
+			const file = new File(
+				[blob],
+				"molecules.zip",
+				{
+					type: "application/zip",
+					lastModified: Date.now()
+				}
+			);
 
 			await handlerUploadAutomatic({
 				files: [file],
@@ -125,7 +148,6 @@ function useWelcome({ }) {
 				explicitToken: newToken,
 			});
 
-			setIsDemo(false);
 		} catch (e) {
 			console.error('Error al iniciar el demo:', e);
 		};
@@ -212,7 +234,7 @@ function useWelcome({ }) {
 
 	useEffect(() => {
 		validateJobCallback();
-	}, []);
+	}, [validateJobCallback]);
 	// #endregion
 
 

@@ -1,4 +1,4 @@
-// ESTADO: En desarrollo
+// ESTADO: Completada
 'use client';
 /* 
 	ROUTES - LANDING PAGE 
@@ -27,7 +27,11 @@ import {
 	More
 } from 'components/molecules';
 
-import { HeaderMolGC, VideoBackground } from 'components/organisms';
+import {
+	FooterSimpleMolGC,
+	HeaderMolGC,
+	VideoBackground
+} from 'components/organisms';
 // #endregion
 
 
@@ -134,6 +138,10 @@ export default function App() {
 								help
 							/>
 						</div>
+
+						<div className={styles.page_footer}>
+							<FooterSimpleMolGC />
+						</div>
 					</WrapMain>
 				</VideoBackground>
 			}
@@ -150,17 +158,16 @@ export default function App() {
 							transition={{ duration: 0.2, ease: "easeOut" }}
 							className={styles.page_section}
 						>
-							<WrapSection padding>
+							<WrapSection padding margin>
 								<HeadingTitle
 									symbol='precision_manufacturing'
 									title='Modo de uso'
-									subtitle='Manual / Automático'
 									label='MolGC puede leer tus archivos de forma automática, pero si lo prefieres, puedes cargar tus archivos y categorizarlos de forma manual.'
 									theme='dark'
 								/>
 
 								<div className={styles.page_select}>
-									{loading ?
+									{loading &&
 										<div className={styles.page_select_loading}>
 											<Loader
 												type={LOADER_ENUM.SPINNER}
@@ -169,65 +176,76 @@ export default function App() {
 												label='cargando...'
 											/>
 										</div>
-										:
+									}
+
+									{!loading && !isDemo &&
 										<>
-											{!isDemo ?
-												<>
-													<div className={styles.page_select_panel}>
-														<ButtonColor
-															label='Subir archivos automáticamente'
-															symbol='backup'
-															color={colorsApp.blue}
-															size={24}
-															center
-															handler={() => handlerCreateJob({ uploadType: "automatic" })}
-														/>
-														<ButtonColor
-															label='Subir archivos Manualmente'
-															symbol='upload'
-															color={colorsApp.green}
-															center
-															handler={() => handlerCreateJob({ uploadType: "manual" })}
-															size={24}
-														/>
-													</div>
+											<div className={styles.page_select_wrapper}>
+												<HeadingTitle
+													title='MolGC en acción'
+													label='Elige como subiras tus archivos.'
+													accent
+												/>
 
-													<hr />
+												<div className={styles.page_select_panel}>
+													<ButtonColor
+														label='Subir archivos automáticamente'
+														symbol='backup'
+														color={colorsApp.blue}
+														size={24}
+														center
+														handler={() => handlerCreateJob({ uploadType: "automatic" })}
+													/>
+													<ButtonColor
+														label='Subir archivos Manualmente'
+														symbol='upload'
+														color={colorsApp.green}
+														center
+														handler={() => handlerCreateJob({ uploadType: "manual" })}
+														size={24}
+													/>
+												</div>
+											</div>
 
-													<div className={styles.page_select_second}>
-														<ElementLabel
-															title='MolGC en acción'
-															label='Juega con MolGC, con un archivo de prueba que tenemos preparado.'
-														/>
+											<hr className={styles.page_select_divisor} />
 
-														<ButtonColor
-															label='Prueba MolGC'
-															symbol='play_arrow'
-															color={colorsApp.dark_purple}
-															handler={handlerStartDemo}
-															center
-															outline
-															size={24}
-														/>
-													</div>
-												</>
-												:
-												<div className={styles.page_loading}>
-													<div className={styles.page_loading_main}>
-														<HeadingTitle
-															subtitle='Subiendo archivos...'
-															accent
-														/>
+											<div className={styles.page_select_wrapper}>
+												<HeadingTitle
+													title='Playgrounds'
+													label='Juega con MolGC, con un archivo de prueba que tenemos preparado.'
+												/>
 
-														<LoaderBar
-															label
-															progress={progress.progress}
-															maxValue={100}
-														/>
-													</div>
-												</div >
-											}
+												<div className={styles.page_select_panel}>
+													<ButtonColor
+														label='Prueba MolGC'
+														symbol='play_arrow'
+														color={colorsApp.purple}
+														handler={handlerStartDemo}
+														center
+														size={24}
+													/>
+												</div>
+											</div>
 										</>
+									}
+
+									{isDemo &&
+										<div className={styles.page_loading}>
+											<Loader
+												type={LOADER_ENUM.SPINNER}
+												number={7}
+												size={64}
+
+											/>
+
+											<div className={styles.page_loading_bar}>
+												<LoaderBar
+													progress={progress.progress}
+													maxValue={100}
+													label='subiendo archivos...'
+												/>
+											</div>
+										</div >
 									}
 								</div>
 							</WrapSection>
@@ -239,7 +257,7 @@ export default function App() {
 			{view === 1 &&
 				<div className={styles.page_link}>
 					<ElementLink
-						href='/FAQs'
+						href='/docs'
 						label='Documentación y tutoriales de uso'
 						symbol='help'
 					/>

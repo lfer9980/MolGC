@@ -119,14 +119,13 @@ function useServiceJob({ }) {
 
 			handlerCreateJobStore({ data: response.data });
 			/* redirect according to upload type */
-			if (redirect) router.push(`/files/${uploadType}`);
+			if (redirect) return router.push(`/files/${uploadType}`);
 
+			setLoading(false);
 			return response.data.access_token;
 		} catch {
 			console.warn('ocurrio el siguiente error:', e);
-		} finally {
-			setLoading(false);
-		}
+		};
 	};
 
 	const handlerUpdateJob = async ({ data }) => {

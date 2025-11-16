@@ -5,12 +5,13 @@
 */
 // #region libraries
 import React from 'react';
+import { useRouter } from 'next/navigation';
 // #endregion
 
 
 // #region components
 import { SemContent, WrapMain } from 'components/__common__';
-import { HeadingTitle } from 'components/atoms';
+import { ButtonPrimary, HeadingTitle } from 'components/atoms';
 import { Breadcrumbs, ElementImage } from 'components/molecules';
 import {
 	CardAutor,
@@ -26,6 +27,7 @@ import {
 
 
 // #region utils
+import { STYLE_ENUM } from 'lib/helpers';
 // #endregion
 
 
@@ -44,6 +46,7 @@ import styles from './styles.module.scss';
 
 export default function About({ }) {
 	// #region hooks & others
+	const router = useRouter();
 	// #endregion
 
 	//#region main UI
@@ -60,6 +63,12 @@ export default function About({ }) {
 				>
 					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 				</HeadingTitle>
+
+				<ButtonPrimary 
+					symbol='docs'
+					label='Acceder a los tutoriales de uso'
+					handler={() => router.push('/docs')}
+				/>
 				<hr />
 
 

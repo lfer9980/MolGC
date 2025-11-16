@@ -28,7 +28,6 @@
 		}
 	}
 
-
 	&_section {
 		display: flex;
 		flex-direction: column;
@@ -41,14 +40,13 @@
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		margin-block: 8rem;
 
 		&_panel {
 			display: flex;
 			justify-content: center;
 			flex-wrap: wrap;
 			gap: 3.2rem;
-			margin-block-end: 3.2rem;
+			margin-block: 3.2rem;
 		}
 
 		&_loading {
@@ -58,7 +56,7 @@
 			height: 50svh;
 		}
 
-		&_second {
+		&_wrapper {
 			width: 100%;
 		}
 
@@ -77,7 +75,7 @@
 			position: absolute;
 			inset: 0;
 			background: url('/images/background_molecule.png') center/cover no-repeat;
-			filter: blur(2px);
+			filter: blur(4px);
 			transform: scale(1.05);
 			opacity: 0.25;
 			z-index: -1;
@@ -122,12 +120,14 @@
 		height: 40svh;
 		width: 100%;
 
-		&_main {
+		&_bar {
 			width: 100%;
-			margin-block-end: 6.4rem;
 		}
 	}
 
+	&_footer {
+		display: none;
+	}
 
 	// #endregion
 
@@ -145,10 +145,58 @@
 		&_link {
 			left: 2.4rem;
 		}
+
+		&_select {
+			margin-block: 4.8rem;
+
+			&_wrapper {
+				display: flex;
+				flex-direction: column;
+			}
+
+			&_panel {
+				width: 40rem;
+				align-self: center;
+			}
+		}
+
+		&_footer {
+			display: block;
+			position: fixed;
+			bottom: 8.2rem;
+			right: 2.4rem;
+		}
 	}
 
 	@include desktop {
 		@include fontSizeDesktop;
+
+		&_select {
+			flex-direction: row;
+			align-items: flex-start;
+			gap: 1.6rem;
+
+			&_divisor {
+				display: none;
+			}
+
+			&_wrapper {
+				height: 100%;
+			}
+
+			&_panel {
+				align-self: flex-start;
+			}
+
+		}
+
+		&_footer {
+			bottom: 0rem;
+		}
+
+		&_tooltip {
+			bottom: 2.4rem;
+		}
 	}
 
 	@include large {

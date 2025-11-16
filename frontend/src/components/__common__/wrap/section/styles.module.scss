@@ -52,6 +52,7 @@
 	@include desktop {
 		&.padding {
 			@include paddingDesktop;
+			max-width: 80vw;
 		}
 
 		&.margin {
