@@ -5,7 +5,6 @@
 
 // #region libraries
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
 // #endregion
 
 
@@ -19,6 +18,7 @@ import HTTP_CODES from './codes.json';
 // #endregion
 
 // #region utils
+import { JOB_STATUS_ENUM } from 'lib/enums';
 import { helperFindJSON } from 'lib/helpers';
 // #endregion
 
@@ -28,6 +28,7 @@ import { helperFindJSON } from 'lib/helpers';
 
 
 // #region contexts & stores
+import { useJobStore } from 'store/job';
 import { MESSAGE_ENUM } from 'store/__core__/notifications/model';
 import { useNotificationStore } from 'store/__core__/notifications';
 // #endregion
@@ -36,15 +37,12 @@ import { useNotificationStore } from 'store/__core__/notifications';
 // #region requests
 import { EndpointHTTP } from 'lib/requests/http';
 import { HTTP_METHODS_ENUMS } from 'lib/requests/http/methods';
-import { JOB_STATUS_ENUM } from 'lib/enums';
-import { useJobStore } from 'store/job';
 // #endregion
 
 
 
 function useServiceAnalysis({ }) {
 	// #region references
-	const router = useRouter();
 	// #endregion
 
 

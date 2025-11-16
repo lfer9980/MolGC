@@ -5,7 +5,7 @@
 */
 
 // #region libraries
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 // #endregion
 
@@ -44,15 +44,15 @@ function useDashboard({ }) {
 
 	// #region contexts & hooks
 	const {
+		job,
 		handlerUpdateJobStore,
 	} = useJobStore();
 
 	const {
 		loading,
 		handlerGetResumeReport,
+		handlerGetAllReports,
 	} = useServiceReport({});
-
-
 	// #endregion
 
 
@@ -63,11 +63,39 @@ function useDashboard({ }) {
 	// #region states
 	const [colors, setColors] = useState([]);
 	const [resume, setResume] = useState([]);
+	const [reportData, setReportData] = useState([]);
 	const [nav, setNav] = useState(0);
 	// #endregion
 
 
 	// #region memos & callbacks
+	const handlerResumeCallback = useCallback(async () => {
+		const data = await handlerGetResumeReport();
+		if (data) {
+			setResume(data);
+
+			const resume = { resume: JSON.stringify(data) };
+			handlerUpdateJobStore({ data: resume });
+
+			const colorsList = helperRandomColor({
+				count: data.length,
+				allowed: [
+					'gray',
+					'purple',
+					'green',
+					'orange',
+					'red',
+				],
+			});
+
+			setColors(colorsList);
+		};
+	}, []);
+
+	const handlerAllDataCallback = useCallback(async () => {
+		const data = await handlerGetAllReports();
+		if (data) setReportData(data);
+	}, []);
 	// #endregion
 
 
@@ -90,30 +118,8 @@ function useDashboard({ }) {
 
 	// #region effects
 	useEffect(() => {
-		const fetchReportResume = async () => {
-			const data = await handlerGetResumeReport();
-			if (data) {
-				setResume(data);
-				
-				const resume = { resume: JSON.stringify(data) };
-				handlerUpdateJobStore({ data: resume });
-
-				const colorsList = helperRandomColor({
-					count: data.length,
-					allowed: [
-						'gray',
-						'purple',
-						'green',
-						'orange',
-						'red',
-					],
-				});
-
-				setColors(colorsList);
-			};
-		};
-
-		fetchReportResume();
+		handlerResumeCallback();
+		handlerAllDataCallback();
 	}, []);
 	// #endregion
 
@@ -124,9 +130,11 @@ function useDashboard({ }) {
 
 	// #region main
 	return {
+		job,
 		router,
 		loading,
 		resume,
+		reportData,
 		nav,
 		colors,
 		handlerNav,

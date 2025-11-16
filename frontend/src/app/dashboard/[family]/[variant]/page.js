@@ -4,7 +4,6 @@
 	ROUTES - DASHBOARD / FAMILY / VARIANT
 */
 // #region libraries
-import React from 'react';
 // #endregion
 
 
@@ -61,10 +60,13 @@ export default function DashboardVariant({ }) {
 		tabs,
 		job,
 		nav,
-		data,
+		records,
 		family,
 		variant,
 		loading,
+		isPlotLoading,
+		shouldMountPlot,
+		handlerPlotMounted,
 		handlerNav
 	} = useVariant({});
 
@@ -73,9 +75,102 @@ export default function DashboardVariant({ }) {
 		handlerGeneratePDF,
 	} = useGenerateReport({
 		reportComponent: ReportMolGC,
-		data: data,
+		records: records,
+		job: job,
 		name: `${family}_${variant}`,
 	});
+
+	const renderChart = (item, key) => {
+		const common = {
+			label: item.data?.title,
+			theme: 'dark'
+		};
+
+		switch (item.type) {
+			case 'mae_general':
+				return (
+					<ChartWrap title="Bond Lengths" {...common} key={key}>
+						<ChartBar
+							positionLegend={CHART_BAR_LEGEND_ENUM.BOTTOM}
+							aspect={CHART_ENUM.STACKED}
+							data={item.data}
+							transparency
+						/>
+					</ChartWrap>
+				);
+
+			case 'mae_family':
+				return (
+					<ChartWrap title="Bond Lengths" {...common} key={key}>
+						<ChartBar
+							positionLegend={CHART_BAR_LEGEND_ENUM.BOTTOM}
+							data={item.data}
+						/>
+					</ChartWrap>
+				);
+
+			case 'mae_variant':
+				return (
+					<ChartWrap title="Bond Lengths" {...common} key={key}>
+						<ChartLine
+							positionLegend={CHART_BAR_LEGEND_ENUM.BOTTOM}
+							data={item.data}
+						/>
+					</ChartWrap>
+				);
+
+			case 'rmsd':
+				return (
+					<ChartWrap title="RMSD" {...common} key={key}>
+						<ChartLine
+							positionLegend={CHART_BAR_LEGEND_ENUM.BOTTOM}
+							data={item.data}
+						/>
+					</ChartWrap>
+				);
+
+			default:
+				return null;
+		}
+	};
+
+	const renderFull = (item, key) => {
+		switch (item.type) {
+			case 'structure':
+				return (
+					<div key={key} className={styles.page_element_full}>
+						{shouldMountPlot ? (
+							<PlotStructure
+								structure={item}
+								onMount={handlerPlotMounted}
+							/>
+						) : null}
+
+						{isPlotLoading && (
+							<div className={styles.page_loader}>
+								<Loader
+									type="spinner"
+									size={32}
+									label="cargando estructura 3D..."
+								/>
+							</div>
+						)}
+					</div>
+				);
+
+			case 'topsis':
+				return (
+					<div key={key} className={styles.page_element_full}>
+						<TableX data={item.data} columns={COLUMNS_TOPSIS}>
+							{(props) => <RowsTOPSIS {...props} />}
+						</TableX>
+					</div>
+				);
+
+			default:
+				return null;
+		}
+	};
 	// #endregion
 
 	//#region main UI
@@ -90,6 +185,15 @@ export default function DashboardVariant({ }) {
 		</section>
 	);
 
+	const pageItems = records?.root?.children ?? [];
+
+	const charts = pageItems.filter((it) =>
+		['mae_general', 'mae_family', 'mae_variant', 'rmsd'].includes(it.type)
+	);
+
+	const fullWidth = pageItems.filter((it) =>
+		['structure', 'topsis'].includes(it.type)
+	);
 
 	return (
 		<div className={styles.page_main}>
@@ -108,70 +212,11 @@ export default function DashboardVariant({ }) {
 			</div>
 
 			<div className={styles.page_section} style={{ display: nav === 0 ? "block" : "none" }}>
-				{data['mae_general'] &&
-					<ChartWrap
-						title='Bond Lenghts'
-						label={data['mae_general'].data.title}
-					>
-						<ChartBar
-							positionLegend={CHART_BAR_LEGEND_ENUM.BOTTOM}
-							aspect={CHART_ENUM.STACKED}
-							data={data['mae_general'].data}
-							transparency
-						/>
-					</ChartWrap>
-				}
-
-				{data['mae_family'] &&
-					<ChartWrap
-						title='Bond Lenghts'
-						label={data['mae_family'].data.title}
-					>
-						<ChartBar
-							positionLegend={CHART_BAR_LEGEND_ENUM.BOTTOM}
-							data={data['mae_family'].data}
-						/>
-					</ChartWrap>
-				}
-
-				{data['mae_variant'] &&
-					<ChartWrap
-						title='Bond Lenghts'
-						label={data['mae_variant'].data.title}
-					>
-						<ChartLine
-							positionLegend={CHART_BAR_LEGEND_ENUM.BOTTOM}
-							data={data['mae_variant'].data}
-						/>
-					</ChartWrap>
-				}
-
-				{data['rmsd'] &&
-					<ChartWrap
-						title='RMSD'
-						label={data['mae_variant'].data.title}
-					>
-						<ChartLine
-							positionLegend={CHART_BAR_LEGEND_ENUM.BOTTOM}
-							data={data['rmsd'].data}
-						/>
-					</ChartWrap>
-				}
+				{charts.map((chart, idx) => renderChart(chart, `chart-${idx}`))}
 			</div>
 
 			<div className={styles.page_section} style={{ display: nav === 1 ? "block" : "none" }}>
-				{data['structure'] &&
-					<PlotStructure structure={data['structure']} />
-				}
-
-				{data['topsis'] &&
-					<TableX
-						data={data['topsis'].data}
-						columns={COLUMNS_TOPSIS}
-					>
-						{(props) => <RowsTOPSIS {...props} />}
-					</TableX>
-				}
+				{fullWidth.map((item, idx) => renderFull(item, `full-${idx}`))}
 			</div>
 
 			<div className={styles.page_buttons}>

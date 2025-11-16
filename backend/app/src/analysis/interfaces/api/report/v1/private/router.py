@@ -3,6 +3,7 @@ from fastapi import APIRouter, Depends
 
 from .get_by_id import router as get_by_id_router
 from .get_resume import router as get_resume_router
+from .get_all import router as get_all_router
 
 router = APIRouter(
     prefix="",
@@ -12,3 +13,4 @@ router = APIRouter(
 
 router.include_router(get_by_id_router)
 router.include_router(get_resume_router)
+router.include_router(get_all_router)

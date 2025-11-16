@@ -88,3 +88,7 @@ class ReportRepositorySQL(ReportRepository):
 
         response.sort(key=lambda x: 0 if x["title"] == "Reporte General" else 1)
         return response
+
+    async def get_all_by_job_id(self, job_id: str) -> List[ReportEntity]:
+        records = await self._filter_by(key="job_id", value=job_id)
+        return [ReportEntity(**item.model_dump()) for item in records]

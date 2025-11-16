@@ -1,18 +1,19 @@
-from typing import Optional, Union
+from typing import Optional, List, Dict, Union
 
 from app.elemental.common import ElementalSchema
 from app.src.analysis.domain.enums import ReportTypeEnum
+from app.src.jobs.domain.enums import JobAnalysisEnum
 
 
-class GetByIDReportDTO(ElementalSchema):
+class GetAllByJobDTO(ElementalSchema):
     job_id: str
-    report_id: str
-    type: ReportTypeEnum
+    reference: Optional[str] = None
+    analysis_type: Optional[JobAnalysisEnum] = None
+    size: int
+    children: List[Dict]
 
 
 class ResponseReportDTO(ElementalSchema):
-    id: str
-    report_id: str
     family: Optional[str] = None
     variant: Optional[str] = None
     type: ReportTypeEnum

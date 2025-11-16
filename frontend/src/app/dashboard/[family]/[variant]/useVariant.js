@@ -87,8 +87,11 @@ function useVariant({ }) {
 	// #region states
 	const [nav, setNav] = useState(0);
 	const [tabs, setTabs] = useState([]);
-	const [data, setData] = useState({});
+	const [records, setRecords] = useState({});
 	const [loading, setLoading] = useState(true);
+	const [plotMounted, setPlotMounted] = useState(false);
+	const [shouldMountPlot, setShouldMountPlot] = useState(false);
+	const [isPlotLoading, setIsPlotLoading] = useState(false);
 	// #endregion
 
 
@@ -101,42 +104,80 @@ function useVariant({ }) {
 		}
 	}, [job?.resume]);
 
-	const handlerRequests = useCallback(async (family, variant, token, resume) => {
+
+	const handlerRequestsCallback = useCallback(async (family, variant, token, resume) => {
 		if (!family || !variant || !resume) return;
 
 		const endpoints = getReportUrls(resume, family, variant);
+
 		const requests = endpoints.map((item) =>
 			EndpointHTTP({
 				token,
 				method: HTTP_METHODS_ENUMS.GET,
-				endpoint: `${config.reportURL}${item.url}`
+				endpoint: `${config.reportURL}${item.url}`,
 			})
 		);
 
 		const results = await Promise.allSettled(requests);
 
-		const formatted = endpoints.reduce((acc, endpoint, i) => {
-			const result = results[i];
-			acc[endpoint.type] = {
-				id: endpoint.id,
-				status: result.status,
-				data: result.status === 'fulfilled'
-					? result.value.data.data
-					: result.reason
-			};
-			return acc;
-		}, { metadata: { family, variant } });
+		const grouped = {};
+		for (const item of results) {
+			const status = item.status;
 
-		const keys = Object.keys(formatted);
+			const payload =
+				status === "fulfilled"
+					? item.value?.data
+					: item.reason?.response?.data || item.reason;
+
+			const fam = payload?.family || "Reporte General";
+			const varName = payload?.variant || "General";
+
+			grouped[fam] = grouped[fam] || {};
+			grouped[fam][varName] = grouped[fam][varName] || [];
+
+			grouped[fam][varName].push({
+				...payload,
+				request_status: status,
+			});
+		}
+
+		const children = Object.entries(grouped).map(([familyName, variantsDict]) => ({
+			family: familyName,
+			children: Object.entries(variantsDict).map(([variantName, reports]) => ({
+				variant: variantName,
+				children: reports,
+			})),
+		}));
+
+		const firstFamily = children?.[0];
+		const firstVariant = firstFamily?.children?.[0];
+
+		const root = firstFamily && firstVariant
+			? {
+				family: firstFamily.family,
+				variant: firstVariant.variant,
+				children: firstVariant.children,
+			}
+			: null;
+
+		// Tabs (igual que antes)
+		const allReportTypes = results
+			.map((r) => (r.status === "fulfilled" ? r.value?.data?.type : null))
+			.filter(Boolean);
+
 		setTabs(
-			keys.includes('mae_general')
+			allReportTypes.includes("mae_general")
 				? TABS_GENERAL
-				: keys.includes('mae_family')
+				: allReportTypes.includes("mae_family")
 					? TABS_FAMILY
 					: TABS_VARIANT
 		);
 
-		setData(formatted);
+		setRecords({
+			children,
+			root,
+		});
+
 		setLoading(false);
 	}, []);
 	// #endregion
@@ -152,21 +193,39 @@ function useVariant({ }) {
 
 	// #region handlers
 	const handlerNav = (value) => setNav(value);
+
+	const handlerPlotMounted = () => {
+		setIsPlotLoading(false);
+		setPlotMounted(true);
+	};
 	// #endregion
 
 
 	// #region effects
 	useEffect(() => {
-		if (nav === 1) {
+		if (nav === 1 && plotMounted) {
 			const id = setTimeout(() => window.dispatchEvent(new Event("resize")), 300);
 			return () => clearTimeout(id);
 		}
-	}, [nav]);
+	}, [nav, plotMounted]);
 
 	useEffect(() => {
 		if (!job?.resume) return;
-		handlerRequests(family, variant, job.access_token, resumeMemo);
+		handlerRequestsCallback(family, variant, job.access_token, resumeMemo);
 	}, [family, variant, job?.access_token]);
+
+	useEffect(() => {
+		if (nav === 1 && !plotMounted) {
+			setIsPlotLoading(true);
+
+			requestAnimationFrame(() => {
+				setTimeout(() => {
+					setShouldMountPlot(true);
+				}, 50);
+			});
+		}
+	}, [nav, plotMounted]);
+
 	// #endregion
 
 
@@ -179,10 +238,13 @@ function useVariant({ }) {
 		tabs,
 		job,
 		nav,
-		data,
+		records,
 		family,
 		variant,
 		loading,
+		isPlotLoading,
+		shouldMountPlot,
+		handlerPlotMounted,
 		handlerNav
 	};
 	// #endregion

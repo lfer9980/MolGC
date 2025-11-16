@@ -9,15 +9,16 @@
 
 	// #region unit elements
 	&_header,
-	&_head,
-	&_main {
+	&_head {
 		display: flex;
 		justify-content: space-between;
 		gap: 1.6rem;
-	}
 
-	&_head {
-		margin-block-start: 1.6rem;
+		&_left {
+			display: flex;
+			flex-direction: column;
+			gap: 1.6rem;
+		}
 	}
 
 	&_reference {
@@ -25,10 +26,43 @@
 		font-weight: 700;
 		text-align: end;
 	}
+
+	&_list {
+		display: flex;
+		justify-content: center;
+		flex-wrap: wrap;
+		width: 100%;
+		gap: 1.6rem;
+	}
+
+	&_grid {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		place-content: center;
+		gap: 1.6rem;
+		width: 100%;
+		margin-block-end: 1.6rem;
+	}
+
+	&_element {
+		width: 100%;
+	}
+
+	&_element_full {
+		width: 100%;
+		min-height: 45rem;
+	}
+
 	// #endregion
 
 
 	// #region others 
+	.page_break {
+		display: block;
+		page-break-after: always;
+		break-after: page;
+	}
+
 	// #endregion
 
 

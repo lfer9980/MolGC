@@ -35,12 +35,12 @@ import { THEME_ENUM } from 'context/__core__/theme/__data__';
 import styles from './styles.module.scss';
 // #endregion
 
-
 function PlotStructure({
 	structure,
 	isStatic = false,
 	hideLegend = false,
 	theme = '',
+	onMount,
 }) {
 	// #region hooks & others
 	const [isSmall, setIsSmall] = useState(window.innerWidth < 768);
@@ -51,18 +51,21 @@ function PlotStructure({
 		return () => window.removeEventListener("resize", handleResize);
 	}, []);
 
+	useEffect(() => {
+		if (structure && onMount) {
+			const timer = setTimeout(() => {
+				onMount();
+			}, 100);
+			return () => clearTimeout(timer);
+		}
+	}, [structure, onMount]);
+
 	// #region theme
 	const { theme: globalTheme } = useThemeStore();
 	const appliedTheme = theme || globalTheme;
 
 	const fullStyle = !isStatic ? styles.full : '';
 	// #endregion
-
-
-	// #region skeletons
-	// #endregion
-
-
 
 	// #region main UI
 	const plotFigure = useMemo(() => {
@@ -82,7 +85,7 @@ function PlotStructure({
 					gridcolor: `${appliedTheme === THEME_ENUM.DARK ? 'rgba(255,255,255,0.1)' : 'rgba(0, 0, 0, 0.1)'}`,
 					gridwidth: 0.5,
 					zeroline: true,
-					gridcolor: `${appliedTheme === THEME_ENUM.DARK ? 'rgba(255,255,255,0.2)' : 'rgba(0, 0, 0, 0.2)'}`,
+					zerolinecolor: `${appliedTheme === THEME_ENUM.DARK ? 'rgba(255,255,255,0.2)' : 'rgba(0, 0, 0, 0.2)'}`,
 					showbackground: true,
 					backgroundcolor: "rgba(0,0,0,0)"
 				},
@@ -92,7 +95,7 @@ function PlotStructure({
 					gridcolor: `${appliedTheme === THEME_ENUM.DARK ? 'rgba(255,255,255,0.1)' : 'rgba(0, 0, 0, 0.1)'}`,
 					gridwidth: 0.5,
 					zeroline: true,
-					gridcolor: `${appliedTheme === THEME_ENUM.DARK ? 'rgba(255,255,255,0.2)' : 'rgba(0, 0, 0, 0.2)'}`,
+					zerolinecolor: `${appliedTheme === THEME_ENUM.DARK ? 'rgba(255,255,255,0.2)' : 'rgba(0, 0, 0, 0.2)'}`,
 					showbackground: true,
 					backgroundcolor: "rgba(0,0,0,0)"
 				},
@@ -102,11 +105,12 @@ function PlotStructure({
 					gridcolor: `${appliedTheme === THEME_ENUM.DARK ? 'rgba(255,255,255,0.1)' : 'rgba(0, 0, 0, 0.1)'}`,
 					gridwidth: 0.5,
 					zeroline: true,
-					gridcolor: `${appliedTheme === THEME_ENUM.DARK ? 'rgba(255,255,255,0.2)' : 'rgba(0, 0, 0, 0.2)'}`,
+					zerolinecolor: `${appliedTheme === THEME_ENUM.DARK ? 'rgba(255,255,255,0.2)' : 'rgba(0, 0, 0, 0.2)'}`,
 					showbackground: true,
 					backgroundcolor: "rgba(0,0,0,0)"
 				}
-			}, legend: isSmall ?
+			},
+			legend: isSmall ?
 				{
 					orientation: "h",
 					y: -0.3,
@@ -124,7 +128,6 @@ function PlotStructure({
 			autosize: true,
 			dragmode: isStatic ? false : "orbit",
 		};
-
 
 		const config = {
 			responsive: true,
@@ -160,7 +163,7 @@ function PlotStructure({
 				useResizeHandler={true}
 			/>
 		);
-	}, [structure, isSmall]);
+	}, [structure, isSmall, appliedTheme, hideLegend, isStatic]);
 
 	return (
 		<div className={`${styles.page_structure} ${fullStyle}`}>

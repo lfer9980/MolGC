@@ -120,6 +120,49 @@ function useServiceReport({ }) {
 			setLoading(false);
 		};
 	};
+
+	const handlerGetAllReports = async () => {
+		/* get the report resume via GET */
+		let newStatus;
+
+		const endpoint = config.reportAllURL;
+		const token = job.access_token;
+
+		try {
+			const response = await EndpointHTTP({
+				method: HTTP_METHODS_ENUMS.GET,
+				token: token,
+				endpoint: endpoint,
+			});
+
+			if (!response || response?.status !== 200) {
+				newStatus = helperFindJSON({
+					object: HTTP_CODES,
+					property: !response ? 'null' : response.status,
+				});
+
+				handlerAddMessage({
+					content: {
+						icon: 'error',
+						title: newStatus?.title,
+						label: newStatus?.label,
+						allowOutsideClick: false,
+						timer: null,
+					},
+					type: MESSAGE_ENUM.ALERT
+				});
+
+				setLoading(false);
+				return;
+			};
+
+			return response.data;
+		} catch (e) {
+			console.warn('ocurrio el siguiente error:', e);
+		} finally {
+			setLoading(false);
+		};
+	};
 	// #endregion
 
 
@@ -134,7 +177,8 @@ function useServiceReport({ }) {
 	// #region main
 	return {
 		loading,
-		handlerGetResumeReport
+		handlerGetResumeReport,
+		handlerGetAllReports,
 	};
 	// #endregion
 }

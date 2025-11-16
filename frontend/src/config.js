@@ -38,6 +38,7 @@ const config = {
 	analysisURL: `/analysis/v1/`,
 	analysisWSURL: `/analysis/v1/ws`,
 	reportResumeURL: `/report/v1/resume`,
+	reportAllURL: `/report/v1/all`,
 	reportURL: `/report/v1`,
 };
 

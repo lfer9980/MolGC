@@ -32,36 +32,20 @@ import ReactDOM from 'react-dom/client';
 // #endregion
 
 
-function useGenerateReport({ reportComponent, name, resume, data }) {
-    // #region references
-    // #endregion
-
-
-    // #region contexts & hooks
-    // #endregion
-
-
-    // #region variables
-    const reportName = `Reporte_${name ?? 'General'}`;
-    // #endregion
-
-
+function useGenerateReport({
+    reportComponent,
+    name,
+    job,
+    showResume,
+    records
+}) {
     // #region states
     const [isGenerating, setIsGenerating] = useState(false);
     // #endregion
 
-
-    // #region memos & callbacks
+    // #region variables
+    const reportName = `Reporte_${name ?? 'General'}`;
     // #endregion
-
-
-    // #region derivated states
-    // #endregion
-
-
-    // #region reducers & stores
-    // #endregion
-
 
     // #region handlers
     const _handlerCopyStylesToPopup = async ({ source, target }) => {
@@ -137,19 +121,75 @@ function useGenerateReport({ reportComponent, name, resume, data }) {
         const newWindow = window.open('', '_blank', features);
         if (!newWindow) throw new Error('Popup bloqueada. Permite ventanas emergentes.');
 
-        /* HTML skeleton */
+        /* HTML skeleton with loading spinner */
         newWindow.document.write(`<!doctype html>
         <html>
           <head>
             <meta charset="utf-8" />
-             <title>${reportName}</title>
+            <title>${reportName}</title>
             <meta name="viewport" content="width=device-width, initial-scale=1" />
             <style>
               @page { size: A4; margin: 10mm; }
-              body { margin: 0; -webkit-print-color-adjust: exact; font-family: "Roboto", Arial, sans-serif; }
+              body { 
+                margin: 0; 
+                -webkit-print-color-adjust: exact; 
+                font-family: "Roboto", Arial, sans-serif; 
+              }
+              
+              /* Loading overlay styles */
+              #loading-overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: white;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                z-index: 9999;
+                transition: opacity 0.3s ease-out;
+              }
+              
+              #loading-overlay.hidden {
+                opacity: 0;
+                pointer-events: none;
+              }
+              
+              .spinner {
+                width: 50px;
+                height: 50px;
+                border: 4px solid #f3f3f3;
+                border-top: 4px solid #3498db;
+                border-radius: 50%;
+                animation: spin 1s linear infinite;
+              }
+              
+              @keyframes spin {
+                0% { transform: rotate(0deg); }
+                100% { transform: rotate(360deg); }
+              }
+              
+              .loading-text {
+                margin-top: 20px;
+                color: #666;
+                font-size: 16px;
+              }
+              
+              /* Hide loading overlay when printing */
+              @media print {
+                #loading-overlay {
+                  display: none !important;
+                }
+              }
             </style>
           </head>
           <body>
+            <div id="loading-overlay">
+              <div class="spinner"></div>
+              <div class="loading-text">Generando reporte...</div>
+            </div>
             <div id="root"></div>
           </body>
         </html>`);
@@ -185,7 +225,7 @@ function useGenerateReport({ reportComponent, name, resume, data }) {
             console.warn('_handlerCopyStylesToPopup fallo:', err);
         };
 
-        /*  wait to #root element on popup */
+        /* wait to #root element on popup */
         const rootEl = await new Promise((resolve) => {
             const intervalMs = 80;
             let waited = 0;
@@ -219,9 +259,18 @@ function useGenerateReport({ reportComponent, name, resume, data }) {
 
         const root = ReactDOM.createRoot(rootEl);
 
-        /* callback to indicate that component finishes the renderization and its ready to print */
+        /* callback to hide loading and indicate that component finishes the renderization */
         const onRendered = () => {
             try {
+                // Hide loading overlay
+                const loadingOverlay = newWindow.document.getElementById('loading-overlay');
+                if (loadingOverlay) {
+                    loadingOverlay.classList.add('hidden');
+                    setTimeout(() => {
+                        loadingOverlay.style.display = 'none';
+                    }, 300);
+                }
+
                 newWindow.focus();
 
                 setTimeout(() => {
@@ -276,7 +325,7 @@ function useGenerateReport({ reportComponent, name, resume, data }) {
         try {
             await _handlerOpenPopup({
                 component: reportComponent,
-                props: { resume: resume, data: data },
+                props: { job: job, records: records, showResume: showResume },
                 width: 800,
                 height: 900,
                 closeAfterPrint: false
@@ -291,15 +340,6 @@ function useGenerateReport({ reportComponent, name, resume, data }) {
     };
     // #endregion
 
-
-    // #region effects
-    // #endregion
-
-
-    // #region others
-    // #endregion
-
-
     // #region main
     return {
         isGenerating,
@@ -307,6 +347,5 @@ function useGenerateReport({ reportComponent, name, resume, data }) {
     };
     // #endregion
 }
-
 
 export { useGenerateReport };

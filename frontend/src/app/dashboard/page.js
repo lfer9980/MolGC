@@ -58,9 +58,11 @@ import styles from './styles.module.scss';
 export default function Dashboard({ }) {
 	// #region hooks & others
 	const {
+		job,
 		router,
 		loading,
 		resume,
+		reportData,
 		nav,
 		colors,
 		handlerNav,
@@ -72,9 +74,11 @@ export default function Dashboard({ }) {
 		handlerGeneratePDF,
 	} = useGenerateReport({
 		reportComponent: ReportMolGC,
-		resume: resume,
+		name: 'general',
+		job: job,
+		showResume: true,
+		records: reportData,
 	});
-
 	// #endregion
 
 	//#region main UI
@@ -100,7 +104,6 @@ export default function Dashboard({ }) {
 							>
 								ID. del resultado: <span className={styles.page_id}> {resume[0]?.job_id} </span>
 							</HeadingTitle>
-
 
 							<div className={styles.page_section}>
 								<div className={styles.page_heading_main}>

@@ -26,3 +26,7 @@ class ReportRepository(ElementalRepository):
     @abstractmethod
     async def get_resume(self, job_id: str) -> Optional[List[Any]]:
         pass
+
+    @abstractmethod
+    async def get_all_by_job_id(self, job_id: str) -> List[ReportEntity]:
+        pass

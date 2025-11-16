@@ -3,7 +3,7 @@
 	TEMPLATE - REPORT
 */
 // #region libraries
-import React from 'react';
+import React, { Fragment } from 'react';
 // #endregion
 
 
@@ -18,6 +18,7 @@ import {
 	ChartWrap,
 	FooterSimpleMolGC,
 	RowsProgress,
+	RowsTOPSIS,
 	TableX
 } from 'components/organisms';
 // #endregion
@@ -29,6 +30,7 @@ import {
 
 
 // #region utils
+import { COLUMNS_TOPSIS_REPORT } from 'lib/data/tables/TOPSIS';
 import { CHART_BAR_LEGEND_ENUM, CHART_ENUM } from 'lib/enums/charts';
 // #endregion
 
@@ -39,7 +41,6 @@ import { useReport } from './useReport';
 
 
 // #region contexts & stores
-import { useJobStore } from 'store/job';
 // #endregion
 
 
@@ -48,37 +49,122 @@ import styles from './styles.module.scss';
 // #endregion
 
 
-function ReportMolGC({ onRendered, resume, data }) {
+function ReportMolGC({
+	onRendered,
+	job,
+	records,
+	showResume = false,
+}) {
 	// #region hooks & others
 	const {
-		job,
-	} = useJobStore({});
-
-	const {
-
+		resume
 	} = useReport({
 		onRendered: onRendered,
+		records: records,
 	});
-	// #endregion
 
 
-	// #region theme
-	// #endregion
+	function renderChart(el, key) {
+		const common = {
+			title: el.type === 'rmsd' ? 'RMSD' : 'Bond Lenghts',
+			label: el.data?.title,
+			theme: 'light',
+			noHover: true
+		};
 
+		switch (el.type) {
+			case 'mae_general':
+				return (
+					<ChartWrap {...common} key={key}>
+						<ChartBar
+							positionLegend={CHART_BAR_LEGEND_ENUM.BOTTOM}
+							aspect={CHART_ENUM.STACKED}
+							data={el.data}
+							transparency
+						/>
+					</ChartWrap>
+				);
+			case 'mae_family':
+				return (
+					<ChartWrap {...common} key={key}>
+						<ChartBar
+							positionLegend={CHART_BAR_LEGEND_ENUM.BOTTOM}
+							data={el.data}
+						/>
+					</ChartWrap>
+				);
+			case 'mae_variant':
+				return (
+					<ChartWrap {...common} key={key}>
+						<ChartLine
+							positionLegend={CHART_BAR_LEGEND_ENUM.BOTTOM}
+							data={el.data}
+						/>
+					</ChartWrap>
+				);
+			case 'rmsd':
+				return (
+					<ChartWrap {...common} key={key}>
+						<ChartLine
+							positionLegend={CHART_BAR_LEGEND_ENUM.BOTTOM}
+							data={el.data}
+						/>
+					</ChartWrap>
+				);
+			default:
+				return null;
+		};
+	};
 
-	// #region skeletons
+	function renderFull(el, key) {
+		switch (el.type) {
+			case 'topsis':
+				return (
+					<div className={styles.report_element_full} key={key}>
+						<TableX
+							data={el.data}
+							columns={COLUMNS_TOPSIS_REPORT}
+							theme='light'
+						>
+							{(props) => <RowsTOPSIS {...props} />}
+						</TableX>
+					</div>
+				);
+			case 'structure':
+				return (
+					<div className={styles.report_element_full} key={key}>
+						<PlotStructure
+							structure={el}
+							isStatic
+							hideLegend
+							theme='light'
+						/>
+					</div>
+				);
+			default:
+				return null;
+		}
+	};
+
 	// #endregion
 
 
 	// #region main UI
 	return (
-		<main className={`${styles.report}`}>
+		<main className={styles.report}>
 			<header className={styles.report_header}>
-				<ElementImage
-					image='/images/logotipo.png'
-					width={200}
-					height={100}
-				/>
+				<div className={styles.report_header_left}>
+					<ElementImage
+						image='/images/logotipo.png'
+						width={200}
+						height={100}
+					/>
+					<HeadingSubtitle
+						title='Reporte de análisis de MOLGC'
+						label={`${job?.analysis_type ? 'INDIVIDUAL POR VARIANTE' : ''}`}
+						theme='light'
+					/>
+				</div>
 
 				<FooterSimpleMolGC
 					noMargin
@@ -86,100 +172,82 @@ function ReportMolGC({ onRendered, resume, data }) {
 				/>
 			</header>
 
-			<div className={styles.report_head}>
-				<HeadingTitle
-					title={data['metadata']?.variant}
-					subheading='Reporte de análisis de MOLGC'
-					label={`${job?.analysis_type ? 'INDIVIDUAL POR VARIANTE' : ''}`}
-					theme='light'
-					accent
-				/>
+			{records?.children?.map((item, i) => (
+				<Fragment key={`family-${i}`}>
+					<div className={styles.report_head}>
+						<div />
+						<div>
+							<HeadingSubtitle
+								title={`${decodeURIComponent(item?.family ?? '')}`}
+								center
+								theme='light'
+							>
+								<p className={styles.report_reference}>
+									Referencia: {job?.reference}
+								</p>
+							</HeadingSubtitle>
+						</div>
+					</div>
 
-				<div>
-					<HeadingSubtitle
-						title={`familia: ${decodeURIComponent(data['metadata']?.family)}`}
-						theme='light'
-					>
-						<p className={styles.report_reference}>
-							Referencia: Gaussian - M06
-						</p>
-					</HeadingSubtitle>
-				</div>
-			</div>
+					{item?.children?.map((element, j) => {
+						const children = element?.children ?? [];
 
-			<section className={styles.report_main}>
-				{data['mae_general'] &&
-					<ChartWrap
-						title='Bond Lenghts'
-						label={data['mae_general'].data.title}
-						theme='light'
-						noHover
-					>
-						<ChartBar
-							positionLegend={CHART_BAR_LEGEND_ENUM.BOTTOM}
-							aspect={CHART_ENUM.VERTICAL}
-							data={data['mae_general'].data}
-							transparency
-						/>
-					</ChartWrap>
-				}
+						const charts = children.filter((c) =>
+							['mae_general', 'mae_family', 'mae_variant', 'rmsd'].includes(c.type)
+						);
 
-				{data['mae_family'] &&
-					<ChartWrap
-						title='Bond Lenghts'
-						label={data['mae_family'].data.title}
-						theme='light'
-						noHover
-					>
-						<ChartBar
-							positionLegend={CHART_BAR_LEGEND_ENUM.BOTTOM}
-							data={data['mae_family'].data}
-						/>
-					</ChartWrap>
-				}
+						const fullWidth = children.filter((c) =>
+							['topsis', 'structure'].includes(c.type)
+						);
 
-				{data['mae_variant'] &&
-					<ChartWrap
-						title='Bond Lenghts'
-						label={data['mae_variant'].data.title}
-						theme='light'
-						noHover
-					>
-						<ChartLine
-							positionLegend={CHART_BAR_LEGEND_ENUM.BOTTOM}
-							data={data['mae_variant'].data}
-							theme='light'
-						/>
-					</ChartWrap>
-				}
+						return (
+							<section key={`variant-${i}-${j}`} className={styles.report_section}>
+								<div className={styles.report_head}>
+									<HeadingTitle
+										title={element?.variant ?? ''}
+										theme='light'
+										accent
+									/>
+								</div>
 
-				{data['rmsd'] &&
-					<ChartWrap
-						title='RMSD'
-						label={data['mae_variant'].data.title}
-						theme='light'
-						noHover
-					>
-						<ChartLine
-							positionLegend={CHART_BAR_LEGEND_ENUM.BOTTOM}
-							data={data['rmsd'].data}
-							theme='light'
-						/>
-					</ChartWrap>
-				}
-			</section>
+								<div className={styles.report_main}>
+									{charts.length > 0 && (
+										<div className={styles.report_grid}>
+											{showResume && resume && i === 0 &&
+												<CardTable
+													title='Familias'
+													elements={resume}
+													theme='light'
+												/>
+											}
 
-			<section className={styles.report_main}>
-				{data['structure'] &&
-					<PlotStructure
-						structure={data['structure']}
-						theme='light'
-						isStatic
-						hideLegend
-					/>
-				}
-			</section>
-		</main >
+											{charts.map((el, k) => (
+												<div
+													className={styles.report_element}
+													key={`chart-${i}-${j}-${k}`}
+												>
+													{renderChart(el, `chart-${i}-${j}-${k}`)}
+												</div>
+											))}
+										</div>
+									)}
+
+									{fullWidth.length > 0 && (
+										<div className={styles.report_list}>
+											{fullWidth.map((el, k) =>
+												renderFull(el, `full-${i}-${j}-${k}`)
+											)}
+										</div>
+									)}
+								</div>
+
+								<div className={styles.page_break} aria-hidden="true" />
+							</section>
+						);
+					})}
+				</Fragment>
+			))}
+		</main>
 	);
 	// #endregion
 }

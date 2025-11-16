@@ -1,11 +1,10 @@
 'use client';
 /* 
-	Hook for element: 
-	brief description about what this hook does
+	Hook for control useReport mounting: 
 */
 
 // #region libraries
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 // #endregion
 
 
@@ -32,7 +31,7 @@ import { useEffect, useState } from 'react';
 // #endregion
 
 
-function useReport({ onRendered }) {
+function useReport({ onRendered, records }) {
 	// #region references
 	// #endregion
 
@@ -46,10 +45,26 @@ function useReport({ onRendered }) {
 
 
 	// #region states
+	const [resume, setResume] = useState({});
 	// #endregion
 
 
 	// #region memos & callbacks
+	const getCountsCallback = useCallback((records) => {
+		const families = records?.children;
+
+		if (families) {
+			const nonGeneralFamilies = families.filter(f => f.family !== "Reporte General");
+
+			const result = nonGeneralFamilies.reduce((acc, family) => {
+				const variants = family.children.filter(v => v.variant !== "General");
+				acc[family.family] = `${variants.length} variantes`;
+				return acc;
+			}, {});
+
+			setResume(result);
+		}
+	}, []);
 	// #endregion
 
 
@@ -72,6 +87,10 @@ function useReport({ onRendered }) {
 		}, 600);
 		return () => clearTimeout(t);
 	}, [onRendered]);
+
+	useEffect(() => {
+		getCountsCallback(records);
+	}, [records]);
 	// #endregion
 
 
@@ -81,6 +100,7 @@ function useReport({ onRendered }) {
 
 	// #region main
 	return {
+		resume,
 	};
 	// #endregion
 }
