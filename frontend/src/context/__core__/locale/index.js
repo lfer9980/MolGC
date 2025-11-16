@@ -208,10 +208,10 @@ export function LocaleProvider({ name = 'LOCALE_V1', children }) {
 			{loading ?
 				<WrapMain full padding>
 					<Loader
-						type={LOADER_ENUM.DOTS}
-						number={29}
-						size={32}
-						label='cargando'
+						type={LOADER_ENUM.SPINNER}
+						number={7}
+						size={64}
+						label='cargando...'
 					/>
 				</WrapMain>
 				:

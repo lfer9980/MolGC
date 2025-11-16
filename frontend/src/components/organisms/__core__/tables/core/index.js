@@ -97,7 +97,7 @@ function TableX({
 						</TableContent>
 					)}
 					style={{
-						minHeight: '40rem',
+						minHeight: '35rem',
 						height: '100%',
 						maxHeight: '70rem',
 						border: 'none',

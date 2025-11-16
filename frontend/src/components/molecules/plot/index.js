@@ -5,6 +5,7 @@
 */
 // #region libraries
 import Plot from 'react-plotly.js';
+import Image from 'next/image';
 import React, { useEffect, useMemo, useState } from 'react';
 // #endregion
 
@@ -33,7 +34,10 @@ import { THEME_ENUM } from 'context/__core__/theme/__data__';
 
 // #region styles
 import styles from './styles.module.scss';
+import { ElementImage } from '../__core__';
 // #endregion
+
+
 function PlotStructure({
 	structure,
 	isStatic = false,
@@ -59,60 +63,14 @@ function PlotStructure({
 			return () => clearTimeout(timer);
 		}
 	}, [structure, onMount]);
+	// #endregion
 
 	// #region theme
 	const { theme: globalTheme } = useThemeStore();
 	const appliedTheme = theme || globalTheme;
+	// #endregion
 
 	const fullStyle = !isStatic ? styles.full : '';
-
-	if (imageSrc) {
-		return (
-			<div className={`${styles.page_structure} ${fullStyle}`} style={{ position: 'relative' }}>
-				<img
-					src={imageSrc}
-					alt={structure?.data?.title || 'plot'}
-					style={{
-						width: '100%',
-						height: 'auto',
-						display: 'block',
-						maxWidth: '100%'
-					}}
-				/>
-			</div>
-		);
-	}
-
-	if (isStatic) {
-		if (!structure) return null;
-
-		return (
-			<div className={`${styles.page_structure} ${fullStyle}`}>
-				<Plot
-					data={structure.data?.data}
-					layout={{
-						...structure.data?.layout,
-						autosize: true,
-						showlegend: !hideLegend,
-						paper_bgcolor: "rgba(0,0,0,0)",
-						plot_bgcolor: "rgba(0,0,0,0)",
-					}}
-					config={{
-						staticPlot: true,
-						displayModeBar: false,
-						displaylogo: false,
-					}}
-					style={{
-						width: "100%",
-						height: "100%",
-						position: "relative",
-					}}
-					useResizeHandler
-				/>
-			</div>
-		);
-	}
-	// #endregion
 
 	const plotFigure = useMemo(() => {
 		if (!structure) return null;
@@ -210,6 +168,52 @@ function PlotStructure({
 			/>
 		);
 	}, [structure, isSmall, appliedTheme, hideLegend]);
+	// #endregion
+
+
+	// #region UI
+	if (imageSrc) {
+		return (
+			<div className={`${styles.page_structure} ${fullStyle}`} style={{ position: 'relative' }}>
+				<ElementImage
+					image={imageSrc}
+					width={'100%'}
+					height={'38rem'}
+					alt={structure?.data?.title || 'plot'}
+				/>
+			</div>
+		);
+	};
+
+	if (isStatic) {
+		if (!structure) return null;
+
+		return (
+			<div className={`${styles.page_structure} ${fullStyle}`}>
+				<Plot
+					data={structure.data?.data}
+					layout={{
+						...structure.data?.layout,
+						autosize: true,
+						showlegend: !hideLegend,
+						paper_bgcolor: "rgba(0,0,0,0)",
+						plot_bgcolor: "rgba(0,0,0,0)",
+					}}
+					config={{
+						staticPlot: true,
+						displayModeBar: false,
+						displaylogo: false,
+					}}
+					style={{
+						width: "100%",
+						height: "100%",
+						position: "relative",
+					}}
+					useResizeHandler
+				/>
+			</div>
+		);
+	};
 
 	return (
 		<div className={`${styles.page_structure} ${fullStyle}`}>

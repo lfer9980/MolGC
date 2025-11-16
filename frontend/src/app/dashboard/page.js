@@ -92,9 +92,10 @@ export default function Dashboard({ }) {
 			<WrapMain margin padding full={loading}>
 				{loading ?
 					<Loader
+						type={LOADER_ENUM.SPINNER}
+						number={7}
 						size={28}
-						type={LOADER_ENUM.DOTS}
-						number={3}
+						label='cargando...'
 					/>
 					:
 					<>

@@ -90,7 +90,7 @@ function useReport({ onRendered, records }) {
 
 	useEffect(() => {
 		getCountsCallback(records);
-	}, [records]);
+	}, [records, getCountsCallback]);
 	// #endregion
 
 

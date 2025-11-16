@@ -150,8 +150,9 @@ export default function DashboardVariant({ }) {
 						{isPlotLoading && (
 							<div className={styles.page_loader}>
 								<Loader
-									type="spinner"
-									size={32}
+									type={LOADER_ENUM.SPINNER}
+									number={7}
+									size={64}
 									label="cargando estructura 3D..."
 								/>
 							</div>
@@ -178,8 +179,8 @@ export default function DashboardVariant({ }) {
 	if (loading) return (
 		<section className={styles.page_loading}>
 			<Loader
-				type={LOADER_ENUM.DOTS}
-				number={29}
+				type={LOADER_ENUM.SPINNER}
+				number={7}
 				size={32}
 				label='cargando...'
 			/>
