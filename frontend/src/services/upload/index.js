@@ -19,7 +19,7 @@ import HTTP_CODES from './codes.json';
 
 // #region utils
 import config from 'config';
-import { helperFindJSON } from 'lib/helpers';
+import { helperFindJSON, helperHasNoEmptyValues } from 'lib/helpers';
 // #endregion
 
 
@@ -85,11 +85,24 @@ function useServiceUpload({ }) {
 		/* make upload files automatically via POST */
 		setLoading(true);
 		let newStatus;
-
 		const endpoint = config.uploadAutoURL;
 		const token = explicitToken || job.access_token;
-		const formData = new FormData();
 
+		if (files.length === 0) {
+			setLoading(false);
+			return handlerAddMessage({
+				content: {
+					icon: 'error',
+					title: 'Datos faltantes',
+					label: 'Verifica los campos vacios de tu formulario',
+					allowOutsideClick: false,
+					timer: null,
+				},
+				type: MESSAGE_ENUM.ALERT
+			});
+		};
+
+		const formData = new FormData();
 		for (const file of files) {
 			formData.append("zip_file", file);
 		};
@@ -145,8 +158,23 @@ function useServiceUpload({ }) {
 
 		const endpoint = config.uploadManualURL;
 		const token = job.access_token;
-		const formData = new FormData();
+		const emptyForm = helperHasNoEmptyValues(metadata);
 
+		if (!emptyForm || files.length === 0) {
+			setLoading(false);
+			return handlerAddMessage({
+				content: {
+					icon: 'error',
+					title: 'Datos faltantes',
+					label: 'Verifica los campos vacios de tu formulario',
+					allowOutsideClick: false,
+					timer: null,
+				},
+				type: MESSAGE_ENUM.ALERT
+			});
+		};
+
+		const formData = new FormData();
 		for (const file of files) {
 			formData.append("file", file);
 		};

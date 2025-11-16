@@ -20,6 +20,11 @@
 		background-color: transparent !important;
 	}
 
+	&.semi {
+		background-color: transparent !important;
+		backdrop-filter: blur(8px);
+	}
+
 	// #endregion
 
 

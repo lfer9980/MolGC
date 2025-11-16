@@ -10,7 +10,6 @@ import React from 'react';
 // #region components
 import { WrapMain } from 'components/__common__';
 import { HeaderMolGC } from 'components/organisms';
-import { Breadcrumbs } from 'components/molecules';
 // #endregion
 
 
@@ -41,9 +40,7 @@ export const metadata = {
 };
 
 
-export default function LayoutFiles({
-	children,
-}) {
+export default function LayoutFiles({ children }) {
 	// #region contexts
 	// #endregion
 
@@ -91,11 +88,9 @@ export default function LayoutFiles({
 	// #region main
 	return (
 		<>
-			<HeaderMolGC />
+			<HeaderMolGC semiTransparent/>
 
 			<WrapMain padding margin>
-				<Breadcrumbs />
-
 				{children}
 			</WrapMain>
 		</>

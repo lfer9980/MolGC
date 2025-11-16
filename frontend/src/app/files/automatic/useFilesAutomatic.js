@@ -1,6 +1,6 @@
 'use client';
 /* 
-Hook for handling upload automatic files
+	Hook for handling upload automatic files
 */
 
 // #region libraries

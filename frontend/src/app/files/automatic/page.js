@@ -1,4 +1,4 @@
-// ESTADO: En desarrollo
+// ESTADO: Completada
 'use client';
 /* 
 ROUTES - FILES - Automatic
@@ -9,7 +9,11 @@ import React from 'react';
 
 
 // #region components
-import { ButtonPrimary, HeadingSubtitle, HeadingTitle, LoaderBar } from 'components/atoms';
+import {
+	ButtonPrimary,
+	HeadingTitle,
+	LoaderBar
+} from 'components/atoms';
 import { ListSummary, Tree } from 'components/molecules';
 import { UploadX } from 'components/organisms';
 // #endregion
@@ -72,42 +76,48 @@ export default function FilesAuto({ }) {
 				</div >
 				:
 				<form className={styles.page_form}>
-					<div className={styles.page_form_main}>
-						<UploadX
-							title='Sube tu primer archivo y visualízalo aquí'
-							filesAccepted='.zip,.rar,.7z,.tar,.tar.gz,.tgz'
-							maxFiles={1}
-							files={files}
-							handler={setFiles}
-						/>
-					</div>
-
-					<ListSummary
-						title='Acerca de la estructura de los archivos'
-						opened={files.length === 0}
-					>
-						<div className={styles.page_form_structure}>
-							<Tree
-								title='Estructura general'
-								label='Te presentamos la estructura que debe contener tu archivo comprimido, con esta estructura, MolGC sera capaz de leer tus archivos de forma automática.'
-								elements={TREE_FILES_STRUCTURE}
-								prefix='|-- '
-							/>
-
-							<Tree
-								title='Ejemplo práctico'
-								elements={TREE_FILES_STRUCTURE_EXAMPLE}
-								prefix='|-- '
+					<div className={styles.page_form_wrapper}>
+						<div className={styles.page_form_first}>
+							<UploadX
+								title='Sube tu primer archivo y visualízalo aquí'
+								filesAccepted='.zip,.rar,.7z,.tar,.tar.gz,.tgz'
+								maxFiles={1}
+								files={files}
+								handler={setFiles}
 							/>
 						</div>
-					</ListSummary>
 
-					<ButtonPrimary
-						label='Agregar Archivos'
-						symbol='add'
-						handler={postFiles}
-						disabled={files.length <= 0}
-					/>
+						<div className={styles.page_form_second}>
+							<ListSummary
+								title='Acerca de la estructura de los archivos'
+								opened={files.length === 0}
+							>
+								<div className={styles.page_form_structure}>
+									<Tree
+										title='Estructura general'
+										label='Te presentamos la estructura que debe contener tu archivo comprimido, con esta estructura, MolGC sera capaz de leer tus archivos de forma automática.'
+										elements={TREE_FILES_STRUCTURE}
+										prefix='|-- '
+									/>
+
+									<Tree
+										title='Ejemplo práctico'
+										elements={TREE_FILES_STRUCTURE_EXAMPLE}
+										prefix='|-- '
+									/>
+								</div>
+							</ListSummary>
+						</div>
+					</div>
+
+					<div className={styles.page_actions}>
+						<ButtonPrimary
+							label='Agregar Archivos'
+							symbol='add'
+							handler={postFiles}
+							disabled={files.length <= 0}
+						/>
+					</div>
 				</form>
 			}
 		</>

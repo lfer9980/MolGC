@@ -39,6 +39,7 @@ import { useThemeStore } from 'context';
 function HeaderMolGC({
 	second = false,
 	transparent = false,
+	semiTransparent = false,
 	theme = ''
 }) {
 	// #region hooks & others
@@ -47,6 +48,7 @@ function HeaderMolGC({
 	} = useHeader({});
 
 	const transparentStyle = transparent ? styles.transparent : '';
+	const semiStyle = semiTransparent ? styles.semi : '';
 	// #endregion
 
 
@@ -62,7 +64,7 @@ function HeaderMolGC({
 
 	// #region main UI
 	return (
-		<div className={`${styles.header} theme-${appliedTheme} ${transparentStyle}`}>
+		<div className={`${styles.header} theme-${appliedTheme} ${transparentStyle} ${semiStyle}`}>
 			<Link
 				href={`/${rootRef}`}
 				className={styles.header_logo}

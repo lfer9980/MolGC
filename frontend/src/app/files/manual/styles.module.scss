@@ -5,9 +5,26 @@
 	@include fontSizeMobile;
 	// #endregion
 
-
 	// #region unit elements
+	&_wrapper {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+
+		&_image {
+			position: fixed;
+			inset: 0;
+			background: url('/images/background_molecule.png') center/cover no-repeat;
+			filter: blur(4px);
+			transform: scale(1.05);
+			opacity: 0.25;
+			z-index: -1;
+		}
+	}
+
 	&_heading {
+		width: 100%;
+
 		&_main {
 			display: flex;
 			align-items: center;
@@ -19,10 +36,14 @@
 		}
 	}
 
+	&_label {
+		color: var(--content-secondary);
+	}
+
 	&_form {
 		padding-block-end: 9.1rem;
 
-		&_main {
+		&_input {
 			display: flex;
 			flex-direction: column;
 			gap: 1.6rem;
@@ -63,10 +84,56 @@
 
 
 	// #region media queries
-	@include tablet {}
+	@include tablet {
+		&_form {
+			&_second {
+				margin-block-end: 6.4rem;
+			}
+
+			&_input {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 2.4rem;
+			}
+		}
+
+		&_actions {
+			position: fixed;
+			left: 2.4rem;
+			right: 2.4rem;
+			bottom: 6.4rem;
+		}
+	}
 
 	@include desktop {
 		@include fontSizeDesktop;
+
+		&_form {
+			padding-block-end: 4.8rem;
+
+			&_first,
+			&_second {
+				width: 50%;
+			}
+
+			&_wrapper {
+				display: flex;
+				flex-direction: row;
+				justify-content: space-between;
+				gap: 2.4rem;
+				margin-block-end: 2.4rem;
+			}
+		}
+
+		&_actions {
+			position: static;
+			display: flex;
+			justify-content: flex-end;
+
+			button {
+				width: 43rem;
+			}
+		}
 	}
 
 	@include large {}

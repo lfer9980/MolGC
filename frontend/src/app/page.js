@@ -156,7 +156,7 @@ export default function App() {
 							animate={{ y: 0, opacity: 1 }}
 							exit={{ y: -50, opacity: 0 }}
 							transition={{ duration: 0.2, ease: "easeOut" }}
-							className={styles.page_section}
+							className={styles.page_wrapper}
 						>
 							<WrapSection padding margin>
 								<HeadingTitle

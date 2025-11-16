@@ -10,8 +10,9 @@ import { useRouter } from 'next/navigation';
 
 
 // #region components
+import { WrapSection } from 'components/__common__';
 import { ButtonPill, HeadingTitle } from 'components/atoms';
-import { ElementLabel } from 'components/molecules';
+import { Breadcrumbs } from 'components/molecules';
 // #endregion
 
 
@@ -37,9 +38,7 @@ import styles from './styles.module.scss';
 // #endregion
 
 
-export default function LayoutFilesManual({
-	children,
-}) {
+export default function LayoutFilesManual({ children }) {
 	// #region contexts
 	// #endregion
 
@@ -87,31 +86,36 @@ export default function LayoutFilesManual({
 
 	// #region main
 	return (
-		<section className={styles.page}>
-			<div className={styles.page_heading}>
-				<div className={styles.page_heading_main}>
-					<ButtonPill
-						symbol='arrow_left_alt'
-						color={colorsApp.black}
-						handler={() => router.push('/files')}
-					/>
+		<div className={styles.page_wrapper}>
+			<div className={styles.page_wrapper_image} />
+			<WrapSection>
+				<Breadcrumbs />
 
-					<div className={styles.page_heading_head}>
-						<HeadingTitle
-							symbol='precision_manufacturing'
-							title='Modo Manual'
-							theme='dark'
+				<div className={styles.page_heading}>
+					<div className={styles.page_heading_main}>
+						<ButtonPill
+							symbol='arrow_left_alt'
+							color={colorsApp.black}
+							handler={() => router.push('/files')}
 						/>
+
+						<div className={styles.page_heading_head}>
+							<HeadingTitle
+								symbol='precision_manufacturing'
+								title='Modo Manual'
+								theme='dark'
+							/>
+						</div>
 					</div>
+
+					<p className={styles.page_label}>
+						Sube archivos de forma manual, intenta subir el (los) archivo(s) de una misma familia o funcional.
+					</p>
 				</div>
 
-				<ElementLabel
-					label='Sube archivos de forma manual, intenta subir el (los) archivo(s) de una misma familia o funcional.'
-				/>
-			</div>
-
-			{children}
-		</section>
+				{children}
+			</WrapSection>
+		</div>
 	);
 	// #endregion
 };
