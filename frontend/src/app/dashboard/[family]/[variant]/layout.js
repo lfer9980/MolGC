@@ -1,5 +1,5 @@
 /* 
-ROUTES - DASHBOARD / FAMILY / VARIANT | LAYOUT
+	ROUTES - DASHBOARD / FAMILY / VARIANT | LAYOUT
 */
 'use client';
 // #region libraries
@@ -9,7 +9,7 @@ import { useRouter } from 'next/navigation';
 
 
 // #region components
-import { WrapMain } from 'components/__common__';
+import { WrapMain, WrapSection } from 'components/__common__';
 import { ButtonPill, HeadingTitle } from 'components/atoms';
 import { HeaderMolGC } from 'components/organisms';
 // #endregion
@@ -34,6 +34,7 @@ import { colorsApp } from 'lib/utils';
 
 // #region styles
 import styles from './styles.module.scss';
+import { Breadcrumbs } from 'components/molecules';
 // #endregion
 
 
@@ -88,30 +89,33 @@ export default function LayoutDashboardVariant({
 	// #region main
 	return (
 		<>
-			<HeaderMolGC />
+			<HeaderMolGC semiTransparent />
 
 			<WrapMain padding margin>
-				<section className={styles.page}>
-					<div className={styles.page_heading}>
-						<div className={styles.page_heading_main}>
-							<ButtonPill
-								symbol='arrow_left_alt'
-								color={colorsApp.black}
-								handler={() => router.push('/dashboard')}
-							/>
-
-							<div className={styles.page_heading_head}>
-								<HeadingTitle
-									title='Detalle del reporte'
-									theme='dark'
+				<div className={styles.page_wrapper}>
+					<WrapSection>
+						<Breadcrumbs />
+						<div className={styles.page_heading}>
+							<div className={styles.page_heading_main}>
+								<ButtonPill
+									symbol='arrow_left_alt'
+									color={colorsApp.black}
+									handler={() => router.push('/dashboard')}
 								/>
+
+								<div className={styles.page_heading_head}>
+									<HeadingTitle
+										title='Detalle del reporte'
+										theme='dark'
+									/>
+								</div>
 							</div>
 						</div>
-					</div>
 
-					{children}
-				</section>
-			</WrapMain>
+						{children}
+					</WrapSection>
+				</div>
+			</WrapMain >
 		</>
 	);
 	// #endregion

@@ -1,4 +1,4 @@
-// ESTADO: En desarrollo
+// ESTADO: Completada
 'use client';
 /* 
 	ROUTES - DASHBOARD / FAMILY / VARIANT
@@ -11,6 +11,7 @@
 import {
 	ButtonPrimary,
 	HeadingSubtitle,
+	HeadingTitle,
 	Loader,
 	LOADER_ENUM
 } from 'components/atoms';
@@ -25,7 +26,7 @@ import {
 	TableX
 } from 'components/organisms';
 
-import { ProgressOverlay, ReportMolGC } from 'components/templates';
+import { OverlayProgress, ReportMolGC } from 'components/templates';
 // #endregion
 
 
@@ -84,35 +85,36 @@ export default function DashboardVariant({ }) {
 
 	const renderChart = (item, key) => {
 		const common = {
-			label: item.data?.title,
+			label: item.data?.title?.split('-') ?? '',
 			theme: 'dark'
 		};
 
 		switch (item.type) {
 			case 'mae_general':
 				return (
-					<ChartWrap title="Bond Lengths" {...common} key={key}>
+					<ChartWrap title={common.label[0] || 'Bond Lenghts'} {...common} key={key}>
 						<ChartBar
 							positionLegend={CHART_BAR_LEGEND_ENUM.BOTTOM}
 							data={item.data}
-							transparency
+							theme='light'
 						/>
 					</ChartWrap>
 				);
 
 			case 'mae_family':
 				return (
-					<ChartWrap title="Bond Lengths" {...common} key={key}>
+					<ChartWrap title={common.label[0] || 'Bond Lenghts'} {...common} key={key}>
 						<ChartBar
 							positionLegend={CHART_BAR_LEGEND_ENUM.BOTTOM}
 							data={item.data}
+							theme='light'
 						/>
 					</ChartWrap>
 				);
 
 			case 'mae_variant':
 				return (
-					<ChartWrap title="Bond Lengths" {...common} key={key}>
+					<ChartWrap title={common.label[0] || 'Bond Lenghts'} {...common} key={key}>
 						<ChartLine
 							positionLegend={CHART_BAR_LEGEND_ENUM.BOTTOM}
 							data={item.data}
@@ -122,7 +124,7 @@ export default function DashboardVariant({ }) {
 
 			case 'rmsd':
 				return (
-					<ChartWrap title="RMSD" {...common} key={key}>
+					<ChartWrap title={common.label[0] || 'RMSD'} {...common} key={key}>
 						<ChartLine
 							positionLegend={CHART_BAR_LEGEND_ENUM.BOTTOM}
 							data={item.data}
@@ -163,6 +165,12 @@ export default function DashboardVariant({ }) {
 			case 'topsis':
 				return (
 					<div key={key} className={styles.page_element_full}>
+						<HeadingTitle
+							title='Resultados de TOPSIS'
+							label='Puedes ordenar los resultados en base al ranking.'
+						/>
+
+
 						<TableX data={item.data} columns={COLUMNS_TOPSIS}>
 							{(props) => <RowsTOPSIS {...props} />}
 						</TableX>
@@ -214,15 +222,15 @@ export default function DashboardVariant({ }) {
 					/>
 				</div>
 
-				<div className={styles.page_section} style={{ display: nav === 0 ? "block" : "none" }}>
+				<div className={styles.page_section} style={{ display: nav === 0 ? "flex" : "none" }}>
 					{charts.map((chart, idx) => renderChart(chart, `chart-${idx}`))}
 				</div>
 
-				<div className={styles.page_section} style={{ display: nav === 1 ? "block" : "none" }}>
+				<div className={styles.page_section} style={{ display: nav === 1 ? "flex" : "none" }}>
 					{fullWidth.map((item, idx) => renderFull(item, `full-${idx}`))}
 				</div>
 
-				<div className={styles.page_buttons}>
+				<div className={styles.page_actions}>
 					<ButtonPrimary
 						label={isGenerating ? 'Generando...' : 'Generar Reporte Individual en PDF'}
 						loading={isGenerating}
@@ -233,7 +241,7 @@ export default function DashboardVariant({ }) {
 				</div>
 			</div>
 
-			<ProgressOverlay
+			<OverlayProgress
 				isVisible={isGenerating}
 				progress={progress}
 				total={totalImages}

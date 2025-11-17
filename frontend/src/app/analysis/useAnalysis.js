@@ -105,7 +105,6 @@ function useAnalysis({ }) {
 
 
 	// #region others
-	console.log(messages)
 	// #endregion
 
 

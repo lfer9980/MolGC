@@ -1,6 +1,6 @@
 'use client';
 /*  
-	TYPE - ELEMENT
+	TEMPLATES - PROGRESS
 	General structure for UI Component.
 */
 // #region libraries
@@ -10,7 +10,11 @@ import React from 'react';
 
 // #region components
 import { NativePortal } from 'components/__common__';
-import { Loader, LOADER_ENUM, LoaderBar } from 'components/atoms';
+import {
+	Loader,
+	LOADER_ENUM,
+	LoaderBar
+} from 'components/atoms';
 // #endregion
 
 
@@ -19,7 +23,6 @@ import { Loader, LOADER_ENUM, LoaderBar } from 'components/atoms';
 
 
 // #region utils
-import { STYLE_ENUM } from 'lib/helpers';
 // #endregion
 
 
@@ -36,7 +39,7 @@ import styles from './styles.module.scss';
 // #endregion
 
 
-function ProgressOverlay({
+function OverlayProgress({
 	isVisible,
 	progress,
 	total,
@@ -48,7 +51,7 @@ function ProgressOverlay({
 
 
 	// #region theme
-	const percentage = total > 0 ? Math.round((progress / total) * 100)  : 0;
+	const percentage = total > 0 ? Math.round((progress / total) * 100) : 0;
 	// #endregion
 
 
@@ -89,4 +92,4 @@ function ProgressOverlay({
 	// #endregion
 }
 
-export { ProgressOverlay };
+export { OverlayProgress };

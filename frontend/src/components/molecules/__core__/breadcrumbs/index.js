@@ -62,7 +62,7 @@ function Breadcrumbs({ theme = '' }) {
 									href={routeTo}
 									className={styles.breadcrumb_link}
 								>
-									{names[i]}
+									{decodeURIComponent(names[i])}
 								</Link>
 
 								{!last && <span className={styles.breadcrumb_divisor}>/</span>}

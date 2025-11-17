@@ -66,7 +66,7 @@ export default function Configuration({ }) {
 			/>
 
 			<div className={styles.page_section}>
-				<div>
+				<div className={styles.page_input_select}>
 					<InputSelect
 						label='Tipo de Análisis'
 						placeholder='Análisis Individual / Validacion Cruzada'

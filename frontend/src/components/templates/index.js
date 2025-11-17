@@ -4,4 +4,4 @@ export { MoleculeViewer } from './molecules/viewer';
 export { WaitingGame } from './games/ball';
 export { DinoGame } from './games/dinosaur';
 export { ReportMolGC } from './report';
-export { ProgressOverlay } from './progress';
+export { OverlayProgress } from './progress';

@@ -71,8 +71,13 @@
 		@include fontSizeDesktop;
 
 		&_section {
-			display: grid;
-			grid-template-columns: 1fr 1fr;
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+		}
+
+		&_input_select {
+			width: 100%;
 		}
 
 		&_actions {
@@ -88,7 +93,11 @@
 		}
 	}
 
-	@include large {}
+	@include large {
+		&_input_select {
+			width: 44rem;
+		}
+	}
 
 	// #endregion
 }

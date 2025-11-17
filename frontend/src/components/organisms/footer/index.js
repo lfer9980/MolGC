@@ -88,7 +88,7 @@ function FooterMolGC({ theme = '' }) {
 					<HeadingTitle
 						title='MolGC Web App'
 					>
-						Lorem ipsum dolor sit amet consectetur. Ac euismod lorem aliquet nec vivamus sit nulla lectus. Ullamcorper urna semper aliquet aliquam. Ac nulla nec justo tellus. Gravida et ultrices ut molestie sit.
+						Molecular Geometry Comparator Algorithm for Bond Length Mean Absolute Error Computation on Molecules
 					</HeadingTitle>
 
 					<hr />
@@ -114,22 +114,7 @@ function FooterMolGC({ theme = '' }) {
 
 					<List
 						title='Tutoriales y modos de uso'
-						href='/FAQs'
-					/>
-				</div>
-
-				<div className={styles.footer_media}>
-					<ListSocial
-						elements={[
-							{
-								'name': 'linkedin',
-								'href': 'linkedin.com/lfer9980'
-							},
-							{
-								'name': 'facebook',
-								'href': 'facebook.com/lfer9980'
-							},
-						]}
+						href='/docs'
 					/>
 				</div>
 			</SemSubcontent>
