@@ -71,6 +71,16 @@
 
 	@include desktop {
 		@include fontSizeDesktop;
+
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+
+		&_wrapper {
+			width: 100%;
+			max-width: 80vw;
+		}
 	}
 
 	@include large {}

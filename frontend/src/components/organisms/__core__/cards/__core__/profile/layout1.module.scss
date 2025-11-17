@@ -19,6 +19,7 @@
 	&_main {
 		display: flex;
 		align-items: flex-start;
+		justify-content: center;
 		text-align: center;
 		gap: 2.4rem;
 		margin-block-end: 0.8rem;
@@ -26,6 +27,10 @@
 
 	&_content {
 		width: fit-content;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
 	}
 
 	&_subcontent {

@@ -174,7 +174,8 @@
 		&_select {
 			flex-direction: row;
 			align-items: flex-start;
-			gap: 1.6rem;
+			justify-content: flex-start;
+			gap: 4.8rem;
 
 			&_divisor {
 				display: none;
@@ -182,6 +183,7 @@
 
 			&_wrapper {
 				height: 100%;
+				width: fit-content;
 			}
 
 			&_panel {
@@ -202,6 +204,12 @@
 	@include large {
 		&_link {
 			left: 3.2rem;
+		}
+
+		&_select {
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
 		}
 	}
 

@@ -1,79 +1,65 @@
 [
   {
-    "categoria": "Tutoriales",
-    "pantalla": "tutorial_id",
-    "url": "/FAQs/tutorial_id",
-    "estado": "En desarrollo",
-    "color": "#0F60A7"
-  },
-  {
-    "categoria": "Tutoriales",
-    "pantalla": "FAQs",
-    "url": "/FAQs",
-    "estado": "En desarrollo",
-    "color": "#0F60A7"
-  },
-  {
     "categoria": "Acerca de",
     "pantalla": "about",
     "url": "/about",
-    "estado": "En desarrollo",
-    "color": "#0F60A7"
+    "estado": "Completada",
+    "color": "#459490"
   },
   {
     "categoria": "Analisis",
     "pantalla": "analysis",
     "url": "/analysis",
-    "estado": "En desarrollo",
-    "color": "#0F60A7"
+    "estado": "Completada",
+    "color": "#459490"
   },
   {
     "categoria": "Configuracion",
     "pantalla": "configuration",
     "url": "/configuration",
-    "estado": "En desarrollo",
-    "color": "#0F60A7"
+    "estado": "Completada",
+    "color": "#459490"
   },
   {
     "categoria": "Dashboard",
     "pantalla": "variant",
     "url": "/dashboard/family/variant",
-    "estado": "En desarrollo",
-    "color": "#0F60A7"
+    "estado": "Completada",
+    "color": "#459490"
   },
   {
     "categoria": "Dashboard",
     "pantalla": "dashboard",
     "url": "/dashboard",
-    "estado": "En desarrollo",
-    "color": "#0F60A7"
+    "estado": "Completada",
+    "color": "#459490"
   },
   {
     "categoria": "Archivos",
     "pantalla": "automatic",
     "url": "/files/automatic",
-    "estado": "En desarrollo",
-    "color": "#0F60A7"
+    "estado": "Completada",
+    "color": "#459490"
   },
   {
     "categoria": "Archivos",
     "pantalla": "manual",
     "url": "/files/manual",
-    "estado": "En desarrollo",
-    "color": "#0F60A7"
+    "estado": "Completada",
+    "color": "#459490"
   },
   {
     "categoria": "Archivos",
     "pantalla": "files",
     "url": "/files",
-    "estado": "En desarrollo",
-    "color": "#0F60A7"
+    "estado": "Completada",
+    "color": "#459490"
   },
   {
     "categoria": "Sin Categoria",
     "pantalla": "landing - entrypoint",
     "url": "/",
-    "estado": "En desarrollo",
-    "color": "#0F60A7"
+    "estado": "Completada",
+    "color": "#459490"
   }
 ]

@@ -2,15 +2,15 @@
 
 .card {
 	// #region general
-	min-width: 20rem;
+	min-width: 35rem;
 	@include fontSizeMobile;
 	// #endregion
 
 
 	// #region unit elements
 	&_name {
-		color: var(--accent);
-		margin-block: 0.8rem;
+		color: var(--secondary);
+		margin-block: 2.4rem 0.8rem;
 	}
 	
 	&_position {

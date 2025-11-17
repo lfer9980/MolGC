@@ -104,9 +104,8 @@ export default function App() {
 							</p>
 
 							<ElementLabel
-								label='Descubre cómo funciona el algoritmo'
+								label='El gran esfuerzo detrás del desarrollo de MolGC'
 								href='/about'
-								color={colorsApp.red}
 								center
 							/>
 						</div>
@@ -257,8 +256,8 @@ export default function App() {
 			{view === 1 &&
 				<div className={styles.page_link}>
 					<ElementLink
-						href='/docs'
-						label='Documentación y tutoriales de uso'
+						href='https://molgc.eonia.io/docs/'
+						label='Conoce mas acerca de los modos de uso de MolGC y su Playground'
 						symbol='help'
 					/>
 				</div>

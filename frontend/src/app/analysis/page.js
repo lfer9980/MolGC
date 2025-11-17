@@ -75,7 +75,7 @@ export default function Analysis({ }) {
 					<ElementLabel
 						symbol='info'
 						color={colorsApp.transparent}
-						title='¡Mueve la molécula con tu mouse!'
+						title='¡Mueve la molécula con tu mouse, dando Click y arrastrando!'
 					/>
 				</div>
 

@@ -7,10 +7,33 @@
 
 
 	// #region unit elements
+	&_hero {
+		justify-content: center;
+		gap: 3.2rem;
+		bottom: 2.4rem;
+
+		&_title {
+			font-weight: 700;
+		}
+
+		&_wrapper {
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-end;
+			height: 100svh;
+			padding: 1.6rem;
+		}
+
+		&_more {
+			margin-block-start: 3.2rem;
+		}
+	}
+
 	&_main {
 		display: flex;
 		flex-direction: column;
 		gap: 3.2rem;
+		margin-block-start: 3.2rem;
 	}
 
 	// #endregion
@@ -29,6 +52,45 @@
 
 	@include desktop {
 		@include fontSizeDesktop;
+
+		&_hero {
+			&_wrapper {
+				width: 100%;
+				justify-content: center;
+				align-items: flex-start;
+				max-width: 80vw;
+			}
+
+			&_more {
+				position: fixed;
+				bottom: 0;
+				left: 0;
+				right: 0;
+			}
+
+			&_actions {
+				margin-block-start: 3.2rem;
+
+				button {
+					width: 40rem;
+				}
+			}
+		}
+
+		&_wrapper {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+
+		&_main,
+		&_carrousel {
+			max-width: 80vw;
+		}
+
+		&_carrousel {
+			margin-block-end: 9.1rem;
+		}
 	}
 
 	@include large {}

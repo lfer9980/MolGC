@@ -31,7 +31,7 @@ import { useThemeStore } from 'context/__core__';
 
 
 function More({
-	label = 'load more',
+	label = '',
 	handler,
 	symbol = 'south',
 	help = false,

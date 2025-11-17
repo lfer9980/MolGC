@@ -67,9 +67,9 @@ function CardAutor({
 				theme={appliedTheme}
 			>
 				<SemContent>
-					<h4 className={styles.card_name}>
+					<h5 className={styles.card_name}>
 						{name}
-					</h4>
+					</h5>
 
 					<p className={styles.card_position}>
 						{position}

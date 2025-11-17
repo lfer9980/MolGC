@@ -76,43 +76,45 @@ function FooterX({
 				backgroundColor: color
 			}}
 		>
-			{actions &&
-				<div className={`${styles.footer_actions} ${flexendStyle}`}>
-					{actions}
-				</div>
-			}
-
-			{header &&
-				<div className={styles.footer_header}>
-					{header}
-				</div>
-			}
-
-			<main className={styles.footer_main}>
-				{content &&
-					<div className={`${styles.footer_content} ${gridStyle}`}>
-						{image &&
-							<ElementImage
-								image={image}
-								width={81}
-								height={81}
-							/>
-						}
-
-						{content}
+			<div className={styles.footer_wrapper}>
+				{actions &&
+					<div className={`${styles.footer_actions} ${flexendStyle}`}>
+						{actions}
 					</div>
 				}
 
-				{subcontent &&
-					<div className={styles.footer_subcontent}>{subcontent}</div>
+				{header &&
+					<div className={styles.footer_header}>
+						{header}
+					</div>
 				}
-			</main>
 
-			{footer &&
-				<footer className={`${styles.footer_footer} ${flexendStyle}`}>
-					{footer}
-				</footer>
-			}
+				<main className={styles.footer_main}>
+					{content &&
+						<div className={`${styles.footer_content} ${gridStyle}`}>
+							{image &&
+								<ElementImage
+									image={image}
+									width={81}
+									height={81}
+								/>
+							}
+
+							{content}
+						</div>
+					}
+
+					{subcontent &&
+						<div className={styles.footer_subcontent}>{subcontent}</div>
+					}
+				</main>
+
+				{footer &&
+					<footer className={`${styles.footer_footer} ${flexendStyle}`}>
+						{footer}
+					</footer>
+				}
+			</div>
 		</footer>
 	);
 	// #endregion

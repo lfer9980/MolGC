@@ -114,6 +114,7 @@ export default function Configuration({ }) {
 					symbol='not_started'
 					label='Comenzar Análisis'
 					handler={handlerStartAnalysis}
+					disabled={!config?.reference}
 				/>
 			</div>
 		</form>
