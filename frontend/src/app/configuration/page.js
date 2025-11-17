@@ -1,4 +1,4 @@
-// ESTADO: En desarrollo
+// ESTADO: Completada
 'use client';
 /* 
 	ROUTES - CONFIGURATION 
@@ -67,7 +67,6 @@ export default function Configuration({ }) {
 
 			<div className={styles.page_section}>
 				<div>
-
 					<InputSelect
 						label='Tipo de Análisis'
 						placeholder='Análisis Individual / Validacion Cruzada'
@@ -102,16 +101,15 @@ export default function Configuration({ }) {
 				}
 			</div>
 
+			<div className={styles.page_link}>
+				<ElementLink
+					href='/docs'
+					label='Documentación y tutoriales de uso'
+					symbol='help'
+				/>
+			</div>
 
-			<div className={styles.page_buttons}>
-				<div className={styles.page_link}>
-					<ElementLink
-						href='/docs'
-						label='Documentación y tutoriales de uso'
-						symbol='help'
-					/>
-				</div>
-
+			<div className={styles.page_actions}>
 				<ButtonPrimary
 					symbol='not_started'
 					label='Comenzar Análisis'

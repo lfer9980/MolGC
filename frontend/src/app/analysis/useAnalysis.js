@@ -1,12 +1,11 @@
 'use client';
 /* 
-Hook for element: 
-brief description about what this hook does
+	Hook for analysis: 
 */
 
 // #region libraries
 import { useRouter } from 'next/navigation';
-import { useCallback, useEffect } from 'react';
+import { useEffect } from 'react';
 // #endregion
 
 
@@ -106,6 +105,7 @@ function useAnalysis({ }) {
 
 
 	// #region others
+	console.log(messages)
 	// #endregion
 
 

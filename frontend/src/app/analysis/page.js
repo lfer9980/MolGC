@@ -1,4 +1,4 @@
-// ESTADO: En desarrollo
+// ESTADO: Completada
 'use client';
 /* 
 	ROUTES - CONFIGURATION 
@@ -10,6 +10,7 @@ import React from 'react';
 
 // #region components
 import { HeadingTitle, LoaderBar } from 'components/atoms';
+import { ElementLabel } from 'components/molecules';
 import { HeaderMolGC } from 'components/organisms';
 import { MoleculeViewer } from 'components/templates';
 // #endregion
@@ -20,10 +21,12 @@ import { MoleculeViewer } from 'components/templates';
 
 
 // #region utils
+import { colorsApp } from 'lib/utils';
 // #endregion
 
 
 // #region hooks
+import { useActivateAnimation } from 'hooks';
 import { useAnalysis } from './useAnalysis';
 // #endregion
 
@@ -43,12 +46,19 @@ export default function Analysis({ }) {
 		messages,
 	} = useAnalysis({});
 
+	const {
+		animationBase,
+		animation
+	} = useActivateAnimation({
+		animationName: 'animate__flash',
+		interval: 4000,
+	});
 	// #endregion
 
 	//#region main UI
 	return (
 		<>
-			<HeaderMolGC transparent />
+			<HeaderMolGC transparent second />
 
 			<main className={styles.page}>
 				<MoleculeViewer />
@@ -60,6 +70,14 @@ export default function Analysis({ }) {
 					label='Te avisaremos cuando esté listo...'
 					symbol='account_tree'
 				/>
+
+				<div className={`${styles.page_info} ${animationBase} ${animation}`}>
+					<ElementLabel
+						symbol='info'
+						color={colorsApp.transparent}
+						title='¡Mueve la molécula con tu mouse!'
+					/>
+				</div>
 
 				<LoaderBar
 					label={messages.message}

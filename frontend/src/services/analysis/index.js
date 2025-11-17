@@ -155,14 +155,16 @@ function useServiceAnalysis({ }) {
 						progress: 100,
 						message: data?.message
 					});
-					
+
 					socket.close(1000);
 
 					setTimeout(() => {
 						const status = { status: JOB_STATUS_ENUM.COMPLETED };
 						handlerUpdateJobStore({ data: status });
 					}, 3000);
-				}
+
+					return;
+				};
 
 				setMessages({
 					progress: data.progress,

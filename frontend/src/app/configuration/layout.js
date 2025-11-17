@@ -8,7 +8,7 @@ import React from 'react';
 
 
 // #region components
-import { WrapMain } from 'components/__common__';
+import { WrapMain, WrapSection } from 'components/__common__';
 import { HeaderMolGC } from 'components/organisms';
 import { Breadcrumbs } from 'components/molecules';
 // #endregion
@@ -32,7 +32,7 @@ import config from 'config';
 
 
 // #region styles
-//import styles from './styles.module.scss';
+import styles from './styles.module.scss';
 // #endregion
 
 
@@ -92,12 +92,17 @@ export default function LayoutConfiguration({
 	// #region main
 	return (
 		<>
-			<HeaderMolGC />
+			<HeaderMolGC semiTransparent />
 
 			<WrapMain padding margin>
-				<Breadcrumbs />
+				<div className={styles.page_wrapper}>
+					<WrapSection>
+						<Breadcrumbs />
 
-				{children}
+						<div className={styles.page_wrapper_image} />
+						{children}
+					</WrapSection>
+				</div>
 			</WrapMain>
 
 		</>
