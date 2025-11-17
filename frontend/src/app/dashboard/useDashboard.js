@@ -74,7 +74,7 @@ function useDashboard({ }) {
 		if (data) {
 			setResume(data);
 
-			const resume = { resume: JSON.stringify(data) };
+			const resume = { report_resume: JSON.stringify(data) };
 			handlerUpdateJobStore({ data: resume });
 
 			const colorsList = helperRandomColor({

@@ -65,7 +65,7 @@ function useConfiguration({ }) {
 
 
 	// #region variables
-	const REFERENCES = JSON.parse(job.references);
+	const REFERENCES = JSON.parse(job.available_references);
 
 	const INITIAL_CONFIG = {
 		analysis_type: ANALYSIS_OPTIONS[0],

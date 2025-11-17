@@ -89,7 +89,7 @@ function useFiles({ }) {
 
 			if (!reportResume?.data && !reportResume.references) router.push('/');
 
-			const references = { references: JSON.stringify(reportResume?.references) };
+			const references = { available_references: JSON.stringify(reportResume?.references) };
 			
 			setResume(reportResume?.data);
 			handlerUpdateJobStore({ data: references });

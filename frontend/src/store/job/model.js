@@ -8,8 +8,9 @@ export const INITIAL_JOB = {
 	upload_type: '',
 	status: '',
 	expires_at: '',
-	references: '',
-	resume: '',
+	reference: '',
+	available_references: '',
+	report_resume: '',
 };
 // #endregion
 

@@ -5,7 +5,12 @@
 
 // #region libraries
 import { useParams } from 'next/navigation';
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import {
+	useCallback,
+	useEffect,
+	useMemo,
+	useState
+} from 'react';
 // #endregion
 
 
@@ -98,11 +103,11 @@ function useVariant({ }) {
 	// #region memos & callbacks
 	const resumeMemo = useMemo(() => {
 		try {
-			return job?.resume ? JSON.parse(job.resume) : null;
+			return job?.report_resume ? JSON.parse(job.report_resume) : null;
 		} catch {
 			return null;
 		}
-	}, [job?.resume]);
+	}, [job?.report_resume]);
 
 
 	const handlerRequestsCallback = useCallback(async (family, variant, token, resume) => {
@@ -210,7 +215,7 @@ function useVariant({ }) {
 	}, [nav, plotMounted]);
 
 	useEffect(() => {
-		if (!job?.resume) return;
+		if (!job?.report_resume) return;
 		handlerRequestsCallback(family, variant, job.access_token, resumeMemo);
 	}, [family, variant, job?.access_token]);
 
