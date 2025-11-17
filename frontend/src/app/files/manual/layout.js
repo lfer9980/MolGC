@@ -87,7 +87,6 @@ export default function LayoutFilesManual({ children }) {
 	// #region main
 	return (
 		<div className={styles.page_wrapper}>
-			<div className={styles.page_wrapper_image} />
 			<WrapSection>
 				<Breadcrumbs />
 

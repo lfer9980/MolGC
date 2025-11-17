@@ -7,18 +7,32 @@
 
 
 	// #region unit elements
-	&_buttons {
+	&_wrapper {
 		display: flex;
-		align-items: center;
-		justify-content: center;
 		flex-direction: column;
+		align-items: center;
+
+		&_image {
+			position: fixed;
+			inset: 0;
+			background: url('/images/background_molecule.png') center/cover no-repeat;
+			filter: blur(4px);
+			transform: scale(1.05);
+			opacity: 0.25;
+			z-index: -1;
+		}
+	}
+
+	&_actions {
+		display: flex;
+		flex-direction: column;
+		margin-bottom: 4.8rem;
 		gap: 2.4rem;
-		width: 100%;
-		margin-block: 6.4rem;
 	}
 
 	&_link {
-		margin-bottom: 2.4rem;
+		width: 100%;
+		margin-block: 4.8rem 2.4rem;
 	}
 
 	// #endregion
@@ -40,13 +54,40 @@
 
 
 	// #region media queries
-	@include tablet {}
+	@include tablet {
+		&_actions {
+			position: fixed;
+			left: 2.4rem;
+			right: 2.4rem;
+			bottom: 6.4rem;
+			margin-bottom: 0;
+		}
+	}
 
 	@include desktop {
 		@include fontSizeDesktop;
+
+		&_link {
+			left: 2.4rem;
+		}
+
+		&_actions {
+			position: static;
+			display: flex;
+			flex-wrap: nowrap;
+			flex-direction: row-reverse;
+
+			button {
+				width: 50%;
+			}
+		}
 	}
 
-	@include large {}
+	@include large {
+		&_link {
+			left: 3.2rem;
+		}
+	}
 
 	// #endregion
 }

@@ -1,8 +1,7 @@
 'use client';
 
 /* 
-Hook for element: 
-brief description about what this hook does
+	Hook for useFiles
 */
 
 // #region libraries
@@ -51,7 +50,6 @@ function useFiles({ }) {
 	} = useJobStore();
 
 	const {
-		loading,
 		handlerGetResumeFiles,
 	} = useServiceUpload({});
 
@@ -68,6 +66,7 @@ function useFiles({ }) {
 
 	// #region states
 	const [resume, setResume] = useState([]);
+	const [loading, setLoading] = useState(true);
 	// #endregion
 
 
@@ -91,9 +90,11 @@ function useFiles({ }) {
 			if (!reportResume?.data && !reportResume.references) router.push('/');
 
 			const references = { references: JSON.stringify(reportResume?.references) };
+			
 			setResume(reportResume?.data);
 			handlerUpdateJobStore({ data: references });
 
+			setLoading(false);
 		} catch (error) {
 			console.error("❌ Error obteniendo resumen:", error);
 		};

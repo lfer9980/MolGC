@@ -8,7 +8,7 @@ import React from 'react';
 
 
 // #region components
-import { WrapMain } from 'components/__common__';
+import { WrapMain, WrapSection } from 'components/__common__';
 import { HeaderMolGC } from 'components/organisms';
 // #endregion
 
@@ -31,6 +31,7 @@ import config from 'config';
 
 
 // #region styles
+import styles from './styles.module.scss';
 // #endregion
 
 
@@ -88,10 +89,15 @@ export default function LayoutFiles({ children }) {
 	// #region main
 	return (
 		<>
-			<HeaderMolGC semiTransparent/>
+			<HeaderMolGC semiTransparent />
 
 			<WrapMain padding margin>
-				{children}
+				<div className={styles.page_wrapper}>
+					<WrapSection>
+						<div className={styles.page_wrapper_image} />
+						{children}
+					</WrapSection>
+				</div>
 			</WrapMain>
 		</>
 	);

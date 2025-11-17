@@ -10,16 +10,6 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-
-		&_image {
-			position: fixed;
-			inset: 0;
-			background: url('/images/background_molecule.png') center/cover no-repeat;
-			filter: blur(4px);
-			transform: scale(1.05);
-			opacity: 0.25;
-			z-index: -1;
-		}
 	}
 
 	&_heading {

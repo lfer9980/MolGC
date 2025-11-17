@@ -1,4 +1,4 @@
-// ESTADO: En desarrollo
+// ESTADO: Completada
 'use client';
 /* 
 	ROUTES - RESUME 
@@ -19,7 +19,12 @@ import {
 	LOADER_ENUM,
 } from 'components/atoms';
 
-import { ElementLink, More } from 'components/molecules';
+import {
+	Breadcrumbs,
+	ElementLink,
+	More
+} from 'components/molecules';
+
 import { CardTable } from 'components/organisms';
 // #endregion
 
@@ -60,21 +65,23 @@ export default function Files({ }) {
 
 	//#region main UI
 	if (loading) return (
-		<section className={styles.page_loading}>
+		<div className={styles.page_loading}>
 			<Loader
-				type={LOADER_ENUM.DOTS}
-				number={29}
-				size={32}
-				label='cargando'
+				type={LOADER_ENUM.SPINNER}
+				number={7}
+				size={64}
+				label='cargando...'
 			/>
-		</section>
+		</div>
 	);
 
 	return (
-		<div className={styles.page}>
+		<>
+			<Breadcrumbs />
+
 			<HeadingTitle
 				title='Archivos cargados'
-				label='Este es el resumen de los archivos que cargaste'
+				label='Este es el resumen de los archivos que cargaste.'
 				symbol='upload'
 			/>
 
@@ -103,7 +110,15 @@ export default function Files({ }) {
 				/>
 			}
 
-			<div className={styles.page_buttons}>
+			<div className={styles.page_link}>
+				<ElementLink
+					href='/docs'
+					label='Documentación y tutoriales de uso'
+					symbol='help'
+				/>
+			</div>
+
+			<div className={styles.page_actions}>
 				<ButtonPrimary
 					symbol='not_started'
 					label='Continuar'
@@ -119,15 +134,7 @@ export default function Files({ }) {
 					center
 				/>
 			</div>
-
-			<div className={styles.page_link}>
-				<ElementLink
-					href='/docs'
-					label='Documentación y tutoriales de uso'
-					symbol='help'
-				/>
-			</div>
-		</div>
+		</>
 	);
 	//#endregion
 };
