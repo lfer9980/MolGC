@@ -1,5 +1,5 @@
-site_name: MolGC Web App
-site_description: Documentación oficial de Mi Proyecto
+site_name: Documentación | MolGC Web App
+site_description: Molecular Geometry Comparator Algorithm for Bond Length Mean Absolute Error Computation on Molecules
 site_author: Abimael Guzman | Javier Camarillo | Angel Fernandez
 site_url: https://molgc.eonia.io
 
@@ -12,13 +12,18 @@ theme:
   name: material
   custom_dir: src/overrides
   logo: assets/images/logotipo_bw.png
+  favicon: assets/images/favicon.ico
   language: es
 
 nav:
   - Inicio: index.md
-  - Guía:
-      - Instalación: guide/installation.md
-      - Uso: guide/usage.md
+  - Guía de usuario:
+      - Inicio: users/index.md
+  - Documentación técnica:
+      - Inicio: developers/index.md
+      - Instalación: developers/installation.md
+      - Backend: developers/backend.md
+      - Frontend: developers/frontend.md
 
 markdown_extensions:
   - toc:

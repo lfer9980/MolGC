@@ -112,8 +112,8 @@ export default function Files({ }) {
 
 			<div className={styles.page_link}>
 				<ElementLink
-					href='/docs'
-					label='Documentación y tutoriales de uso'
+					href='https://molgc.eonia.io/docs/'
+					label='Aprende más sobre como leemos y clasificamos tus archivos'
 					symbol='help'
 				/>
 			</div>

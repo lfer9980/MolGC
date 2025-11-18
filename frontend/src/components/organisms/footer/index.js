@@ -108,7 +108,7 @@ function FooterMolGC({ theme = '' }) {
 
 					<List
 						title='Tutoriales y modos de uso'
-						href='/docs'
+						href='https://molgc.eonia.io/docs/'
 					/>
 				</div>
 			</SemSubcontent>

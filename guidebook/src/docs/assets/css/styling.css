@@ -1,3 +1,46 @@
+:root {
+    --primary: #3B87CC;
+    --primary-first: #1B1D27;
+    --primary-second: #FFF;
+    --secondary: #F57F6C;
+    --secondary-first: #459490;
+    --secondary-second: #FFF;
+    --accent: #0F60A7;
+    --positive: #459490;
+    --negative: #F25238;
+    --warning: #FF7300;
+    --background: #FFF;
+    --background-secondary: #F9FAFC;
+    --background-tertiary: #02143A;
+    --background-disabled: #F9FAFC;
+    --background-accent: #3B87CC;
+    --background-positive: #42CE76;
+    --background-negative: #F25238;
+    --background-warning: #FF7300;
+    --background-overlay: rgba($color: #3B3E4D, $alpha: 0.80);
+    --background-overlay-accent: #EFF8FF;
+    --background-overlay-positive: #EEF7F7;
+    --background-overlay-negative: #FCD2CB;
+    --background-overlay-warning: #FFF4EB;
+    --background-hover: #E7EAF2;
+    --content: #1B1D27;
+    --content-secondary: #525668;
+    --content-tertiary: #84899F;
+    --content-disabled: #BCBFCF;
+    --border: #BCBFCF;
+    --border-selected: #073A7C;
+    --border-disabled: transparent;
+    --border-accent: #3B87CC;
+    --border-positive: #459490;
+    --border-negative: #F57F6C;
+    --border-warning: #C6541C;
+    --animation: #3B87CC;
+    --animation-accent: #F25238;
+    --animation-background: #BCBFCF;
+    --shadow: rgba($color: #525668, $alpha: 0.40);
+}
+
+
 /* ========= Header ========= */
 .md-header {
     background-color: #103447 !important;
@@ -83,25 +126,6 @@
     background-color: #005da8 !important;
 }
 
-
-/* ========= Theme variable overrides ========= */
-:root {
-    --md-primary-fg-color: #2c597d;
-    /* Primary brand blue */
-    --md-primary-fg-color--light: #2c597d8a;
-    /* Semi-transparent lighter variant */
-    --md-primary-fg-color--lighter: #2c597d52;
-    --md-primary-fg-color--lightest: #2c597d12;
-    --md-primary-fg-color--dark: #7b5729;
-    /* Alternate accent (brownish) */
-
-    --md-accent-fg-color: #4995d1;
-    /* Accent blue */
-    --md-accent-fg-color--light: #eeb25c;
-    /* Accent light (yellow) */
-    --md-accent-fg-color--dark: #7b5729;
-}
-
 /* Custom body variables */
 body {
     --pp-code-bg-color: #ffffff00;
@@ -178,8 +202,14 @@ body[data-md-color-scheme=slate] {
 }
 
 .md-header__button.md-logo {
-    width: 15rem;
+    width: 10rem;
+    height: 3rem;
     /* Resize logo button */
+}
+
+.md-header__button.md-logo img {
+    width: 100%;
+    height: 100%;
 }
 
 .pp-header-spacer {

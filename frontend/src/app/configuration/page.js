@@ -103,8 +103,8 @@ export default function Configuration({ }) {
 
 			<div className={styles.page_link}>
 				<ElementLink
-					href='/docs'
-					label='Documentación y tutoriales de uso'
+					href='https://molgc.eonia.io/docs/'
+					label='¿Qué significa el tipo y referencia de análisis?'
 					symbol='help'
 				/>
 			</div>

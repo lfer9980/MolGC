@@ -19,7 +19,7 @@ import {
 	LOADER_ENUM
 } from 'components/atoms';
 
-import { Breadcrumbs, List } from 'components/molecules';
+import { Breadcrumbs, ElementLink, List } from 'components/molecules';
 
 import {
 	FooterMolGC,
@@ -170,6 +170,14 @@ export default function Dashboard({ }) {
 												</>
 											}
 										</div>
+									</div>
+
+									<div className={styles.page_link}>
+										<ElementLink
+											href='https://molgc.eonia.io/docs/'
+											label='Conoce como navegar e interpretar las graficas'
+											symbol='help'
+										/>
 									</div>
 
 									<div className={styles.page_actions}>
