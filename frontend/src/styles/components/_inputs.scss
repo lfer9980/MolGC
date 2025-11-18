@@ -1,0 +1,167 @@
+@use 'styles/vars' as *;
+
+
+@mixin inputStyles {
+	// #region general
+	@include widthMobileInput;
+	@include fontSizeMobile;
+	// #endregion
+
+
+	// #region unit elements
+	&__title {
+		font-weight: bold;
+		margin-block-end: 1.2rem;
+	}
+
+	&__main {
+		display: flex;
+		align-items: center;
+		gap: 0.8rem;
+		padding: 0.8rem 1.6rem;
+		border: 1px solid $br_primary;
+		background-color: $white;
+
+	}
+
+	&__element {
+		font-family: $font-main;
+		font-size: $p1;
+		width: 100%;
+		height: 2.4rem;
+		border: none;
+		cursor: pointer;
+	}
+
+	&__icon {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 50%;
+		cursor: pointer;
+		user-select: none;
+		gap: 1.2rem;
+
+		span {
+			border-radius: 50%;
+			color: $white;
+			background-color: $c_primary;
+		}
+	}
+
+	// #endregion
+
+
+	// #region others
+	.bold {
+		font-weight: bold;
+	}
+
+	&__element:focus-visible {
+		outline: none;
+	}
+
+	&__main:hover,
+	&__main:focus-within,
+	&__main:focus-visible {
+		outline: 2px solid $br_accent;
+	}
+
+	&__element::placeholder {
+		font-size: $p1;
+		color: $c_secondary;
+	}
+
+	// #endregion
+
+
+	// #region derived states
+	.info span {
+		background-color: $f_primary;
+	}
+
+	.error span {
+		background-color: $bk_negative;
+	}
+
+	.warning span {
+		background-color: $bk_warning;
+	}
+
+	.success span {
+		background-color: $bk_positive;
+	}
+
+	.disabled span {
+		background-color: $bk_disabled;
+	}
+
+	.info &__main:focus-visible,
+	.info &__main:focus-within,
+	.info &__main:hover {
+		outline: 2px solid $br_accent;
+		border-color: $br_accent;
+	}
+
+	.error &__main:focus-visible,
+	.error &__main:focus-within,
+	.error &__main:hover {
+		outline: 2px solid $br_negative;
+		border-color: $br_negative;
+	}
+
+	.warning &__main:focus-visible,
+	.warning &__main:focus-within,
+	.warning &__main:hover {
+		outline: 2px solid $br_warning;
+		border-color: $br_warning;
+	}
+
+	.success &__main:focus-visible,
+	.success &__main:focus-within,
+	.success &__main:hover {
+		outline: 2px solid $br_positive;
+		border-color: $br_positive;
+	}
+
+	.disabled,
+	.disabled &__title {
+		color: $c_inv_secondary;
+	}
+
+	.disabled &__element {
+		cursor: not-allowed;
+		color: $c_inv_secondary;
+		background-color: transparent;
+
+		&::placeholder {
+			color: $c_inv_secondary;
+		}
+	}
+
+	.disabled &__main {
+		background-color: $bk_disabled;
+	}
+
+	.disabled &__main:hover {
+		outline: none;
+	}
+
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {
+		@include widthTabletInput;
+	}
+
+	@include desktop {
+		@include widthDesktopInput;
+	}
+
+	@include large {
+		@include widthLargeInput;
+	}
+
+	// #endregion
+}

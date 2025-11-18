@@ -1,0 +1,75 @@
+.landing-hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-bottom: 50px;
+    height: 90svh;
+}
+
+.landing-hero img {
+    width: 500px;
+    max-width: 100%;
+    margin-top: 2em;
+    margin-bottom: 5em;
+}
+
+.landing-hero h1 {
+    margin: 0;
+    font-weight: 600;
+    font-size: 32px;
+    font-family: 'Roboto';
+    margin-block-end: 16px;
+    color: var(--content);
+}
+
+.landing-hero h2 {
+    margin: 0;
+    padding: 0 2px;
+    font-weight: 600;
+    font-size: 16px;
+    font-family: 'Roboto';
+    color: var(--content--secondary);
+}
+
+.landing-hero div {
+    margin-top: 0.5em;
+    display: flex;
+    margin-block-start: 1.6rem;
+}
+
+.landing-hero a {
+    margin: 0.5em;
+    padding: 0.4rem;
+    font-size: 1.75em;
+    width: 10em;
+    display: block;
+    text-align: center;
+    background-color: var(--primary);
+    transition-property: transform;
+    transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+    transition-duration: .15s;
+    font-weight: 700;
+    color: white;
+}
+
+.landing-hero a:hover {
+    opacity: 0.6;
+}
+
+.landing-hero a:active {
+    transform: scale(.98, .98);
+}
+
+.landing-hero a.inverted {
+    color: var(--primary);
+    border: 1px solid var(--primary);
+    background-color: transparent;
+}
+
+@media screen and (min-width: 76.25em) {
+    .md-sidebar {
+        display: none;
+    }
+}

@@ -1,0 +1,52 @@
+/*
+*/
+@use 'styles/vars' as *;
+
+.pill {
+	// #region general
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.8rem;
+	padding: 1.6rem;
+	border: none;
+	font-weight: 800;
+	cursor: pointer;
+	user-select: none;
+	@include fontSizeMobile;
+	// #endregion
+
+
+	// #region unit elements
+	// #endregion
+
+
+	// #region others
+	&:not(.disabled):hover {
+		opacity: 0.60;
+	}
+
+	// #endregion
+
+
+	// #region derived states
+	&.disabled {
+		cursor: not-allowed;
+		color: var(--content-disabled) !important;
+		background-color: var(--background-disabled) !important;
+	}
+
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {}
+
+	@include desktop {
+		@include fontSizeDesktop;
+	}
+
+	@include large {}
+
+	// #endregion
+}

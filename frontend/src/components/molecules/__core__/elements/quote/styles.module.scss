@@ -1,0 +1,54 @@
+/*
+*/
+
+@use 'styles/vars' as *;
+
+.element {
+	// #region general
+	display: block;
+	@include fontSizeMobile;
+	// #endregion
+
+
+	// #region unit elements
+	&_main {
+		padding: 0.8rem 1.6rem;
+		margin-block-end: 2.4rem;
+		border-inline-start: 0.4rem solid;
+		color: var(--accent);
+		border-color: var(--border-selected);
+	}
+
+	&_help {
+		font-size: $p1;
+		color: var(--content-secondary);
+	}
+
+	// #endregion
+
+
+	// #region others
+
+	// #endregion
+
+
+	// #region derived states
+
+	// #endregion
+
+
+	// #region media queries
+	@include desktop {
+		&_main {
+			padding-inline-start: 2.4rem;
+		}
+
+		&_help {
+			font-size: $p2;
+		}
+
+		@include fontSizeDesktop;
+	}
+
+	// #endregion
+}

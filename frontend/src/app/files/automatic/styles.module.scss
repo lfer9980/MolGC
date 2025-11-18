@@ -1,0 +1,119 @@
+@use 'styles/vars' as *;
+
+.page {
+	// #region general
+	@include fontSizeMobile;
+	// #endregion
+
+	// #region unit elements
+	&_heading {
+		width: 100%;
+
+		&_main {
+			display: flex;
+			align-items: center;
+			gap: 1.6rem;
+		}
+
+		&_head {
+			margin-block-start: 1.6rem;
+		}
+	}
+
+	&_label {
+		color: var(--content-secondary);
+	}
+
+	&_form {
+		padding-block-end: 9.1rem;
+
+		&_structure {
+			display: flex;
+			flex-direction: column;
+			gap: 2.4rem;
+			margin-block-end: 3.2rem;
+		}
+	}
+
+	&_loading {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+		height: 40svh;
+
+		&_main {
+			width: 100%;
+			margin-block-end: 6.4rem;
+		}
+	}
+
+	// #endregion
+
+
+	// #region others
+	// #endregion
+
+
+	// #region derived states
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {
+		&_form {
+			&_structure {
+				margin-block-end: 4.8rem;
+			}
+		}
+
+		&_actions {
+			position: fixed;
+			left: 2.4rem;
+			right: 2.4rem;
+			bottom: 6.4rem;
+		}
+	}
+
+	@include desktop {
+		@include fontSizeDesktop;
+
+		&_form {
+			padding-block-end: 4.8rem;
+
+			&_first {
+				width: 50%;
+			}
+
+			&_second {
+				width: 50%;
+			}
+
+			&_structure {
+				margin-block-end: 0;
+			}
+
+			&_wrapper {
+				display: flex;
+				flex-direction: row;
+				justify-content: space-between;
+				gap: 2.4rem;
+				margin-block-end: 2.4rem;
+			}
+		}
+
+		&_actions {
+			position: static;
+			display: flex;
+			justify-content: flex-end;
+
+			button {
+				width: 40rem;
+			}
+		}
+	}
+
+	@include large {}
+
+	// #endregion
+}

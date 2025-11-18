@@ -1,0 +1,51 @@
+/*
+*/
+
+@use 'styles/vars' as *;
+
+.upload {
+	// #region general
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding-block: 1.6rem;
+	@include fontSizeMobile;
+	// #endregion
+
+
+	// #region unit elements
+	&_main {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
+	}
+
+	// #endregion
+
+
+	// #region others
+	// #endregion
+
+
+	// #region derived states
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {
+		&_main {
+			width: fit-content;
+		}
+
+	}
+
+	@include desktop {
+		@include fontSizeDesktop;
+	}
+
+	@include large {}
+
+	// #endregion
+}

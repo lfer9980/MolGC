@@ -1,0 +1,142 @@
+name: CI & Deploy for backend
+
+on:
+  push:
+    branches:
+      - feature/backend
+
+env:
+  REGISTRY: ghcr.io
+  DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+  IMAGE_NAME_BACKEND: ${{ secrets.DOCKER_USERNAME }}/${{ secrets.APP_NAME }}_backend
+
+jobs:
+  build:
+    name: Build Docker Image
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+
+      - name: Set up Docker Build
+        uses: docker/setup-buildx-action@v2
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ env.DOCKER_USERNAME }}
+          password: ${{ secrets.PAT }}
+
+      - name: Build & Push Backend Image
+        uses: docker/build-push-action@v4
+        with:
+          context: ./backend
+          file: ./backend/Dockerfile.prod
+          push: true
+          tags: |
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME_BACKEND }}:latest
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME_BACKEND }}:${{ github.sha }}
+
+  integration-tests:
+    name: "Integration: DB + Migrations + Tests"
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Prepare SQLite file
+        run: |
+          mkdir -p sqlite_volume
+          touch sqlite_volume/${{ secrets.APP_NAME }}.sqlite
+
+      - name: Backup existing DB
+        run: |
+          cp sqlite_volume/${{ secrets.APP_NAME }}.sqlite sqlite_volume/${{ secrets.APP_NAME }}_backup.sqlite
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ env.DOCKER_USERNAME }}
+          password: ${{ secrets.PAT }}
+
+      - name: Apply Alembic migrations
+        run: |
+          echo "${{ secrets.ENV_BACKEND }}" > backend.env
+          docker run --rm \
+            --env-file backend.env \
+            -v ${{ github.workspace }}/sqlite_volume:/data \
+            -v ${{ github.workspace }}/backend:/app \
+            --entrypoint alembic \
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME_BACKEND }}:latest \
+            -c /app/alembic.ini upgrade head
+        continue-on-error: true
+        id: migrate
+
+      - name: Rollback if migration failed
+        if: steps.migrate.outcome == 'failure'
+        run: |
+          echo "Migration failed, restoring backup..."
+          cp sqlite_volume/${{ secrets.APP_NAME }}_backup.sqlite sqlite_volume/${{ secrets.APP_NAME }}.sqlite
+          exit 1
+
+      - name: Cleanup SQLite directory
+        run: rm -rf sqlite_volume backend.env
+
+  deploy:
+    name: Deploy to VPS
+    needs: integration-tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup SSH agent
+        uses: webfactory/ssh-agent@v0.5.4
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Add remote host to known_hosts
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
+        shell: bash
+
+      - name: Copy docker-compose file
+        run: |
+          scp docker-compose.prod.yml \
+            ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.WORK_DIR }}/docker-compose.prod.yml
+        shell: bash
+
+      - name: Deploy on remote
+        run: |
+          ssh -T ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} << 'EOF'
+            cd ${{ secrets.WORK_DIR }}
+
+            export REGISTRY=${{ env.REGISTRY }}
+            export IMAGE_NAME_BACKEND=${{ env.IMAGE_NAME_BACKEND }}
+            export IMAGE_NAME_FRONTEND=${{ env.IMAGE_NAME_FRONTEND }}
+            export APP_NAME=${{ secrets.APP_NAME }}
+
+            ENV_BACKEND='${{ secrets.ENV_BACKEND }}'
+            ENV_FRONTEND='${{ secrets.ENV_FRONTEND }}'
+
+            ENV_CONTENT="${ENV_BACKEND}"
+            ENV_CONTENT+=$'\n'
+            ENV_CONTENT+="${ENV_FRONTEND}"
+            printf "%s\n" "$ENV_CONTENT" > /tmp/deploy.env
+
+            docker compose \
+              --env-file /tmp/deploy.env \
+              -f docker-compose.prod.yml pull
+
+            docker compose \
+              --env-file /tmp/deploy.env \
+              -f docker-compose.prod.yml up -d --remove-orphans
+
+            rm /tmp/deploy.env
+          EOF
+        shell: bash

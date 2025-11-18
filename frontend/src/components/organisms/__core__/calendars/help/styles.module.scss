@@ -1,0 +1,42 @@
+/*
+*/
+
+@use 'styles/vars' as *;
+
+.help {
+	// #region general
+	@include fontSizeMobile;
+	// #endregion
+
+
+	// #region unit elements
+	&_title {
+		display: flex;
+		align-items: center;
+		gap: 1.2rem;
+		color: var(--content-secondary);
+		margin-block-end: 1.2rem;
+	}
+
+	// #endregion
+
+
+	// #region others
+	// #endregion
+
+
+	// #region derived states
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {}
+
+	@include desktop {
+		@include fontSizeDesktop;
+	}
+
+	@include large {}
+
+	// #endregion
+}

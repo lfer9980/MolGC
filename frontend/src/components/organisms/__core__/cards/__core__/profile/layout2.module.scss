@@ -1,0 +1,61 @@
+/*
+*/
+
+@use 'styles/vars' as *;
+
+.card {
+	// #region general
+	@include fontSizeMobile;
+	@include widthMobile;
+	// #endregion
+
+
+	// #region unit elements
+	&_header {
+		display: flex;
+		margin-block-end: 1.2rem;
+	}
+
+	&_main {
+		width: 100%;
+	}
+
+	&_content {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		margin-block-end: 1.2rem;
+		text-align: center;
+	}
+
+	&_subcontent {
+		width: 100%;
+	}
+
+	// #endregion
+
+
+	// #region others
+	// #endregion
+
+
+	// #region derived states
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {
+		&_content {
+			flex-direction: row;
+		}
+	}
+
+	@include desktop {
+		@include fontSizeDesktop;
+	}
+
+	@include large {}
+
+	// #endregion
+}

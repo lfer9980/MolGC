@@ -1,0 +1,206 @@
+@use './sizes' as *;
+
+// #region media-queries
+@mixin tablet {
+	@media screen and (min-width: 501px) {
+		@content;
+	}
+}
+
+@mixin desktop {
+	@media screen and (min-width: 1023px) {
+		@content;
+	}
+}
+
+@mixin large {
+	@media screen and (min-width: 1441px) {
+		@content;
+	}
+}
+
+// #endregion
+
+
+// #region generals
+@mixin shadow {
+	& {
+		box-shadow: 0.2rem 0.4rem 0.6em var(--shadow);
+	}
+}
+
+@mixin borderRadius {
+	& {
+		border-radius: 0rem;
+	}
+}
+
+// #endregion
+
+
+// #region padding
+@mixin paddingMobile {
+	& {
+		padding-inline: 1.6rem;
+	}
+}
+
+@mixin paddingTablet {
+	& {
+		padding-inline: 2.4rem;
+	}
+}
+
+@mixin paddingDesktop {
+	& {
+		padding-inline: 2.4rem;
+	}
+}
+
+@mixin paddingLarge {
+	& {
+		padding-inline: 3.2rem;
+	}
+}
+
+// #endregion
+
+
+// #region width-layout
+@mixin widthMobile {
+	& {
+		min-width: 10rem;
+		width: 100%;
+	}
+}
+
+@mixin widthTablet {
+	& {
+		width: 100%;
+		max-width: 35rem;
+	}
+}
+
+@mixin widthDesktop {
+	& {
+		width: 100%;
+		max-width: 45rem;
+	}
+}
+
+@mixin widthLarge {
+	& {
+		width: 100%;
+		max-width: 55rem;
+	}
+}
+
+// #endregion
+
+
+// #region input-size
+@mixin widthInputMobile {
+	& {
+		width: 100%;
+		max-width: 50rem;
+	}
+
+	&_drop_selection {
+		width: 100%;
+		max-width: 50rem;
+	}
+}
+
+@mixin widthInputTablet {
+	& {
+		width: 100%;
+		max-width: 100%;
+	}
+
+	&_drop_selection {
+		width: 100%;
+		max-width: 100%;
+	}
+}
+
+@mixin widthInputDesktop {
+	& {
+		width: 100%;
+		max-width: 40rem;
+	}
+
+	&_drop_selection {
+		width: 100%;
+		max-width: 35rem;
+	}
+}
+
+@mixin widthInputLarge {
+	& {
+		width: 100%;
+		max-width: 40rem;
+	}
+
+	&_drop_selection {
+		width: 100%;
+		max-width: 40rem;
+	}
+}
+
+// #endregion
+
+
+// #region font-sizing
+@mixin fontSizeMobile {
+	& {
+		font-size: $small;
+	}
+
+	&_title {
+		font-size: $p1;
+	}
+
+	&_subHeading {
+		font-size: $p1;
+	}
+
+	&_subtitle {
+		font-size: $small;
+	}
+
+	&_label {
+		font-size: $small;
+	}
+
+	&_element {
+		font-size: $p1;
+	}
+}
+
+@mixin fontSizeDesktop {
+	& {
+		font-size: $p1;
+	}
+
+	&_title {
+		font-size: $p2;
+	}
+
+	&_subHeading {
+		font-size: $p2;
+	}
+
+	&_subtitle {
+		font-size: $p2;
+	}
+
+	&_label {
+		font-size: $small;
+	}
+
+	&_element {
+		font-size: $p2;
+	}
+}
+
+// #endregion

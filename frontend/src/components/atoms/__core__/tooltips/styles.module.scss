@@ -1,0 +1,128 @@
+/*
+*/
+@use 'styles/vars' as *;
+
+.tooltip {
+	// #region general
+	min-width: 5rem;
+	width: fit-content;
+	position: relative;
+	color: $white;
+	@include fontSizeMobile;
+	// #endregion
+
+
+	// #region unit elements
+	&_main {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 1.2rem;
+		width: 100%;
+		padding: 1.2rem;
+		background-color: $dark-background;
+		@include shadow;
+	}
+
+	&_link {
+		color: var(--primary);
+		text-decoration: underline;
+		font-weight: bold;
+		text-align: center;
+	}
+
+	&_link:hover {
+		opacity: 0.6;
+	}
+
+	&_text {
+		font-weight: bold;
+		text-align: center;
+	}
+
+	&_icon {
+		font-size: $p2;
+	}
+
+	&_arrow {
+		display: flex;
+		position: absolute;
+
+		.main {
+			display: block;
+			width: 0;
+			height: 0;
+			border-top: 0.8rem solid transparent;
+			border-bottom: 0.8rem solid transparent;
+			border-right: 0.8rem solid transparent;
+			border-left: 0.8rem solid transparent;
+		}
+	}
+
+	// #endregion
+
+
+	// #region others
+	.block {
+		align-items: flex-end;
+		justify-content: center;
+		width: 100%;
+	}
+
+	.inline {
+		align-items: center;
+		justify-content: flex-start;
+		height: 100%;
+		top: 0;
+	}
+
+	.top {
+		top: -1.6rem;
+
+		.main {
+			border-bottom-color: $dark-background;
+		}
+	}
+
+	.bottom {
+		bottom: -1.6rem;
+
+		.main {
+			border-top-color: $dark-background;
+		}
+	}
+
+	.left {
+		left: -1.6rem;
+
+		.main {
+			border-right-color: $dark-background;
+		}
+	}
+
+	.right {
+		right: -1.6rem;
+
+		.main {
+			border-left-color: $dark-background;
+		}
+	}
+
+	// #endregion
+
+
+	// #region derived states
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {}
+
+	@include desktop {
+		@include fontSizeDesktop;
+	}
+
+	@include large {}
+
+	// #endregion
+}

@@ -1,0 +1,89 @@
+/*
+*/
+
+@use 'styles/vars' as *;
+
+.footer {
+	// #region general
+	width: 100%;
+	padding: 1.6rem;
+	padding-block-end: 10.5rem;
+	@include fontSizeMobile;
+	// #endregion
+
+
+	// #region unit elements
+	&_actions {
+		margin-block-end: 3.2rem;
+		border-bottom: 0.1rem solid var(--border);
+	}
+
+	&_actions {
+		display: flex;
+		flex-direction: column;
+		padding-block-end: 1.6rem;
+	}
+
+	&_content,
+	&_subcontent {
+		margin-block-end: 2.4rem;
+	}
+
+	&_footer {
+		display: flex;
+	}
+
+	// #endregion
+
+
+	// #region others
+	// #endregion
+
+
+	// #region derived states
+	.grid {
+		display: grid;
+		align-items: center;
+		grid-template-columns: 1fr 1fr;
+		row-gap: 1.2rem;
+		column-gap: 0.8rem;
+	}
+
+	.flexend {
+		justify-content: flex-end;
+		align-items: flex-end;
+	}
+
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {
+		padding: 1.6rem 2.4rem;
+		padding-block-end: 10.5rem;
+
+		.grid {
+			grid-template-rows: 1fr;
+			grid-template-columns: 1fr 1fr 1fr 1fr;
+			column-gap: 1.6rem;
+		}
+	}
+
+	@include desktop {
+		@include fontSizeDesktop;
+
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+
+		&_wrapper {
+			width: 100%;
+			max-width: 80vw;
+		}
+	}
+
+	@include large {}
+
+	// #endregion
+}

@@ -1,0 +1,29 @@
+{
+	"language": "Cambia el idioma",
+	"theme": "Cambia el tema",
+	"components.name": "Componentes",
+	"tutorials.name": "Tutoriales",
+	"progress.name": "Progreso",
+	"components.description": "Componentes del Framework",
+	"tutorials.description": "Tutoriales de uso",
+	"progress.description": "Progreso de la aplicacion",
+	"welcome": "Bienvenido a {{name}}",
+	"welcome_message": "Empieza a editar tu primer pagina en: {{name}}",
+	"calendar": {
+		"date": "Fecha",
+		"time": "Hora",
+		"event": "Evento",
+		"allDay": "Todo el día",
+		"week": "Semana",
+		"work_week": "Semana laboral",
+		"day": "Día",
+		"month": "Mes",
+		"previous": "Anterior",
+		"next": "Siguiente",
+		"yesterday": "Ayer",
+		"tomorrow": "Mañana",
+		"today": "Hoy",
+		"agenda": "Agenda",
+		"noEventsInRange": "No hay eventos en este rango."
+	}
+}

@@ -1,0 +1,117 @@
+/*
+*/
+@use 'sass:list';
+@use 'styles/vars' as *;
+
+.light {
+	:global(.milkdown) {
+		$colors: (
+			background: $light-background,
+			on-background: $light-content,
+			surface: $light-background-secondary,
+			surface-low: $light-content-disabled,
+			on-surface: $light-content,
+			on-surface-variant: $light-background-secondary,
+			outline: $light-border,
+			primary: $light-primary,
+			secondary: $light-secondary,
+			on-secondary: $light-content,
+			inverse: $dark-content-secondary,
+			on-inverse: $light-content-secondary,
+			inline-code: $light-warning,
+			error: $light-negative,
+			hover: $light-background-hover,
+			selected: $light-content-disabled,
+			inline-area: $light-content-secondary,
+		);
+
+
+	@each $name, $value in $colors {
+		--crepe-color-#{$name}: #{$value};
+	}
+
+	--crepe-shadow-1: 0rem 0.1rem 0.2rem 0rem rgba($gray50, 0.3),
+	0rem 0.1rem 0.3rem 0.1rem rgba($gray50, 0.15);
+
+	--crepe-shadow-2: 0rem 0.1rem 0.2rem 0rem rgba($gray50, 0.3),
+	0rem 0.2rem 0.6rem 0.2rem rgba($gray50, 0.15);
+
+
+	color: var(--crepe-color-on-background);
+	background: var(--crepe-color-background);
+
+
+	:global(.ProseMirror) {
+		padding: 0 !important;
+
+		*::selection {
+			background: var(--crepe-color-selected);
+		}
+
+		:global(.ProseMirror-selectednode) {
+			background: var(--crepe-color-selected);
+
+			::selection,
+			&::selection {
+				background: transparent;
+			}
+		}
+
+		&[data-dragging='true'] {
+
+			:global(.ProseMirror-selectednode),
+			&::selection,
+			*::selection {
+				background: transparent;
+			}
+
+			input::selection {
+				background: var(--crepe-color-selected);
+			}
+		}
+
+		img {
+			&:global(.ProseMirror-selectednode) {
+				background: none;
+				outline: 0.2rem solid var(--crepe-color-primary);
+			}
+		}
+
+
+		code {
+			color: var(--crepe-color-inline-code);
+			background: color-mix(in srgb, var(--crepe-color-inline-area), transparent 40%);
+		}
+
+		a {
+			color: var(--crepe-color-primary);
+		}
+
+		pre {
+			background: color-mix(in srgb, var(--crepe-color-inline-area), transparent 40%);
+
+			code {
+				background: transparent;
+			}
+		}
+
+		blockquote {
+			&::before {
+				background: var(--crepe-color-selected);
+			}
+		}
+
+		hr {
+			background-color: color-mix(in srgb, var(--crepe-color-outline), transparent 80%);
+
+			&:global(.ProseMirror-selectednode) {
+				background-color: color-mix(in srgb, var(--crepe-color-outline), transparent 20%);
+
+				&::before {
+					background-color: color-mix(in srgb, var(--crepe-color-outline), transparent 80%);
+				}
+			}
+		}
+	}
+}
+}

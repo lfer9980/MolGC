@@ -1,0 +1,70 @@
+/*
+*/
+
+@use 'styles/vars' as *;
+
+.more {
+	// #region general
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	gap: 0.8rem;
+	width: 100%;
+	margin-block: 1.6rem;
+	user-select: none;
+	cursor: pointer;
+	@include fontSizeMobile;
+	// #endregion
+
+
+	// #region unit elements
+	&_line {
+		width: 30%;
+		height: 0.1rem;
+		background-color: var(--secondary);
+	}
+
+	&_label {
+		width: fit-content;
+		font-weight: 700;
+		text-align: center;
+	}
+
+	&_main {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 1.6rem;
+	}
+
+	&_symbol {
+		font-size: $h4;
+		color: var(--secondary);
+	}
+
+	// #endregion
+
+
+	// #region others
+	&:hover {
+		opacity: 0.6;
+	}
+
+	// #endregion
+
+
+	// #region derived states
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {}
+
+	@include desktop {
+		@include fontSizeDesktop;
+	}
+
+	@include large {}
+
+	// #endregion
+}

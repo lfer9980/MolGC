@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block hero %}
+<div class="landing-hero">
+    <img src="assets/images/logotipo.png" />
+    <h1>MolGC Web App</h1>
+
+    <h2> Molecular Geometry Comparator Algorithm for Bond Length Mean Absolute Error Computation on Molecules</h2>
+
+    <div>
+        <a href="/users">Guia de usuario</a>
+        <a class="inverted" href="/developers">Guia desarrollador</a>
+    </div>
+</div>
+{% endblock %}
+
+{% block container %}
+{% endblock %}
+
+{% block site_meta %}
+{{super()}}
+<link rel="stylesheet" href="{{ 'assets/css/landing.css' | url }}">
+{% endblock %}
+
+{% block site_nav %}
+{% if nav %}
+{% if page.meta and page.meta.hide %}
+{% set hidden = "hidden" if "navigation" in page.meta.hide %}
+{% endif %}
+
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" {{ hidden }}>
+    <div class="md-sidebar__scrollwrap">
+        <div class="md-sidebar__inner">
+            {% include "partials/nav.html" %}
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

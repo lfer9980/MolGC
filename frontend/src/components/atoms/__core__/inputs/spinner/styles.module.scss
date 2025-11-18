@@ -1,0 +1,99 @@
+/*
+*/
+
+@use 'styles/vars' as *;
+
+.input {
+    // #region general
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
+    @include widthInputMobile;
+    @include fontSizeMobile;
+    // #endregion
+
+
+    // #region unit elements
+    &_label {
+        margin-bottom: 0.4rem;
+    }
+
+    &_main {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.8rem;
+    }
+
+    &_element {
+        width: 6.4rem;
+        height: 3.2rem;
+        text-align: center;
+        border: 0.1rem solid var(--border);
+        background-color: transparent;
+        transition: border-color 0.2s ease;
+        outline: none;
+        color: var(--content);
+
+        &:focus {
+            border: 2px solid var(--border);
+
+        }
+
+        &::placeholder {
+            color: var(--content-secondary);
+        }
+    }
+
+    // #endregion
+
+
+    // #region others
+    // #endregion
+
+
+    // #region derived states
+    .disabled & {
+
+        &_title,
+        &_element,
+        &_symbol span,
+        &_drop_main,
+        &_main::placeholder,
+        &_count {
+            color: var(--content-disabled);
+        }
+
+        &_main:hover,
+        &_main:focus-within,
+        &_main:focus-visible {
+            outline: none;
+            cursor: not-allowed;
+        }
+
+        &_element,
+        &_pin {
+            cursor: not-allowed;
+            border-color: var(--border-disabled);
+            background-color: var(--background-disabled);
+        }
+    }
+
+    // #endregion
+
+
+    // #region media queries
+    @include tablet {
+        @include widthInputTablet;
+    }
+
+    @include desktop {
+        @include widthInputDesktop;
+        @include fontSizeDesktop;
+    }
+
+    @include large {}
+
+    // #endregion
+}

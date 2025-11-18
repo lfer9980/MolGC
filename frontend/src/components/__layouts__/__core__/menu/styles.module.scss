@@ -1,0 +1,83 @@
+/*
+*/
+
+@use 'styles/vars' as *;
+
+.menu {
+	// #region general
+	width: 100%;
+	@include fontSizeMobile;
+	// #endregion
+
+
+	// #region unit elements
+	&_bread {
+		display: flex;
+		gap: 1.6rem;
+		position: sticky;
+		top: 5rem;
+		background-color: var(--background);
+		z-index: 90;
+		@include paddingMobile;
+
+		&_button {
+			display: none;
+		}
+	}
+
+	&_navigation {
+		position: fixed;
+		bottom: 0;
+		z-index: 90;
+		width: 100%;
+	}
+
+	&_label {
+		font-weight: 700;
+		color: var(--primary);
+		margin-block: 2.4rem;
+	}
+
+	// #endregion
+
+
+	// #region others
+	// #endregion
+
+
+	// #region derived states
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {
+		&_bread {
+			@include paddingTablet;
+
+			&_button {
+				display: grid;
+				place-content: center;
+			}
+		}
+
+		&_navigation {
+			display: none;
+		}
+	}
+
+	@include desktop {
+		&_bread {
+			@include paddingDesktop;
+		}
+
+		@include fontSizeDesktop;
+	}
+
+	@include large {
+		&_bread {
+			@include paddingLarge;
+		}
+	}
+
+	// #endregion
+}

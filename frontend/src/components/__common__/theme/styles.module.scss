@@ -1,0 +1,82 @@
+/*
+*/
+
+@use 'styles/vars' as *;
+
+.toggle {
+	// #region general
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	gap: 1.6rem;
+	top: 1.6rem;
+	right: 1.6rem;
+	@include fontSizeMobile;
+	// #endregion
+
+
+	// #region unit elements
+	&_title {
+		display: flex;
+		align-items: center;
+		gap: 1.6rem;
+
+		span {
+			display: none;
+		}
+	}
+
+	&_main {
+		display: flex;
+		gap: 1.6rem;
+		align-items: center;
+		justify-content: center;
+	}
+
+	&_title,
+	&_label {
+		color: var(--content-secondary);
+	}
+
+	// #endregion
+
+
+	// #region others
+	// #endregion
+
+
+	// #region derived states
+	&.fixed {
+		position: fixed;
+	}
+
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {
+		top: 2.4rem;
+		right: 3.2rem;
+		flex-direction: row-reverse;
+		align-items: center;
+
+		&_title {
+			span {
+				display: block;
+			}
+		}
+	}
+
+	@include desktop {
+		top: 3.2rem;
+		right: 3.2rem;
+		@include fontSizeDesktop;
+	}
+
+	@include large {
+		top: 3.2rem;
+		right: 4.8rem;
+	}
+
+	// #endregion
+}

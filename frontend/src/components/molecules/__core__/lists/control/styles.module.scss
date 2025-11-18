@@ -1,0 +1,112 @@
+/*
+*/
+
+@use 'styles/vars' as *;
+
+.list {
+	// #region general
+	display: flex;
+	gap: 2.4rem;
+	@include widthMobile;
+	@include fontSizeMobile;
+	// #endregion
+
+
+	// #region unit elements
+	&_badge {
+		padding-block: 1.6rem;
+	}
+
+	&_main {
+		display: flex;
+		width: 100%;
+		gap: 1.6rem;
+		padding-block: 1.2rem;
+		border-bottom: 0.1rem solid var(--border);
+		cursor: pointer;
+		user-select: none;
+
+		&_item {
+			width: 100%;
+		}
+
+		&_control {
+			display: inherit;
+			align-items: center;
+			margin-inline-end: 1.6rem;
+		}
+	}
+
+	&_title,
+	&_subtitle {
+		font-weight: 700;
+	}
+
+	&_title {
+		margin-block-end: 0.4rem;
+	}
+
+	&_subtitle {
+		margin-block-end: 1.2rem;
+	}
+
+	/* for options list */
+	&_options {
+		&_item {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			cursor: pointer;
+			@include fontSizeMobile;
+		}
+	}
+
+	&_label,
+	&_subtitle {
+		color: var(--content-secondary);
+	}
+
+	// #endregion
+
+
+	// #region others
+	&_options_item:hover {
+		opacity: 0.6;
+	}
+
+	// #endregion
+
+
+	// #region derived states
+	&.unselected {
+
+		.list_main,
+		.list_label,
+		.list_subtitle {
+			color: var(--content-disabled);
+		}
+	}
+
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {}
+
+	@include desktop {
+		@include widthDesktop;
+		@include fontSizeDesktop;
+
+		&_options {
+			&_item {
+				@include fontSizeDesktop;
+			}
+		}
+	}
+
+	@include large {
+		@include widthLarge;
+	}
+
+	// #endregion
+}

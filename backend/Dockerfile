@@ -1,0 +1,17 @@
+FROM python:3.13
+
+ENV PYTHONUNBUFFERED=1
+
+WORKDIR /app
+
+COPY backend/requirements.txt /app/requirements.txt
+RUN pip install --no-cache-dir -r /app/requirements.txt
+
+COPY backend/ /app/
+
+COPY backend/entrypoint.sh /app/entrypoint.sh
+RUN chmod +x /app/entrypoint.sh
+
+EXPOSE 5000
+
+CMD ["/app/entrypoint.sh"]

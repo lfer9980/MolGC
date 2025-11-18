@@ -1,0 +1,104 @@
+/*
+*/
+@use 'styles/vars' as *;
+
+.badge {
+	// #region general
+	display: grid;
+	place-content: center;
+	height: fit-content;
+	@include fontSizeMobile;
+	// #endregion
+
+
+	// #region unit elements
+	&_main {
+		display: flex;
+		align-items: center;
+		gap: 1.2rem;
+	}
+
+	&.pill {
+		width: fit-content;
+		height: fit-content;
+	}
+
+	.bullet {
+		border-radius: 50%;
+	}
+
+	&_label {
+		display: grid;
+		place-content: center;
+		text-align: center;
+		font-weight: bold;
+		min-width: 2.4rem;
+		min-height: 2.4rem;
+	}
+
+	&_symbol {
+		display: block;
+	}
+
+	// #endregion
+
+
+	// #region others
+	&.border {
+		border: 0.2rem solid;
+	}
+
+	&.padding {
+		padding: 0.8rem;
+	}
+
+	&:has(:not(.pill)) {
+		padding-inline: 0.8em;
+	}
+
+	// #endregion
+
+
+	// #region derived states
+	.black {
+		color: $gray30;
+	}
+
+	.white {
+		color: $white;
+	}
+
+	.icon.black {
+		/* for: #AFAFAF change at: https://angel-rs.github.io/css-color-filter-generator/ */
+		filter: brightness(0) saturate(100%) invert(64%) sepia(0%) saturate(61%)
+	}
+
+	.icon.white {
+		/* for: #FFF change at: https://angel-rs.github.io/css-color-filter-generator/ */
+		filter: brightness(0) saturate(100%) invert(100%) sepia(65%) saturate(0%) hue-rotate(71deg) brightness(115%) contrast(101%);
+	}
+
+	&.rounded {
+		border-radius: 50%;
+	}
+
+	&.disabled {
+		cursor: not-allowed;
+	}
+
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {
+		&.padding {
+			padding: 1.2rem;
+		}
+	}
+
+	@include desktop {
+		@include fontSizeDesktop;
+	}
+
+	// #endregion
+}

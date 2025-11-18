@@ -1,0 +1,182 @@
+/*
+*/
+
+@use 'styles/vars' as *;
+
+
+.errorHTML {
+	overflow: hidden;
+
+	body {
+		background: radial-gradient(ellipse at bottom, $gray50 0%, $black 100%);
+	}
+}
+
+
+.error {
+	// #region general
+	display: grid;
+	place-content: center;
+	width: 100%;
+	height: 100vh;
+	color:  var(--content);
+	@include fontSizeMobile;
+	// #endregion
+
+
+	// #region unit elements
+	&_wrap {
+		display: flex;
+		flex-direction: column-reverse;
+		align-content: center;
+		gap: 2.4rem;
+		height: 100%;
+	}
+
+	&_main {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		width: 100%;
+	}
+
+	&_image {
+		display: grid;
+		place-content: center;
+		width: 100%;
+		text-align: center;
+
+		&_text {
+			display: grid;
+			place-content: center;
+			// font-size: 29.4196rem;
+			font-size: $hero;
+			font-weight: 700;
+			position: relative;
+			height: 100%;
+			user-select: none;
+		}
+
+		&_wrap {
+			width: 18rem;
+			height: 18rem;
+			position: relative;
+		}
+
+		&_main {
+			object-fit: contain;
+		}
+	}
+
+	&_hero {
+		font-weight: 700;
+		font-size: $h3;
+		text-align: center;
+		margin-block-end: 2.4rem;
+	}
+
+	&_title {
+		margin-block-end: 2.4rem;
+	}
+
+	&_label {
+		&_wrap {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			margin-block-end: 2.4rem;
+			gap: 1.6rem;
+		}
+	}
+
+	&_actions {
+		&_button {
+			display: grid;
+			width: 100%;
+		}
+
+		&_redirect {
+			display: none;
+		}
+	}
+
+	// #endregion
+
+
+	// #region others
+
+	// #endregion
+
+
+	// #region derived states
+
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {
+
+		&_image {
+			margin-block-end: 2.4rem;
+
+			&_text {
+				font-size: $hero2;
+			}
+
+			&_wrap {
+				width: 35rem;
+				height: 35rem;
+				position: relative;
+			}
+
+			&_main {
+				object-fit: contain;
+			}
+		}
+	}
+
+	@include desktop {
+		display: block;
+
+		&_wrap {
+			flex-direction: row;
+		}
+
+		&_hero {
+			font-size: $h1;
+			text-align: left;
+		}
+
+		&_label_wrap {
+			justify-content: flex-start;
+			padding-inline-start: 4.8rem;
+		}
+
+		&_actions {
+			&_button {
+				display: none;
+			}
+
+			&_redirect {
+				display: block;
+			}
+		}
+
+		&_image_text {
+			font-size: 29.4196rem;
+		}
+
+
+
+		@include fontSizeDesktop;
+	}
+
+	@include large {
+		&_wrap {
+			align-self: center;
+			max-width: 70%;
+		}
+	}
+
+	// #endregion
+}

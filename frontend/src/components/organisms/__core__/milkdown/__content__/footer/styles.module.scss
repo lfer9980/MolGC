@@ -1,0 +1,38 @@
+/*
+*/
+
+@use 'styles/vars' as *;
+
+.footer {
+	// #region general
+	// display: none;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	@include fontSizeMobile;
+	// #endregion
+
+
+	// #region unit elements
+	// #endregion
+
+
+	// #region others
+	// #endregion
+
+
+	// #region derived states
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {}
+
+	@include desktop {
+		@include fontSizeDesktop;
+	}
+
+	@include large {}
+
+	// #endregion
+}

@@ -1,0 +1,47 @@
+/*
+
+*/
+
+@use 'styles/vars' as *;
+
+.element {
+	// #region general
+	display: flex;
+	align-items: center;
+	gap: 0.8rem;
+	color: $blue20;
+	@include fontSizeMobile;
+	// #endregion
+
+
+	// #region unit elements
+	&_label {
+		font-weight: 700;
+		text-decoration: underline;
+	}
+
+	// #endregion
+
+
+	// #region others
+	&:hover {
+		opacity: 0.6;
+	}
+	// #endregion
+
+
+	// #region derived states
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {}
+
+	@include desktop {
+		@include fontSizeDesktop;
+	}
+
+	@include large {}
+
+	// #endregion
+}

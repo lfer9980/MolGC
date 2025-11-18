@@ -1,0 +1,55 @@
+@use 'styles/vars' as *;
+
+@mixin buttonStyles {
+
+	// #region general
+	& {
+		display: flex;
+		align-items: center;
+		gap: 0.8rem;
+		cursor: pointer;
+		font-weight: 500;
+		padding: 1.2rem;
+		position: relative;
+		border: none;
+		overflow: hidden;
+	}
+
+	@include fontSizeMobile;
+	// #endregion
+
+
+	// #region unit elements
+	.symbol {
+		font-size: 2.4rem;
+	}
+
+	// #endregion
+
+
+	// #region others
+
+	// #endregion
+
+
+	// #region derived states
+	&.disabled {
+		color: var(--content-disabled) !important;
+		background-color: var(--background-disabled) !important;
+		cursor: not-allowed;
+	}
+
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {}
+
+	@include desktop {
+		@include fontSizeDesktop;
+	}
+
+	@include large {}
+
+	// #endregion
+}

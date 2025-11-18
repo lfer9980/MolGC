@@ -1,0 +1,65 @@
+[
+  {
+    "categoria": "Acerca de",
+    "pantalla": "about",
+    "url": "/about",
+    "estado": "Completada",
+    "color": "#459490"
+  },
+  {
+    "categoria": "Analisis",
+    "pantalla": "analysis",
+    "url": "/analysis",
+    "estado": "Completada",
+    "color": "#459490"
+  },
+  {
+    "categoria": "Configuracion",
+    "pantalla": "configuration",
+    "url": "/configuration",
+    "estado": "Completada",
+    "color": "#459490"
+  },
+  {
+    "categoria": "Dashboard",
+    "pantalla": "variant",
+    "url": "/dashboard/family/variant",
+    "estado": "Completada",
+    "color": "#459490"
+  },
+  {
+    "categoria": "Dashboard",
+    "pantalla": "dashboard",
+    "url": "/dashboard",
+    "estado": "Completada",
+    "color": "#459490"
+  },
+  {
+    "categoria": "Archivos",
+    "pantalla": "automatic",
+    "url": "/files/automatic",
+    "estado": "Completada",
+    "color": "#459490"
+  },
+  {
+    "categoria": "Archivos",
+    "pantalla": "manual",
+    "url": "/files/manual",
+    "estado": "Completada",
+    "color": "#459490"
+  },
+  {
+    "categoria": "Archivos",
+    "pantalla": "files",
+    "url": "/files",
+    "estado": "Completada",
+    "color": "#459490"
+  },
+  {
+    "categoria": "Sin Categoria",
+    "pantalla": "landing - entrypoint",
+    "url": "/",
+    "estado": "Completada",
+    "color": "#459490"
+  }
+]

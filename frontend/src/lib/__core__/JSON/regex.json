@@ -1,0 +1,54 @@
+{
+	"__others__": [
+		{
+			"eval": "/^(?=.{8,})/",
+			"label": ""
+		}
+	],
+	"evalPassword": [
+		{
+			"eval": "^(?=.{8,})",
+			"label": "Al menos 8 caracteres"
+		},
+		{
+			"eval": "^(?=.*[a-z])",
+			"label": "Al menos una letra en minúscula"
+		},
+		{
+			"eval": "^(?=.*[A-Z])",
+			"label": "Al menos una letra mayúscula"
+		},
+		{
+			"eval": "^(?=.*\\d)",
+			"label": "Al menos un número"
+		},
+		{
+			"eval": "^(?=.*[!@#$%^&*])",
+			"label": "Al menos un carácter especial"
+		}
+	],
+	"evalMail": [
+		{
+			"eval": "^[a-zA-Z0-9]+(\\.[a-zA-Z0-9]+)*@[a-zA-Z0-9]+\\.[a-zA-Z]{2,}$",
+			"label": "El correo ingresado es invalido..."
+		}
+	],
+	"evalPin": [
+		{
+			"eval": "^\\d{0,1}$",
+			"label": "Ingresa un numero"
+		}
+	],
+	"evalNumbers": [
+		{
+			"eval": "^\\d+$",
+			"label": "Ingresa solo numeros"
+		}
+	],
+	"evalRFC": [
+		{
+			"eval": "^[A-ZÑ&]{3,4}\\d{6}[A-Z0-9]{3}$",
+			"label": "El RFC que ingresaste no es valido"
+		}
+	]
+}

@@ -1,0 +1,13 @@
+services:
+  frontend:
+    container_name: ${APP_NAME}_frontend
+    image: ${REGISTRY}/${IMAGE_NAME_FRONTEND}:latest
+    environment:
+      - NODE_ENV=production
+    networks:
+      - app_net
+    ports:
+      - 3005:3000
+
+networks:
+  app_net:

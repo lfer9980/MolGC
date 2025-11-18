@@ -1,0 +1,108 @@
+/*
+*/
+
+@use 'styles/vars' as *;
+
+
+.card {
+	// #region general
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	position: relative;
+	padding: 1.6rem 1.2rem;
+	background-color: var(--background-hover);
+	border-bottom: 0.1rem solid var(--border);
+	@include fontSizeMobile;
+	@include widthMobile;
+	// #endregion
+
+
+	// #region unit elements
+	&_bullet {
+		min-width: 1.6rem;
+	}
+
+	&_main {
+		display: flex;
+		gap: 1.6rem;
+		align-items: center;
+		max-width: 80%;
+	}
+
+	&_content {
+		&_label {
+			margin-block-end: 1.2rem;
+			color: var(--content);
+		}
+
+		&_description {
+			color: var(--content-secondary);
+		}
+	}
+
+	&_actions {
+		z-index: 1000;
+	}
+
+	&_button {
+		user-select: none;
+		cursor: pointer;
+		color: var(--primary);
+	}
+
+	&_date {
+		position: absolute;
+		top: 1.6rem;
+		right: 1.2rem;
+		width: 10rem;
+		text-align: end;
+		font-size: $small;
+		color: var(--content-secondary);
+	}
+
+
+	// #endregion
+
+
+	// #region others
+
+	// #endregion
+
+
+	// #region derived states
+	&_button:hover .dots {
+		font-weight: 700;
+	}
+
+	&.deleted {
+		font-weight: 700;
+	}
+
+	&:not(.deleted):hover {
+		background-color: var(--background-hover);
+	}
+
+	&.deleted,
+	&.readed {
+		background-color: var(--background);
+	}
+
+	&.deleted {
+		color: var(--content-secondary);
+	}
+
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {}
+
+	@include desktop {
+		@include fontSizeDesktop;
+	}
+
+	@include large {}
+
+	// #endregion
+}

@@ -1,0 +1,101 @@
+/*
+
+*/
+
+@use 'styles/vars' as *;
+
+.list {
+	// #region general
+	margin-block: 2.4rem 1.6rem;
+	@include fontSizeMobile;
+	// #endregion
+
+
+	// #region unit elements
+	&_icon {
+		margin-inline-end: 1.6rem;
+	}
+
+	&_summary {
+		display: flex;
+		align-items: center;
+		margin-block: 1.2rem;
+		user-select: none;
+
+		&:first-of-type {
+			list-style: none;
+		}
+
+		&:hover {
+			cursor: pointer;
+		}
+	}
+
+	&_main {
+		display: flex;
+		justify-content: space-between;
+		width: 100%;
+		align-items: center;
+		border-bottom: 0.1rem solid var(--border);
+
+		&_title {
+			display: grid;
+			gap: 0.8rem;
+			margin-block-end: 1.6rem;
+		}
+	}
+
+	&_arrow {
+		display: grid;
+		place-items: center;
+		color: var(--secondary);
+	}
+
+	&_title {
+		font-weight: 600;
+	}
+
+	&_subtitle {
+		font-weight: 600;
+	}
+
+	&_label {
+		color: var(--content-secondary);
+	}
+
+	// #endregion
+
+
+	// #region others
+	// #endregion
+
+
+	// #region derived states
+	&[open] &_main {
+		border-bottom: 0.1rem solid var(--border-accent);
+	}
+
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {
+		&_icon {
+			margin-inline-end: 2.4rem;
+		}
+
+		&_main {
+			span:nth-of-type(1) {
+				margin-inline-end: 1.8rem;
+			}
+		}
+	}
+
+	@include desktop {
+		@include fontSizeDesktop;
+	}
+
+	@include large {}
+
+	// #endregion
+}

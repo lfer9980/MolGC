@@ -1,0 +1,109 @@
+/*
+*/
+
+@use 'styles/vars' as *;
+
+.tab {
+	// #region general
+	list-style: none;
+	// #endregion
+
+
+	// #region unit elements
+	&_link {
+		display: grid;
+		place-items: center;
+		color: var(--content);
+	}
+
+	&_label {
+		text-align: center;
+		font-size: $ultra_small;
+	}
+
+	&_symbol {
+		padding: 0.8rem;
+	}
+
+	// #endregion
+
+
+	// #region others
+	&.first {
+		min-width: 7rem;
+		border-block-start: 0.3rem solid transparent;
+	}
+
+	&.second {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0.8rem;
+		width: fit-content;
+		position: relative;
+		border-inline-end: 0.3rem solid transparent;
+
+		.tab_tooltip {
+			position: absolute;
+			left: calc(100% + 2.4rem);
+			z-index: 1000;
+		}
+	}
+
+	&:not(.active)>&_link:hover {
+		opacity: 0.6;
+	}
+
+	// #endregion
+
+
+	// #region derived states
+	&.active &_link {
+		pointer-events: none;
+		user-select: none;
+		font-weight: 400;
+	}
+
+	&.first.active {
+		border-color: var(--border-selected);
+	}
+
+	&.second.active {
+		border-color: var(--border-selected);
+
+		.tab_link {
+
+			p,
+			span {
+				color: var(--border-selected);
+			}
+		}
+	}
+
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {
+		&.first {
+			min-width: 7rem;
+		}
+
+		&_label {
+			font-size: $small;
+		}
+	}
+
+	@include desktop {
+		&.first {
+			width: 14rem;
+			max-width: 100%;
+		}
+
+		@include fontSizeDesktop;
+	}
+
+	@include large {}
+
+	// #endregion
+}

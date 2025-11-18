@@ -1,0 +1,54 @@
+/*
+*/
+
+@use 'styles/vars' as *;
+
+.tab {
+	// #region general
+	display: flex;
+	align-items: center;
+	list-style: none;
+	text-align: center;
+	user-select: none;
+	color: var(--content-secondary);
+	padding-inline: 0 1.6rem;
+	cursor: pointer;
+	@include fontSizeMobile;
+	// #endregion
+
+
+	// #region unit elements
+
+	// #endregion
+
+
+	// #region others
+	&:not(.active):hover {
+		opacity: 0.6;
+	}
+
+	&.active {
+		font-weight: 700;
+		color: var(--content);
+		border-bottom: 0.2rem solid var(--border-selected);
+	}
+
+	// #endregion
+
+
+	// #region derived states
+
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {}
+
+	@include desktop {
+		@include fontSizeDesktop;
+	}
+
+	@include large {}
+
+	// #endregion
+}

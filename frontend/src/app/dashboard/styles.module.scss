@@ -1,0 +1,79 @@
+@use 'styles/vars' as *;
+
+.page {
+	// #region general
+	@include fontSizeMobile;
+	// #endregion
+
+
+	// #region unit elements
+	&_wrapper {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	&_heading {
+		&_main {
+			display: flex;
+			align-items: center;
+			gap: 1.6rem;
+		}
+
+		&_head {
+			margin-block-start: 1.6rem;
+		}
+	}
+
+	&_list {
+		display: flex;
+		flex-direction: column;
+		margin-block-end: 2.4rem;
+	}
+
+	&_actions {
+		display: flex;
+		flex-direction: column;
+		gap: 2.4rem;
+		margin-block: 6.4rem 2.4rem;
+	}
+
+	&_list_label {
+		color: var(--content-secondary);
+	}
+
+	// #endregion
+
+
+	// #region others
+
+	// #endregion
+
+
+	// #region derived states
+
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {}
+
+	@include desktop {
+		@include fontSizeDesktop;
+
+		&_actions {
+			display: flex;
+			flex-wrap: nowrap;
+			justify-content: center;
+			flex-direction: row-reverse;
+
+			button {
+				width: 50rem;
+			}
+		}
+	}
+
+	@include large {}
+
+	// #endregion
+}

@@ -1,0 +1,72 @@
+/*
+*/
+
+@use 'styles/vars' as *;
+
+.element {
+	// #region general
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-block-end: 1.6rem;
+	user-select: none;
+	cursor: pointer;
+	@include fontSizeMobile;
+	@include widthInputMobile;
+	// #endregion
+
+
+	// #region unit elements
+	&_main {
+		display: flex;
+		align-items: center;
+		gap: 1.6rem;
+		padding-inline-end: 1.6rem;
+	}
+
+	&_title {
+		font-weight: 700;
+		text-align: left;
+		text-decoration: underline;
+	}
+
+	&_text {
+		display: inherit;
+		align-items: center;
+		gap: 2.4rem;
+
+		&_symbol {
+			color: var(--accent);
+		}
+	}
+
+	// #endregion
+
+
+	// #region others
+	&:hover {
+		opacity: 0.5;
+	}
+
+	// #endregion
+
+
+	// #region derived states
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {
+		@include widthInputTablet;
+	}
+
+	@include desktop {
+		@include widthInputDesktop;
+	}
+
+	@include large {
+		@include widthInputLarge;
+	}
+
+	// #endregion
+}

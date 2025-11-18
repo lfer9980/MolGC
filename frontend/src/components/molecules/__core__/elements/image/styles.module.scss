@@ -1,0 +1,50 @@
+/*
+*/
+
+@use 'styles/vars' as *;
+
+.element {
+	// #region general
+	@include fontSizeMobile;
+	// #endregion
+
+
+	// #region unit elements
+	&_main {
+		position: relative;
+	}
+
+	&_image {
+		object-fit: contain;
+		width: fit-content;
+	}
+
+	&_label {
+		text-align: center;
+		color: $white;
+		padding: 1.6rem;
+	}
+
+	// #endregion
+
+
+	// #region others
+
+	// #endregion
+
+
+	// #region derived states
+	&.margin>&_main {
+		margin-block-end: 1.6rem;
+	}
+
+	// #endregion
+
+
+	// #region media queries
+	@include desktop {
+		@include fontSizeDesktop;
+	}
+
+	// #endregion
+}

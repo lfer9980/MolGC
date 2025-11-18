@@ -1,0 +1,91 @@
+/*
+general CSS modules for components
+*/
+
+@use 'styles/vars' as *;
+
+.pagination {
+	// #region general
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	// #endregion
+
+
+	// #region unit elements
+	&_wrap {
+		display: flex;
+		justify-content: center;
+	}
+
+	&_main {
+		display: inherit;
+	}
+
+	&_link {
+		padding: 0.5rem 1.2rem;
+		margin-inline: 0.2rem;
+		font-weight: 400;
+		font-size: $p1;
+		text-decoration: none;
+		background-color: transparent;
+		cursor: pointer;
+		color: var(--content);
+		border: none;
+
+		&:hover:not(:disabled):not(.active) {
+			font-weight: 700;
+			background-color: var(--background-hover);
+		}
+
+		&:disabled {
+			cursor: not-allowed;
+		}
+	}
+	// #endregion
+
+
+	// #region others
+	// #endregion
+
+
+	// #region derived states
+	.active {
+		font-weight: 700;
+		background-color: $blue30;
+		color: $white;
+		border-color: var(--border-selected);
+	}
+
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {
+		&_main {
+			padding-inline: 2.4rem;
+		}
+
+		&_link,
+		&_arrow {
+			width: 4.1rem;
+			height: 4.1rem;
+			font-size: $p2;
+		}
+	}
+
+	@include desktop {
+
+		&_link,
+		&_arrow {
+			span {
+				font-size: $p3;
+			}
+		}
+	}
+
+	@include large {}
+
+	// #endregion
+}

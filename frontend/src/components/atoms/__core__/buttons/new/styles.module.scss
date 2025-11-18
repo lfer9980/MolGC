@@ -1,0 +1,58 @@
+/*
+*/
+@use 'styles/vars' as *;
+
+.button {
+	// #region general
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.8rem;
+	padding: 1.6rem;
+	border: none;
+	font-weight: 800;
+	border-radius: 50%;
+	cursor: pointer;
+	// #endregion
+
+
+	// #region unit elements
+	// #endregion
+
+
+	// #region others
+	&:not(.disabled):hover {
+		opacity: 0.60;
+	}
+
+	// #endregion
+
+
+	// #region derived states
+	&.disabled {
+		cursor: not-allowed;
+		background-color: var(--background-disabled);
+	}
+
+	&.active {
+		transform: rotate(224deg);
+		transition: .3s ease;
+	}
+
+	&.inActive {
+		transform: rotate(0deg);
+		transition: .3s ease;
+	}
+
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {}
+
+	@include desktop {}
+
+	@include large {}
+
+	// #endregion
+}

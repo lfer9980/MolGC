@@ -1,0 +1,71 @@
+/*
+*/
+
+@use 'styles/vars' as *;
+
+.docker {
+	// #region general
+	display: grid;
+	place-items: center;
+	padding-block: 1.6rem;
+	margin-block-end: 1.2rem;
+	@include widthMobile;
+	@include fontSizeMobile;
+	// #endregion
+
+
+	// #region unit elements
+	&_count {
+		width: 100%;
+		padding-block-end: 1.2rem;
+	}
+
+	&_title {
+		text-align: center;
+		margin-block-end: 2.4rem;
+	}
+
+	&_main {
+		display: grid;
+		place-items: center;
+	}
+
+	&_label {
+		display: flex;
+		text-align: center;
+		color: var(--content-secondary);
+	}
+
+	// #endregion
+
+
+	// #region others
+	// #endregion
+
+
+	// #region derived states
+	.border {
+		border-bottom: 0.1rem solid var(--border);
+	}
+
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {
+		@include widthTablet;
+	}
+
+	@include desktop {
+		min-height: 2.4rem;
+		max-height: fit-content;
+		@include widthDesktop;
+		@include fontSizeDesktop;
+	}
+
+	@include large {
+		@include widthLarge;
+	}
+
+	// #endregion
+}

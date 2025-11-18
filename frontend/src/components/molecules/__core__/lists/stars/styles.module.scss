@@ -1,0 +1,81 @@
+/*
+*/
+
+@use 'styles/vars' as *;
+
+.list {
+	// #region general
+
+	@include fontSizeMobile;
+	// #endregion
+
+
+	// #region unit elements
+	&_main {
+		display: flex;
+		gap: 0.4rem;
+		margin-block-end: 1.6rem;
+		position: relative;
+	}
+
+	&_image {
+		user-select: none;
+
+		&_main {
+			object-fit: contain;
+		}
+	}
+
+	&_help {
+		display: flex;
+	}
+
+	&_symbol {
+		cursor: pointer;
+	}
+
+	&_tooltip {
+		display: none;
+		will-change: display;
+	}
+
+	// #endregion
+
+
+	// #region others
+	.interactive {
+		cursor: pointer;
+	}
+
+	&_image.interactive:hover {
+		opacity: 0.6;
+	}
+
+	&_symbol:hover {
+		opacity: 0.6;
+	}
+
+	&_symbol:hover+&_tooltip {
+		display: block;
+		will-change: display;
+	}
+
+
+	// #endregion
+
+
+	// #region derived states
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {}
+
+	@include desktop {
+		@include fontSizeDesktop;
+	}
+
+	@include large {}
+
+	// #endregion
+}

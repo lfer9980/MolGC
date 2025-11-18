@@ -1,0 +1,60 @@
+@use 'styles/vars' as *;
+
+.wrap {
+	// #region general
+	display: block;
+	position: relative;
+	overflow-y: scroll;
+	width: 100%;
+	// #endregion
+
+
+	// #region unit elements
+	&.padding {
+		@include paddingMobile;
+	}
+
+	&.margin {
+		margin-block-start: 2.4rem;
+	}
+
+	// #endregion
+
+
+	// #region others
+	// #endregion
+
+
+	// #region derived states
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {
+		&.padding {
+			@include paddingTablet;
+		}
+	}
+
+	@include desktop {
+		&.padding {
+			@include paddingDesktop;
+		}
+
+	}
+
+	@include large {
+		display: flex;
+		justify-content: center;
+
+		&_child {
+			width: 80%;
+		}
+
+		&.padding {
+			@include paddingLarge;
+		}
+	}
+
+	// #endregion
+}

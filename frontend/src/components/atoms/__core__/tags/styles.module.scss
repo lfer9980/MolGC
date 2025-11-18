@@ -1,0 +1,65 @@
+/*
+*/
+@use 'styles/vars' as *;
+
+.tag {
+	// #region general
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: fit-content;
+	padding: 1.2rem;
+	gap: 1.6rem;
+	border: 0.24rem solid transparent;
+	user-select: none;
+	cursor: pointer;
+	// #endregion
+
+
+	// #region unit elements
+	&_wrapper {
+		display: inherit;
+		gap: 1.6rem;
+	}
+
+	.icon {
+		/* make the image white */
+		filter: invert(95%) sepia(95%) saturate(1%) hue-rotate(193deg) brightness(105%) contrast(100%);
+	}
+
+	.label {
+		display: grid;
+		place-content: center;
+		min-width: 1.6rem;
+		min-height: 1.6rem;
+		text-align: center;
+		font-weight: bold;
+	}
+
+	.close {
+		display: grid;
+		place-items: center;
+	}
+
+	// #endregion
+
+
+	// #region derived states
+	&:not(.disabled) .close:hover {
+		opacity: 0.60;
+	}
+
+	&.black {
+		color: $black;
+	}
+
+	&.white {
+		color: $white;
+	}
+
+	&.disabled {
+		cursor: not-allowed;
+	}
+
+	// #endregion
+}

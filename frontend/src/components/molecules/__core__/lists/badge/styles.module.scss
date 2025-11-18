@@ -1,0 +1,67 @@
+/*
+*/
+
+@use 'styles/vars' as *;
+
+.list {
+	// #region general
+	position: relative;
+	@include fontSizeMobile;
+	// #endregion
+
+
+	// #region unit elements
+	&_main {
+		display: flex;
+		gap: 1.6rem;
+		margin-block-end: 1.6rem;
+	}
+
+	&_help {
+		display: flex;
+		position: relative;
+	}
+
+	&_symbol {
+		cursor: pointer;
+	}
+
+	&_tooltip {
+		display: none;
+		position: absolute;
+		bottom: 100%;
+		left: -120%;
+		width: 20rem;
+	}
+
+	// #endregion
+
+
+	// #region others
+	&_symbol:hover {
+		opacity: 0.6;
+	}
+
+	&_symbol:hover+&_tooltip {
+		display: block;
+	}
+
+	// #endregion
+
+
+	// #region derived states
+
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {}
+
+	@include desktop {
+		@include fontSizeDesktop;
+	}
+
+	@include large {}
+
+	// #endregion
+}

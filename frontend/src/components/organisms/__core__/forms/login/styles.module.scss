@@ -1,0 +1,86 @@
+/*
+*/
+
+@use 'styles/vars' as *;
+
+.form {
+	// #region general
+	padding: 1.6rem;
+	@include widthMobile;
+	@include fontSizeMobile;
+	// #endregion
+
+
+	// #region unit elements
+	&_title {
+		margin-block-end: 1.2rem;
+	}
+
+	&_main {
+		display: grid;
+		gap: 1.6rem;
+		margin-block-end: 2.4rem;
+	}
+
+	&_actions {
+		display: flex;
+		flex-direction: column;
+		gap: 2.4rem;
+		margin-block-end: 3.2rem;
+
+		&_divisor {
+			display: flex;
+			align-items: center;
+			gap: 2.4rem;
+			margin-block: 1.2rem;
+		}
+
+		&_more {
+			display: grid;
+			gap: 1.2rem;
+		}
+	}
+
+	&_help {
+		display: flex;
+		align-items: center;
+		gap: 0.8rem;
+		text-align: center;
+	}
+
+	.divisor {
+		width: 100%;
+		height: 0.1rem;
+		background-color: var(--border);
+	}
+
+	// #endregion
+
+
+	// #region others
+	// #endregion
+
+
+	// #region derived states
+	&.border {
+		border: 0.1rem solid var(--border);
+	}
+
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {
+		padding: 2.4rem;
+		@include widthTablet;
+	}
+
+	@include desktop {
+		@include widthDesktop;
+		@include fontSizeDesktop;
+	}
+
+	@include large {}
+
+	// #endregion
+}

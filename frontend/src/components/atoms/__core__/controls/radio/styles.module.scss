@@ -1,0 +1,65 @@
+/*
+*/
+
+@use 'styles/vars' as *;
+
+.control {
+	// #region general
+	display: block;
+	width: fit-content;
+	padding: 0.8rem;
+	// #endregion
+
+
+	// #region unit elements
+	&_element[type='radio'] {
+		display: grid;
+		appearance: none;
+		width: 1.6rem;
+		height: 1.6rem;
+		border-radius: 50%;
+		place-content: center;
+		border: 0.1rem solid var(--border);
+	}
+
+
+	&_element[type='radio']::before {
+		content: '';
+		width: 10px;
+		height: 10px;
+		border-radius: 50%;
+		transform: scale(0);
+		transition: 100ms transform ease-in-out;
+		box-shadow: inset 1rem 1rem var(--accent);
+	}
+
+	// #endregion
+
+
+	// #region others
+	&_element[type='radio']:checked {
+		transform: scale(1);
+		border: 0.1rem solid var(--accent);
+		background-color: var(--background);
+	}
+
+	&_element[type='radio']:checked::before {
+		transform: scale(1);
+		background-color: var(--background);
+	}
+
+	&_element[type='radio']:disabled {
+		cursor: not-allowed;
+		opacity: 0.3;
+	}
+
+	// #endregion
+
+
+	// #region derived states
+	// #endregion
+
+
+	// #region media queries
+	// #endregion
+}

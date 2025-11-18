@@ -1,0 +1,41 @@
+/*
+
+*/
+
+@use 'styles/vars' as *;
+
+.class {
+	// #region general
+	@include fontSizeMobile;
+	// #endregion
+
+
+	// #region unit elements
+	&_element {}
+
+	// #endregion
+
+
+	// #region others
+	&_element:hover {}
+
+	// #endregion
+
+
+	// #region derived states
+	&_element.disabled {}
+
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {}
+
+	@include desktop {
+		@include fontSizeDesktop;
+	}
+
+	@include large {}
+
+	// #endregion
+}

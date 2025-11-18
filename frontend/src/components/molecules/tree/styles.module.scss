@@ -1,0 +1,40 @@
+@use 'styles/vars' as *;
+
+.tree {
+	// #region general
+	list-style: none;
+	font-weight: 700;
+	@include fontSizeMobile;
+	// #endregion
+
+
+	// #region unit elements
+	&_node {
+		list-style: none;
+		margin-block-end: 0.4rem;
+	}
+
+	// #endregion
+
+
+	// #region others
+
+	// #endregion
+
+
+	// #region derived states
+
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {}
+
+	@include desktop {
+		@include fontSizeDesktop;
+	}
+
+	@include large {}
+
+	// #endregion
+}

@@ -1,0 +1,67 @@
+/*
+*/
+
+@use 'styles/vars' as *;
+
+.control {
+	// #region general
+	display: block;
+	width: fit-content;
+	padding: 0.8rem;
+	// #endregion
+
+
+	// #region unit elements
+	&_element[type='checkbox'] {
+		display: grid;
+		appearance: none;
+		width: 16px;
+		height: 16px;
+		border-radius: 0.3rem;
+		place-content: center;
+		transform: translateY(-0.075rem);
+		border: 0.1rem solid var(--border);
+	}
+
+
+	&_element[type='checkbox']::before {
+		content: '';
+		width: 1.13rem;
+		height: 1.13rem;
+		clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+		transform: scale(0);
+		transform-origin: bottom left;
+		transition: 100ms transform ease-in-out;
+		box-shadow: inset 1rem 1rem var(--accent);
+		cursor: pointer;
+	}
+
+	// #endregion
+
+
+	// #region others
+	&_element[type='checkbox']:checked {
+		border: 0.1rem solid var(--accent);
+		background-color: var(--background);
+	}
+
+	&_element[type='checkbox']:checked::before {
+		transform: scale(1);
+		background-color: var(--background);
+	}
+
+	&_element[type='checkbox']:disabled {
+		cursor: not-allowed;
+		opacity: 0.3;
+	}
+
+	// #endregion
+
+
+	// #region derived states
+	// #endregion
+
+
+	// #region media queries
+	// #endregion
+}

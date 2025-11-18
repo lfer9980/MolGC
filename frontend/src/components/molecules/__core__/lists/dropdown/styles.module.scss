@@ -1,0 +1,93 @@
+/*
+*/
+
+@use 'styles/vars' as *;
+
+.list {
+	// #region general
+	position: relative;
+	margin-block: 2.4rem;
+	@include fontSizeMobile;
+	// #endregion
+
+
+	// #region unit elements
+	&_summary {
+		display: flex;
+		align-items: center;
+		gap: 1.6rem;
+		margin-block: 1.2rem;
+		user-select: none;
+		padding-block-end: 1.2rem;
+		border-bottom: 1px solid var(--border);
+
+		&_main {
+			display: inherit;
+			flex-direction: column;
+			gap: 0.4rem;
+			width: 100%;
+
+		}
+
+		&:first-of-type {
+			list-style: none;
+		}
+
+		&:hover {
+			cursor: pointer;
+		}
+	}
+
+	&_title {
+		font-weight: 700;
+	}
+
+	&_symbol {
+		color: var(--accent);
+
+		span {
+			font-size: 2.4rem;
+		}
+	}
+
+	&_main {
+		position: absolute;
+		left: 0;
+		z-index: 1000;
+		background: var(--background-secondary);
+		padding: 1.2rem;
+		width: 100%;
+		@include shadow;
+		@include borderRadius;
+	}
+
+	// #endregion
+
+
+	// #region others
+	// #endregion
+
+
+	// #region derived states
+	.top {
+		bottom: calc(100% + 1.6rem);
+	}
+
+	.bottom {
+		top: calc(100% + 1.6rem);
+	}
+
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {}
+
+	@include desktop {
+		@include fontSizeDesktop;
+	}
+
+	@include large {}
+
+	// #endregion
+}

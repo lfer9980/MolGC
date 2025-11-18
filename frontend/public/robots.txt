@@ -1,0 +1,17 @@
+# Permitir el acceso a todos los bots a las páginas públicas
+User-agent: *
+Allow: /
+
+# Bloquear acceso a ciertas rutas internas (ejemplo: dashboard, API internas, rutas privadas)
+Disallow: /dashboard/
+Disallow: /admin/
+Disallow: /profile/
+Disallow: /api/
+Disallow: /auth/
+
+# Permitir acceso a los archivos CSS y JS (necesario para el renderizado)
+Allow: /*.css$
+Allow: /*.js$
+
+# Sitemap para ayudar a los motores de búsqueda a indexar el sitio
+Sitemap: https://www.ejemplo.com/sitemap.xml

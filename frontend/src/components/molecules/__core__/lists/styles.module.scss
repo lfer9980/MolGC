@@ -1,0 +1,108 @@
+/*
+*/
+
+@use 'styles/vars' as *;
+
+.list {
+	// #region general
+	margin-block: 1.6rem;
+	display: flex;
+	justify-content: space-between;
+	gap: 1.6rem;
+	@include fontSizeMobile;
+	@include widthMobile;
+	// #endregion
+
+
+	// #region unit elements
+	&_wrap {
+		display: flex;
+		gap: 1.6rem;
+		width: 100%;
+	}
+
+	&_symbol {
+		display: flex;
+		align-items: flex-start;
+		min-height: 100%;
+		color: var(--accent);
+	}
+
+	&_summary {
+		display: flex;
+		align-items: center;
+		gap: 1.6rem;
+		margin-block: 1.2rem;
+		user-select: none;
+		padding-block-end: 1.2rem;
+		border-bottom: 1px solid var(--border);
+
+		&_main {
+			display: inherit;
+			flex-direction: column;
+			gap: 0.8rem;
+			width: 100%;
+		}
+
+		&:first-of-type {
+			list-style: none;
+		}
+
+		&:hover {
+			cursor: pointer;
+		}
+	}
+
+	&_title,
+	&_subtitle {
+		font-weight: 700;
+	}
+
+
+	&_call {
+		display: flex;
+		align-items: flex-start;
+		justify-content: flex-end;
+		min-width: fit-content;
+		max-width: 12rem;
+		cursor: pointer;
+
+		&_item {
+			display: flex;
+			align-items: center;
+			width: 100%;
+			gap: 0.8rem;
+		}
+	}
+
+	// #endregion
+
+
+	// #region others
+	&_call_item:hover {
+		opacity: 0.6;
+	}
+
+	// #endregion
+
+
+	// #region derived states
+	.border {
+		padding-block-end: 1.6rem;
+		border-bottom: 0.1rem solid var(--border);
+	}
+
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {}
+
+	@include desktop {
+		@include fontSizeDesktop;
+	}
+
+	@include large {}
+
+	// #endregion
+}

@@ -1,0 +1,74 @@
+/*
+*/
+
+@use 'styles/vars' as *;
+
+.breadcrumb {
+	// #region general
+	padding-block: 1.6rem;
+	@include fontSizeMobile;
+	// #endregion
+
+
+	// #region unit elements
+	&_label {
+		display: flex;
+		gap: 0.6rem;
+	}
+
+	&_link {
+		color: var(--content-secondary);
+	}
+
+
+	&_item {
+		list-style: none;
+	}
+
+	&_divisor {
+		margin-inline: 0.8rem;
+	}
+
+	// #endregion
+
+
+	// #region others
+	&_link:hover {
+		text-decoration: underline;
+		cursor: pointer;
+		color: var(--primary);
+	}
+
+	// #endregion
+
+
+	// #region derived states
+	&_item:nth-last-of-type(1) &_link {
+		pointer-events: none;
+		user-select: none;
+		cursor: none;
+		font-weight: bold;
+	}
+
+	&_item:nth-last-of-type(1) {
+		.breadcrumb_link {
+			color: var(--primary);
+		}
+	}
+
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {
+		padding-block: 2.4rem;
+	}
+
+	@include desktop {
+		@include fontSizeDesktop;
+	}
+
+	@include large {}
+
+	// #endregion
+}

@@ -1,0 +1,49 @@
+/*
+*/
+@use 'styles/vars' as *;
+
+.loader {
+	// #region general
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	@include fontSizeMobile;
+	// #endregion
+
+
+	// #region unit elements
+	&_wrapper {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		min-height: 0.4rem;
+	}
+
+	&_label {
+		display: block;
+		text-align: center;
+		margin-block-start: 2.4rem;
+		font-weight: 400;
+	}
+
+	// #endregion
+
+
+	// #region others
+	// #endregion
+
+
+	// #region derived states
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {}
+
+	@include desktop {}
+
+	@include large {}
+
+	// #endregion
+}

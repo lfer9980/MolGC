@@ -1,0 +1,66 @@
+/*
+*/
+@use 'styles/vars' as *;
+
+.banner {
+	// #region general
+	background-color: $white;
+	@include widthMobile;
+	// #endregion
+
+
+	// #region unit elements
+	&_head {
+		display: flex;
+		justify-content: flex-end;
+	}
+
+	&_main {
+		display: flex;
+		flex-direction: column;
+		padding: 1.6rem;
+		width: 100%;
+
+		&_content {
+			display: flex;
+			align-items: center;
+			width: 100%;
+		}
+
+		&_actions {
+			display: flex;
+			align-items: center;
+			justify-content: space-evenly;
+			margin-block-start: 3.2rem;
+		}
+	}
+
+	// #endregion
+
+
+	// #region others
+	// #endregion
+
+
+	// #region derived states
+	&.margin {
+		margin-block-end: 6.4rem;
+	}
+
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {
+
+		&_main {
+			padding: 1.6rem 2.4rem;
+		}
+	}
+
+	@include desktop {}
+
+	@include large {}
+
+	// #endregion
+}

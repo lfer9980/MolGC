@@ -1,0 +1,50 @@
+/*
+*/
+
+@use 'styles/vars' as *;
+
+.header {
+	// #region general
+	// display: none;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	border-block-end: 0.1rem solid var(--border);
+	@include fontSizeMobile;
+	// #endregion
+
+
+	// #region unit elements
+	&_image {
+		position: relative;
+		width: 15rem;
+		height: 5rem;
+		object-fit: contain;
+	}
+
+	&_data {
+		text-align: right;
+	}
+
+	// #endregion
+
+
+	// #region others
+	// #endregion
+
+
+	// #region derived states
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {}
+
+	@include desktop {
+		@include fontSizeDesktop;
+	}
+
+	@include large {}
+
+	// #endregion
+}

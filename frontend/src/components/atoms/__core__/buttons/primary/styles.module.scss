@@ -1,0 +1,108 @@
+/*
+*/
+
+@use 'styles/vars' as *;
+@use 'styles/components/buttons' as *;
+
+.button {
+	// #region general
+	will-change: font-weight;
+	will-change: border;
+	justify-content: center;
+	@include widthMobile;
+	@include buttonStyles;
+	// #endregion
+
+
+	// #region unit elements
+	&.first {
+		color: $white;
+		background-color: $blue30;
+		border: 0.2rem solid transparent;
+	}
+
+	&.second {
+		color: var(--accent);
+		background-color: transparent;
+		border: 0.1rem solid var(--accent);
+	}
+
+	&.third {
+		color: var(--accent);
+		background-color: transparent;
+	}
+
+	&.third:has(.line) {
+		justify-content: flex-start;
+	}
+
+	.arrow {
+		position: relative;
+		right: 0;
+		font-size: 1.6rem;
+	}
+
+	.line {
+		min-width: 4rem;
+		border-bottom: 0.2rem solid var(--border-selected);
+	}
+
+	.icon {
+		display: grid;
+		place-content: center;
+	}
+
+	&:has(.icon) {
+		padding-block: 1.2rem;
+	}
+
+	// #endregion
+
+
+	// #region others
+	&.first:not(.disabled):hover {
+		font-weight: 700;
+		opacity: 0.6;
+	}
+
+	&.second:not(.disabled):hover {
+		font-weight: 700;
+		opacity: 0.6;
+	}
+
+	&.third:not(.disabled):hover {
+		font-weight: 800;
+
+		.arrow {
+			right: -0.8rem;
+		}
+
+		.line {
+			width: 6rem;
+		}
+	}
+
+	// #endregion
+
+
+	// #region derived states
+	&.second.disabled {
+		color: var(--content-disabled);
+		background-color: transparent;
+		border-color: var(--border-disabled);
+	}
+
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {}
+
+	@include desktop {
+		@include fontSizeDesktop;
+	}
+
+	@include large {}
+
+	// #endregion
+}

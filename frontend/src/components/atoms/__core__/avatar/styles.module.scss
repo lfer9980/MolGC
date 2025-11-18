@@ -1,0 +1,50 @@
+/*
+*/
+@use 'styles/vars' as *;
+
+
+.avatar {
+	// #region general
+	display: flex;
+	align-items: center;
+	width: fit-content;
+	gap: 1.2rem;
+	@include fontSizeMobile;
+	// #endregion
+
+
+	// #region unit elements
+	&_image {
+		border-radius: 50%;
+	}
+
+	&_label {
+		font-weight: 700;
+	}
+
+	// #endregion
+
+
+	// #region others
+	// #endregion
+
+
+	// #region derived states
+	.shadow &_image {
+		@include shadow;
+	}
+
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {}
+
+	@include desktop {
+		@include fontSizeDesktop;
+	}
+
+	@include large {}
+
+	// #endregion
+}

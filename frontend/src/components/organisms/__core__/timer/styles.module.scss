@@ -1,0 +1,180 @@
+/*
+*/
+
+@use 'styles/vars' as *;
+
+
+.timer {
+	// #region general
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 1.6rem;
+	height: fit-content;
+	@include widthInputMobile;
+	@include fontSizeMobile;
+	// #endregion
+
+
+	// #region unit elements
+	&_edit {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-end;
+		width: 100%;
+		margin-block-end: 2.4rem;
+	}
+
+	&_input {
+		padding-block-start: 1.2rem;
+		width: 100%;
+	}
+
+	&_label {
+		width: 100%;
+		color: var(--content-secondary);
+		text-align: right;
+	}
+
+	&_main {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin-block-end: 1.2rem;
+		width: 100%;
+		gap: 0.4rem;
+	}
+
+	&_digit {
+		display: flex;
+		align-items: flex-end;
+		font-family: $font-second;
+		font-size: $h2;
+		font-weight: 400;
+
+		p {
+			max-width: 8.1rem;
+			margin-inline-end: 0.4rem;
+			line-height: $h2 - 0.5rem;
+			text-align: center;
+		}
+
+		&_type {
+			font-size: $p1;
+			font-weight: 400;
+		}
+
+		&_minus:not(.mini) {
+			font-size: $h2;
+			font-weight: 400;
+		}
+
+		p,
+		&_minus {
+			color: var(--primary);
+		}
+
+		&_minus {
+			p {
+				text-align: right;
+			}
+		}
+
+		&_type {
+			color: var(--content-secondary);
+		}
+	}
+
+	&_actions {
+		display: flex;
+		justify-content: flex-end;
+		width: 100%;
+		gap: 1.2rem;
+		margin-block-start: 1.2rem;
+	}
+
+	&_control {
+		position: relative;
+	}
+
+	&_tooltip {
+		display: none;
+		position: absolute;
+		width: 12rem;
+		bottom: -5.6rem;
+		left: calc(50% - 5.4rem);
+	}
+
+	// #endregion
+
+
+	// #region others
+	// #endregion
+
+
+	// #region derived states
+	.border {
+		padding-block-end: 1.2rem;
+		border-bottom: 0.1rem solid var(--border);
+	}
+
+	.flexend {
+		width: 100%;
+		align-items: flex-end;
+		justify-content: flex-end;
+	}
+
+	&_main.mini {
+		margin-block-end: 0;
+	}
+
+	&_digit.mini {
+		font-family: $font-main;
+		font-size: $h5;
+		font-weight: 800;
+		align-items: center;
+
+		p {
+			width: 2.4rem;
+			line-height: $h5 - 0.5rem;
+		}
+	}
+
+	&_button:hover+&_tooltip {
+		display: block;
+	}
+
+	.warning {
+		color: var(--warning);
+	}
+
+	.end {
+		color: var(--negative);
+	}
+
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {
+		&_main {
+			width: fit-content;
+		}
+	}
+
+	@include desktop {
+		min-width: 20rem;
+
+		&_digit {
+			p {
+				width: 6.4rem;
+			}
+		}
+
+		@include fontSizeDesktop;
+	}
+
+	@include large {}
+
+	// #endregion
+}

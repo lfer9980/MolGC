@@ -1,0 +1,68 @@
+/*
+*/
+
+@use 'styles/vars' as *;
+
+.hint {
+	// #region general
+	display: block;
+	// #endregion
+
+
+	// #region unit elements
+	&_main {
+		display: flex;
+		align-items: center;
+		gap: 0.8rem;
+	}
+
+	&_main:not(.help) {
+		font-weight: bold;
+	}
+
+	&_main span {
+		font-size: $p3;
+	}
+
+	// #endregion
+
+
+	// #region others
+	// #endregion
+
+
+	// #region derived states
+	&_main.help,
+	&_main.info {
+		color: var(--accent);
+		font-weight: 700;
+	}
+
+	&_main.warning {
+		color: var(--warning);
+	}
+
+	&_main.error {
+		color: var(--negative);
+	}
+
+	&_main.done {
+		color: var(--positive);
+	}
+
+	&_main.disabled {
+		color: var(--content-disabled);
+	}
+
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {}
+
+	@include desktop {}
+
+	@include large {}
+
+	// #endregion
+}

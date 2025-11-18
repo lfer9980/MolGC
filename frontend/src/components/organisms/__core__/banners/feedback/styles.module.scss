@@ -1,0 +1,55 @@
+/*
+*/
+@use 'styles/vars' as *;
+
+.banner {
+	// #region general
+	display: grid;
+	place-items: center;
+	max-width: 50rem;
+	padding-block: 1.6rem;
+	gap: 2.4rem;
+	text-align: center;
+	@include fontSizeMobile;
+	// #endregion
+
+
+	// #region unit elements
+	&_symbol {
+		color: var(--content-secondary);
+	}
+
+	&_title {
+		font-style: normal;
+		color: var(--content);
+	}
+
+	&_content {
+		font-size: $p1;
+		color: var(--content-secondary);
+	}
+
+	// #endregion
+
+
+	// #region others
+	// #endregion
+
+
+	// #region derived states
+	.accent {
+		color: var(--accent);
+	}
+
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {}
+
+	@include desktop {}
+
+	@include large {}
+
+	// #endregion
+}

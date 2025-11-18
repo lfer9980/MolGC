@@ -1,0 +1,87 @@
+/*
+
+*/
+
+@use 'styles/vars' as *;
+
+.tab {
+	// #region general
+	width: 100%;
+	@include fontSizeMobile;
+	// #endregion
+
+
+	// #region unit elements
+	&_label {
+		padding-block: 0 1.2rem;
+		color: var(--content-secondary);
+		cursor: pointer;
+		text-align: center;
+		font-weight: bold;
+		user-select: none;
+		border-bottom: 0.2rem solid var(--border);
+	}
+
+	&_main {
+		opacity: 0;
+		transition: opacity 0.1s ease;
+
+		fieldset {
+			display: flex;
+			flex-direction: column;
+			border: none;
+		}
+	}
+
+	&_date {
+		padding: 0.8rem;
+		margin-block-end: 2.4rem;
+	}
+
+	// #endregion
+
+
+	// #region others
+	&_label:hover {
+		opacity: 0.6;
+	}
+
+	&_label.selected:hover {
+		opacity: 1;
+	}
+
+	// #endregion
+
+
+	// #region derived states
+	.selected {
+		opacity: 1;
+	}
+
+	&.date {
+		max-width: 20rem;
+	}
+
+	&_label.selected {
+		color: var(--content);
+		border-color: var(--border-selected) !important;
+	}
+
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {
+		&:not(.date) {
+			max-width: 15rem;
+		}
+	}
+
+	@include desktop {
+		@include fontSizeDesktop;
+	}
+
+	@include large {}
+
+	// #endregion
+}

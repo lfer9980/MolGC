@@ -1,0 +1,108 @@
+/*
+*/
+@use 'styles/vars' as *;
+@use 'styles/components/buttons' as *;
+
+.button {
+	// #region general
+	display: flex;
+	align-items: center;
+	min-width: 15rem;
+	border-bottom: 0.4rem solid transparent !important;
+	background-color: transparent;
+	user-select: none;
+	@include buttonStyles;
+	// #endregion
+
+
+	// #region unit elements
+	.label {
+		display: flex;
+		align-items: center;
+		gap: 0.8rem;
+		width: 100%;
+	}
+
+	&_icons {
+		display: flex;
+		align-items: center;
+		position: absolute;
+		gap: 0.8rem;
+	}
+
+	.close {
+		color: var(--negative);
+	}
+
+	.symbol {
+		font-size: $p3;
+	}
+
+	// #endregion
+
+
+	// #region others
+	&_icons.right {
+		right: 0.2rem;
+	}
+
+	&_icons.left {
+		left: 0.2rem;
+	}
+
+	&.selected &_arrow,
+	&.selected .symbol {
+		color: $dark-accent;
+	}
+
+	&.selected {
+		font-weight: 700;
+		border-color: $dark-accent !important;
+	}
+
+	&.second.disabled {
+		opacity: 0.20;
+	}
+
+	.close:hover {
+		opacity: 0.6;
+	}
+
+	// #endregion
+
+
+	// #region derived states
+	&.white {
+		p {
+			color: $white;
+		}
+	}
+
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {
+		&_icons.right {
+			right: 0.8rem;
+		}
+
+		&_icons.left {
+			left: 0.8rem;
+		}
+	}
+
+	@include desktop {
+		&_icons.right {
+			right: 1.6rem;
+		}
+
+		&_icons.left {
+			left: 1.6rem;
+		}
+	}
+
+	@include large {}
+
+	// #endregion
+}

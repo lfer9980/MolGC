@@ -1,0 +1,37 @@
+{
+	"compilerOptions": {
+		"baseUrl": "./src",
+		"paths": {
+			"demo/*": [
+				"__demo__/*"
+			],
+			"tests/*": [
+				"__test__/*"
+			],
+			"app/*": [
+				"app/*"
+			],
+			"assets/*": [
+				"assets/*",
+			],
+			"components/*": [
+				"components/*"
+			],
+			"hooks/*": [
+				"hooks/*"
+			],
+			"lib/*": [
+				"lib/*"
+			],
+			"services/*": [
+				"services/*"
+			],
+			"store/*": [
+				"store/*"
+			],
+			"styles/*": [
+				"styles/*"
+			],
+		}
+	}
+}

@@ -1,0 +1,45 @@
+/*
+*/
+
+@use 'styles/vars' as *;
+
+.pages {
+	// #region general
+	display: flex;
+	justify-content: space-evenly;
+	width: 100%;
+	max-width: 35rem;
+	padding-inline: 1.6rem;
+	margin-block: 2.4rem;
+	// #endregion
+
+
+	// #region unit elements
+	&_wrap {
+		display: flex;
+		justify-content: center;
+	}
+
+	// #endregion
+
+
+	// #region others
+
+	// #endregion
+
+
+	// #region derived states
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {
+		@include widthTablet;
+	}
+
+	@include desktop {
+		@include widthDesktop;
+	}
+
+	// #endregion
+}

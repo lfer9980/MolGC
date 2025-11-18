@@ -1,0 +1,116 @@
+@use 'styles/vars' as *;
+
+.bar {
+	// #region general
+	position: relative;
+	padding-block: 0.8rem 0.4rem;
+	// #endregion
+
+	// #region unit elements
+	&_head {
+		display: flex;
+		align-items: flex-end;
+		justify-content: flex-end;
+		margin-block-end: 0.8rem;
+
+		&_label {
+			font-size: $p1;
+			position: absolute;
+			left: 0;
+		}
+
+		&_progress {
+			font-size: $h1;
+
+			span {
+				font-size: $p1;
+			}
+		}
+	}
+
+	&_wrapper {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
+
+	&_main {
+		width: 100%;
+		height: 0.4rem;
+		background-color: transparent;
+	}
+
+	// #endregion
+
+
+	// #region others
+	&_main::-webkit-progress-bar {
+		background-color: var(--background-disabled);
+		transition: width 0.5s ease-in-out;
+	}
+
+	&_main::-webkit-progress-value {
+		background: linear-gradient(90deg,
+				var(--primary),
+				var(--secondary));
+		transition: width 0.5s ease-in-out;
+	}
+	// #endregion
+
+
+	// #region derived states
+	&.info {
+		color: var(--accent);
+	}
+
+	&.done {
+		color: var(--positive);
+
+		.bar_main::-webkit-progress-value {
+			background-color: var(--positive);
+		}
+	}
+
+	&.warning {
+		color: var(--warning);
+
+		.bar_main::-webkit-progress-value {
+			background-color: var(--warning);
+		}
+	}
+
+	&.error {
+		color: var(--negative);
+
+		.bar_main::-webkit-progress-value {
+			background-color: var(--negative);
+		}
+	}
+
+	// #endregion
+
+
+	// #region media queries
+	@include tablet {}
+
+	@include desktop {
+		&_head {
+			&_label {
+				font-size: $p2;
+			}
+
+			&_progress {
+				font-size: $h2;
+
+				span {
+					font-size: $p2;
+				}
+			}
+		}
+	}
+
+	@include large {}
+
+	// #endregion
+}
