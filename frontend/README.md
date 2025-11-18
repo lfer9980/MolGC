@@ -1,18 +1,5 @@
-# elementalFront
-
+# MolGC Web App
 > Develop faster, now.
-
-Primer proyecto de estandarizacion de Frontend. Hecho con React.js + Next.js
-
-elementalFront contiene todo lo necesario para iniciar una aplicacion desde cero, incluyendo:
-
-- Paleta de color configurable (Soporte para multiples temas)
-- Soporte para tipografias nativa de Next.js
-- Multiples hooks para funcionalidades generales
-- Soporte inicial para stores (manejadores de estado general de la aplicacion)
-- Generacion de graficas dinamicas
-- Codigo disponible para modificar de acuerdo a las necesidades del proyecto
-- Arquitectura estandar
 
 ## Primeros pasos
 
@@ -33,8 +20,8 @@ elementalFront contiene todo lo necesario para iniciar una aplicacion desde cero
 1. Clona el repositorio e instala dependencias
 
 ```bash
-	git clone https://github.com/EoniaBiomedicalSoftware/elementalFront.git
-    cd elementalFront
+	git clone https://github.com/EoniaBiomedicalSoftware/molgc.git
+    cd molgc
     npm install
     npm run dev
 ```
@@ -42,7 +29,7 @@ elementalFront contiene todo lo necesario para iniciar una aplicacion desde cero
 ## 📦 Estructura
 
 ```javascript
-elementalFront/
+molgc/
 ├── .base/		#Contiene los archivos base para desarrollar nuevos componentes.
 ├── public/		 # Archivos estáticos (imágenes, favicon, etc.)
 │   ├── icons/

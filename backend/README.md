@@ -1,6 +1,6 @@
-# Example Project
+# MolGC API
 
-This is a sample project created using **BackFrameX**.
+This is a sample project created using **elementalBack**.
 
 ---
 
@@ -16,7 +16,7 @@ This is a sample project created using **BackFrameX**.
 
    ```bash
    conda env create -f environment.yml
-   conda activate BackFrameX
+   conda activate elementalBack
    ```
 
 ---

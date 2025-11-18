@@ -1,4 +1,4 @@
-# MolGC Core Library
+# MolGC Core Library (__LEGACY__)
 ## MolGC refactoring to web service with API an UI
 
 MolGC
