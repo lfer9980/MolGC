@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	Hook for Create Analysis Work, this will be return a socket channel.
 */
 
@@ -14,12 +14,10 @@ import { useState } from 'react';
 
 // #region assets
 import config from 'config';
-import HTTP_CODES from './codes.json';
 // #endregion
 
 // #region utils
 import { JOB_STATUS_ENUM } from 'lib/enums';
-import { helperFindJSON } from 'lib/helpers';
 // #endregion
 
 
@@ -85,7 +83,6 @@ function useServiceAnalysis({ }) {
 	const handlerCreateAnalysis = async () => {
 		/* make the Job Creation via POST */
 		setLoading(true);
-		let newStatus;
 		const token = job.access_token;
 		const endpoint = config.analysisURL;
 
@@ -96,23 +93,18 @@ function useServiceAnalysis({ }) {
 				token: token,
 			});
 
-			/* handles if response status is null or not OK */
 			if (!response || response?.status !== 200) {
-				newStatus = helperFindJSON({
-					object: HTTP_CODES,
-					property: !response ? 'null' : response.status,
-				});
-
 				handlerAddMessage({
 					content: {
 						icon: 'error',
-						title: newStatus?.title,
-						label: newStatus?.label,
+						title: `ERROR ${response.status}`,
+						label: response.data?.detail,
 						allowOutsideClick: false,
 						timer: null,
 					},
 					type: MESSAGE_ENUM.ALERT
 				});
+
 				return;
 			};
 
@@ -130,6 +122,8 @@ function useServiceAnalysis({ }) {
 			handlerAddMessage({
 				content: {
 					icon: 'error',
+					title: `ERROR ${response.status}`,
+					label: 'No existe ningún análisis pendiente, intenta nuevamente',
 					allowOutsideClick: false,
 					timer: null,
 				},
@@ -179,6 +173,8 @@ function useServiceAnalysis({ }) {
 			handlerAddMessage({
 				content: {
 					icon: 'error',
+					title: `ERROR`,
+					label: `Ocurrio el siguiente error: ${error}`,
 					allowOutsideClick: false,
 					timer: null,
 				},

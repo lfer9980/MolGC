@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
     Hook for open a new tab and render an specific report component
 */
 
@@ -174,12 +174,12 @@ function useGenerateReport({
             <meta name="viewport" content="width=device-width, initial-scale=1" />
             <style>
               @page { size: A4; margin: 10mm; }
-              body { 
-                margin: 0; 
-                -webkit-print-color-adjust: exact; 
-                font-family: "Roboto", Arial, sans-serif; 
+              body {
+                margin: 0;
+                -webkit-print-color-adjust: exact;
+                font-family: "Roboto", Arial, sans-serif;
               }
-              
+
               #loading-overlay {
                 position: fixed;
                 top: 0;
@@ -194,12 +194,12 @@ function useGenerateReport({
                 z-index: 9999;
                 transition: opacity 0.3s ease-out;
               }
-              
+
               #loading-overlay.hidden {
                 opacity: 0;
                 pointer-events: none;
               }
-              
+
               .spinner {
                 width: 50px;
                 height: 50px;
@@ -208,18 +208,18 @@ function useGenerateReport({
                 border-radius: 50%;
                 animation: spin 1s linear infinite;
               }
-              
+
               @keyframes spin {
                 0% { transform: rotate(0deg); }
                 100% { transform: rotate(360deg); }
               }
-              
+
               .loading-text {
                 margin-top: 20px;
                 color: #666;
                 font-size: 16px;
               }
-              
+
               @media print {
                 #loading-overlay {
                   display: none !important;

@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	handles context for control side menu
 */
 // #region libraries

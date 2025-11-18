@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	handles setting of colors dinamically
 */
 // #region libraries

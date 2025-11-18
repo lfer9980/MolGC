@@ -1,4 +1,4 @@
-/* 
+/*
 */
 @use 'styles/vars' as *;
 
@@ -78,7 +78,7 @@
 	// #endregion
 
 
-	// #region others  
+	// #region others
 	.border {
 		border: 0.1rem solid var(--border);
 	}
@@ -104,7 +104,7 @@
 	// #endregion
 
 
-	// #region derived states 
+	// #region derived states
 	.black {
 		color: var(--content);
 	}

@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	TYPE - ELEMENT
 	General structure for UI Component.
 */

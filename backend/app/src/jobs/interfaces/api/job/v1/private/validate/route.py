@@ -11,8 +11,8 @@ router = APIRouter()
 
 @router.get("/")
 async def validate_job(
-        session: AsyncSession = Depends(get_session_dependency),
-        payload: Dict[str, Any] = Depends(get_current_user_payload),
+    session: AsyncSession = Depends(get_session_dependency),
+    payload: Dict[str, Any] = Depends(get_current_user_payload),
 ) -> str:
     # validate if job exists
     job_id = payload["id"]

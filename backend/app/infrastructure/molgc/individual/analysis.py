@@ -211,7 +211,7 @@ class IndividualAnalysis:
     def _report_by_family(self, data: list[ReportVariantModel]) -> list[ReportModel]:
         """Generates a report by family (for RMSD, MAE, etc.)
 
-        :param data: a defaultdict with information grouped by specific
+        :param data: a default dict with information grouped by specific
             category
         """
         grouped_idx = self._map_data_family(data)
@@ -219,7 +219,7 @@ class IndividualAnalysis:
         size = len(grouped_idx)
         report_family: list[ReportModel] = []
         for i, (family, idx) in enumerate(grouped_idx.items()):
-            mae_data = self.report.mae_grouped_chart(idx)
+            mae_data = self.report.mae_grouped_chart(family, idx)
 
             mae_model = ReportModel(
                 family=family,

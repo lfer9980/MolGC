@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	hook for handling logic on profile component
 */
 

@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	ATOMS - BUTTON DRAG
 */
 // #region libraries
@@ -28,7 +28,7 @@ import { STYLE_DIR_ENUM } from 'lib/helpers';
 
 // #region styles
 import styles from './styles.module.scss';
-import { useThemeStore } from 'context/__core__';
+import { useThemeStore } from 'context';
 // #endregion
 
 

@@ -1,7 +1,6 @@
 from app import settings
 from app.elemental.tasks.dependencies import PublisherCelery
 from app.elemental.tasks.enums import TaskStatusEnum
-
 from app.infrastructure.celery.celery_app import celery
 from app.infrastructure.molgc.individual import IndividualAnalysis
 from celery import shared_task

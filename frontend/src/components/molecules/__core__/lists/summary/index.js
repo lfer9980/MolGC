@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	ORGANISMS - LIST SUMMARY
 	General structure for UI Component.
 */

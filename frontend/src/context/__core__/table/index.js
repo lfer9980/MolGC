@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	Context for simplify logic handling on tables
 */
 
@@ -22,7 +22,7 @@ import { INITIAL_TABLE } from './__data__';
 // #endregion
 
 
-// #region hooks 
+// #region hooks
 // #endregion
 
 export const TableContext = createContext(INITIAL_TABLE);

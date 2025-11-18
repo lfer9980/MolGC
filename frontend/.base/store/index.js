@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	STORE NAME:
 	Brief about whats the purpose of this store
 */

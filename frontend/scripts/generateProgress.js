@@ -1,4 +1,4 @@
-/* 
+/*
 	Script that generate application development progress automatically
 
 	Output JSON:

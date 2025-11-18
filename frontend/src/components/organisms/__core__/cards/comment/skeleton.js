@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	ORGANISMS - OTHER CARDS COMMENT | SKELETON
 */
 // #region libraries

@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	ROWS FOR EXAMPLE (POKEMONS)
 */
 // #region libraries

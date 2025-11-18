@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	ATOMS - LOADER
 */
 // #region libraries

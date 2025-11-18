@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	ORNGANISMS - NAVIGATOR HORIZONTAL
 */
 // #region libraries

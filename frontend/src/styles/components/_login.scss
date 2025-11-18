@@ -68,7 +68,7 @@
 	// #endregion
 
 
-	// #region others 
+	// #region others
 	&__main:hover,
 	&__main:focus-within,
 	&__main:focus-visible {
@@ -83,7 +83,7 @@
 	// #endregion
 
 
-	// #region derived states 
+	// #region derived states
 	.success &__icon span {
 		background-color: $bk_positive;
 		color: $white;

@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	hook for consume animations via JS
 */
 

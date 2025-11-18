@@ -65,7 +65,7 @@ elementalFront/
 │   ├── hooks/
 │   │	├── __core__/   # hooks precreados y listos para usarse
 │   ├── lib/
-│   │	├── data/ 
+│   │	├── data/
 │   │	│   ├── __models__/ # store your data models here
 │   ├── services/
 │   ├── static/		#aloja fonts incialmente

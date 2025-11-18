@@ -1,6 +1,6 @@
 'use client';
-/* 
-	notification store center. 
+/*
+	notification store center.
 	Centralize how notifications are handled on an event.
 */
 
@@ -32,7 +32,7 @@ import { STYLE_ENUM } from 'lib/helpers';
 // #endregion
 
 
-// #region hooks 
+// #region hooks
 // #endregion
 
 

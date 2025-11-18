@@ -1,7 +1,7 @@
 import { MODELS_TABLES_PROGRESO } from 'lib/models/tables/progress';
 
 /*
-STRUCTURE: 
+STRUCTURE:
 export const COLUMNS_TABLE_EXAMPLE = {
 	key: '',
 	label: 'label',

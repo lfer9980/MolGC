@@ -3,6 +3,7 @@ import importlib
 import pkgutil
 import sys
 from datetime import timedelta
+from threading import Lock
 
 import app.src as app
 from app.elemental.logging import get_logger
@@ -10,8 +11,6 @@ from app.infrastructure.database.sql import close_database, init_database
 from app.settings import settings
 from celery import Celery
 from celery.signals import worker_process_init, worker_shutdown
-from threading import Lock
-
 
 _logger = None
 
@@ -53,10 +52,11 @@ def make_celery():
 
 celery = make_celery()
 
+
 def get_or_create_event_loop():
     """Get or create a persistent event loop for the worker process."""
     global _worker_loop
-    
+
     with _loop_lock:
         if _worker_loop is None or _worker_loop.is_closed():
             _worker_loop = asyncio.new_event_loop()

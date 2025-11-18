@@ -11,17 +11,17 @@ from app.src.jobs.domain.enums import JobStatusEnum
 from fastapi import APIRouter, Depends, File, HTTPException, UploadFile
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from .response import CreateResponse
+from .response import AutomaticResponse
 
 router = APIRouter()
 
 
-@router.post("/automatic", response_model=CreateResponse)
+@router.post("/automatic", response_model=AutomaticResponse)
 async def upload_automatic(
     zip_file: UploadFile = File(...),
     session: AsyncSession = Depends(get_session_dependency),
     payload: Dict[str, Any] = Depends(get_current_user_payload),
-) -> CreateResponse:
+) -> AutomaticResponse:
     # validate if job exists
     job_id = payload["id"]
     job_entity = await ValidateJobService.execute(session, job_id)
@@ -61,4 +61,6 @@ async def upload_automatic(
     await UpdateJobService.execute(session, job_id, job_dto)
 
     # returns response
-    return CreateResponse(saved_files=f"{len(saved_files)} files successfully uploaded")
+    return AutomaticResponse(
+        saved_files=f"{len(saved_files)} files successfully uploaded"
+    )

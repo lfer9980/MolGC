@@ -1,4 +1,4 @@
-/* 
+/*
 */
 
 @use 'styles/vars' as *;
@@ -34,7 +34,7 @@
     // #endregion
 
 
-    // #region others 
+    // #region others
     &_element:checked~&_slider {
         background-color: var(--background);
     }
@@ -61,7 +61,7 @@
     // #endregion
 
 
-    // #region derived states 
+    // #region derived states
     &.disabled {
         opacity: 0.5;
         cursor: not-allowed;

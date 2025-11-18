@@ -5,7 +5,7 @@ from app.elemental.common import ElementalSchema
 from app.src.jobs.domain.enums import JobAnalysisEnum, JobStatusEnum, JobUploadTypeEnum
 
 
-class CreateResponse(ElementalSchema):
+class UpdateResponse(ElementalSchema):
     analysis_type: Optional[JobAnalysisEnum]
     upload_type: JobUploadTypeEnum
     status: Optional[JobStatusEnum]

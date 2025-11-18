@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	Handles logic for magnifier component
 */
 

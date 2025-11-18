@@ -1,6 +1,6 @@
 'use client';
-/* 
-	Hook for control useReport mounting: 
+/*
+	Hook for control useReport mounting:
 */
 
 // #region libraries

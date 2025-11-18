@@ -1,6 +1,6 @@
 'use client';
-/* 
-	Hook for get the current generated report. 
+/*
+	Hook for get the current generated report.
 */
 
 // #region libraries
@@ -13,12 +13,10 @@ import { useState } from 'react';
 
 
 // #region assets
-import HTTP_CODES from './codes.json';
 // #endregion
 
 // #region utils
 import config from 'config';
-import { helperFindJSON } from 'lib/helpers';
 // #endregion
 
 
@@ -80,8 +78,6 @@ function useServiceReport({ }) {
 	// #region handlers
 	const handlerGetResumeReport = async () => {
 		/* get the report resume via GET */
-		let newStatus;
-
 		const endpoint = config.reportResumeURL;
 		const token = job.access_token;
 
@@ -93,16 +89,11 @@ function useServiceReport({ }) {
 			});
 
 			if (!response || response?.status !== 200) {
-				newStatus = helperFindJSON({
-					object: HTTP_CODES,
-					property: !response ? 'null' : response.status,
-				});
-
 				handlerAddMessage({
 					content: {
 						icon: 'error',
-						title: newStatus?.title,
-						label: newStatus?.label,
+						title: `ERROR ${response.status}`,
+						label: response.data?.detail,
 						allowOutsideClick: false,
 						timer: null,
 					},
@@ -122,9 +113,7 @@ function useServiceReport({ }) {
 	};
 
 	const handlerGetAllReports = async () => {
-		/* get the report resume via GET */
-		let newStatus;
-
+		/* get all reports via GET */
 		const endpoint = config.reportAllURL;
 		const token = job.access_token;
 
@@ -136,16 +125,11 @@ function useServiceReport({ }) {
 			});
 
 			if (!response || response?.status !== 200) {
-				newStatus = helperFindJSON({
-					object: HTTP_CODES,
-					property: !response ? 'null' : response.status,
-				});
-
 				handlerAddMessage({
 					content: {
 						icon: 'error',
-						title: newStatus?.title,
-						label: newStatus?.label,
+						title: `ERROR ${response.status}`,
+						label: response.data?.detail,
 						allowOutsideClick: false,
 						timer: null,
 					},

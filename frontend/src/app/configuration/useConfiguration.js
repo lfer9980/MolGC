@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	Hook for configuration page
 */
 

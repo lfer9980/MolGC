@@ -1,6 +1,6 @@
 'use client';
 
-/* 
+/*
 	Hook for useFiles
 */
 
@@ -90,7 +90,7 @@ function useFiles({ }) {
 			if (!reportResume?.data && !reportResume.references) router.push('/');
 
 			const references = { available_references: JSON.stringify(reportResume?.references) };
-			
+
 			setResume(reportResume?.data);
 			handlerUpdateJobStore({ data: references });
 

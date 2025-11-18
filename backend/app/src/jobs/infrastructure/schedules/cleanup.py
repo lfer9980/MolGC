@@ -1,10 +1,12 @@
 from datetime import timedelta
 
-from app.infrastructure.database import DatabaseSession
 from app.infrastructure.celery.celery_app import get_or_create_event_loop
+from app.infrastructure.database import DatabaseSession
 from app.src.jobs.application.cleanup.get_due.service import GetDueCleanupService
 from app.src.jobs.application.job.delete_massive.service import DeleteMassiveJobService
-from app.src.jobs.infrastructure.repository.cleanup_repository import CleanupRepositorySQL
+from app.src.jobs.infrastructure.repository.cleanup_repository import (
+    CleanupRepositorySQL,
+)
 from app.src.jobs.infrastructure.repository.job_repository import JobRepositorySQL
 from celery import shared_task
 from celery.utils.log import get_task_logger

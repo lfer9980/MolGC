@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	validation center
 */
 // #region libraries
@@ -163,7 +163,7 @@ function useValidations({
 		}
 	};
 
-	// #endregion 
+	// #endregion
 
 	// #region effects
 	// #endregion

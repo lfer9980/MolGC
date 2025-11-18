@@ -1,6 +1,6 @@
 'use client';
-/* 
-	Hook for element: 
+/*
+	Hook for element:
 	brief description about what this hook does
 */
 

@@ -1,14 +1,16 @@
 import json
-from typing import List, Dict
+from typing import Dict, List
 
-from app.src.analysis.application.report.get_all_by_job.dto import GetAllByJobDTO, ResponseReportDTO
+from app.src.analysis.application.report.get_all_by_job.dto import (
+    GetAllByJobDTO,
+    ResponseReportDTO,
+)
 from app.src.analysis.domain.entities.mae_variant_entity import MAEVariantEntity
 from app.src.analysis.domain.entities.report_entity import ReportEntity
 from app.src.analysis.domain.enums import ReportTypeEnum
 from app.src.analysis.domain.repositories.report_repository import ReportRepository
-from sqlalchemy.ext.asyncio import AsyncSession
-
 from app.src.jobs.domain.entities.job_entity import JobEntity
+from sqlalchemy.ext.asyncio import AsyncSession
 
 
 class GetAllByJobReportService:
@@ -17,7 +19,9 @@ class GetAllByJobReportService:
         self.repository = repository
 
     async def execute(self, job_entity: JobEntity) -> GetAllByJobDTO:
-        reports: List[ReportEntity] = await self.repository.get_all_by_job_id(job_entity.id)
+        reports: List[ReportEntity] = await self.repository.get_all_by_job_id(
+            job_entity.id
+        )
 
         grouped: Dict[str, Dict[str, List[Dict]]] = {}
         for report in reports:
@@ -34,12 +38,14 @@ class GetAllByJobReportService:
                 family_name = "Reporte General"
                 variant_name = "General"
 
-                grouped.setdefault(family_name, {}).setdefault(variant_name, []).append({
-                    "id": report.id,
-                    "report_id": report.id,
-                    "type": str(report.type),
-                    "note": "no handler for this report type",
-                })
+                grouped.setdefault(family_name, {}).setdefault(variant_name, []).append(
+                    {
+                        "id": report.id,
+                        "report_id": report.id,
+                        "type": str(report.type),
+                        "note": "no handler for this report type",
+                    }
+                )
                 continue
 
             child = await handler(report)
@@ -48,7 +54,9 @@ class GetAllByJobReportService:
             family_name = child.get("family") or "Reporte General"
             variant_name = child.get("variant") or "General"
 
-            grouped.setdefault(family_name, {}).setdefault(variant_name, []).append(child)
+            grouped.setdefault(family_name, {}).setdefault(variant_name, []).append(
+                child
+            )
 
         # reordering to have Reporte General and General at first position
         ordered_families = {}
@@ -74,15 +82,9 @@ class GetAllByJobReportService:
         for family, variants_dict in grouped.items():
             items = []
             for variant, reports_list in variants_dict.items():
-                items.append({
-                    "variant": variant,
-                    "children": reports_list
-                })
+                items.append({"variant": variant, "children": reports_list})
 
-            children.append({
-                "family": family,
-                "children": items
-            })
+            children.append({"family": family, "children": items})
 
         result_dto = GetAllByJobDTO(
             job_id=job_entity.id,
@@ -111,6 +113,7 @@ class GetAllByJobReportService:
             family=dataset[0].family,
             variant=dataset[0].variant,
             type=report_entity.type,
+            title=report_entity.title,
             data=report_data,
         )
 
@@ -130,6 +133,7 @@ class GetAllByJobReportService:
         report_data = {
             **dataset.model_dump(),
             "type": report_entity.type,
+            "title": report_entity.title,
             "data": json.loads(dataset.data),
         }
 
@@ -151,6 +155,7 @@ class GetAllByJobReportService:
         report_data = {
             **dataset.model_dump(),
             "type": report_entity.type,
+            "title": report_entity.title,
             "data": json.loads(dataset.data),
         }
 
@@ -174,6 +179,7 @@ class GetAllByJobReportService:
             family=dataset[0].family,
             variant=dataset[0].variant,
             type=report_entity.type,
+            title=report_entity.title,
             data=report_data,
         )
 
@@ -193,6 +199,7 @@ class GetAllByJobReportService:
         report_data = {
             **dataset.model_dump(),
             "type": report_entity.type,
+            "title": report_entity.title,
             "data": json.loads(dataset.data),
         }
 
@@ -214,13 +221,12 @@ class GetAllByJobReportService:
         report_data = [item.model_dump(exclude={"id", "report_id"}) for item in dataset]
 
         return ResponseReportDTO(
-            type=report_entity.type,
-            data=report_data
+            type=report_entity.type, title=report_entity.title, data=report_data
         )
 
     @classmethod
     def _prepare_mae_variant_chart(
-            cls, data: List[MAEVariantEntity], report_entity: ReportEntity
+        cls, data: List[MAEVariantEntity], report_entity: ReportEntity
     ) -> dict:
         """Prepare the Chart.js-compatible data structure for MAE General.
 
@@ -244,5 +250,4 @@ class GetAllByJobReportService:
                     "data": values,
                 }
             ],
-            "title": report_entity.title,
         }

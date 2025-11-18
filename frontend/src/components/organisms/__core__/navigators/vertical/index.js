@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	ORGANISMS - NAVIGATOR VERTICAL
 */
 // #region libraries

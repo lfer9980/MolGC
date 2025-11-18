@@ -1,4 +1,4 @@
-/* 
+/*
 */
 
 @use 'styles/vars' as *;
@@ -32,7 +32,7 @@
 	// #endregion
 
 
-	// #region others 
+	// #region others
 	&_link:hover {
 		text-decoration: underline;
 		cursor: pointer;
@@ -42,7 +42,7 @@
 	// #endregion
 
 
-	// #region derived states 
+	// #region derived states
 	&_item:nth-last-of-type(1) &_link {
 		pointer-events: none;
 		user-select: none;

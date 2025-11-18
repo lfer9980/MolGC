@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	MOLECULES - ELEMENT LABEL
 */
 // #region libraries

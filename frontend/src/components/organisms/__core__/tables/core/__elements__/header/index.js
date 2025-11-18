@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	ORGANISMS - TABLES ELEMENTS HEADER
 */
 // #region libraries

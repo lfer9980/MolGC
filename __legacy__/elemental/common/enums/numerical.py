@@ -1,12 +1,10 @@
-from typing import List
-from typing import Union
 from enum import Enum
 from enum import IntEnum as _IntEnum
+from typing import List, Union
 
 
 class ElementalIntEnum(_IntEnum, Enum):
-    """
-    A base class for integer-based enumerations.
+    """A base class for integer-based enumerations.
 
     This class combines Python's `IntEnum` and `Enum` to allow enum members to be integers
     while still providing full enumeration functionality. Useful for scenarios like

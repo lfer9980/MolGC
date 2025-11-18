@@ -1,7 +1,7 @@
 // ESTADO: Completada
 'use client';
-/* 
-	ROUTES - RESUME 
+/*
+	ROUTES - RESUME
 */
 // #region libraries
 import React from 'react';

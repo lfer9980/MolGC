@@ -37,7 +37,7 @@ class MassiveMAEFamilyService:
                 "type": ReportTypeEnum.MAE_FAMILY,
                 "scope": ReportScopeEnum.FAMILY,
                 "family": item.family,
-                "title": f"Percentage MAE per functional and per molecule of: {item.family}",
+                "title": f"Percentage MAE per functional and per molecule - {item.family}",
             }
 
             report_entity = await self.repository_report.create(

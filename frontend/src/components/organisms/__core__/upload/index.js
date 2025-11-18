@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	ORGANISMS - UPLOADX
 */
 // #region libraries

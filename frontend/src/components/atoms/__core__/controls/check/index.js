@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	ATOMS - CONTROL CHECK
 */
 // #region libraries

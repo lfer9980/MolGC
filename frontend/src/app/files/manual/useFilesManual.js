@@ -1,6 +1,6 @@
 'use client';
-/* 
-Hook for handling upload manual files
+/*
+	Hook for handling upload manual files
 */
 
 // #region libraries
@@ -153,7 +153,7 @@ function useFilesManual({ }) {
 					title: 'Sube archivos del mismo tipo',
 					label: 'Para poder categorizar tus archivos de forma correcta, sube archivos del mismo tipo.',
 					labelButton: 'ENTENDIDO',
-					timer: 50000,
+					timer: 30000,
 				},
 				type: MESSAGE_ENUM.NOTIFICATION
 			});

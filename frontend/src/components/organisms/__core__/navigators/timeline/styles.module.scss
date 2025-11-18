@@ -1,4 +1,4 @@
-/* 
+/*
 */
 
 @use 'styles/vars' as *;
@@ -79,7 +79,7 @@
 	// #endregion
 
 
-	// #region others 
+	// #region others
 	&_button:hover {
 		opacity: 0.5;
 	}
@@ -116,7 +116,7 @@
 	// #endregion
 
 
-	// #region derived states 
+	// #region derived states
 	.active {
 		font-weight: bold;
 	}

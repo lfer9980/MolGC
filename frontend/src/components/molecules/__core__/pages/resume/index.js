@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	MOLECULES - CORE PAGE RESUME
 */
 // #region libraries

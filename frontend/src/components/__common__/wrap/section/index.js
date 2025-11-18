@@ -30,7 +30,7 @@ import styles from './styles.module.scss';
 
 function WrapSection({
 	margin = false,
-	padding = false, 
+	padding = false,
 	children,
 }) {
 	// #region hooks & others

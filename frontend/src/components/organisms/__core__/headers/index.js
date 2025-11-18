@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	ORGANISMS - HEADERX
 */
 // #region libraries

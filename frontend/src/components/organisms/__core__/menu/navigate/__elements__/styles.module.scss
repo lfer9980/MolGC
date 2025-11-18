@@ -1,4 +1,4 @@
-/* 
+/*
 */
 
 @use 'styles/vars' as *;
@@ -42,7 +42,7 @@
 	// #endregion
 
 
-	// #region others 
+	// #region others
 	&_nav {
 
 		&_link,
@@ -76,7 +76,7 @@
 	// #endregion
 
 
-	// #region derived states 
+	// #region derived states
 	.active {
 		font-weight: 700;
 	}

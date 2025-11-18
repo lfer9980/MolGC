@@ -4,7 +4,7 @@ from app.elemental.common import ElementalSchema
 from app.src.jobs.domain.enums import JobAnalysisEnum
 
 
-class CreateResponse(ElementalSchema):
+class GetAllResponse(ElementalSchema):
     job_id: str
     reference: Optional[str] = None
     analysis_type: Optional[JobAnalysisEnum] = None

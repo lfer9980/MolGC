@@ -1,6 +1,6 @@
 'use client';
-/* 
-	Hook for get and render all information related to report for specific family/variant: 
+/*
+	Hook for get and render all information related to report for specific family/variant:
 */
 
 // #region libraries
@@ -74,7 +74,7 @@ const TABS_GENERAL = [
 function useVariant({ }) {
 	// #region references
 	const params = useParams();
-	// #endregion 
+	// #endregion
 
 
 	// #region contexts & hooks

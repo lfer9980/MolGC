@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	ORGANISMS - CARDS - OTHERS - NOTIFICATION
 */
 // #region libraries

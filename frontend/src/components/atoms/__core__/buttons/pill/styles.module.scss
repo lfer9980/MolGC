@@ -1,4 +1,4 @@
-/* 
+/*
 */
 @use 'styles/vars' as *;
 
@@ -21,7 +21,7 @@
 	// #endregion
 
 
-	// #region others 
+	// #region others
 	&:not(.disabled):hover {
 		opacity: 0.60;
 	}
@@ -29,7 +29,7 @@
 	// #endregion
 
 
-	// #region derived states 
+	// #region derived states
 	&.disabled {
 		cursor: not-allowed;
 		color: var(--content-disabled) !important;

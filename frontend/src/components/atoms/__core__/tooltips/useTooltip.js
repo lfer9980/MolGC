@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	handles logic for control tooltip Close component
 */
 // #region libraries

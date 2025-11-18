@@ -12,8 +12,10 @@ class DeleteMassiveJobService:
     def __init__(self, repository: JobRepository):
         self.repository = repository
         self.storage_path = (
-            Path(__file__).resolve().parents[5] / settings.application.storage_path
-        ) if not os.getenv("STORAGE_PATH") else Path(os.getenv("STORAGE_PATH"))
+            (Path(__file__).resolve().parents[5] / settings.application.storage_path)
+            if not os.getenv("STORAGE_PATH")
+            else Path(os.getenv("STORAGE_PATH"))
+        )
 
     async def execute(self, jobs_list: List[str]) -> int:
         if not jobs_list:

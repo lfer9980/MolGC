@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	MOLECULES - MAGNIFIER
 */
 // #region libraries

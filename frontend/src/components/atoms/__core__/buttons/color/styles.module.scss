@@ -1,4 +1,4 @@
-/* 
+/*
 */
 @use 'styles/vars' as *;
 @use 'styles/components/buttons' as *;
@@ -30,7 +30,7 @@
 	// #endregion
 
 
-	// #region others 
+	// #region others
 	&:not(.disabled):hover {
 		font-weight: 800;
 
@@ -46,7 +46,7 @@
 	// #endregion
 
 
-	// #region derived states 
+	// #region derived states
 	&.black {
 		color: var(--content);
 	}

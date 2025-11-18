@@ -1,4 +1,4 @@
-/* 
+/*
 */
 
 @use 'styles/vars' as *;
@@ -28,7 +28,7 @@
 	// #endregion
 
 
-	// #region others 
+	// #region others
 	&.first {
 		min-width: 7rem;
 		border-block-start: 0.3rem solid transparent;
@@ -57,7 +57,7 @@
 	// #endregion
 
 
-	// #region derived states 
+	// #region derived states
 	&.active &_link {
 		pointer-events: none;
 		user-select: none;

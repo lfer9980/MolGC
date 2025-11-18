@@ -17,7 +17,7 @@ services:
   backend:
     image: ${REGISTRY}/${IMAGE_NAME_BACKEND}:latest
     restart: unless-stopped
-    extra_hosts: 
+    extra_hosts:
       - "host.docker.internal:host-gateway"
     env_file:
       - .env
@@ -43,7 +43,7 @@ services:
   celery_worker:
     image: ${REGISTRY}/${IMAGE_NAME_BACKEND}:latest
     restart: unless-stopped
-    extra_hosts: 
+    extra_hosts:
       - "host.docker.internal:host-gateway"
     env_file:
       - .env
@@ -69,7 +69,7 @@ services:
   celery_beat:
     image: ${REGISTRY}/${IMAGE_NAME_BACKEND}:latest
     restart: unless-stopped
-    extra_hosts: 
+    extra_hosts:
       - "host.docker.internal:host-gateway"
     env_file:
       - .env

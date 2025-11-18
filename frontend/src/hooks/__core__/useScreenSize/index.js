@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	Hook for listen Screen size change:
 	if the size of screen changes, execute something with this hook
 */

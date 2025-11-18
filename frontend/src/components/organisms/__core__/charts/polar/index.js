@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	ORGANISMS - CHART POLAR
 */
 // #region libraries

@@ -2,7 +2,7 @@ from pydantic_settings import BaseSettings
 
 
 class CelerySettings(BaseSettings):
-    """Celery settings"""
+    """Celery settings."""
 
     use_redis: bool = True
     use_database: bool = True

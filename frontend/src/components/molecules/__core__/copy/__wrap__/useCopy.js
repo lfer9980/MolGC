@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	handles copy functions from Copy component
 */
 // #region libraries

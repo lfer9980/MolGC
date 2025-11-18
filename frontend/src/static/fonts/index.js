@@ -1,9 +1,9 @@
 /*
-put all your local fonts in this file 
+put all your local fonts in this file
 */
 import localFont from 'next/font/local';
 
-/* 
+/*
 These lines of code are defining font configurations using font families from Google Fonts.
 Each font configuration specifies the subsets, weights, and CSS variable name for the font.
 */

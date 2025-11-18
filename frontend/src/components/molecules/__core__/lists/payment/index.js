@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	MOLECULES - LIST PAYMENT
 */
 // #region libraries

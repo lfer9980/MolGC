@@ -16,7 +16,7 @@ from .response import CreateResponse
 router = APIRouter()
 
 
-@router.post("/")
+@router.post("/", response_model=CreateResponse)
 async def create_analysis(
     session: AsyncSession = Depends(get_session_dependency),
     payload: Dict[str, Any] = Depends(get_current_user_payload),

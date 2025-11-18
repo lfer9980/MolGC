@@ -1,4 +1,4 @@
-/* 
+/*
 this stands as ENUMS for http methods and settings on headers
 */
 export const HTTP_METHODS_ENUMS = {

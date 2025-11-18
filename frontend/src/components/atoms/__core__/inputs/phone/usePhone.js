@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	handles the logic for input phone component
 */
 // #region libraries

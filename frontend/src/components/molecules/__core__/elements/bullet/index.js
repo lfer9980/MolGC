@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	MOLECULES - ELEMENT BULLET
 */
 // #region libraries

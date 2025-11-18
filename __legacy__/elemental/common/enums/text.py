@@ -3,8 +3,7 @@ from typing import List
 
 
 class ElementalStrEnum(_StrEnum):
-    """
-    A base class for string-based enumerations.
+    """A base class for string-based enumerations.
 
     Ideal for scenarios where enumeration members map directly to string values, such as
     constants for keys, labels, or descriptive values. This class inherits from Python's

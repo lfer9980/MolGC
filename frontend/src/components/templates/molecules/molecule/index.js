@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	TEMPLATE - MOLECULE
 */
 // #region libraries

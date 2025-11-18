@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	TEMPLATES - MOLECULES VIEWER
 */
 // #region libraries
@@ -40,9 +40,7 @@ function MoleculeViewer({ }) {
 	// #region hooks & others
 	const {
 		controlsRef,
-	} = useMoleculeViewer({
-
-	});
+	} = useMoleculeViewer({});
 	// #endregion
 
 

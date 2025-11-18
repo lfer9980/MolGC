@@ -1,6 +1,6 @@
 'use client';
-/* 
-	Hook for filter data: 
+/*
+	Hook for filter data:
 	use this filter for filter with a search term or a specific category
 */
 

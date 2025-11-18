@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	MOLECULES - BANNER SWEET
 */
 // #region libraries

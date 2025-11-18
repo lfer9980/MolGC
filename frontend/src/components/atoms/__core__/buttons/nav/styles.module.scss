@@ -1,4 +1,4 @@
-/* 
+/*
 */
 @use 'styles/vars' as *;
 @use 'styles/components/buttons' as *;
@@ -41,7 +41,7 @@
 	// #endregion
 
 
-	// #region others 
+	// #region others
 	&_icons.right {
 		right: 0.2rem;
 	}
@@ -71,7 +71,7 @@
 	// #endregion
 
 
-	// #region derived states 
+	// #region derived states
 	&.white {
 		p {
 			color: $white;

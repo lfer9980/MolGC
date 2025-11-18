@@ -1,5 +1,5 @@
-/* 
-	
+/*
+
 */
 
 @use 'styles/vars' as *;
@@ -66,11 +66,11 @@
 	// #endregion
 
 
-	// #region others 
+	// #region others
 	// #endregion
 
 
-	// #region derived states 
+	// #region derived states
 	&[open] &_main {
 		border-bottom: 0.1rem solid var(--border-accent);
 	}

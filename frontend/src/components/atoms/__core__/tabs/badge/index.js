@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	ATOMS - TAB BADGE
 */
 // #region libraries

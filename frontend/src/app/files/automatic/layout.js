@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	ROUTES - FILES - Automatic | LAYOUT
 */
 
@@ -12,6 +12,7 @@ import { useRouter } from 'next/navigation';
 // #region components
 import { WrapSection } from 'components/__common__';
 import { ButtonPill, HeadingTitle } from 'components/atoms';
+import { Breadcrumbs } from 'components/molecules';
 // #endregion
 
 
@@ -34,7 +35,6 @@ import { colorsApp } from 'lib/utils';
 
 // #region styles
 import styles from './styles.module.scss';
-import { Breadcrumbs } from 'components/molecules';
 // #endregion
 
 

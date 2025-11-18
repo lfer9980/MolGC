@@ -1,7 +1,7 @@
 from app.elemental.common import ElementalSchema
 
 
-class CreateResponse(ElementalSchema):
+class AutomaticResponse(ElementalSchema):
     saved_files: str
 
     model_config = {

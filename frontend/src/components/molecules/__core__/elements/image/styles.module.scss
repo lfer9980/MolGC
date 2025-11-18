@@ -1,4 +1,4 @@
-/* 
+/*
 */
 
 @use 'styles/vars' as *;
@@ -28,12 +28,12 @@
 	// #endregion
 
 
-	// #region others 
+	// #region others
 
 	// #endregion
 
 
-	// #region derived states 
+	// #region derived states
 	&.margin>&_main {
 		margin-block-end: 1.6rem;
 	}

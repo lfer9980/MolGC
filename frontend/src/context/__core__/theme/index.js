@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	context for theme
 */
 
@@ -29,7 +29,7 @@ import { colorsApp } from 'lib/utils';
 // #endregion
 
 
-// #region hooks 
+// #region hooks
 // #endregion
 
 

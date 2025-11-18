@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	Hook for carrousel: make the carrousel works
 */
 
@@ -26,8 +26,8 @@ import {
 // #region utils
 /**
  * this piece of shit code is because React have complainings with Key Props
- * @param {*} children 
- * @param {*} prefix 
+ * @param {*} children
+ * @param {*} prefix
  * @returns  mapped children with unique keys
  */
 const makeRepeatedWithKeys = (children, prefix) =>

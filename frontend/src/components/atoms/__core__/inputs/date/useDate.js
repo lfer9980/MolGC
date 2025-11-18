@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	handler logic for selection date, restriccions and allow past
 */
 

@@ -168,7 +168,7 @@ jobs:
             ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.WORK_DIR }}/docker-compose.prod.yml
 
       - name: Create .env file for remote
-        run: |  
+        run: |
             cat > env_remote.tmp <<'EOF'
             ${{ secrets.ENV_BACKEND }}
             EOF
@@ -212,7 +212,7 @@ jobs:
             echo "========================================="
             echo "🔄 Running database migrations..."
             echo "========================================="
-            
+
             docker run --rm \
               --add-host host.docker.internal:host-gateway \
               --env-file .env \
@@ -227,16 +227,16 @@ jobs:
               echo "🛑 Aborting deployment to prevent data corruption"
               exit $MIGRATION_EXIT
             fi
-            
+
             echo "✅ Migrations completed successfully"
 
             # Deploy services
             echo "========================================="
             echo "🐳 Deploying services with docker-compose..."
             echo "========================================="
-            
+
             docker compose -f docker-compose.prod.yml up -d --remove-orphans
-            
+
             COMPOSE_EXIT=$?
             if [ $COMPOSE_EXIT -ne 0 ]; then
               echo "❌ Docker compose failed with exit code $COMPOSE_EXIT"
@@ -249,16 +249,16 @@ jobs:
             echo "========================================="
             echo "🏥 Checking backend health..."
             echo "========================================="
-            
+
             MAX_RETRIES=30
             RETRY_COUNT=0
-            
+
             while [ $RETRY_COUNT -lt $MAX_RETRIES ]; do
               if curl -f http://localhost:4005/api/health > /dev/null 2>&1; then
                 echo "✅ Backend is healthy!"
                 break
               fi
-              
+
               RETRY_COUNT=$((RETRY_COUNT + 1))
               echo "⏳ Waiting for backend... ($RETRY_COUNT/$MAX_RETRIES)"
               sleep 2
@@ -288,7 +288,7 @@ jobs:
 
             for REPO in "${REPOS[@]}"; do
               echo "🔍 Checking repo: $REPO"
-              
+
               # Get all images for this repo
               docker images --format '{{.Repository}}:{{.Tag}} {{.ID}}' | grep "^${REPO}:" | while read -r IMAGE_TAG IMAGE_ID; do
                 # Keep :latest and current SHA

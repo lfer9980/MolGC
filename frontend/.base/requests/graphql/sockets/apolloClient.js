@@ -1,4 +1,4 @@
-/* 
+/*
 this file config the apollo client to accept or split services that use http protocol and web sockets protocols.
 WORK IN PROGRESS, this code is not fully implemented yet.
 */
@@ -7,7 +7,7 @@ import { ApolloClient, InMemoryCache, split, HttpLink } from '@apollo/client';
 import { GraphQLWsLink } from '@apollo/client/link/subscriptions';
 import { createClient } from 'graphql-ws';
 import { getMainDefinition } from '@apollo/client/utilities';
-// #endregion 
+// #endregion
 
 
 // #region utils

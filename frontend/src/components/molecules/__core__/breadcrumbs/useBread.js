@@ -1,6 +1,6 @@
 'use client';
-/* 
-	handles logic for breadcrumbs 
+/*
+	handles logic for breadcrumbs
 */
 // #region libraries
 import { usePathname } from 'next/navigation';

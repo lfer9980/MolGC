@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	TYPE - ELEMENT | SKELETON
 */
 // #region libraries

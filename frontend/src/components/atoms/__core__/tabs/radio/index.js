@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	ATOMS - TAB RADIO
 	General structure for UI Component.
 */

@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	ORGANISMS - CARD OTHERS - TABLE
 */
 // #region libraries

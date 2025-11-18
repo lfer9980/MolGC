@@ -13,19 +13,19 @@ from app.src.jobs.domain.enums import JobStatusEnum
 from fastapi import APIRouter, Depends, File, Form, HTTPException, UploadFile
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from .request import CreateRequest
-from .response import CreateResponse
+from .request import ManualRequest
+from .response import ManualResponse
 
 router = APIRouter()
 
 
-@router.post("/manual", response_model=CreateResponse)
+@router.post("/manual", response_model=ManualResponse)
 async def upload_manual(
     file: UploadFile = File(...),
     classification: str = Form(...),
     session: AsyncSession = Depends(get_session_dependency),
     payload: Dict[str, Any] = Depends(get_current_user_payload),
-) -> CreateResponse:
+) -> ManualResponse:
     # validate if Job exists
     job_id = payload["id"]
     job_entity = await ValidateJobService.execute(session, job_id)
@@ -40,7 +40,7 @@ async def upload_manual(
     # parse & validate classification data with Pydantic
     try:
         classification = json.loads(classification)
-        create_request = CreateRequest(**classification)
+        create_request = ManualRequest(**classification)
     except (json.JSONDecodeError, ValueError) as e:
         raise HTTPException(
             status_code=422, detail=f"Error during Settings Extraction: {str(e)}"
@@ -63,4 +63,4 @@ async def upload_manual(
     await UpdateJobService.execute(session, job_id, job_dto)
 
     # returns response
-    return CreateResponse(**file_entity.model_dump())
+    return ManualResponse(**file_entity.model_dump())

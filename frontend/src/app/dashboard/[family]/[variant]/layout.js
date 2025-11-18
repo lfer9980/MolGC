@@ -1,4 +1,4 @@
-/* 
+/*
 	ROUTES - DASHBOARD / FAMILY / VARIANT | LAYOUT
 */
 'use client';
@@ -10,6 +10,7 @@ import { useRouter } from 'next/navigation';
 
 // #region components
 import { WrapMain, WrapSection } from 'components/__common__';
+import { Breadcrumbs } from 'components/molecules';
 import { ButtonPill, HeadingTitle } from 'components/atoms';
 import { HeaderMolGC } from 'components/organisms';
 // #endregion
@@ -34,7 +35,6 @@ import { colorsApp } from 'lib/utils';
 
 // #region styles
 import styles from './styles.module.scss';
-import { Breadcrumbs } from 'components/molecules';
 // #endregion
 
 

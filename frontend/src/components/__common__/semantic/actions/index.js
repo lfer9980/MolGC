@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	COMMON -  SEMANTIC | ACTIONS
 */
 // #region libraries

@@ -1,6 +1,6 @@
 // ESTADO: Completada
 'use client';
-/* 
+/*
 	ROUTES - DASHBOARD / FAMILY / VARIANT
 */
 // #region libraries
@@ -85,14 +85,15 @@ export default function DashboardVariant({ }) {
 
 	const renderChart = (item, key) => {
 		const common = {
-			label: item.data?.title?.split('-') ?? '',
+			title: item.title?.split('-')[0] ?? '',
+			label: item.title?.split('-')[1] ?? '',
 			theme: 'dark'
 		};
 
 		switch (item.type) {
 			case 'mae_general':
 				return (
-					<ChartWrap title={common.label[0] || 'Bond Lenghts'} {...common} key={key}>
+					<ChartWrap {...common} key={key}>
 						<ChartBar
 							positionLegend={CHART_BAR_LEGEND_ENUM.BOTTOM}
 							data={item.data}
@@ -103,7 +104,7 @@ export default function DashboardVariant({ }) {
 
 			case 'mae_family':
 				return (
-					<ChartWrap title={common.label[0] || 'Bond Lenghts'} {...common} key={key}>
+					<ChartWrap {...common} key={key}>
 						<ChartBar
 							positionLegend={CHART_BAR_LEGEND_ENUM.BOTTOM}
 							data={item.data}
@@ -114,7 +115,7 @@ export default function DashboardVariant({ }) {
 
 			case 'mae_variant':
 				return (
-					<ChartWrap title={common.label[0] || 'Bond Lenghts'} {...common} key={key}>
+					<ChartWrap  {...common} key={key}>
 						<ChartLine
 							positionLegend={CHART_BAR_LEGEND_ENUM.BOTTOM}
 							data={item.data}
@@ -124,7 +125,7 @@ export default function DashboardVariant({ }) {
 
 			case 'rmsd':
 				return (
-					<ChartWrap title={common.label[0] || 'RMSD'} {...common} key={key}>
+					<ChartWrap {...common} key={key}>
 						<ChartLine
 							positionLegend={CHART_BAR_LEGEND_ENUM.BOTTOM}
 							data={item.data}
@@ -169,7 +170,6 @@ export default function DashboardVariant({ }) {
 							title='Resultados de TOPSIS'
 							label='Puedes ordenar los resultados en base al ranking.'
 						/>
-
 
 						<TableX data={item.data} columns={COLUMNS_TOPSIS}>
 							{(props) => <RowsTOPSIS {...props} />}

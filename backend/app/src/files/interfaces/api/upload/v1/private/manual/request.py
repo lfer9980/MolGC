@@ -1,7 +1,7 @@
 from app.elemental.common import ElementalSchema
 
 
-class CreateRequest(ElementalSchema):
+class ManualRequest(ElementalSchema):
     family: str
     variant: str
     software: str

@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	ORGANISMS - CHART BUBBLE
 */
 // #region libraries

@@ -15,7 +15,7 @@ services:
     container_name: ${APP_NAME}_backend
     restart: always
     env_file:
-      - .env 
+      - .env
     environment:
       - STORAGE_PATH=/data/files
       - ALEMBIC_AUTO_UPGRADE=${ALEMBIC_AUTO_UPGRADE:-false}

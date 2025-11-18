@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	ORGANISMS - DOCKER
 	General structure for UI Component.
 */

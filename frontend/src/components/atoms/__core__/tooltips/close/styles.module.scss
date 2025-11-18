@@ -1,4 +1,4 @@
-/* 
+/*
 */
 @use 'styles/vars' as *;
 
@@ -51,7 +51,7 @@
 	// #endregion
 
 
-	// #region others 
+	// #region others
 	&.black {
 		color: $black;
 	}
@@ -79,7 +79,7 @@
 	// #endregion
 
 
-	// #region derived states 
+	// #region derived states
 	&:not(.disabled) &_symbol:hover,
 	&:not(.disabled) &_close:hover {
 		opacity: 0.60;

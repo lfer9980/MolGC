@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	ORGANISMS - FOOTER X
 */
 // #region libraries
@@ -8,7 +8,6 @@ import React from 'react';
 
 
 // #region components
-import { FooterX } from '../__core__';
 import {
 	SemFooter,
 	SemHeader,
@@ -16,12 +15,8 @@ import {
 } from 'components/__common__';
 
 import { HeadingTitle } from 'components/atoms';
-
-import {
-	ElementImage,
-	List,
-	ListSocial
-} from 'components/molecules';
+import { ElementImage, List } from 'components/molecules';
+import { FooterX } from 'components/organisms';
 // #endregion
 
 
@@ -50,7 +45,6 @@ import { useThemeStore } from 'context';
 
 function FooterMolGC({ theme = '' }) {
 	// #region hooks & others
-
 	// #endregion
 
 

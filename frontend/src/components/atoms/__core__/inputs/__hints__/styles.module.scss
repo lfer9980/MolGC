@@ -1,4 +1,4 @@
-/* 
+/*
 */
 
 @use 'styles/vars' as *;
@@ -27,11 +27,11 @@
 	// #endregion
 
 
-	// #region others 
+	// #region others
 	// #endregion
 
 
-	// #region derived states 
+	// #region derived states
 	&_main.help,
 	&_main.info {
 		color: var(--accent);

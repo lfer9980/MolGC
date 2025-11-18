@@ -1,11 +1,11 @@
 from .energy import DataEnergy
-from .report import DataReport
 from .load import DataLoader
 from .read import DataReader
+from .report import DataReport
 
 __all__ = [
-    'DataEnergy',
-    'DataLoader',
-    'DataReader',
-    'DataReport',
+    "DataEnergy",
+    "DataLoader",
+    "DataReader",
+    "DataReport",
 ]

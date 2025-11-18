@@ -9,18 +9,18 @@ from app.src.jobs.domain.enums import JobStatusEnum
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from .request import CreateRequest
-from .response import CreateResponse
+from .request import UpdateRequest
+from .response import UpdateResponse
 
 router = APIRouter()
 
 
-@router.put("/", response_model=CreateResponse)
+@router.put("/", response_model=UpdateResponse)
 async def update_job(
-    request: CreateRequest,
+    request: UpdateRequest,
     session: AsyncSession = Depends(get_session_dependency),
     payload: Dict[str, Any] = Depends(get_current_user_payload),
-) -> CreateResponse:
+) -> UpdateResponse:
     # validate if job exists
     job_id = payload["id"]
     job_entity = await ValidateJobService.execute(session, job_id)
@@ -41,4 +41,4 @@ async def update_job(
     job_dto = UpdateJobDTO(**request.model_dump(exclude_none=True))
     job = await UpdateJobService.execute(session, job_id, job_dto)
 
-    return CreateResponse(**job.model_dump())
+    return UpdateResponse(**job.model_dump())

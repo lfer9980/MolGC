@@ -1,6 +1,6 @@
 'use client';
-/* 
-ORGANISMS - HEADER
+/*
+	ORGANISMS - HEADER
 */
 // #region libraries
 import React from 'react';

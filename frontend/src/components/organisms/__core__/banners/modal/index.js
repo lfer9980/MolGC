@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	ORGANISMS - BANNER MODAL
 */
 // #region libraries

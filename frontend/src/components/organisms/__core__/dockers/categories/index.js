@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	ORGANISMS - DOCKER CATEGORIES
 */
 // #region libraries

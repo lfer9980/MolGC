@@ -16,4 +16,5 @@ class ResponseReportDTO(ElementalSchema):
     family: Optional[str] = None
     variant: Optional[str] = None
     type: ReportTypeEnum
+    title: str
     data: Union[dict, list]

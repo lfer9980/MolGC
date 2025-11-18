@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	CONTEXT - NAME:
 	Brief about whats the purpose of this context
 */

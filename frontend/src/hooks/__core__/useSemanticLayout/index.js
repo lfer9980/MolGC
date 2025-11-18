@@ -1,7 +1,7 @@
 'use client';
-/* 
+/*
 Hook for semantic layouts:
-use this when you need positioning children without order but with specific tag 
+use this when you need positioning children without order but with specific tag
 */
 
 // #region libraries

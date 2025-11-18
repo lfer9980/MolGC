@@ -1,4 +1,4 @@
-/* 
+/*
 	this script stands for create sitemap for better indexation on search engines
 */
 

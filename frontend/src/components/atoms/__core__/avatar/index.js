@@ -1,4 +1,4 @@
-/* 
+/*
 	ATOMS - AVATARS
 */
 // #region libraries

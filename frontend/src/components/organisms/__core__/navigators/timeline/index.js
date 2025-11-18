@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	ORGANISMS - NAVIGATORS - TIMELINE
 */
 // #region libraries

@@ -1,6 +1,6 @@
 'use client';
-/* 
-`Hook for transitioning from welcome to start analysis view: 
+/*
+	Hook for transitioning from welcome to start analysis view
 */
 
 // #region libraries

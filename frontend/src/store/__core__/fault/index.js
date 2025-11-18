@@ -1,5 +1,5 @@
-/* 
-	store for handles fault state when u are using inputs on a form. 
+/*
+	store for handles fault state when u are using inputs on a form.
 */
 
 // #region libraries
@@ -21,7 +21,7 @@ import { ReducerFault } from './reducer';
 // #endregion
 
 
-// #region hooks 
+// #region hooks
 // #endregion
 
 

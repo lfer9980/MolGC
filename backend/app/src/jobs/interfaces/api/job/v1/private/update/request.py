@@ -4,7 +4,7 @@ from app.elemental.common import ElementalSchema
 from app.src.jobs.domain.enums import JobAnalysisEnum, JobStatusEnum
 
 
-class CreateRequest(ElementalSchema):
+class UpdateRequest(ElementalSchema):
     status: Optional[JobStatusEnum] = None
     analysis_type: Optional[JobAnalysisEnum] = None
     reference: Optional[str] = None

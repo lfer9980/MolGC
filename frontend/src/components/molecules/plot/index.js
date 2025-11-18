@@ -1,16 +1,16 @@
 'use client';
-/* 
+/*
 	MOLECULES - PLOT
 	Custom Plot component
 */
 // #region libraries
 import Plot from 'react-plotly.js';
-import Image from 'next/image';
-import React, { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 // #endregion
 
 
 // #region components
+import { ElementImage } from 'components/molecules';
 // #endregion
 
 
@@ -34,7 +34,6 @@ import { THEME_ENUM } from 'context/__core__/theme/__data__';
 
 // #region styles
 import styles from './styles.module.scss';
-import { ElementImage } from '../__core__';
 // #endregion
 
 

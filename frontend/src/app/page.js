@@ -1,7 +1,7 @@
 // ESTADO: Completada
 'use client';
-/* 
-	ROUTES - LANDING PAGE 
+/*
+	ROUTES - LANDING PAGE
 */
 // #region libraries
 import React from 'react';

@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	STORE para preservar el valor del contador con localStorage.
 	Maneja toda la logica para los contadores de cuenta regresiva.
 */
@@ -32,11 +32,11 @@ import { HTTP_METHODS_ENUMS } from 'lib/requests/http/methods';
 // #endregion
 
 
-// #region hooks 
+// #region hooks
 // #endregion
 
 
-// #region store & reducers 
+// #region store & reducers
 import { useNotificationStore } from 'store/__core__/notifications';
 // #endregion
 

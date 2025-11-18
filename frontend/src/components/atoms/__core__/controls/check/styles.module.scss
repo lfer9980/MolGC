@@ -1,4 +1,4 @@
-/* 
+/*
 */
 
 @use 'styles/vars' as *;
@@ -39,7 +39,7 @@
 	// #endregion
 
 
-	// #region others 
+	// #region others
 	&_element[type='checkbox']:checked {
 		border: 0.1rem solid var(--accent);
 		background-color: var(--background);
@@ -58,7 +58,7 @@
 	// #endregion
 
 
-	// #region derived states 
+	// #region derived states
 	// #endregion
 
 

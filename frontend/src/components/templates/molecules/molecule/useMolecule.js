@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	Molecule control
 */
 
@@ -144,5 +144,3 @@ function useMolecule({ url = '' }) {
 
 
 export { useMolecule };
-
-

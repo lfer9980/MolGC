@@ -12,8 +12,10 @@ class DeleteJobService:
     def __init__(self, repository: JobRepository):
         self.repository = repository
         self.storage_path = (
-            Path(__file__).resolve().parents[5] / settings.application.storage_path
-        ) if not os.getenv("STORAGE_PATH") else Path(os.getenv("STORAGE_PATH"))
+            (Path(__file__).resolve().parents[5] / settings.application.storage_path)
+            if not os.getenv("STORAGE_PATH")
+            else Path(os.getenv("STORAGE_PATH"))
+        )
 
     async def execute(self, job_id: str) -> JobEntity:
         job_folder = (self.storage_path / job_id).resolve()

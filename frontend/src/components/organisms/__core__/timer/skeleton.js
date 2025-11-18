@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	ORGANISMS - TIMERX | SKELETON
 */
 // #region libraries

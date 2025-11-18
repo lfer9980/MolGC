@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	handles logic for text editor
 	TODO: some of this features MUST BE moved to a properly backend
 */

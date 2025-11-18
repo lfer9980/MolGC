@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	centralize intersection observer logic for uses as a service
 */
 
@@ -25,7 +25,7 @@ import {
 // #endregion
 
 
-// #region hooks 
+// #region hooks
 // #endregion
 
 

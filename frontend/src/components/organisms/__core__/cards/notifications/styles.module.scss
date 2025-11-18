@@ -1,4 +1,4 @@
-/* 
+/*
 */
 
 @use 'styles/vars' as *;
@@ -65,12 +65,12 @@
 	// #endregion
 
 
-	// #region others 
+	// #region others
 
 	// #endregion
 
 
-	// #region derived states 
+	// #region derived states
 	&_button:hover .dots {
 		font-weight: 700;
 	}

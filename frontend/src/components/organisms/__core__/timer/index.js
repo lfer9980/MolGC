@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	ORGANISMS - TIMERX
 */
 // #region libraries
@@ -160,7 +160,7 @@ function TimerX({
 							</p>
 						</div>
 					}
-					
+
 					<p className={`${warningStyle} ${endStyle}`}>
 						{handlerFormat(time).split(':')[0]}
 					</p>

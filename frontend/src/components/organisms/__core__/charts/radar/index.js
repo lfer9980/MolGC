@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	ORGANISMS - CHART RADAR
 */
 // #region libraries

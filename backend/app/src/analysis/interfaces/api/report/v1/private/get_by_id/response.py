@@ -4,12 +4,13 @@ from app.elemental.common import ElementalSchema
 from app.src.analysis.domain.enums import ReportTypeEnum
 
 
-class CreateResponse(ElementalSchema):
+class GetByIDResponse(ElementalSchema):
     id: str
     report_id: str
     family: Optional[str] = None
     variant: Optional[str] = None
     type: ReportTypeEnum
+    title: str
     data: Union[dict, list]
 
     model_config = {
@@ -21,6 +22,7 @@ class CreateResponse(ElementalSchema):
                     "family": "<FAMILY_NAME>",
                     "variant": "<FAMILY_VARIANT>",
                     "type": "<REPORT_TYPE>",
+                    "title": "<TITLE>",
                     "data": "<JSON_DATA>",
                 }
             ]

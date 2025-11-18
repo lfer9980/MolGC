@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	Hook for Upload files to API and parse matically.
 */
 
@@ -14,12 +14,12 @@ import { useRouter } from 'next/navigation';
 
 
 // #region assets
-import HTTP_CODES from './codes.json';
 // #endregion
 
 // #region utils
 import config from 'config';
-import { helperFindJSON, helperHasNoEmptyValues } from 'lib/helpers';
+import { JOB_STATUS_ENUM } from 'lib/enums';
+import { helperHasNoEmptyValues, STYLE_LOG_ENUM } from 'lib/helpers';
 // #endregion
 
 
@@ -37,7 +37,6 @@ import { useNotificationStore } from 'store/__core__/notifications';
 // #region requests
 import { EndpointHTTP } from 'lib/requests/http';
 import { HTTP_METHODS_ENUMS } from 'lib/requests/http/methods';
-import { JOB_STATUS_ENUM } from 'lib/enums';
 // #endregion
 
 
@@ -81,25 +80,30 @@ function useServiceUpload({ }) {
 
 
 	// #region handlers
-	const handlerUploadAutomatic = async ({ files, handlerProgress, explicitToken }) => {
+	const handlerUploadAutomatic = async ({
+		files,
+		handlerProgress,
+		explicitToken
+	}) => {
 		/* make upload files automatically via POST */
 		setLoading(true);
-		let newStatus;
 		const endpoint = config.uploadAutoURL;
 		const token = explicitToken || job.access_token;
 
 		if (files.length === 0) {
-			setLoading(false);
-			return handlerAddMessage({
+			handlerAddMessage({
 				content: {
-					icon: 'error',
+					log: STYLE_LOG_ENUM.WARNING,
 					title: 'Datos faltantes',
-					label: 'Verifica los campos vacios de tu formulario',
-					allowOutsideClick: false,
-					timer: null,
+					label: 'Verifica los campos vacíos de tu formulario e intenta nuevamente.',
+					labelButton: 'ENTENDIDO',
+					timer: 3000,
 				},
-				type: MESSAGE_ENUM.ALERT
+				type: MESSAGE_ENUM.NOTIFICATION
 			});
+
+			setLoading(false);
+			return;
 		};
 
 		const formData = new FormData();
@@ -117,18 +121,12 @@ function useServiceUpload({ }) {
 				onProgress: handlerProgress,
 			});
 
-			/* handles if response status is null or not OK */
 			if (!response || response?.status !== 200) {
-				newStatus = helperFindJSON({
-					object: HTTP_CODES,
-					property: !response ? 'null' : response.status,
-				});
-
 				handlerAddMessage({
 					content: {
 						icon: 'error',
-						title: newStatus?.title,
-						label: newStatus?.label,
+						title: `ERROR ${response.status}`,
+						label: response.data?.detail,
 						allowOutsideClick: false,
 						timer: null,
 					},
@@ -144,6 +142,7 @@ function useServiceUpload({ }) {
 			};
 
 			handlerUpdateJobStore({ data: updateJob });
+
 			/* redirect to files resume */
 			router.push(`/files`);
 		} catch (e) {
@@ -154,24 +153,24 @@ function useServiceUpload({ }) {
 	const handlerUploadManual = async ({ files, metadata, handlerProgress }) => {
 		/* make upload files MANUALLY via POST */
 		setLoading(true);
-		let newStatus;
-
 		const endpoint = config.uploadManualURL;
 		const token = job.access_token;
 		const emptyForm = helperHasNoEmptyValues(metadata);
 
 		if (!emptyForm || files.length === 0) {
-			setLoading(false);
-			return handlerAddMessage({
+			handlerAddMessage({
 				content: {
-					icon: 'error',
+					log: STYLE_LOG_ENUM.WARNING,
 					title: 'Datos faltantes',
-					label: 'Verifica los campos vacios de tu formulario',
-					allowOutsideClick: false,
-					timer: null,
+					label: 'Verifica los campos vacíos de tu formulario e intenta nuevamente.',
+					labelButton: 'ENTENDIDO',
+					timer: 3000,
 				},
-				type: MESSAGE_ENUM.ALERT
+				type: MESSAGE_ENUM.NOTIFICATION
 			});
+
+			setLoading(false);
+			return;
 		};
 
 		const formData = new FormData();
@@ -191,18 +190,12 @@ function useServiceUpload({ }) {
 				onProgress: handlerProgress,
 			});
 
-			/* handles if response status is null or not OK */
 			if (!response || response?.status !== 200) {
-				newStatus = helperFindJSON({
-					object: HTTP_CODES,
-					property: !response ? 'null' : response.status,
-				});
-
 				handlerAddMessage({
 					content: {
 						icon: 'error',
-						title: newStatus?.title,
-						label: newStatus?.label,
+						title: `ERROR ${response.status}`,
+						label: response.data?.detail,
 						allowOutsideClick: false,
 						timer: null,
 					},
@@ -218,6 +211,7 @@ function useServiceUpload({ }) {
 			};
 
 			handlerUpdateJobStore({ data: updateJob });
+
 			/* redirect to files resume */
 			router.push(`/files`);
 		} catch (e) {
@@ -228,8 +222,6 @@ function useServiceUpload({ }) {
 	const handlerGetResumeFiles = async () => {
 		/* get the files resume via GET */
 		setLoading(true);
-		let newStatus;
-
 		const endpoint = config.uploadURL;
 		const token = job.access_token;
 
@@ -241,16 +233,11 @@ function useServiceUpload({ }) {
 			});
 
 			if (!response || response?.status !== 200) {
-				newStatus = helperFindJSON({
-					object: HTTP_CODES,
-					property: !response ? 'null' : response.status,
-				});
-
 				handlerAddMessage({
 					content: {
 						icon: 'error',
-						title: newStatus?.title,
-						label: newStatus?.label,
+						title: `ERROR ${response.status}`,
+						label: response.data?.detail,
 						allowOutsideClick: false,
 						timer: null,
 					},

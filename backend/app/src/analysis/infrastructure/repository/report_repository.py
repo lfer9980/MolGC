@@ -1,4 +1,4 @@
-from collections import defaultdict, OrderedDict
+from collections import OrderedDict, defaultdict
 from typing import Any, Dict, List, Optional
 
 from app.src.analysis.domain.entities.report_entity import ReportEntity
@@ -20,7 +20,7 @@ class ReportRepositorySQL(ReportRepository):
         return ReportEntity(**report_model.model_dump())
 
     async def create_massive(
-            self, report_list: List[ReportEntity]
+        self, report_list: List[ReportEntity]
     ) -> List[ReportEntity]:
         records_bulk = [item.model_dump() for item in report_list]
         saved_items = await self._bulk_insert(records=records_bulk, return_ids=True)

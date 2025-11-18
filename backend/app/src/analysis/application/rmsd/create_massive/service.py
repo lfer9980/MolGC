@@ -38,7 +38,7 @@ class MassiveRMSDService:
                 "scope": ReportScopeEnum.VARIANT,
                 "family": items[0].family,
                 "variant": items[0].variant,
-                "title": f"{variant_name} RMSD of functional",
+                "title": f"RMSD of functional - {variant_name}",
             }
 
             report_data = ReportEntity(**report_metadata)

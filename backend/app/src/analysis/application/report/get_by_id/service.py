@@ -65,6 +65,7 @@ class GetByIDReportService:
             family=dataset[0].family,
             variant=dataset[0].variant,
             type=report_entity.type,
+            title=report_entity.title,
             data=report_data,
         )
 
@@ -84,6 +85,7 @@ class GetByIDReportService:
         report_data = {
             **dataset.model_dump(),
             "type": report_entity.type,
+            "title": report_entity.title,
             "data": json.loads(dataset.data),
         }
 
@@ -105,6 +107,7 @@ class GetByIDReportService:
         report_data = {
             **dataset.model_dump(),
             "type": report_entity.type,
+            "title": report_entity.title,
             "data": json.loads(dataset.data),
         }
 
@@ -130,6 +133,7 @@ class GetByIDReportService:
             family=dataset[0].family,
             variant=dataset[0].variant,
             type=report_entity.type,
+            title=report_entity.title,
             data=report_data,
         )
 
@@ -149,6 +153,7 @@ class GetByIDReportService:
         report_data = {
             **dataset.model_dump(),
             "type": report_entity.type,
+            "title": report_entity.title,
             "data": json.loads(dataset.data),
         }
 
@@ -173,12 +178,13 @@ class GetByIDReportService:
             id=dataset[0].id,
             report_id=dataset[0].report_id,
             type=report_entity.type,
-            data=report_data
+            title=report_entity.title,
+            data=report_data,
         )
 
     @classmethod
     def _prepare_mae_variant_chart(
-            cls, data: List[MAEVariantEntity], report_entity: ReportEntity
+        cls, data: List[MAEVariantEntity], report_entity: ReportEntity
     ) -> dict:
         """Prepare the Chart.js-compatible data structure for MAE General.
 
@@ -202,5 +208,4 @@ class GetByIDReportService:
                     "data": values,
                 }
             ],
-            "title": report_entity.title,
         }

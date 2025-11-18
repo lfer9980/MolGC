@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	Hook for handle CRUD Job Session on Backend
 */
 
@@ -15,11 +15,9 @@ import { useRouter } from 'next/navigation';
 
 // #region assets
 import config from 'config';
-import HTTP_CODES from './codes.json';
 // #endregion
 
 // #region utils
-import { helperFindJSON } from 'lib/helpers';
 // #endregion
 
 
@@ -85,7 +83,6 @@ function useServiceJob({ }) {
 	const handlerCreateJob = async ({ uploadType = '', redirect = true }) => {
 		/* make the Job Creation via POST */
 		setLoading(true);
-		let newStatus;
 		const endpoint = config.jobURL;
 		const JSONData = { "upload_type": uploadType };
 
@@ -97,27 +94,23 @@ function useServiceJob({ }) {
 				isJSON: true,
 			});
 
-			/* handles if response status is null or not OK */
 			if (!response || response?.status !== 200) {
-				newStatus = helperFindJSON({
-					object: HTTP_CODES,
-					property: !response ? 'null' : response.status,
-				});
-
 				handlerAddMessage({
 					content: {
 						icon: 'error',
-						title: newStatus?.title,
-						label: newStatus?.label,
+						title: `ERROR ${response.status}`,
+						label: response.data?.detail,
 						allowOutsideClick: false,
 						timer: null,
 					},
 					type: MESSAGE_ENUM.ALERT
 				});
+
 				return;
 			};
 
 			handlerCreateJobStore({ data: response.data });
+
 			/* redirect according to upload type */
 			if (redirect) return router.push(`/files/${uploadType}`);
 
@@ -144,23 +137,18 @@ function useServiceJob({ }) {
 				isJSON: true,
 			});
 
-			/* handles if response status is null or not OK */
 			if (!response || response?.status !== 200) {
-				newStatus = helperFindJSON({
-					object: HTTP_CODES,
-					property: !response ? 'null' : response.status,
-				});
-
 				handlerAddMessage({
 					content: {
 						icon: 'error',
-						title: newStatus?.title,
-						label: newStatus?.label,
+						title: `ERROR ${response.status}`,
+						label: response.data?.detail,
 						allowOutsideClick: false,
 						timer: null,
 					},
 					type: MESSAGE_ENUM.ALERT
 				});
+
 				return;
 			};
 
@@ -183,24 +171,19 @@ function useServiceJob({ }) {
 				token: token,
 			});
 
-			/* handles if response status is null or not OK */
-			if (!response || response?.status !== 200) {
-				newStatus = helperFindJSON({
-					object: HTTP_CODES,
-					property: !response ? 'null' : response.status,
-				});
 
+			if (!response || response?.status !== 200) {
 				handlerAddMessage({
 					content: {
 						icon: 'error',
-						title: newStatus?.title,
-						label: newStatus?.label,
+						title: `ERROR ${response.status}`,
+						label: response.data?.detail,
 						allowOutsideClick: false,
 						timer: null,
-						navigateTo: '/',
 					},
 					type: MESSAGE_ENUM.ALERT
 				});
+
 				return;
 			};
 
@@ -213,7 +196,6 @@ function useServiceJob({ }) {
 
 
 	const handlerValidateJob = async () => {
-		let newStatus;
 		const endpoint = config.jobURL;
 		const token = job.access_token;
 
@@ -224,13 +206,7 @@ function useServiceJob({ }) {
 				token: token,
 			});
 
-			/* handles if response status is null or not OK */
 			if (!response || response?.status !== 200) {
-				newStatus = helperFindJSON({
-					object: HTTP_CODES,
-					property: !response ? 'null' : response.status,
-				});
-
 				handlerDeleteJobStore();
 				return false;
 			};

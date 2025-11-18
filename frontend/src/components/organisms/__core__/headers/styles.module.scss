@@ -1,4 +1,4 @@
-/* 
+/*
 */
 
 @use 'styles/vars' as *;
@@ -48,7 +48,7 @@
 	&_profile {
 		display: none;
 	}
-	
+
 	&_symbol {
 		padding-block: 0.8rem;
 	}
@@ -56,11 +56,11 @@
 	// #endregion
 
 
-	// #region others 
+	// #region others
 	// #endregion
 
 
-	// #region derived states 
+	// #region derived states
 	&.fixed {
 		position: fixed;
 		z-index: 1000;

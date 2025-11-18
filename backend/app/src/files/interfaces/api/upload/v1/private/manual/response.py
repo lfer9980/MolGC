@@ -1,7 +1,7 @@
 from app.elemental.common import ElementalSchema
 
 
-class CreateResponse(ElementalSchema):
+class ManualResponse(ElementalSchema):
     filename: str
     checksum: str
     size: int

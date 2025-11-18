@@ -1,7 +1,6 @@
 'use client';
-/*  
+/*
 	TEMPLATES - PROGRESS
-	General structure for UI Component.
 */
 // #region libraries
 import React from 'react';

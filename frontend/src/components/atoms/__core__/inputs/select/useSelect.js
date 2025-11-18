@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	handles logic to input selection component
 */
 // #region libraries

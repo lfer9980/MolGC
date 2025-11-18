@@ -45,7 +45,7 @@ class MassiveMAEVariantService:
                 "scope": ReportScopeEnum.VARIANT,
                 "family": items[0].family,
                 "variant": items[0].variant,
-                "title": f"{variant_name} Bond lengths MAE Functional",
+                "title": f"Bond lengths MAE Functional - {variant_name}",
             }
 
             report_entity = await self.repository_report.create(

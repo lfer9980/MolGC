@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	handles all logic for localStorage Managment
 	NOTE: Use this hook only in client side and for storage complex data from store
 */

@@ -43,7 +43,7 @@ class MassiveStructureService:
                 "scope": ReportScopeEnum.VARIANT,
                 "family": items[0].family,
                 "variant": items[0].variant,
-                "title": f"Stacked molecules for: {variant_name}",
+                "title": f"{variant_name} - Stacked molecules",
             }
 
             report_entity = await self.repository_report.create(

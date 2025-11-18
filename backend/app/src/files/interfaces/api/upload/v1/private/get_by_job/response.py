@@ -4,7 +4,7 @@ from app.elemental.common import ElementalSchema
 from app.src.files.application.get_by_job.dto import FamilyGroupDTO
 
 
-class CreateResponse(ElementalSchema):
+class GetByJobResponse(ElementalSchema):
     data: List[FamilyGroupDTO]
     references: List[str]
 

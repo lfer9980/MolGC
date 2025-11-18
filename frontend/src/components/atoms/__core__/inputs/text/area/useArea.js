@@ -1,6 +1,6 @@
 'use client';
-/* 
-	handler limit char, hints and others on textarea input	
+/*
+	handler limit char, hints and others on textarea input
 */
 // #region libraries
 import React, { useState } from 'react';

@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	this components wraps or contain other components inside, this for mutate the original functionality and also add new features.
 	NOTE: you must to pass a component or function in order to preserve HIGH ORDER FUNCTIONS PATTERN.
 */

@@ -13,12 +13,12 @@ from app.src.jobs.domain.enums import JobStatusEnum
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from .response import CreateResponse
+from .response import GetByIDResponse
 
 router = APIRouter()
 
 
-@router.get("/{report_type}/{report_id}", response_model=CreateResponse)
+@router.get("/{report_type}/{report_id}", response_model=GetByIDResponse)
 async def get_report_by_id(
     report_type: ReportTypeEnum,
     report_id: str,
@@ -47,4 +47,4 @@ async def get_report_by_id(
     )
 
     report_data = await service.execute(data_dto)
-    return CreateResponse(**report_data.model_dump())
+    return GetByIDResponse(**report_data.model_dump())

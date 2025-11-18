@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	ORGANISMS - CHART BAR
 
 	expected data structure:

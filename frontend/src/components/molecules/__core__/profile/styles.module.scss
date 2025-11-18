@@ -1,4 +1,4 @@
-/* 
+/*
 */
 
 @use 'styles/vars' as *;
@@ -39,7 +39,7 @@
 	// #endregion
 
 
-	// #region others 
+	// #region others
 	&_main:hover {
 		opacity: 0.6;
 		cursor: pointer;
@@ -48,7 +48,7 @@
 	// #endregion
 
 
-	// #region derived states 
+	// #region derived states
 	.white {
 		p {
 			color: $white;

@@ -1,4 +1,4 @@
-/* 
+/*
 */
 
 @use 'styles/vars' as *;
@@ -68,7 +68,7 @@
 	// #endregion
 
 
-	// #region others 
+	// #region others
 	&.hover {
 		padding: 1.6rem;
 		margin-block-end: 1.6rem;
@@ -77,7 +77,7 @@
 	// #endregion
 
 
-	// #region derived states 
+	// #region derived states
 	&.mini {
 		border: none;
 	}

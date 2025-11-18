@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	ORGANISIMS - CARROUSEL
 */
 // #region libraries

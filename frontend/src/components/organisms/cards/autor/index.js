@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	ORGANISMS - CARD AUTOR
 */
 // #region libraries

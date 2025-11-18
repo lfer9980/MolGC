@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	ORGANISMS - FOOTER SIMPLE
 */
 // #region libraries

@@ -1,4 +1,4 @@
-from typing import Optional, List, Dict, Union
+from typing import Dict, List, Optional, Union
 
 from app.elemental.common import ElementalSchema
 from app.src.analysis.domain.enums import ReportTypeEnum
@@ -17,4 +17,5 @@ class ResponseReportDTO(ElementalSchema):
     family: Optional[str] = None
     variant: Optional[str] = None
     type: ReportTypeEnum
+    title: str
     data: Union[dict, list]

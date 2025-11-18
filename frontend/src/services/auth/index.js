@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	centralize logic for auth
 */
 // #region libraries

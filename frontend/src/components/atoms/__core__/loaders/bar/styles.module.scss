@@ -44,7 +44,7 @@
 	// #endregion
 
 
-	// #region others 
+	// #region others
 	&_main::-webkit-progress-bar {
 		background-color: var(--background-disabled);
 		transition: width 0.5s ease-in-out;
@@ -59,7 +59,7 @@
 	// #endregion
 
 
-	// #region derived states 
+	// #region derived states
 	&.info {
 		color: var(--accent);
 	}

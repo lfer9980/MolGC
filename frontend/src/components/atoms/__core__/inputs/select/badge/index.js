@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	ATOMS - INPUT SELECT BADGE
 */
 // #region libraries

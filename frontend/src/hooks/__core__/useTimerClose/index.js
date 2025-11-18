@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	HOOK FOR DEVELOPMENT or AUTOMATIC CLOSING
 	centralize timing events
 */

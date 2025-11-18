@@ -5,7 +5,7 @@ from app.src.analysis.domain.enums import ReportTypeEnum
 from app.src.jobs.domain.enums import JobAnalysisEnum
 
 
-class CreateResponse(ElementalSchema):
+class GetResumeResponse(ElementalSchema):
     title: str
     job_id: str
     reference: Optional[str] = None

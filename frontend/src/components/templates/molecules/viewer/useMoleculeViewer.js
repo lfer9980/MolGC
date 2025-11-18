@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	Hook for Control Molecule Viewer
 */
 
@@ -83,5 +83,3 @@ function useMoleculeViewer({ }) {
 
 
 export { useMoleculeViewer };
-
-

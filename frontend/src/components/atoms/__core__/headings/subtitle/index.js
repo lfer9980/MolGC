@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	ATOMS - HEADING SUBTITLE
 */
 // #region libraries

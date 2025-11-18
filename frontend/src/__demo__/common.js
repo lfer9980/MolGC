@@ -6,14 +6,14 @@ export const DATA_TUTORIAL_EXAMPLE = `
 
 > **"El mejor editor es el que te deja concentrarte en lo que escribes, no en cómo lo escribes."**
 
-Este es un **tutorial de prueba** para verificar que Milkdown funciona correctamente en una aplicación **React**.  
+Este es un **tutorial de prueba** para verificar que Milkdown funciona correctamente en una aplicación **React**.
 Aquí verás ejemplos de todos los elementos comunes de Markdown para probar el renderizado.
 
 ---
 
 #### 1️⃣ Introducción
 
-Milkdown es un **editor WYSIWYG basado en Markdown** que te permite escribir con una experiencia amigable y extensible.  
+Milkdown es un **editor WYSIWYG basado en Markdown** que te permite escribir con una experiencia amigable y extensible.
 Con Crepe, es aún más fácil integrarlo en un proyecto con **React**.
 
 ---

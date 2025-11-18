@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	handles logic for open Banner Alert
 */
 // #region libraries

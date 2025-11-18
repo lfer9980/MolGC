@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	main logic for control tableX
 */
 // #region libraries

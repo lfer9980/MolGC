@@ -1,4 +1,4 @@
-/* 
+/*
 */
 
 @use 'styles/vars' as *;
@@ -59,7 +59,7 @@
 	// #endregion
 
 
-	// #region others 
+	// #region others
 	&.first:not(.disabled):hover {
 		font-weight: 700;
 		opacity: 0.6;
@@ -85,7 +85,7 @@
 	// #endregion
 
 
-	// #region derived states 
+	// #region derived states
 	&.second.disabled {
 		color: var(--content-disabled);
 		background-color: transparent;

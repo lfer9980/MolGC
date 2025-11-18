@@ -1,4 +1,4 @@
-/* 
+/*
 */
 
 @use 'styles/vars' as *;
@@ -33,27 +33,27 @@
 		left: -120%;
 		width: 20rem;
 	}
-	
+
 	// #endregion
-	
-	
-	// #region others 
+
+
+	// #region others
 	&_symbol:hover {
 		opacity: 0.6;
 	}
-	
+
 	&_symbol:hover+&_tooltip {
 		display: block;
 	}
-	
+
 	// #endregion
-	
-	
-	// #region derived states 
-	
+
+
+	// #region derived states
+
 	// #endregion
-	
-	
+
+
 	// #region media queries
 	@include tablet {}
 

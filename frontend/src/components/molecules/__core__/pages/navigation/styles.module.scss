@@ -1,5 +1,5 @@
-/* 
-general CSS modules for components 
+/*
+general CSS modules for components
 */
 
 @use 'styles/vars' as *;
@@ -46,11 +46,11 @@ general CSS modules for components
 	// #endregion
 
 
-	// #region others 
+	// #region others
 	// #endregion
 
 
-	// #region derived states 
+	// #region derived states
 	.active {
 		font-weight: 700;
 		background-color: $blue30;

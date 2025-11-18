@@ -1,5 +1,5 @@
 services:
-  frontend: 
+  frontend:
     container_name: ${APP_NAME}_frontend
     image: ${REGISTRY}/${IMAGE_NAME_FRONTEND}:latest
     environment:

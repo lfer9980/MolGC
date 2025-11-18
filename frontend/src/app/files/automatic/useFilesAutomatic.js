@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	Hook for handling upload automatic files
 */
 

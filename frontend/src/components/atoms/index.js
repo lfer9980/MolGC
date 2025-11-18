@@ -1,2 +1,2 @@
 export * from './__core__';
-export { ButtonDrag } from './buttons/drag';	
+export { ButtonDrag } from './buttons/drag';

@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	ORGANISMS - TABLE X
 */
 // #region libraries

@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	ATOMS - BADGE BULLET
 */
 // #region libraries

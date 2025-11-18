@@ -43,13 +43,13 @@
  |              your use of CASTEP                 |
  |                                                 |
  +-------------------------------------------------+
- 
- 
+
+
  This version was compiled for x86_64-rhel5-intel12.0 on Nov 12 2013
  Code version: 6201
- 
+
 License checkout of MS_castep successful
- 
+
  +---------------------------------------------------+
  |                                                   |
  |  Using DFT-SEDC - the DFT Semi-Empirical          |
@@ -64,27 +64,27 @@ License checkout of MS_castep successful
  | Erik R. McNellis, Joerg Meyer, and Karsten Reuter |
  | Phys. Rev. B 80, 205414 (2009)                    |
  +---------------------------------------------------+
- 
- 
+
+
  Pseudo atomic calculation performed for H 1s1
- 
+
  Converged in 13 iterations to a total energy of -12.4601 eV
- 
- 
+
+
  Pseudo atomic calculation performed for C 2s2 2p2
- 
+
  Converged in 17 iterations to a total energy of -145.7942 eV
- 
- 
+
+
  Pseudo atomic calculation performed for N 2s2 2p3
- 
+
  Converged in 21 iterations to a total energy of -262.6886 eV
- 
- 
+
+
  Pseudo atomic calculation performed for O 2s2 2p4
- 
+
  Converged in 23 iterations to a total energy of -429.2136 eV
- 
+
  Calculation parallelised over 16 processes.
  Data is distributed by G-vector(16-way)
 
@@ -92,7 +92,7 @@ License checkout of MS_castep successful
  CASTEP calculation from Materials Studio
 
  ***************************** General Parameters ******************************
-  
+
  output verbosity                               : normal  (1)
  write checkpoint data to                       : acidonalidixicots.check
  type of calculation                            : geometry optimization
@@ -106,7 +106,7 @@ License checkout of MS_castep successful
  write final potential to formatted file        : off
  write final density to formatted file          : off
  write BibTeX reference list                    : on
-  
+
  output         length unit                     : A
  output           mass unit                     : amu
  output           time unit                     : ps
@@ -123,26 +123,26 @@ License checkout of MS_castep successful
  output         dipole unit                     : D
  output         efield unit                     : eV/A/e
  output        entropy unit                     : J/mol/K
-  
+
  wavefunctions paging                           : none
  random number generator seed                   : randomised (95850450)
  data distribution                              : optimal for this architecture
  optimization strategy                          : balance speed and memory
 
  *********************** Exchange-Correlation Parameters ***********************
-  
+
  using functional                               : Perdew Burke Ernzerhof
  Divergence correction                          : off
  DFT+D: Semi-empirical dispersion correction    : on
  SEDC with                                      : TS correction scheme
 
  ************************* Pseudopotential Parameters **************************
-  
+
  pseudopotential representation                 : reciprocal space
  <beta|phi> representation                      : reciprocal space
 
  **************************** Basis Set Parameters *****************************
-  
+
  plane wave basis set cut-off                   :   300.0000   eV
  size of standard grid                          :     1.5000
  size of   fine   gmax                          :    13.3104   1/A
@@ -150,21 +150,21 @@ License checkout of MS_castep successful
  finite basis set correction                    : none
 
  **************************** Electronic Parameters ****************************
-  
- number of  electrons                           :  88.00    
- net charge of system                           :  0.000    
- net spin   of system                           :  0.000    
- number of  up  spins                           :  44.00    
- number of down spins                           :  44.00    
+
+ number of  electrons                           :  88.00
+ net charge of system                           :  0.000
+ net spin   of system                           :  0.000
+ number of  up  spins                           :  44.00
+ number of down spins                           :  44.00
  treating system as non-spin-polarized
  number of bands                                :         44
 
  ********************* Electronic Minimization Parameters **********************
-  
+
  Method: Treating system as non-metallic,
          and number of  SD  steps               :          1
          and number of  CG  steps               :          4
-  
+
  total energy / atom convergence tol.           : 0.2000E-05   eV
  eigen-energy convergence tolerance             : 0.1000E-05   eV
  max force / atom convergence tol.              : ignored
@@ -173,19 +173,19 @@ License checkout of MS_castep successful
  periodic dipole correction                     : NONE
 
  ************************** Density Mixing Parameters **************************
-  
+
  density-mixing scheme                          : Pulay
  max. length of mixing history                  :         20
- charge density mixing amplitude                : 0.5000    
+ charge density mixing amplitude                : 0.5000
  cut-off energy for mixing                      :  300.0       eV
  charge density mixing g-vector                 :  1.500       1/A
 
  *********************** Population Analysis Parameters ************************
-  
+
  Population analysis with cutoff                :  3.000       A
 
  ********************** Geometry Optimization Parameters ***********************
-  
+
  optimization method                            : BFGS
  variable cell method                           : fixed basis quality
  max. number of steps                           :        100
@@ -201,8 +201,8 @@ License checkout of MS_castep successful
  backup results every                           :          5   steps
 
  *******************************************************************************
-  
- 
+
+
                            -------------------------------
                                       Unit Cell
                            -------------------------------
@@ -210,122 +210,122 @@ License checkout of MS_castep successful
   30.0000001   0.0000000   0.0000000        0.2094395   0.0000000   0.0000000
    0.0000000  30.0000001   0.0000000        0.0000000   0.2094395   0.0000000
    0.0000000   0.0000000  30.0000001        0.0000000   0.0000000   0.2094395
- 
+
                        Lattice parameters(A)       Cell Angles
                     a =   30.000000          alpha =   90.000000
                     b =   30.000000          beta  =   90.000000
                     c =   30.000000          gamma =   90.000000
- 
+
                        Current cell volume =27000.000151       A**3
- 
+
                            -------------------------------
                                      Cell Contents
                            -------------------------------
                          Total number of ions in cell =   29
                       Total number of species in cell =    4
                         Max number of any one species =   12
- 
+
             xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
             x  Element    Atom        Fractional coordinates of atoms  x
             x            Number           u          v          w      x
             x----------------------------------------------------------x
-            x  H            1         0.533384   0.553741   0.459441   x 
-            x  H            2         0.526893   0.607431   0.483750   x 
-            x  H            3         0.457275   0.634425   0.501927   x 
-            x  H            4         0.352003   0.507857   0.395755   x 
-            x  H            5         0.553974   0.551459   0.540418   x 
-            x  H            6         0.500374   0.572307   0.555425   x 
-            x  H            7         0.505677   0.518342   0.531476   x 
-            x  H            8         0.402956   0.444019   0.374012   x 
-            x  H            9         0.504595   0.420266   0.423761   x 
-            x  H           10         0.518494   0.449212   0.374209   x 
-            x  H           11         0.473452   0.410759   0.373982   x 
-            x  H           12         0.322168   0.625101   0.460806   x 
-            x  C            1         0.449825   0.540386   0.442226   x 
-            x  C            2         0.404224   0.542684   0.430081   x 
-            x  C            3         0.514625   0.572909   0.484066   x 
-            x  C            4         0.441697   0.608856   0.481342   x 
-            x  C            5         0.397295   0.612765   0.471104   x 
-            x  C            6         0.375654   0.579577   0.444129   x 
-            x  C            7         0.387236   0.507200   0.404909   x 
-            x  C            8         0.459871   0.473155   0.406346   x 
-            x  C            9         0.518656   0.552534   0.530588   x 
-            x  C           10         0.414818   0.472328   0.393351   x 
-            x  C           11         0.372629   0.651924   0.489370   x 
-            x  C           12         0.490642   0.436054   0.393876   x 
-            x  N            1         0.468070   0.574572   0.468138   x 
-            x  N            2         0.477065   0.506850   0.430295   x 
-            x  O            1         0.334730   0.581830   0.433449   x 
-            x  O            2         0.328426   0.652105   0.480720   x 
-            x  O            3         0.391568   0.680966   0.511317   x 
+            x  H            1         0.533384   0.553741   0.459441   x
+            x  H            2         0.526893   0.607431   0.483750   x
+            x  H            3         0.457275   0.634425   0.501927   x
+            x  H            4         0.352003   0.507857   0.395755   x
+            x  H            5         0.553974   0.551459   0.540418   x
+            x  H            6         0.500374   0.572307   0.555425   x
+            x  H            7         0.505677   0.518342   0.531476   x
+            x  H            8         0.402956   0.444019   0.374012   x
+            x  H            9         0.504595   0.420266   0.423761   x
+            x  H           10         0.518494   0.449212   0.374209   x
+            x  H           11         0.473452   0.410759   0.373982   x
+            x  H           12         0.322168   0.625101   0.460806   x
+            x  C            1         0.449825   0.540386   0.442226   x
+            x  C            2         0.404224   0.542684   0.430081   x
+            x  C            3         0.514625   0.572909   0.484066   x
+            x  C            4         0.441697   0.608856   0.481342   x
+            x  C            5         0.397295   0.612765   0.471104   x
+            x  C            6         0.375654   0.579577   0.444129   x
+            x  C            7         0.387236   0.507200   0.404909   x
+            x  C            8         0.459871   0.473155   0.406346   x
+            x  C            9         0.518656   0.552534   0.530588   x
+            x  C           10         0.414818   0.472328   0.393351   x
+            x  C           11         0.372629   0.651924   0.489370   x
+            x  C           12         0.490642   0.436054   0.393876   x
+            x  N            1         0.468070   0.574572   0.468138   x
+            x  N            2         0.477065   0.506850   0.430295   x
+            x  O            1         0.334730   0.581830   0.433449   x
+            x  O            2         0.328426   0.652105   0.480720   x
+            x  O            3         0.391568   0.680966   0.511317   x
             xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- 
- 
+
+
                          No user defined ionic velocities
- 
+
                            -------------------------------
                                    Details of Species
                            -------------------------------
- 
+
                                Mass of species in AMU
                                     H    1.0080000
                                     C   12.0109997
                                     N   14.0070000
                                     O   15.9989996
- 
+
                           Electric Quadrupole Moment (Barn)
                                     H    0.0028600 Isotope  2
                                     C    0.0332700 Isotope 11
                                     N    0.0204400 Isotope 14
                                     O   -0.0255800 Isotope 17
- 
+
                           Files used for pseudopotentials:
                                     H H_00PBE.usp
                                     C C_00PBE.usp
                                     N N_00PBE.usp
                                     O O_00PBE.usp
- 
+
                            -------------------------------
                               k-Points For BZ Sampling
                            -------------------------------
                        MP grid size for SCF calculation is  1  1  1
                          Number of kpoints used =           1
- 
+
              +++++++++++++++++++++++++++++++++++++++++++++++++++++++
              +  Number       Fractional coordinates        Weight  +
              +-----------------------------------------------------+
              +     1   0.000000   0.000000   0.000000   1.0000000  +
              +++++++++++++++++++++++++++++++++++++++++++++++++++++++
- 
+
                            -------------------------------
                                Symmetry and Constraints
                            -------------------------------
- 
+
                       Maximum deviation from symmetry =  0.00000         ANG
- 
+
          There are no symmetry operations specified or generated for this cell
          There are no ionic constraints specified or generated for this cell
                       Point group of crystal =     1: C1, 1, 1
- 
- 
+
+
                          Centre of mass is NOT constrained
- 
+
                          Number of cell constraints= 6
                          Cell constraints are:  0 0 0 0 0 0
- 
+
                          External pressure/stress (GPa)
                           0.00000   0.00000   0.00000
                                     0.00000   0.00000
                                               0.00000
- 
+
                                 --------------------
                                   DFT-D parameters
                                 --------------------
- 
-                          Dispersion-correction scheme : TS                                                                              
+
+                          Dispersion-correction scheme : TS
                         Parameter sR :   0.940000 (default)
                         Parameter d  :  20.000000 (default)
- 
+
         xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
         x              Atomic DFT-D parameters                             x
         x  Species      C6            alpha        R0                      x
@@ -336,8 +336,8 @@ License checkout of MS_castep successful
         x  N            14.4601       1.0966       1.7675   (default)      x
         x  O             9.3214       0.8002       1.6881   (default)      x
         xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- 
-  
+
+
 +---------------- MEMORY AND SCRATCH DISK ESTIMATES PER PROCESS --------------+
 |                                                     Memory          Disk    |
 | Model and support data                               97.8 MB       112.1 MB |
@@ -400,10 +400,10 @@ Initial  -1.64524163E+003                                          2.16  <-- SCF
      46  -3.90459447E+003                    8.26213948E-007     127.74  <-- SCF
      47  -3.90459448E+003                    4.97835201E-007     130.17  <-- SCF
 ------------------------------------------------------------------------ <-- SCF
- 
+
 Final energy =  -3904.594481147     eV
 (energy not corrected for finite basis set)
- 
+
 
 Dispersion corrected final energy* =  -3904.970799651     eV
 
@@ -413,7 +413,7 @@ Dispersion corrected final energy* =  -3904.970799651     eV
 Writing analysis data to acidonalidixicots.castep_bin
 
 Writing model to acidonalidixicots.check
- 
+
 +---------------- MEMORY AND SCRATCH DISK ESTIMATES PER PROCESS --------------+
 |                                                     Memory          Disk    |
 | Model and support data                               97.8 MB       112.1 MB |
@@ -424,8 +424,8 @@ Writing model to acidonalidixicots.check
 |                                                                             |
 | Requirements will fluctuate during execution and may exceed these estimates |
 +-----------------------------------------------------------------------------+
- 
- 
+
+
  *********************************** Forces ***********************************
  *                                                                            *
  *                        Cartesian components (eV/A)                         *
@@ -464,7 +464,7 @@ Writing model to acidonalidixicots.check
  *                                                                            *
  ******************************************************************************
  BFGS: finished iteration     0 with enthalpy= -3.90497080E+003 eV
-  
+
  +-----------+-----------------+-----------------+------------+-----+ <-- BFGS
  | Parameter |      value      |    tolerance    |    units   | OK? | <-- BFGS
  +-----------+-----------------+-----------------+------------+-----+ <-- BFGS
@@ -472,17 +472,17 @@ Writing model to acidonalidixicots.check
  |  |F|max   |   3.254181E-002 |   5.000000E-002 |       eV/A | Yes | <-- BFGS
  |  |dR|max  |   0.000000E+000 |   2.000000E-003 |          A | Yes | <-- BFGS
  +-----------+-----------------+-----------------+------------+-----+ <-- BFGS
-  
+
  BFGS : Geometry optimization completed successfully.
 
 ================================================================================
  BFGS : Final Configuration:
 ================================================================================
- 
+
                            -------------------------------
                                      Cell Contents
                            -------------------------------
- 
+
             xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
             x  Element    Atom        Fractional coordinates of atoms  x
             x            Number           u          v          w      x
@@ -517,11 +517,11 @@ Writing model to acidonalidixicots.check
             x  O            2         0.328426   0.652105   0.480720   x
             x  O            3         0.391568   0.680966   0.511317   x
             xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- 
- 
+
+
  BFGS : Final Enthalpy     = -3.90497080E+003 eV
  BFGS : Final <frequency>  unchanged from initial value
- 
+
  *********************************** Forces ***********************************
  *                                                                            *
  *                        Cartesian components (eV/A)                         *
@@ -559,28 +559,28 @@ Writing model to acidonalidixicots.check
  * O         3     -0.00738              0.01247             -0.00787         *
  *                                                                            *
  ******************************************************************************
- 
+
  Pseudo atomic calculation performed for H 1s1
- 
+
  Converged in 13 iterations to a total energy of -12.4601 eV
- 
- 
+
+
  Pseudo atomic calculation performed for C 2s2 2p2
- 
+
  Converged in 17 iterations to a total energy of -145.7942 eV
- 
- 
+
+
  Pseudo atomic calculation performed for N 2s2 2p3
- 
+
  Converged in 21 iterations to a total energy of -262.6886 eV
- 
- 
+
+
  Pseudo atomic calculation performed for O 2s2 2p4
- 
+
  Converged in 23 iterations to a total energy of -429.2136 eV
- 
+
 Charge spilling parameter for spin component 1 = 1.44%
- 
+
      Atomic Populations (Mulliken)
      -----------------------------
 Species   Ion     s      p      d      f     Total  Charge (e)
@@ -615,7 +615,7 @@ Species   Ion     s      p      d      f     Total  Charge (e)
   O        2     1.81   4.84   0.00   0.00   6.65    -0.65
   O        3     1.83   4.75   0.00   0.00   6.58    -0.58
 ==============================================================
- 
+
             Bond              Population      Length (A)
 ============================================================
          H 12 -- O 2               0.47        1.02394
@@ -736,8 +736,8 @@ Species   Ion     s      p      d      f     Total  Charge (e)
          C 6  -- N 1              -0.05        2.86843
          C 11 -- O 1              -0.02        2.92044
 ============================================================
- 
- 
+
+
      Hirshfeld Analysis
      ------------------
 Species   Ion     Hirshfeld Charge (e)
@@ -772,25 +772,25 @@ Species   Ion     Hirshfeld Charge (e)
   O        2                -0.24
   O        3                -0.32
 ======================================
- 
+
 
 Writing analysis data to acidonalidixicots.castep_bin
 
 Writing model to acidonalidixicots.check
- 
- A BibTeX formatted list of references used in this run has been written to 
+
+ A BibTeX formatted list of references used in this run has been written to
  acidonalidixicots.bib
- 
+
 Initialisation time =      0.66 s
 Calculation time    =    139.94 s
 Finalisation time   =      4.41 s
 Total time          =    145.01 s
 Peak Memory Use     = 419288 kB
-  
-Overall parallel efficiency rating: Satisfactory (68%)                          
-  
+
+Overall parallel efficiency rating: Satisfactory (68%)
+
 Data was distributed by:-
-G-vector (16-way); efficiency rating: Satisfactory (69%)                        
-  
+G-vector (16-way); efficiency rating: Satisfactory (69%)
+
 Parallel notes:
-1) Calculation only took 140.7 s, so efficiency estimates may be inaccurate.    
+1) Calculation only took 140.7 s, so efficiency estimates may be inaccurate.

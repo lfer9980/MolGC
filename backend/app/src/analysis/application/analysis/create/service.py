@@ -22,8 +22,10 @@ class CreateAnalysisService:
         self.task_id: str = ""
         self.channel = settings.application.ws_channel_prefix
         self.storage_path = (
-            Path(__file__).resolve().parents[5] / settings.application.storage_path
-        ) if not os.getenv("STORAGE_PATH") else Path(os.getenv("STORAGE_PATH"))
+            (Path(__file__).resolve().parents[5] / settings.application.storage_path)
+            if not os.getenv("STORAGE_PATH")
+            else Path(os.getenv("STORAGE_PATH"))
+        )
 
     def execute(self, job_data: CreateAnalysisDTO) -> ResponseAnalysisDTO:
         job_id = job_data.id

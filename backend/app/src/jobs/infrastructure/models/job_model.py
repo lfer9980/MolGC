@@ -25,4 +25,6 @@ class JobModelSQL(ElementalUUIDTable, ElementalTimestampTable):
         String(),
     )
 
-    expires_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
+    expires_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), nullable=False
+    )

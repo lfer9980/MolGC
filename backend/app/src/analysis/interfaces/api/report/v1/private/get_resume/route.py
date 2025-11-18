@@ -13,7 +13,7 @@ from app.src.jobs.domain.enums import JobStatusEnum
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from .response import CreateResponse
+from .response import GetResumeResponse
 
 router = APIRouter()
 
@@ -22,7 +22,7 @@ router = APIRouter()
 async def get_report_resume(
     session: AsyncSession = Depends(get_session_dependency),
     payload: Dict[str, Any] = Depends(get_current_user_payload),
-) -> List[CreateResponse]:
+) -> List[GetResumeResponse]:
     # validate if job exists
     job_id = payload["id"]
     job_entity = await ValidateJobService.execute(session, job_id)
@@ -38,4 +38,4 @@ async def get_report_resume(
     service = GetResumeReportService(repository)
     report_resume = await service.execute(job_entity)
 
-    return [CreateResponse(**item.model_dump()) for item in report_resume]
+    return [GetResumeResponse(**item.model_dump()) for item in report_resume]

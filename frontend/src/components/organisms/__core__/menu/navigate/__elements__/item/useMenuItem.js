@@ -1,7 +1,7 @@
 'use client';
 import { useMenuContext } from 'context/__core__';
-/* 
-	Hook for element: 
+/*
+	Hook for element:
 	brief description about what this hook does
 */
 

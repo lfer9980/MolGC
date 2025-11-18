@@ -1,7 +1,6 @@
 'use client';
-
-/* 
-	Hook for control Dashboard page: 
+/*
+	Hook for control Dashboard page:
 */
 
 // #region libraries

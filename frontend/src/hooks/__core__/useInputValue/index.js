@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	for controls input values from different types
 */
 // #region libraries

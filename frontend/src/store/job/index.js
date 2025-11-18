@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	JOB STORE:
 	Saves all info about Job Session on LocalStorage.
 */

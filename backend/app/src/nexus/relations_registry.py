@@ -52,10 +52,7 @@ def register_job_relationships():
 def register_cleanup_relationships():
     """Defines relationships for cleanup Model."""
     CleanupModelSQL.job = relationship(
-        "JobModelSQL",
-        back_populates="cleanup",
-        passive_deletes=True,
-        uselist=False
+        "JobModelSQL", back_populates="cleanup", passive_deletes=True, uselist=False
     )
 
 
@@ -78,7 +75,7 @@ def register_report_relationships():
         cascade="all, delete-orphan",
         passive_deletes=True,
         uselist=False,
-        lazy="selectin"
+        lazy="selectin",
     )
 
     ReportModelSQL.mae_family = relationship(
@@ -87,7 +84,7 @@ def register_report_relationships():
         cascade="all, delete-orphan",
         passive_deletes=True,
         uselist=False,
-        lazy="selectin"
+        lazy="selectin",
     )
 
     ReportModelSQL.structure = relationship(
@@ -96,7 +93,7 @@ def register_report_relationships():
         cascade="all, delete-orphan",
         passive_deletes=True,
         uselist=False,
-        lazy="selectin"
+        lazy="selectin",
     )
 
     ReportModelSQL.mae_variant = relationship(
@@ -104,7 +101,7 @@ def register_report_relationships():
         back_populates="report",
         cascade="all, delete-orphan",
         passive_deletes=True,
-        lazy="selectin"
+        lazy="selectin",
     )
 
     ReportModelSQL.rmsd = relationship(
@@ -112,7 +109,7 @@ def register_report_relationships():
         back_populates="report",
         cascade="all, delete-orphan",
         passive_deletes=True,
-        lazy="selectin"
+        lazy="selectin",
     )
 
     ReportModelSQL.topsis = relationship(
@@ -120,28 +117,37 @@ def register_report_relationships():
         back_populates="report",
         cascade="all, delete-orphan",
         passive_deletes=True,
-        lazy="selectin"
+        lazy="selectin",
     )
 
 
 def register_mae_general_relationships():
     """Defines relationships for MAEGeneral Model."""
     MAEGeneralModelSQL.report = relationship(
-        "ReportModelSQL", back_populates="mae_general", passive_deletes=True, lazy="selectin"
+        "ReportModelSQL",
+        back_populates="mae_general",
+        passive_deletes=True,
+        lazy="selectin",
     )
 
 
 def register_mae_family_relationships():
     """Defines relationships for MAEFamily Model."""
     MAEFamilyModelSQL.report = relationship(
-        "ReportModelSQL", back_populates="mae_family", passive_deletes=True, lazy="selectin"
+        "ReportModelSQL",
+        back_populates="mae_family",
+        passive_deletes=True,
+        lazy="selectin",
     )
 
 
 def register_mae_variant_relationships():
     """Defines relationships for MAEVariant Model."""
     MAEVariantModelSQL.report = relationship(
-        "ReportModelSQL", back_populates="mae_variant", passive_deletes=True, lazy="selectin"
+        "ReportModelSQL",
+        back_populates="mae_variant",
+        passive_deletes=True,
+        lazy="selectin",
     )
 
 
@@ -162,5 +168,8 @@ def register_topsis_relationships():
 def register_structure_relationships():
     """Defines relationships for Topsis Model."""
     StructureModelSQL.report = relationship(
-        "ReportModelSQL", back_populates="structure", passive_deletes=True, lazy="selectin"
+        "ReportModelSQL",
+        back_populates="structure",
+        passive_deletes=True,
+        lazy="selectin",
     )

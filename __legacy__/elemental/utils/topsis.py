@@ -3,31 +3,31 @@ Original Code: Abimael Guzman Pando
 Refactored: Angel Fernandez
 File: TOPSIS_uw.py
 """
+
 import sys
-import pandas as pd
+
 import numpy as np
+import pandas as pd
 
 
 class TopsisUW:
-    """
-        Implementation of TOPSIS (without weights) for minimum variance.
-        Accept as input:
-          - a list of dicts with braces [‘family’, ‘functional’, ‘mean’].
+    """Implementation of TOPSIS (without weights) for minimum variance.
+
+    Accept as input:
+      - a list of dicts with braces [‘family’, ‘functional’, ‘mean’].
     """
 
     def __init__(self, data: list[dict]):
         """
-            :param data: list[dict]. if it's a list, it must have the keys family', 'functional' and 'mean'.
+        :param data: list[dict]. if it's a list, it must have the keys family', 'functional' and 'mean'.
         """
         df = pd.DataFrame.from_records(data)
-        df = (df.pivot_table(
-            index='functional',
-            columns='family',
-            values='mean'
-        ).reset_index())
+        df = df.pivot_table(
+            index="functional", columns="family", values="mean"
+        ).reset_index()
 
         self.df = df
-        self.ids = self.df['functional']
+        self.ids = self.df["functional"]
         self.criteria = self.df.iloc[:, 1:].astype(float)
         self.normalized = None
         self.pis = None
@@ -35,9 +35,9 @@ class TopsisUW:
 
     def __call__(self) -> pd.DataFrame:
         """
-            Executes all steps and returns:
-                - result_df: DataFrame with [ID, D_plus, D_minus, Closeness, Ranking].
-                - normalized_df: Normalized DataFrame (without the ID column).
+        Executes all steps and returns:
+            - result_df: DataFrame with [ID, D_plus, D_minus, Closeness, Ranking].
+            - normalized_df: Normalized DataFrame (without the ID column).
         """
         self._normalize()
         self._compute_ideal_solutions()
@@ -45,40 +45,46 @@ class TopsisUW:
         closeness = self._compute_closeness(d_plus, d_minus)
         ranking = self._rank(closeness)
 
-        metrics_df = pd.DataFrame({
-            'D_noIdeal': d_minus,
-            'D_ideal': d_plus,
-            'Closeness': closeness,
-            'Ranking': ranking
-        }, index=self.df.index)
+        metrics_df = pd.DataFrame(
+            {
+                "D_noIdeal": d_minus,
+                "D_ideal": d_plus,
+                "Closeness": closeness,
+                "Ranking": ranking,
+            },
+            index=self.df.index,
+        )
 
         original_criteria = self.df.iloc[:, 1:]
 
-        result_df = pd.concat([self.ids, original_criteria, metrics_df, ], axis=1)
-        result_df = result_df.sort_values(by='Ranking').reset_index(drop=True)
+        result_df = pd.concat(
+            [
+                self.ids,
+                original_criteria,
+                metrics_df,
+            ],
+            axis=1,
+        )
+        result_df = result_df.sort_values(by="Ranking").reset_index(drop=True)
 
         return result_df
 
     def _normalize(self):
-        """
-            Normalize each criterion column by the Euclidean norm.
-         """
-        norm = np.sqrt((self.criteria ** 2).sum())
+        """Normalize each criterion column by the Euclidean norm."""
+        norm = np.sqrt((self.criteria**2).sum())
         self.normalized = self.criteria / norm
 
     def _compute_ideal_solutions(self):
         """
-             For criteria to be minimized:
-                 PIS = minimum (positive ideal)
-                 NIS = maximum (negative ideal)
+        For criteria to be minimized:
+            PIS = minimum (positive ideal)
+            NIS = maximum (negative ideal)
         """
         self.pis = self.normalized.min()
         self.nis = self.normalized.max()
 
     def _compute_distances(self):
-        """
-            Calculate Euclidean distances to PIS (d_plus) and NIS (d_minus).
-        """
+        """Calculate Euclidean distances to PIS (d_plus) and NIS (d_minus)."""
         d_plus = np.sqrt(((self.normalized - self.pis) ** 2).sum(axis=1))
         d_minus = np.sqrt(((self.normalized - self.nis) ** 2).sum(axis=1))
 
@@ -86,32 +92,40 @@ class TopsisUW:
 
     @staticmethod
     def _compute_closeness(d_plus, d_minus):
-        """
-            C = d_minus / (d_plus + d_minus)
-        """
+        """C = d_minus / (d_plus + d_minus)"""
         return d_minus / (d_plus + d_minus)
 
     @staticmethod
     def _rank(closeness):
-        """
-            Ascending ranking (1 = best proximity).
-        """
+        """Ascending ranking (1 = best proximity)."""
         return pd.Series(closeness).rank(ascending=False).astype(int)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     data_list = [
-        {'family': 'FLUOROQUINOLONES', 'functional': 'Castep/LDA', 'mean': 1.7073608565024543},
-        {'family': 'FLUOROQUINOLONES', 'functional': 'Castep/LDA', 'mean': 1.23},
-        {'family': 'FLUOROQUINOLONES', 'functional': 'Castep/LDA+OBS', 'mean': 1.7575882788340238},
-        {'family': 'FLUOROQUINOLONES', 'functional': 'Castep/PBE', 'mean': 0.6342446974426821},
-        {'family': 'OTROS', 'functional': 'Castep/LDA', 'mean': 0.6342446974426821},
-        {'family': 'OTROS', 'functional': 'Castep/LDA+OBS', 'mean': 0.7575882788340238},
-        {'family': 'OTROS', 'functional': 'Castep/PBE', 'mean': 0.6342446974426821},
+        {
+            "family": "FLUOROQUINOLONES",
+            "functional": "Castep/LDA",
+            "mean": 1.7073608565024543,
+        },
+        {"family": "FLUOROQUINOLONES", "functional": "Castep/LDA", "mean": 1.23},
+        {
+            "family": "FLUOROQUINOLONES",
+            "functional": "Castep/LDA+OBS",
+            "mean": 1.7575882788340238,
+        },
+        {
+            "family": "FLUOROQUINOLONES",
+            "functional": "Castep/PBE",
+            "mean": 0.6342446974426821,
+        },
+        {"family": "OTROS", "functional": "Castep/LDA", "mean": 0.6342446974426821},
+        {"family": "OTROS", "functional": "Castep/LDA+OBS", "mean": 0.7575882788340238},
+        {"family": "OTROS", "functional": "Castep/PBE", "mean": 0.6342446974426821},
     ]
 
     topsis = TopsisUW(data_list)
     result = topsis()
 
-    sys.stdout.write('\n=== TOPSIS results === \n')
+    sys.stdout.write("\n=== TOPSIS results === \n")
     sys.stdout.write(result.to_string(index=False))

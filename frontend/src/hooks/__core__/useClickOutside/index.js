@@ -1,4 +1,4 @@
-/* 
+/*
 	hook for handling outside click and listens to escape event for close menu
 */
 // #region libraries

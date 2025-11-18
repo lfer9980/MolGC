@@ -1,7 +1,7 @@
 import { MODELS_TABLES_TOPSIS } from "lib/models/tables/TOPSIS";
 
 /*
-STRUCTURE: 
+STRUCTURE:
 export const COLUMNS_TABLE_EXAMPLE = {
 	key: '',
 	label: 'label',

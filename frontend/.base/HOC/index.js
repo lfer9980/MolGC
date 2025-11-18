@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	this is the way of usage of a Wrapper, here you will find the WrappedComponent
 	NOTE: in this case, you export as default the Wrapper and also Wrapped, you need to be careful cause the default export tends to generate some issues.
 */

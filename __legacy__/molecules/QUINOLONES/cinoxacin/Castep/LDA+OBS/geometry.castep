@@ -43,13 +43,13 @@
  |              your use of CASTEP                 |
  |                                                 |
  +-------------------------------------------------+
- 
- 
+
+
  This version was compiled for x86_64-rhel5-intel12.0 on Nov 12 2013
  Code version: 6201
- 
+
 License checkout of MS_castep successful
- 
+
  +---------------------------------------------------+
  |                                                   |
  |  Using DFT-SEDC - the DFT Semi-Empirical          |
@@ -64,27 +64,27 @@ License checkout of MS_castep successful
  | Erik R. McNellis, Joerg Meyer, and Karsten Reuter |
  | Phys. Rev. B 80, 205414 (2009)                    |
  +---------------------------------------------------+
- 
- 
+
+
  Pseudo atomic calculation performed for H 1s1
- 
+
  Converged in 15 iterations to a total energy of -12.1080 eV
- 
- 
+
+
  Pseudo atomic calculation performed for C 2s2 2p2
- 
+
  Converged in 15 iterations to a total energy of -145.3549 eV
- 
- 
+
+
  Pseudo atomic calculation performed for N 2s2 2p3
- 
+
  Converged in 22 iterations to a total energy of -262.0596 eV
- 
- 
+
+
  Pseudo atomic calculation performed for O 2s2 2p4
- 
+
  Converged in 24 iterations to a total energy of -428.3332 eV
- 
+
  Calculation parallelised over 16 processes.
  Data is distributed by G-vector(16-way)
 
@@ -92,7 +92,7 @@ License checkout of MS_castep successful
  CASTEP calculation from Materials Studio
 
  ***************************** General Parameters ******************************
-  
+
  output verbosity                               : normal  (1)
  write checkpoint data to                       : cinoxacino.check
  type of calculation                            : geometry optimization
@@ -106,7 +106,7 @@ License checkout of MS_castep successful
  write final potential to formatted file        : off
  write final density to formatted file          : off
  write BibTeX reference list                    : on
-  
+
  output         length unit                     : A
  output           mass unit                     : amu
  output           time unit                     : ps
@@ -123,26 +123,26 @@ License checkout of MS_castep successful
  output         dipole unit                     : D
  output         efield unit                     : eV/A/e
  output        entropy unit                     : J/mol/K
-  
+
  wavefunctions paging                           : none
  random number generator seed                   : randomised (191323395)
  data distribution                              : optimal for this architecture
  optimization strategy                          : balance speed and memory
 
  *********************** Exchange-Correlation Parameters ***********************
-  
+
  using functional                               : Local Density Approximation
  Divergence correction                          : off
  DFT+D: Semi-empirical dispersion correction    : on
  SEDC with                                      : OBS correction scheme
 
  ************************* Pseudopotential Parameters **************************
-  
+
  pseudopotential representation                 : reciprocal space
  <beta|phi> representation                      : reciprocal space
 
  **************************** Basis Set Parameters *****************************
-  
+
  plane wave basis set cut-off                   :   300.0000   eV
  size of standard grid                          :     1.5000
  size of   fine   gmax                          :    13.3104   1/A
@@ -150,21 +150,21 @@ License checkout of MS_castep successful
  finite basis set correction                    : none
 
  **************************** Electronic Parameters ****************************
-  
- number of  electrons                           :  98.00    
- net charge of system                           :  0.000    
- net spin   of system                           :  0.000    
- number of  up  spins                           :  49.00    
- number of down spins                           :  49.00    
+
+ number of  electrons                           :  98.00
+ net charge of system                           :  0.000
+ net spin   of system                           :  0.000
+ number of  up  spins                           :  49.00
+ number of down spins                           :  49.00
  treating system as non-spin-polarized
  number of bands                                :         49
 
  ********************* Electronic Minimization Parameters **********************
-  
+
  Method: Treating system as non-metallic,
          and number of  SD  steps               :          1
          and number of  CG  steps               :          4
-  
+
  total energy / atom convergence tol.           : 0.2000E-05   eV
  eigen-energy convergence tolerance             : 0.1000E-05   eV
  max force / atom convergence tol.              : ignored
@@ -173,19 +173,19 @@ License checkout of MS_castep successful
  periodic dipole correction                     : NONE
 
  ************************** Density Mixing Parameters **************************
-  
+
  density-mixing scheme                          : Pulay
  max. length of mixing history                  :         20
- charge density mixing amplitude                : 0.5000    
+ charge density mixing amplitude                : 0.5000
  cut-off energy for mixing                      :  300.0       eV
  charge density mixing g-vector                 :  1.500       1/A
 
  *********************** Population Analysis Parameters ************************
-  
+
  Population analysis with cutoff                :  3.000       A
 
  ********************** Geometry Optimization Parameters ***********************
-  
+
  optimization method                            : BFGS
  variable cell method                           : fixed basis quality
  max. number of steps                           :        100
@@ -201,8 +201,8 @@ License checkout of MS_castep successful
  backup results every                           :          5   steps
 
  *******************************************************************************
-  
- 
+
+
                            -------------------------------
                                       Unit Cell
                            -------------------------------
@@ -210,122 +210,122 @@ License checkout of MS_castep successful
   30.0000000   0.0000000   0.0000000        0.2094395   0.0000000   0.0000000
    0.0000000  30.0000000   0.0000000        0.0000000   0.2094395   0.0000000
    0.0000000   0.0000000  30.0000000        0.0000000   0.0000000   0.2094395
- 
+
                        Lattice parameters(A)       Cell Angles
                     a =   30.000000          alpha =   90.000000
                     b =   30.000000          beta  =   90.000000
                     c =   30.000000          gamma =   90.000000
- 
+
                        Current cell volume =27000.000075       A**3
- 
+
                            -------------------------------
                                      Cell Contents
                            -------------------------------
                          Total number of ions in cell =   29
                       Total number of species in cell =    4
                         Max number of any one species =   12
- 
+
             xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
             x  Element    Atom        Fractional coordinates of atoms  x
             x            Number           u          v          w      x
             x----------------------------------------------------------x
-            x  H            1         0.543452   0.566620   0.434633   x 
-            x  H            2         0.518243   0.401736   0.449016   x 
-            x  H            3         0.488274   0.596327   0.409955   x 
-            x  H            4         0.429193   0.597767   0.416052   x 
-            x  H            5         0.659869   0.470323   0.476436   x 
-            x  H            6         0.659906   0.464298   0.415625   x 
-            x  H            7         0.435511   0.601924   0.497508   x 
-            x  H            8         0.495302   0.599224   0.494639   x 
-            x  H            9         0.466069   0.646326   0.472812   x 
-            x  H           10         0.321896   0.433863   0.479034   x 
-            x  C            1         0.494358   0.512605   0.438436   x 
-            x  C            2         0.488141   0.466337   0.442221   x 
-            x  C            3         0.572204   0.501656   0.441353   x 
-            x  C            4         0.537674   0.530860   0.437790   x 
-            x  C            5         0.566050   0.455798   0.445588   x 
-            x  C            6         0.524651   0.437477   0.445917   x 
-            x  C            7         0.460434   0.587564   0.432234   x 
-            x  C            8         0.443645   0.447471   0.442198   x 
-            x  C            9         0.409085   0.481270   0.442167   x 
-            x  C           10         0.639464   0.469553   0.445761   x 
-            x  C           11         0.464875   0.609844   0.476957   x 
-            x  C           12         0.361562   0.468424   0.444839   x 
-            x  N            1         0.457548   0.539569   0.434993   x 
-            x  N            2         0.415886   0.524176   0.437791   x 
-            x  O            1         0.616421   0.511194   0.441524   x 
-            x  O            2         0.606529   0.435332   0.449146   x 
-            x  O            3         0.435399   0.406966   0.441590   x 
-            x  O            4         0.353753   0.441935   0.479952   x 
-            x  O            5         0.333126   0.480598   0.418758   x 
+            x  H            1         0.543452   0.566620   0.434633   x
+            x  H            2         0.518243   0.401736   0.449016   x
+            x  H            3         0.488274   0.596327   0.409955   x
+            x  H            4         0.429193   0.597767   0.416052   x
+            x  H            5         0.659869   0.470323   0.476436   x
+            x  H            6         0.659906   0.464298   0.415625   x
+            x  H            7         0.435511   0.601924   0.497508   x
+            x  H            8         0.495302   0.599224   0.494639   x
+            x  H            9         0.466069   0.646326   0.472812   x
+            x  H           10         0.321896   0.433863   0.479034   x
+            x  C            1         0.494358   0.512605   0.438436   x
+            x  C            2         0.488141   0.466337   0.442221   x
+            x  C            3         0.572204   0.501656   0.441353   x
+            x  C            4         0.537674   0.530860   0.437790   x
+            x  C            5         0.566050   0.455798   0.445588   x
+            x  C            6         0.524651   0.437477   0.445917   x
+            x  C            7         0.460434   0.587564   0.432234   x
+            x  C            8         0.443645   0.447471   0.442198   x
+            x  C            9         0.409085   0.481270   0.442167   x
+            x  C           10         0.639464   0.469553   0.445761   x
+            x  C           11         0.464875   0.609844   0.476957   x
+            x  C           12         0.361562   0.468424   0.444839   x
+            x  N            1         0.457548   0.539569   0.434993   x
+            x  N            2         0.415886   0.524176   0.437791   x
+            x  O            1         0.616421   0.511194   0.441524   x
+            x  O            2         0.606529   0.435332   0.449146   x
+            x  O            3         0.435399   0.406966   0.441590   x
+            x  O            4         0.353753   0.441935   0.479952   x
+            x  O            5         0.333126   0.480598   0.418758   x
             xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- 
- 
+
+
                          No user defined ionic velocities
- 
+
                            -------------------------------
                                    Details of Species
                            -------------------------------
- 
+
                                Mass of species in AMU
                                     H    1.0080000
                                     C   12.0109997
                                     N   14.0070000
                                     O   15.9989996
- 
+
                           Electric Quadrupole Moment (Barn)
                                     H    0.0028600 Isotope  2
                                     C    0.0332700 Isotope 11
                                     N    0.0204400 Isotope 14
                                     O   -0.0255800 Isotope 17
- 
+
                           Files used for pseudopotentials:
                                     H H_00.usp
                                     C C_00.usp
                                     N N_00.usp
                                     O O_00.usp
- 
+
                            -------------------------------
                               k-Points For BZ Sampling
                            -------------------------------
                        MP grid size for SCF calculation is  1  1  1
                          Number of kpoints used =           1
- 
+
              +++++++++++++++++++++++++++++++++++++++++++++++++++++++
              +  Number       Fractional coordinates        Weight  +
              +-----------------------------------------------------+
              +     1   0.000000   0.000000   0.000000   1.0000000  +
              +++++++++++++++++++++++++++++++++++++++++++++++++++++++
- 
+
                            -------------------------------
                                Symmetry and Constraints
                            -------------------------------
- 
+
                       Maximum deviation from symmetry =  0.00000         ANG
- 
+
          There are no symmetry operations specified or generated for this cell
          There are no ionic constraints specified or generated for this cell
                       Point group of crystal =     1: C1, 1, 1
- 
- 
+
+
                          Centre of mass is NOT constrained
- 
+
                          Number of cell constraints= 6
                          Cell constraints are:  0 0 0 0 0 0
- 
+
                          External pressure/stress (GPa)
                           0.00000   0.00000   0.00000
                                     0.00000   0.00000
                                               0.00000
- 
+
                                 --------------------
                                   DFT-D parameters
                                 --------------------
- 
-                          Dispersion-correction scheme : OBS                                                                             
+
+                          Dispersion-correction scheme : OBS
                         Parameter lambda :   0.000750 (default)
                         Parameter n :   8.000000 (default)
- 
+
         xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
         x              Atomic DFT-D parameters                             x
         x  Species      I             Rvdw         alpha                   x
@@ -336,8 +336,8 @@ License checkout of MS_castep successful
         x  N            14.5341       0.7500       1.1000   (default)      x
         x  O            13.6181       0.7300       0.8020   (default)      x
         xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- 
-  
+
+
 +---------------- MEMORY AND SCRATCH DISK ESTIMATES PER PROCESS --------------+
 |                                                     Memory          Disk    |
 | Model and support data                              102.3 MB       112.1 MB |
@@ -401,10 +401,10 @@ Initial  -2.52572206E+003                                          1.99  <-- SCF
      47  -4.74210610E+003                    8.46952963E-007     142.42  <-- SCF
      48  -4.74210613E+003                    8.10805431E-007     145.06  <-- SCF
 ------------------------------------------------------------------------ <-- SCF
- 
+
 Final energy =  -4742.106128021     eV
 (energy not corrected for finite basis set)
- 
+
 
 Dispersion corrected final energy* =  -4743.628263084     eV
 
@@ -414,7 +414,7 @@ Dispersion corrected final energy* =  -4743.628263084     eV
 Writing analysis data to cinoxacino.castep_bin
 
 Writing model to cinoxacino.check
- 
+
 +---------------- MEMORY AND SCRATCH DISK ESTIMATES PER PROCESS --------------+
 |                                                     Memory          Disk    |
 | Model and support data                              102.3 MB       112.1 MB |
@@ -425,8 +425,8 @@ Writing model to cinoxacino.check
 |                                                                             |
 | Requirements will fluctuate during execution and may exceed these estimates |
 +-----------------------------------------------------------------------------+
- 
- 
+
+
  *********************************** Forces ***********************************
  *                                                                            *
  *                        Cartesian components (eV/A)                         *
@@ -465,7 +465,7 @@ Writing model to cinoxacino.check
  *                                                                            *
  ******************************************************************************
  BFGS: finished iteration     0 with enthalpy= -4.74362826E+003 eV
-  
+
  +-----------+-----------------+-----------------+------------+-----+ <-- BFGS
  | Parameter |      value      |    tolerance    |    units   | OK? | <-- BFGS
  +-----------+-----------------+-----------------+------------+-----+ <-- BFGS
@@ -473,27 +473,27 @@ Writing model to cinoxacino.check
  |  |F|max   |   1.567799E-001 |   5.000000E-002 |       eV/A | No  | <-- BFGS
  |  |dR|max  |   0.000000E+000 |   2.000000E-003 |          A | No  | <-- BFGS
  +-----------+-----------------+-----------------+------------+-----+ <-- BFGS
-  
+
 
 ================================================================================
  Starting BFGS iteration          1 ...
 ================================================================================
-  
+
  +------------+-------------+-------------+-----------------+ <-- min BFGS
  |    Step    |   lambda    |   F.delta   |    enthalpy     | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
  |  previous  |    0.000000 |    0.000051 |    -4743.628263 | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
-  
+
 
 --------------------------------------------------------------------------------
  BFGS: starting iteration         1 with trial guess (lambda=  1.000000)
 --------------------------------------------------------------------------------
- 
+
                            -------------------------------
                                      Cell Contents
                            -------------------------------
- 
+
             xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
             x  Element    Atom        Fractional coordinates of atoms  x
             x            Number           u          v          w      x
@@ -528,8 +528,8 @@ Writing model to cinoxacino.check
             x  O            4         0.353758   0.441936   0.479959   x
             x  O            5         0.333123   0.480591   0.418764   x
             xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- 
- 
+
+
 ------------------------------------------------------------------------ <-- SCF
 SCF loop      Energy                           Energy gain       Timer   <-- SCF
                                                per atom          (sec)   <-- SCF
@@ -542,16 +542,16 @@ Initial  -4.74220832E+003                                        150.83  <-- SCF
       5  -4.74210618E+003                    2.36324798E-007     163.83  <-- SCF
       6  -4.74210619E+003                    2.99754899E-007     166.44  <-- SCF
 ------------------------------------------------------------------------ <-- SCF
- 
+
 Final energy =  -4742.106190476     eV
 (energy not corrected for finite basis set)
- 
+
 
 Dispersion corrected final energy* =  -4743.629536606     eV
 
  * not corrected for finite basis set
 
- 
+
  *********************************** Forces ***********************************
  *                                                                            *
  *                        Cartesian components (eV/A)                         *
@@ -589,23 +589,23 @@ Dispersion corrected final energy* =  -4743.629536606     eV
  * O         5     -0.01794             -0.01462              0.00459         *
  *                                                                            *
  ******************************************************************************
-  
+
  +------------+-------------+-------------+-----------------+ <-- min BFGS
  |    Step    |   lambda    |   F.delta   |    enthalpy     | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
  |  previous  |    0.000000 |    0.000051 |    -4743.628263 | <-- min BFGS
  | trial step |    1.000000 |    0.000040 |    -4743.629537 | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
-  
+
 
 --------------------------------------------------------------------------------
  BFGS: improving iteration         1 with line minimization (lambda=  4.639434)
 --------------------------------------------------------------------------------
- 
+
                            -------------------------------
                                      Cell Contents
                            -------------------------------
- 
+
             xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
             x  Element    Atom        Fractional coordinates of atoms  x
             x            Number           u          v          w      x
@@ -640,8 +640,8 @@ Dispersion corrected final energy* =  -4743.629536606     eV
             x  O            4         0.353775   0.441939   0.479983   x
             x  O            5         0.333111   0.480565   0.418787   x
             xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- 
- 
+
+
 ------------------------------------------------------------------------ <-- SCF
 SCF loop      Energy                           Energy gain       Timer   <-- SCF
                                                per atom          (sec)   <-- SCF
@@ -655,16 +655,16 @@ Initial  -4.74247344E+003                                        171.83  <-- SCF
       6  -4.74210370E+003                    1.91709188E-007     188.50  <-- SCF
       7  -4.74210371E+003                    4.67453775E-008     191.12  <-- SCF
 ------------------------------------------------------------------------ <-- SCF
- 
+
 Final energy =  -4742.103705357     eV
 (energy not corrected for finite basis set)
- 
+
 
 Dispersion corrected final energy* =  -4743.631435446     eV
 
  * not corrected for finite basis set
 
- 
+
  *********************************** Forces ***********************************
  *                                                                            *
  *                        Cartesian components (eV/A)                         *
@@ -702,7 +702,7 @@ Dispersion corrected final energy* =  -4743.631435446     eV
  * O         5     -0.05195              0.00557             -0.04378         *
  *                                                                            *
  ******************************************************************************
-  
+
  +------------+-------------+-------------+-----------------+ <-- min BFGS
  |    Step    |   lambda    |   F.delta   |    enthalpy     | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
@@ -710,9 +710,9 @@ Dispersion corrected final energy* =  -4743.631435446     eV
  | trial step |    1.000000 |    0.000040 |    -4743.629537 | <-- min BFGS
  |  line step |    4.639434 | -7.929E-007 |    -4743.631435 | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
-  
+
  BFGS: finished iteration     1 with enthalpy= -4.74363144E+003 eV
-  
+
  +-----------+-----------------+-----------------+------------+-----+ <-- BFGS
  | Parameter |      value      |    tolerance    |    units   | OK? | <-- BFGS
  +-----------+-----------------+-----------------+------------+-----+ <-- BFGS
@@ -720,27 +720,27 @@ Dispersion corrected final energy* =  -4743.631435446     eV
  |  |F|max   |   1.905574E-001 |   5.000000E-002 |       eV/A | No  | <-- BFGS
  |  |dR|max  |   7.864074E-003 |   2.000000E-003 |          A | No  | <-- BFGS
  +-----------+-----------------+-----------------+------------+-----+ <-- BFGS
-  
+
 
 ================================================================================
  Starting BFGS iteration          2 ...
 ================================================================================
-  
+
  +------------+-------------+-------------+-----------------+ <-- min BFGS
  |    Step    |   lambda    |   F.delta   |    enthalpy     | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
  |  previous  |    0.000000 |    0.000076 |    -4743.631435 | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
-  
+
 
 --------------------------------------------------------------------------------
  BFGS: starting iteration         2 with trial guess (lambda=  1.000000)
 --------------------------------------------------------------------------------
- 
+
                            -------------------------------
                                      Cell Contents
                            -------------------------------
- 
+
             xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
             x  Element    Atom        Fractional coordinates of atoms  x
             x            Number           u          v          w      x
@@ -775,8 +775,8 @@ Dispersion corrected final energy* =  -4743.631435446     eV
             x  O            4         0.353809   0.441952   0.479986   x
             x  O            5         0.333088   0.480557   0.418780   x
             xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- 
- 
+
+
 ------------------------------------------------------------------------ <-- SCF
 SCF loop      Energy                           Energy gain       Timer   <-- SCF
                                                per atom          (sec)   <-- SCF
@@ -789,16 +789,16 @@ Initial  -4.74226745E+003                                        196.51  <-- SCF
       5  -4.74210346E+003                    5.12583239E-007     209.57  <-- SCF
       6  -4.74210348E+003                    7.48563850E-007     212.18  <-- SCF
 ------------------------------------------------------------------------ <-- SCF
- 
+
 Final energy =  -4742.103482860     eV
 (energy not corrected for finite basis set)
- 
+
 
 Dispersion corrected final energy* =  -4743.633000433     eV
 
  * not corrected for finite basis set
 
- 
+
  *********************************** Forces ***********************************
  *                                                                            *
  *                        Cartesian components (eV/A)                         *
@@ -836,23 +836,23 @@ Dispersion corrected final energy* =  -4743.633000433     eV
  * O         5      0.02255             -0.02457              0.01923         *
  *                                                                            *
  ******************************************************************************
-  
+
  +------------+-------------+-------------+-----------------+ <-- min BFGS
  |    Step    |   lambda    |   F.delta   |    enthalpy     | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
  |  previous  |    0.000000 |    0.000076 |    -4743.631435 | <-- min BFGS
  | trial step |    1.000000 |    0.000041 |    -4743.633000 | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
-  
+
 
 --------------------------------------------------------------------------------
  BFGS: improving iteration         2 with line minimization (lambda=  2.153296)
 --------------------------------------------------------------------------------
- 
+
                            -------------------------------
                                      Cell Contents
                            -------------------------------
- 
+
             xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
             x  Element    Atom        Fractional coordinates of atoms  x
             x            Number           u          v          w      x
@@ -887,8 +887,8 @@ Dispersion corrected final energy* =  -4743.633000433     eV
             x  O            4         0.353849   0.441968   0.479989   x
             x  O            5         0.333062   0.480548   0.418772   x
             xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- 
- 
+
+
 ------------------------------------------------------------------------ <-- SCF
 SCF loop      Energy                           Energy gain       Timer   <-- SCF
                                                per atom          (sec)   <-- SCF
@@ -901,16 +901,16 @@ Initial  -4.74229787E+003                                        217.56  <-- SCF
       5  -4.74210199E+003                    1.38953738E-006     230.82  <-- SCF
       6  -4.74210201E+003                    5.48991271E-007     233.43  <-- SCF
 ------------------------------------------------------------------------ <-- SCF
- 
+
 Final energy =  -4742.102009879     eV
 (energy not corrected for finite basis set)
- 
+
 
 Dispersion corrected final energy* =  -4743.633587929     eV
 
  * not corrected for finite basis set
 
- 
+
  *********************************** Forces ***********************************
  *                                                                            *
  *                        Cartesian components (eV/A)                         *
@@ -948,7 +948,7 @@ Dispersion corrected final energy* =  -4743.633587929     eV
  * O         5      0.11104             -0.06026              0.09416         *
  *                                                                            *
  ******************************************************************************
-  
+
  +------------+-------------+-------------+-----------------+ <-- min BFGS
  |    Step    |   lambda    |   F.delta   |    enthalpy     | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
@@ -956,9 +956,9 @@ Dispersion corrected final energy* =  -4743.633587929     eV
  | trial step |    1.000000 |    0.000041 |    -4743.633000 | <-- min BFGS
  |  line step |    2.153296 | -1.302E-006 |    -4743.633588 | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
-  
+
  BFGS: finished iteration     2 with enthalpy= -4.74363359E+003 eV
-  
+
  +-----------+-----------------+-----------------+------------+-----+ <-- BFGS
  | Parameter |      value      |    tolerance    |    units   | OK? | <-- BFGS
  +-----------+-----------------+-----------------+------------+-----+ <-- BFGS
@@ -966,27 +966,27 @@ Dispersion corrected final energy* =  -4743.633587929     eV
  |  |F|max   |   1.598602E-001 |   5.000000E-002 |       eV/A | No  | <-- BFGS
  |  |dR|max  |   7.350069E-003 |   2.000000E-003 |          A | No  | <-- BFGS
  +-----------+-----------------+-----------------+------------+-----+ <-- BFGS
-  
+
 
 ================================================================================
  Starting BFGS iteration          3 ...
 ================================================================================
-  
+
  +------------+-------------+-------------+-----------------+ <-- min BFGS
  |    Step    |   lambda    |   F.delta   |    enthalpy     | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
  |  previous  |    0.000000 |    0.000065 |    -4743.633588 | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
-  
+
 
 --------------------------------------------------------------------------------
  BFGS: starting iteration         3 with trial guess (lambda=  1.000000)
 --------------------------------------------------------------------------------
- 
+
                            -------------------------------
                                      Cell Contents
                            -------------------------------
- 
+
             xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
             x  Element    Atom        Fractional coordinates of atoms  x
             x            Number           u          v          w      x
@@ -1021,8 +1021,8 @@ Dispersion corrected final energy* =  -4743.633587929     eV
             x  O            4         0.353882   0.441973   0.479995   x
             x  O            5         0.333082   0.480519   0.418800   x
             xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- 
- 
+
+
 ------------------------------------------------------------------------ <-- SCF
 SCF loop      Energy                           Energy gain       Timer   <-- SCF
                                                per atom          (sec)   <-- SCF
@@ -1036,16 +1036,16 @@ Initial  -4.74217433E+003                                        238.80  <-- SCF
       6  -4.74210166E+003                    4.13727689E-007     254.58  <-- SCF
       7  -4.74210166E+003                    6.62673372E-008     257.19  <-- SCF
 ------------------------------------------------------------------------ <-- SCF
- 
+
 Final energy =  -4742.101662630     eV
 (energy not corrected for finite basis set)
- 
+
 
 Dispersion corrected final energy* =  -4743.634785953     eV
 
  * not corrected for finite basis set
 
- 
+
  *********************************** Forces ***********************************
  *                                                                            *
  *                        Cartesian components (eV/A)                         *
@@ -1083,23 +1083,23 @@ Dispersion corrected final energy* =  -4743.634785953     eV
  * O         5     -0.00788             -0.00620             -0.01311         *
  *                                                                            *
  ******************************************************************************
-  
+
  +------------+-------------+-------------+-----------------+ <-- min BFGS
  |    Step    |   lambda    |   F.delta   |    enthalpy     | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
  |  previous  |    0.000000 |    0.000065 |    -4743.633588 | <-- min BFGS
  | trial step |    1.000000 |    0.000026 |    -4743.634786 | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
-  
+
 
 --------------------------------------------------------------------------------
  BFGS: improving iteration         3 with line minimization (lambda=  1.655258)
 --------------------------------------------------------------------------------
- 
+
                            -------------------------------
                                      Cell Contents
                            -------------------------------
- 
+
             xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
             x  Element    Atom        Fractional coordinates of atoms  x
             x            Number           u          v          w      x
@@ -1134,8 +1134,8 @@ Dispersion corrected final energy* =  -4743.634785953     eV
             x  O            4         0.353904   0.441976   0.479998   x
             x  O            5         0.333095   0.480501   0.418818   x
             xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- 
- 
+
+
 ------------------------------------------------------------------------ <-- SCF
 SCF loop      Energy                           Energy gain       Timer   <-- SCF
                                                per atom          (sec)   <-- SCF
@@ -1148,16 +1148,16 @@ Initial  -4.74214574E+003                                        262.57  <-- SCF
       5  -4.74210096E+003                    1.56441480E-006     275.63  <-- SCF
       6  -4.74210096E+003                    1.46595832E-007     278.24  <-- SCF
 ------------------------------------------------------------------------ <-- SCF
- 
+
 Final energy =  -4742.100959961     eV
 (energy not corrected for finite basis set)
- 
+
 
 Dispersion corrected final energy* =  -4743.635093563     eV
 
  * not corrected for finite basis set
 
- 
+
  *********************************** Forces ***********************************
  *                                                                            *
  *                        Cartesian components (eV/A)                         *
@@ -1195,7 +1195,7 @@ Dispersion corrected final energy* =  -4743.635093563     eV
  * O         5     -0.08791              0.03025             -0.08494         *
  *                                                                            *
  ******************************************************************************
-  
+
  +------------+-------------+-------------+-----------------+ <-- min BFGS
  |    Step    |   lambda    |   F.delta   |    enthalpy     | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
@@ -1203,9 +1203,9 @@ Dispersion corrected final energy* =  -4743.635093563     eV
  | trial step |    1.000000 |    0.000026 |    -4743.634786 | <-- min BFGS
  |  line step |    1.655258 |  6.142E-007 |    -4743.635094 | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
-  
+
  BFGS: finished iteration     3 with enthalpy= -4.74363509E+003 eV
-  
+
  +-----------+-----------------+-----------------+------------+-----+ <-- BFGS
  | Parameter |      value      |    tolerance    |    units   | OK? | <-- BFGS
  +-----------+-----------------+-----------------+------------+-----+ <-- BFGS
@@ -1213,27 +1213,27 @@ Dispersion corrected final energy* =  -4743.635093563     eV
  |  |F|max   |   1.503174E-001 |   5.000000E-002 |       eV/A | No  | <-- BFGS
  |  |dR|max  |   5.936904E-003 |   2.000000E-003 |          A | No  | <-- BFGS
  +-----------+-----------------+-----------------+------------+-----+ <-- BFGS
-  
+
 
 ================================================================================
  Starting BFGS iteration          4 ...
 ================================================================================
-  
+
  +------------+-------------+-------------+-----------------+ <-- min BFGS
  |    Step    |   lambda    |   F.delta   |    enthalpy     | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
  |  previous  |    0.000000 |    0.000050 |    -4743.635094 | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
-  
+
 
 --------------------------------------------------------------------------------
  BFGS: starting iteration         4 with trial guess (lambda=  1.000000)
 --------------------------------------------------------------------------------
- 
+
                            -------------------------------
                                      Cell Contents
                            -------------------------------
- 
+
             xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
             x  Element    Atom        Fractional coordinates of atoms  x
             x            Number           u          v          w      x
@@ -1268,8 +1268,8 @@ Dispersion corrected final energy* =  -4743.635093563     eV
             x  O            4         0.353921   0.441974   0.480002   x
             x  O            5         0.333078   0.480490   0.418809   x
             xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- 
- 
+
+
 ------------------------------------------------------------------------ <-- SCF
 SCF loop      Energy                           Energy gain       Timer   <-- SCF
                                                per atom          (sec)   <-- SCF
@@ -1283,16 +1283,16 @@ Initial  -4.74211672E+003                                        283.62  <-- SCF
       6  -4.74210071E+003                    2.17460437E-007     299.31  <-- SCF
       7  -4.74210071E+003                    5.66695168E-009     301.92  <-- SCF
 ------------------------------------------------------------------------ <-- SCF
- 
+
 Final energy =  -4742.100707373     eV
 (energy not corrected for finite basis set)
- 
+
 
 Dispersion corrected final energy* =  -4743.636202803     eV
 
  * not corrected for finite basis set
 
- 
+
  *********************************** Forces ***********************************
  *                                                                            *
  *                        Cartesian components (eV/A)                         *
@@ -1330,23 +1330,23 @@ Dispersion corrected final energy* =  -4743.636202803     eV
  * O         5     -0.01803              0.00796             -0.02440         *
  *                                                                            *
  ******************************************************************************
-  
+
  +------------+-------------+-------------+-----------------+ <-- min BFGS
  |    Step    |   lambda    |   F.delta   |    enthalpy     | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
  |  previous  |    0.000000 |    0.000050 |    -4743.635094 | <-- min BFGS
  | trial step |    1.000000 |    0.000030 |    -4743.636203 | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
-  
+
 
 --------------------------------------------------------------------------------
  BFGS: improving iteration         4 with line minimization (lambda=  2.424392)
 --------------------------------------------------------------------------------
- 
+
                            -------------------------------
                                      Cell Contents
                            -------------------------------
- 
+
             xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
             x  Element    Atom        Fractional coordinates of atoms  x
             x            Number           u          v          w      x
@@ -1381,8 +1381,8 @@ Dispersion corrected final energy* =  -4743.636202803     eV
             x  O            4         0.353946   0.441970   0.480007   x
             x  O            5         0.333053   0.480474   0.418795   x
             xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- 
- 
+
+
 ------------------------------------------------------------------------ <-- SCF
 SCF loop      Energy                           Energy gain       Timer   <-- SCF
                                                per atom          (sec)   <-- SCF
@@ -1396,16 +1396,16 @@ Initial  -4.74212722E+003                                        307.29  <-- SCF
       6  -4.74209933E+003                    3.19084844E-007     323.19  <-- SCF
       7  -4.74209933E+003                   -9.09458085E-009     325.80  <-- SCF
 ------------------------------------------------------------------------ <-- SCF
- 
+
 Final energy =  -4742.099328459     eV
 (energy not corrected for finite basis set)
- 
+
 
 Dispersion corrected final energy* =  -4743.636750353     eV
 
  * not corrected for finite basis set
 
- 
+
  *********************************** Forces ***********************************
  *                                                                            *
  *                        Cartesian components (eV/A)                         *
@@ -1443,7 +1443,7 @@ Dispersion corrected final energy* =  -4743.636750353     eV
  * O         5      0.08207             -0.02351              0.06212         *
  *                                                                            *
  ******************************************************************************
-  
+
  +------------+-------------+-------------+-----------------+ <-- min BFGS
  |    Step    |   lambda    |   F.delta   |    enthalpy     | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
@@ -1451,9 +1451,9 @@ Dispersion corrected final energy* =  -4743.636750353     eV
  | trial step |    1.000000 |    0.000030 |    -4743.636203 | <-- min BFGS
  |  line step |    2.424392 |  2.903E-007 |    -4743.636750 | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
-  
+
  BFGS: finished iteration     4 with enthalpy= -4.74363675E+003 eV
-  
+
  +-----------+-----------------+-----------------+------------+-----+ <-- BFGS
  | Parameter |      value      |    tolerance    |    units   | OK? | <-- BFGS
  +-----------+-----------------+-----------------+------------+-----+ <-- BFGS
@@ -1461,7 +1461,7 @@ Dispersion corrected final energy* =  -4743.636750353     eV
  |  |F|max   |   1.433355E-001 |   5.000000E-002 |       eV/A | No  | <-- BFGS
  |  |dR|max  |   8.115765E-003 |   2.000000E-003 |          A | No  | <-- BFGS
  +-----------+-----------------+-----------------+------------+-----+ <-- BFGS
-  
+
 
 ================================================================================
  Starting BFGS iteration          5 ...
@@ -1470,22 +1470,22 @@ Dispersion corrected final energy* =  -4743.636750353     eV
 Writing analysis data to cinoxacino.castep_bin
 
 Writing model to cinoxacino.check
-  
+
  +------------+-------------+-------------+-----------------+ <-- min BFGS
  |    Step    |   lambda    |   F.delta   |    enthalpy     | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
  |  previous  |    0.000000 |    0.000050 |    -4743.636750 | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
-  
+
 
 --------------------------------------------------------------------------------
  BFGS: starting iteration         5 with trial guess (lambda=  1.000000)
 --------------------------------------------------------------------------------
- 
+
                            -------------------------------
                                      Cell Contents
                            -------------------------------
- 
+
             xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
             x  Element    Atom        Fractional coordinates of atoms  x
             x            Number           u          v          w      x
@@ -1520,8 +1520,8 @@ Writing model to cinoxacino.check
             x  O            4         0.353985   0.441971   0.480013   x
             x  O            5         0.333068   0.480453   0.418810   x
             xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- 
- 
+
+
 ------------------------------------------------------------------------ <-- SCF
 SCF loop      Energy                           Energy gain       Timer   <-- SCF
                                                per atom          (sec)   <-- SCF
@@ -1535,16 +1535,16 @@ Initial  -4.74208763E+003                                        331.58  <-- SCF
       6  -4.74209901E+003                    2.87109640E-007     347.29  <-- SCF
       7  -4.74209901E+003                    1.31831686E-008     349.89  <-- SCF
 ------------------------------------------------------------------------ <-- SCF
- 
+
 Final energy =  -4742.099009501     eV
 (energy not corrected for finite basis set)
- 
+
 
 Dispersion corrected final energy* =  -4743.637679522     eV
 
  * not corrected for finite basis set
 
- 
+
  *********************************** Forces ***********************************
  *                                                                            *
  *                        Cartesian components (eV/A)                         *
@@ -1582,16 +1582,16 @@ Dispersion corrected final energy* =  -4743.637679522     eV
  * O         5      0.00251              0.00975             -0.00200         *
  *                                                                            *
  ******************************************************************************
-  
+
  +------------+-------------+-------------+-----------------+ <-- min BFGS
  |    Step    |   lambda    |   F.delta   |    enthalpy     | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
  |  previous  |    0.000000 |    0.000050 |    -4743.636750 | <-- min BFGS
  | trial step |    1.000000 |    0.000014 |    -4743.637680 | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
-  
+
  BFGS: finished iteration     5 with enthalpy= -4.74363768E+003 eV
-  
+
  +-----------+-----------------+-----------------+------------+-----+ <-- BFGS
  | Parameter |      value      |    tolerance    |    units   | OK? | <-- BFGS
  +-----------+-----------------+-----------------+------------+-----+ <-- BFGS
@@ -1599,27 +1599,27 @@ Dispersion corrected final energy* =  -4743.637679522     eV
  |  |F|max   |   6.867535E-002 |   5.000000E-002 |       eV/A | No  | <-- BFGS
  |  |dR|max  |   3.348926E-003 |   2.000000E-003 |          A | No  | <-- BFGS
  +-----------+-----------------+-----------------+------------+-----+ <-- BFGS
-  
+
 
 ================================================================================
  Starting BFGS iteration          6 ...
 ================================================================================
-  
+
  +------------+-------------+-------------+-----------------+ <-- min BFGS
  |    Step    |   lambda    |   F.delta   |    enthalpy     | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
  |  previous  |    0.000000 |    0.000023 |    -4743.637680 | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
-  
+
 
 --------------------------------------------------------------------------------
  BFGS: starting iteration         6 with trial guess (lambda=  1.000000)
 --------------------------------------------------------------------------------
- 
+
                            -------------------------------
                                      Cell Contents
                            -------------------------------
- 
+
             xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
             x  Element    Atom        Fractional coordinates of atoms  x
             x            Number           u          v          w      x
@@ -1654,8 +1654,8 @@ Dispersion corrected final energy* =  -4743.637679522     eV
             x  O            4         0.354026   0.441974   0.480017   x
             x  O            5         0.333070   0.480446   0.418812   x
             xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- 
- 
+
+
 ------------------------------------------------------------------------ <-- SCF
 SCF loop      Energy                           Energy gain       Timer   <-- SCF
                                                per atom          (sec)   <-- SCF
@@ -1669,16 +1669,16 @@ Initial  -4.74211009E+003                                        355.21  <-- SCF
       6  -4.74209859E+003                    1.54171573E-007     370.84  <-- SCF
       7  -4.74209859E+003                    3.26492306E-008     373.45  <-- SCF
 ------------------------------------------------------------------------ <-- SCF
- 
+
 Final energy =  -4742.098591923     eV
 (energy not corrected for finite basis set)
- 
+
 
 Dispersion corrected final energy* =  -4743.638159598     eV
 
  * not corrected for finite basis set
 
- 
+
  *********************************** Forces ***********************************
  *                                                                            *
  *                        Cartesian components (eV/A)                         *
@@ -1716,23 +1716,23 @@ Dispersion corrected final energy* =  -4743.638159598     eV
  * O         5     -0.01014              0.01012             -0.00470         *
  *                                                                            *
  ******************************************************************************
-  
+
  +------------+-------------+-------------+-----------------+ <-- min BFGS
  |    Step    |   lambda    |   F.delta   |    enthalpy     | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
  |  previous  |    0.000000 |    0.000023 |    -4743.637680 | <-- min BFGS
  | trial step |    1.000000 |    0.000011 |    -4743.638160 | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
-  
+
 
 --------------------------------------------------------------------------------
  BFGS: improving iteration         6 with line minimization (lambda=  1.947020)
 --------------------------------------------------------------------------------
- 
+
                            -------------------------------
                                      Cell Contents
                            -------------------------------
- 
+
             xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
             x  Element    Atom        Fractional coordinates of atoms  x
             x            Number           u          v          w      x
@@ -1767,8 +1767,8 @@ Dispersion corrected final energy* =  -4743.638159598     eV
             x  O            4         0.354065   0.441976   0.480022   x
             x  O            5         0.333071   0.480439   0.418814   x
             xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- 
- 
+
+
 ------------------------------------------------------------------------ <-- SCF
 SCF loop      Energy                           Energy gain       Timer   <-- SCF
                                                per atom          (sec)   <-- SCF
@@ -1781,16 +1781,16 @@ Initial  -4.74210780E+003                                        378.76  <-- SCF
       5  -4.74209791E+003                    1.75047202E-006     391.80  <-- SCF
       6  -4.74209791E+003                    1.41186714E-007     394.40  <-- SCF
 ------------------------------------------------------------------------ <-- SCF
- 
+
 Final energy =  -4742.097913320     eV
 (energy not corrected for finite basis set)
- 
+
 
 Dispersion corrected final energy* =  -4743.638327246     eV
 
  * not corrected for finite basis set
 
- 
+
  *********************************** Forces ***********************************
  *                                                                            *
  *                        Cartesian components (eV/A)                         *
@@ -1828,7 +1828,7 @@ Dispersion corrected final energy* =  -4743.638327246     eV
  * O         5     -0.02202              0.01007             -0.00736         *
  *                                                                            *
  ******************************************************************************
-  
+
  +------------+-------------+-------------+-----------------+ <-- min BFGS
  |    Step    |   lambda    |   F.delta   |    enthalpy     | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
@@ -1836,9 +1836,9 @@ Dispersion corrected final energy* =  -4743.638327246     eV
  | trial step |    1.000000 |    0.000011 |    -4743.638160 | <-- min BFGS
  |  line step |    1.947020 |  2.254E-007 |    -4743.638327 | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
-  
+
  BFGS: finished iteration     6 with enthalpy= -4.74363833E+003 eV
-  
+
  +-----------+-----------------+-----------------+------------+-----+ <-- BFGS
  | Parameter |      value      |    tolerance    |    units   | OK? | <-- BFGS
  +-----------+-----------------+-----------------+------------+-----+ <-- BFGS
@@ -1846,27 +1846,27 @@ Dispersion corrected final energy* =  -4743.638327246     eV
  |  |F|max   |   7.320429E-002 |   5.000000E-002 |       eV/A | No  | <-- BFGS
  |  |dR|max  |   4.908035E-003 |   2.000000E-003 |          A | No  | <-- BFGS
  +-----------+-----------------+-----------------+------------+-----+ <-- BFGS
-  
+
 
 ================================================================================
  Starting BFGS iteration          7 ...
 ================================================================================
-  
+
  +------------+-------------+-------------+-----------------+ <-- min BFGS
  |    Step    |   lambda    |   F.delta   |    enthalpy     | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
  |  previous  |    0.000000 |    0.000016 |    -4743.638327 | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
-  
+
 
 --------------------------------------------------------------------------------
  BFGS: starting iteration         7 with trial guess (lambda=  1.000000)
 --------------------------------------------------------------------------------
- 
+
                            -------------------------------
                                      Cell Contents
                            -------------------------------
- 
+
             xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
             x  Element    Atom        Fractional coordinates of atoms  x
             x            Number           u          v          w      x
@@ -1901,8 +1901,8 @@ Dispersion corrected final energy* =  -4743.638327246     eV
             x  O            4         0.354075   0.441971   0.480027   x
             x  O            5         0.333069   0.480439   0.418816   x
             xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- 
- 
+
+
 ------------------------------------------------------------------------ <-- SCF
 SCF loop      Energy                           Energy gain       Timer   <-- SCF
                                                per atom          (sec)   <-- SCF
@@ -1915,16 +1915,16 @@ Initial  -4.74212848E+003                                        399.71  <-- SCF
       5  -4.74209798E+003                    8.52272687E-007     412.74  <-- SCF
       6  -4.74209799E+003                    9.56876742E-008     415.34  <-- SCF
 ------------------------------------------------------------------------ <-- SCF
- 
+
 Final energy =  -4742.097985330     eV
 (energy not corrected for finite basis set)
- 
+
 
 Dispersion corrected final energy* =  -4743.638712876     eV
 
  * not corrected for finite basis set
 
- 
+
  *********************************** Forces ***********************************
  *                                                                            *
  *                        Cartesian components (eV/A)                         *
@@ -1962,23 +1962,23 @@ Dispersion corrected final energy* =  -4743.638712876     eV
  * O         5     -0.01955              0.00696             -0.00579         *
  *                                                                            *
  ******************************************************************************
-  
+
  +------------+-------------+-------------+-----------------+ <-- min BFGS
  |    Step    |   lambda    |   F.delta   |    enthalpy     | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
  |  previous  |    0.000000 |    0.000016 |    -4743.638327 | <-- min BFGS
  | trial step |    1.000000 |    0.000012 |    -4743.638713 | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
-  
+
 
 --------------------------------------------------------------------------------
  BFGS: improving iteration         7 with line minimization (lambda=  4.329268)
 --------------------------------------------------------------------------------
- 
+
                            -------------------------------
                                      Cell Contents
                            -------------------------------
- 
+
             xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
             x  Element    Atom        Fractional coordinates of atoms  x
             x            Number           u          v          w      x
@@ -2013,8 +2013,8 @@ Dispersion corrected final energy* =  -4743.638712876     eV
             x  O            4         0.354105   0.441955   0.480042   x
             x  O            5         0.333062   0.480439   0.418822   x
             xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- 
- 
+
+
 ------------------------------------------------------------------------ <-- SCF
 SCF loop      Energy                           Energy gain       Timer   <-- SCF
                                                per atom          (sec)   <-- SCF
@@ -2028,16 +2028,16 @@ Initial  -4.74220131E+003                                        420.67  <-- SCF
       6  -4.74209752E+003                    3.34835894E-008     436.93  <-- SCF
       7  -4.74209752E+003                   -1.75134820E-008     439.53  <-- SCF
 ------------------------------------------------------------------------ <-- SCF
- 
+
 Final energy =  -4742.097516553     eV
 (energy not corrected for finite basis set)
- 
+
 
 Dispersion corrected final energy* =  -4743.639287216     eV
 
  * not corrected for finite basis set
 
- 
+
  *********************************** Forces ***********************************
  *                                                                            *
  *                        Cartesian components (eV/A)                         *
@@ -2075,7 +2075,7 @@ Dispersion corrected final energy* =  -4743.639287216     eV
  * O         5     -0.01267             -0.00097             -0.00134         *
  *                                                                            *
  ******************************************************************************
-  
+
  +------------+-------------+-------------+-----------------+ <-- min BFGS
  |    Step    |   lambda    |   F.delta   |    enthalpy     | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
@@ -2083,9 +2083,9 @@ Dispersion corrected final energy* =  -4743.639287216     eV
  | trial step |    1.000000 |    0.000012 |    -4743.638713 | <-- min BFGS
  |  line step |    4.329268 | -3.871E-007 |    -4743.639287 | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
-  
+
  BFGS: finished iteration     7 with enthalpy= -4.74363929E+003 eV
-  
+
  +-----------+-----------------+-----------------+------------+-----+ <-- BFGS
  | Parameter |      value      |    tolerance    |    units   | OK? | <-- BFGS
  +-----------+-----------------+-----------------+------------+-----+ <-- BFGS
@@ -2093,27 +2093,27 @@ Dispersion corrected final energy* =  -4743.639287216     eV
  |  |F|max   |   9.508093E-002 |   5.000000E-002 |       eV/A | No  | <-- BFGS
  |  |dR|max  |   5.682368E-003 |   2.000000E-003 |          A | No  | <-- BFGS
  +-----------+-----------------+-----------------+------------+-----+ <-- BFGS
-  
+
 
 ================================================================================
  Starting BFGS iteration          8 ...
 ================================================================================
-  
+
  +------------+-------------+-------------+-----------------+ <-- min BFGS
  |    Step    |   lambda    |   F.delta   |    enthalpy     | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
  |  previous  |    0.000000 |    0.000019 |    -4743.639287 | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
-  
+
 
 --------------------------------------------------------------------------------
  BFGS: starting iteration         8 with trial guess (lambda=  1.000000)
 --------------------------------------------------------------------------------
- 
+
                            -------------------------------
                                      Cell Contents
                            -------------------------------
- 
+
             xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
             x  Element    Atom        Fractional coordinates of atoms  x
             x            Number           u          v          w      x
@@ -2148,8 +2148,8 @@ Dispersion corrected final energy* =  -4743.639287216     eV
             x  O            4         0.354123   0.441956   0.480039   x
             x  O            5         0.333057   0.480439   0.418824   x
             xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- 
- 
+
+
 ------------------------------------------------------------------------ <-- SCF
 SCF loop      Energy                           Energy gain       Timer   <-- SCF
                                                per atom          (sec)   <-- SCF
@@ -2162,16 +2162,16 @@ Initial  -4.74215620E+003                                        444.86  <-- SCF
       5  -4.74209764E+003                    9.16469142E-007     457.91  <-- SCF
       6  -4.74209764E+003                    9.45543585E-008     460.51  <-- SCF
 ------------------------------------------------------------------------ <-- SCF
- 
+
 Final energy =  -4742.097643445     eV
 (energy not corrected for finite basis set)
- 
+
 
 Dispersion corrected final energy* =  -4743.639708553     eV
 
  * not corrected for finite basis set
 
- 
+
  *********************************** Forces ***********************************
  *                                                                            *
  *                        Cartesian components (eV/A)                         *
@@ -2209,23 +2209,23 @@ Dispersion corrected final energy* =  -4743.639708553     eV
  * O         5     -0.00369             -0.00740              0.00630         *
  *                                                                            *
  ******************************************************************************
-  
+
  +------------+-------------+-------------+-----------------+ <-- min BFGS
  |    Step    |   lambda    |   F.delta   |    enthalpy     | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
  |  previous  |    0.000000 |    0.000019 |    -4743.639287 | <-- min BFGS
  | trial step |    1.000000 |    0.000013 |    -4743.639709 | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
-  
+
 
 --------------------------------------------------------------------------------
  BFGS: improving iteration         8 with line minimization (lambda=  3.398034)
 --------------------------------------------------------------------------------
- 
+
                            -------------------------------
                                      Cell Contents
                            -------------------------------
- 
+
             xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
             x  Element    Atom        Fractional coordinates of atoms  x
             x            Number           u          v          w      x
@@ -2260,8 +2260,8 @@ Dispersion corrected final energy* =  -4743.639708553     eV
             x  O            4         0.354165   0.441958   0.480029   x
             x  O            5         0.333043   0.480438   0.418829   x
             xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- 
- 
+
+
 ------------------------------------------------------------------------ <-- SCF
 SCF loop      Energy                           Energy gain       Timer   <-- SCF
                                                per atom          (sec)   <-- SCF
@@ -2275,16 +2275,16 @@ Initial  -4.74223424E+003                                        465.82  <-- SCF
       6  -4.74209736E+003                    4.45172932E-007     481.93  <-- SCF
       7  -4.74209736E+003                   -5.76866634E-009     484.53  <-- SCF
 ------------------------------------------------------------------------ <-- SCF
- 
+
 Final energy =  -4742.097357662     eV
 (energy not corrected for finite basis set)
- 
+
 
 Dispersion corrected final energy* =  -4743.640123928     eV
 
  * not corrected for finite basis set
 
- 
+
  *********************************** Forces ***********************************
  *                                                                            *
  *                        Cartesian components (eV/A)                         *
@@ -2322,7 +2322,7 @@ Dispersion corrected final energy* =  -4743.640123928     eV
  * O         5      0.01709             -0.02370              0.02619         *
  *                                                                            *
  ******************************************************************************
-  
+
  +------------+-------------+-------------+-----------------+ <-- min BFGS
  |    Step    |   lambda    |   F.delta   |    enthalpy     | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
@@ -2330,9 +2330,9 @@ Dispersion corrected final energy* =  -4743.640123928     eV
  | trial step |    1.000000 |    0.000013 |    -4743.639709 | <-- min BFGS
  |  line step |    3.398034 | -5.164E-007 |    -4743.640124 | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
-  
+
  BFGS: finished iteration     8 with enthalpy= -4.74364012E+003 eV
-  
+
  +-----------+-----------------+-----------------+------------+-----+ <-- BFGS
  | Parameter |      value      |    tolerance    |    units   | OK? | <-- BFGS
  +-----------+-----------------+-----------------+------------+-----+ <-- BFGS
@@ -2340,27 +2340,27 @@ Dispersion corrected final energy* =  -4743.640123928     eV
  |  |F|max   |   1.103922E-001 |   5.000000E-002 |       eV/A | No  | <-- BFGS
  |  |dR|max  |   6.450779E-003 |   2.000000E-003 |          A | No  | <-- BFGS
  +-----------+-----------------+-----------------+------------+-----+ <-- BFGS
-  
+
 
 ================================================================================
  Starting BFGS iteration          9 ...
 ================================================================================
-  
+
  +------------+-------------+-------------+-----------------+ <-- min BFGS
  |    Step    |   lambda    |   F.delta   |    enthalpy     | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
  |  previous  |    0.000000 |    0.000029 |    -4743.640124 | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
-  
+
 
 --------------------------------------------------------------------------------
  BFGS: starting iteration         9 with trial guess (lambda=  1.000000)
 --------------------------------------------------------------------------------
- 
+
                            -------------------------------
                                      Cell Contents
                            -------------------------------
- 
+
             xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
             x  Element    Atom        Fractional coordinates of atoms  x
             x            Number           u          v          w      x
@@ -2395,8 +2395,8 @@ Dispersion corrected final energy* =  -4743.640123928     eV
             x  O            4         0.354208   0.441955   0.480026   x
             x  O            5         0.333034   0.480427   0.418839   x
             xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- 
- 
+
+
 ------------------------------------------------------------------------ <-- SCF
 SCF loop      Energy                           Energy gain       Timer   <-- SCF
                                                per atom          (sec)   <-- SCF
@@ -2410,16 +2410,16 @@ Initial  -4.74221630E+003                                        489.84  <-- SCF
       6  -4.74209693E+003                    2.65667956E-007     505.77  <-- SCF
       7  -4.74209693E+003                    2.14347499E-008     508.38  <-- SCF
 ------------------------------------------------------------------------ <-- SCF
- 
+
 Final energy =  -4742.096933702     eV
 (energy not corrected for finite basis set)
- 
+
 
 Dispersion corrected final energy* =  -4743.640734575     eV
 
  * not corrected for finite basis set
 
- 
+
  *********************************** Forces ***********************************
  *                                                                            *
  *                        Cartesian components (eV/A)                         *
@@ -2457,23 +2457,23 @@ Dispersion corrected final energy* =  -4743.640734575     eV
  * O         5     -0.00387             -0.01269              0.00781         *
  *                                                                            *
  ******************************************************************************
-  
+
  +------------+-------------+-------------+-----------------+ <-- min BFGS
  |    Step    |   lambda    |   F.delta   |    enthalpy     | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
  |  previous  |    0.000000 |    0.000029 |    -4743.640124 | <-- min BFGS
  | trial step |    1.000000 |    0.000015 |    -4743.640735 | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
-  
+
 
 --------------------------------------------------------------------------------
  BFGS: improving iteration         9 with line minimization (lambda=  2.128287)
 --------------------------------------------------------------------------------
- 
+
                            -------------------------------
                                      Cell Contents
                            -------------------------------
- 
+
             xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
             x  Element    Atom        Fractional coordinates of atoms  x
             x            Number           u          v          w      x
@@ -2508,8 +2508,8 @@ Dispersion corrected final energy* =  -4743.640734575     eV
             x  O            4         0.354257   0.441952   0.480023   x
             x  O            5         0.333023   0.480414   0.418849   x
             xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- 
- 
+
+
 ------------------------------------------------------------------------ <-- SCF
 SCF loop      Energy                           Energy gain       Timer   <-- SCF
                                                per atom          (sec)   <-- SCF
@@ -2523,16 +2523,16 @@ Initial  -4.74223475E+003                                        513.70  <-- SCF
       6  -4.74209601E+003                    3.03021342E-007     529.77  <-- SCF
       7  -4.74209601E+003                    6.60531870E-010     532.37  <-- SCF
 ------------------------------------------------------------------------ <-- SCF
- 
+
 Final energy =  -4742.096008492     eV
 (energy not corrected for finite basis set)
- 
+
 
 Dispersion corrected final energy* =  -4743.640974225     eV
 
  * not corrected for finite basis set
 
- 
+
  *********************************** Forces ***********************************
  *                                                                            *
  *                        Cartesian components (eV/A)                         *
@@ -2570,7 +2570,7 @@ Dispersion corrected final energy* =  -4743.640974225     eV
  * O         5     -0.02816             -0.00020             -0.01322         *
  *                                                                            *
  ******************************************************************************
-  
+
  +------------+-------------+-------------+-----------------+ <-- min BFGS
  |    Step    |   lambda    |   F.delta   |    enthalpy     | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
@@ -2578,9 +2578,9 @@ Dispersion corrected final energy* =  -4743.640974225     eV
  | trial step |    1.000000 |    0.000015 |    -4743.640735 | <-- min BFGS
  |  line step |    2.128287 |  9.376E-007 |    -4743.640974 | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
-  
+
  BFGS: finished iteration     9 with enthalpy= -4.74364097E+003 eV
-  
+
  +-----------+-----------------+-----------------+------------+-----+ <-- BFGS
  | Parameter |      value      |    tolerance    |    units   | OK? | <-- BFGS
  +-----------+-----------------+-----------------+------------+-----+ <-- BFGS
@@ -2588,7 +2588,7 @@ Dispersion corrected final energy* =  -4743.640974225     eV
  |  |F|max   |   8.010661E-002 |   5.000000E-002 |       eV/A | No  | <-- BFGS
  |  |dR|max  |   7.607019E-003 |   2.000000E-003 |          A | No  | <-- BFGS
  +-----------+-----------------+-----------------+------------+-----+ <-- BFGS
-  
+
 
 ================================================================================
  Starting BFGS iteration         10 ...
@@ -2597,22 +2597,22 @@ Dispersion corrected final energy* =  -4743.640974225     eV
 Writing analysis data to cinoxacino.castep_bin
 
 Writing model to cinoxacino.check
-  
+
  +------------+-------------+-------------+-----------------+ <-- min BFGS
  |    Step    |   lambda    |   F.delta   |    enthalpy     | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
  |  previous  |    0.000000 |    0.000020 |    -4743.640974 | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
-  
+
 
 --------------------------------------------------------------------------------
  BFGS: starting iteration        10 with trial guess (lambda=  1.000000)
 --------------------------------------------------------------------------------
- 
+
                            -------------------------------
                                      Cell Contents
                            -------------------------------
- 
+
             xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
             x  Element    Atom        Fractional coordinates of atoms  x
             x            Number           u          v          w      x
@@ -2647,8 +2647,8 @@ Writing model to cinoxacino.check
             x  O            4         0.354280   0.441943   0.480024   x
             x  O            5         0.333006   0.480407   0.418851   x
             xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- 
- 
+
+
 ------------------------------------------------------------------------ <-- SCF
 SCF loop      Energy                           Energy gain       Timer   <-- SCF
                                                per atom          (sec)   <-- SCF
@@ -2661,16 +2661,16 @@ Initial  -4.74216823E+003                                        538.10  <-- SCF
       5  -4.74209600E+003                    9.17734361E-007     551.18  <-- SCF
       6  -4.74209601E+003                    1.89410074E-007     553.79  <-- SCF
 ------------------------------------------------------------------------ <-- SCF
- 
+
 Final energy =  -4742.096009689     eV
 (energy not corrected for finite basis set)
- 
+
 
 Dispersion corrected final energy* =  -4743.641476569     eV
 
  * not corrected for finite basis set
 
- 
+
  *********************************** Forces ***********************************
  *                                                                            *
  *                        Cartesian components (eV/A)                         *
@@ -2708,23 +2708,23 @@ Dispersion corrected final energy* =  -4743.641476569     eV
  * O         5     -0.03433              0.00474             -0.01846         *
  *                                                                            *
  ******************************************************************************
-  
+
  +------------+-------------+-------------+-----------------+ <-- min BFGS
  |    Step    |   lambda    |   F.delta   |    enthalpy     | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
  |  previous  |    0.000000 |    0.000020 |    -4743.640974 | <-- min BFGS
  | trial step |    1.000000 |    0.000014 |    -4743.641477 | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
-  
+
 
 --------------------------------------------------------------------------------
  BFGS: improving iteration        10 with line minimization (lambda=  3.125534)
 --------------------------------------------------------------------------------
- 
+
                            -------------------------------
                                      Cell Contents
                            -------------------------------
- 
+
             xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
             x  Element    Atom        Fractional coordinates of atoms  x
             x            Number           u          v          w      x
@@ -2759,8 +2759,8 @@ Dispersion corrected final energy* =  -4743.641476569     eV
             x  O            4         0.354329   0.441925   0.480025   x
             x  O            5         0.332969   0.480392   0.418855   x
             xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- 
- 
+
+
 ------------------------------------------------------------------------ <-- SCF
 SCF loop      Energy                           Energy gain       Timer   <-- SCF
                                                per atom          (sec)   <-- SCF
@@ -2774,16 +2774,16 @@ Initial  -4.74225250E+003                                        559.14  <-- SCF
       6  -4.74209537E+003                    6.91424216E-007     575.83  <-- SCF
       7  -4.74209537E+003                   -1.50748905E-008     578.45  <-- SCF
 ------------------------------------------------------------------------ <-- SCF
- 
+
 Final energy =  -4742.095365192     eV
 (energy not corrected for finite basis set)
- 
+
 
 Dispersion corrected final energy* =  -4743.641894185     eV
 
  * not corrected for finite basis set
 
- 
+
  *********************************** Forces ***********************************
  *                                                                            *
  *                        Cartesian components (eV/A)                         *
@@ -2821,7 +2821,7 @@ Dispersion corrected final energy* =  -4743.641894185     eV
  * O         5     -0.04819              0.01620             -0.03078         *
  *                                                                            *
  ******************************************************************************
-  
+
  +------------+-------------+-------------+-----------------+ <-- min BFGS
  |    Step    |   lambda    |   F.delta   |    enthalpy     | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
@@ -2829,9 +2829,9 @@ Dispersion corrected final energy* =  -4743.641894185     eV
  | trial step |    1.000000 |    0.000014 |    -4743.641477 | <-- min BFGS
  |  line step |    3.125534 | -1.780E-006 |    -4743.641894 | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
-  
+
  BFGS: finished iteration    10 with enthalpy= -4.74364189E+003 eV
-  
+
  +-----------+-----------------+-----------------+------------+-----+ <-- BFGS
  | Parameter |      value      |    tolerance    |    units   | OK? | <-- BFGS
  +-----------+-----------------+-----------------+------------+-----+ <-- BFGS
@@ -2839,27 +2839,27 @@ Dispersion corrected final energy* =  -4743.641894185     eV
  |  |F|max   |   8.451101E-002 |   5.000000E-002 |       eV/A | No  | <-- BFGS
  |  |dR|max  |   8.630611E-003 |   2.000000E-003 |          A | No  | <-- BFGS
  +-----------+-----------------+-----------------+------------+-----+ <-- BFGS
-  
+
 
 ================================================================================
  Starting BFGS iteration         11 ...
 ================================================================================
-  
+
  +------------+-------------+-------------+-----------------+ <-- min BFGS
  |    Step    |   lambda    |   F.delta   |    enthalpy     | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
  |  previous  |    0.000000 |    0.000019 |    -4743.641894 | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
-  
+
 
 --------------------------------------------------------------------------------
  BFGS: starting iteration        11 with trial guess (lambda=  1.000000)
 --------------------------------------------------------------------------------
- 
+
                            -------------------------------
                                      Cell Contents
                            -------------------------------
- 
+
             xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
             x  Element    Atom        Fractional coordinates of atoms  x
             x            Number           u          v          w      x
@@ -2894,8 +2894,8 @@ Dispersion corrected final energy* =  -4743.641894185     eV
             x  O            4         0.354346   0.441929   0.480021   x
             x  O            5         0.332946   0.480393   0.418850   x
             xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- 
- 
+
+
 ------------------------------------------------------------------------ <-- SCF
 SCF loop      Energy                           Energy gain       Timer   <-- SCF
                                                per atom          (sec)   <-- SCF
@@ -2908,16 +2908,16 @@ Initial  -4.74212981E+003                                        583.80  <-- SCF
       5  -4.74209577E+003                    1.04510127E-006     596.88  <-- SCF
       6  -4.74209577E+003                    1.52315801E-007     599.50  <-- SCF
 ------------------------------------------------------------------------ <-- SCF
- 
+
 Final energy =  -4742.095770681     eV
 (energy not corrected for finite basis set)
- 
+
 
 Dispersion corrected final energy* =  -4743.642289418     eV
 
  * not corrected for finite basis set
 
- 
+
  *********************************** Forces ***********************************
  *                                                                            *
  *                        Cartesian components (eV/A)                         *
@@ -2955,23 +2955,23 @@ Dispersion corrected final energy* =  -4743.642289418     eV
  * O         5     -0.01961              0.00549             -0.00511         *
  *                                                                            *
  ******************************************************************************
-  
+
  +------------+-------------+-------------+-----------------+ <-- min BFGS
  |    Step    |   lambda    |   F.delta   |    enthalpy     | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
  |  previous  |    0.000000 |    0.000019 |    -4743.641894 | <-- min BFGS
  | trial step |    1.000000 |    0.000011 |    -4743.642289 | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
-  
+
 
 --------------------------------------------------------------------------------
  BFGS: improving iteration        11 with line minimization (lambda=  2.270025)
 --------------------------------------------------------------------------------
- 
+
                            -------------------------------
                                      Cell Contents
                            -------------------------------
- 
+
             xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
             x  Element    Atom        Fractional coordinates of atoms  x
             x            Number           u          v          w      x
@@ -3006,8 +3006,8 @@ Dispersion corrected final energy* =  -4743.642289418     eV
             x  O            4         0.354367   0.441934   0.480015   x
             x  O            5         0.332918   0.480395   0.418843   x
             xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- 
- 
+
+
 ------------------------------------------------------------------------ <-- SCF
 SCF loop      Energy                           Energy gain       Timer   <-- SCF
                                                per atom          (sec)   <-- SCF
@@ -3020,16 +3020,16 @@ Initial  -4.74213789E+003                                        604.84  <-- SCF
       5  -4.74209593E+003                    1.37694034E-006     617.89  <-- SCF
       6  -4.74209594E+003                    2.02680769E-007     620.50  <-- SCF
 ------------------------------------------------------------------------ <-- SCF
- 
+
 Final energy =  -4742.095939437     eV
 (energy not corrected for finite basis set)
- 
+
 
 Dispersion corrected final energy* =  -4743.642444260     eV
 
  * not corrected for finite basis set
 
- 
+
  *********************************** Forces ***********************************
  *                                                                            *
  *                        Cartesian components (eV/A)                         *
@@ -3067,7 +3067,7 @@ Dispersion corrected final energy* =  -4743.642444260     eV
  * O         5      0.01679             -0.00858              0.02853         *
  *                                                                            *
  ******************************************************************************
-  
+
  +------------+-------------+-------------+-----------------+ <-- min BFGS
  |    Step    |   lambda    |   F.delta   |    enthalpy     | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
@@ -3075,9 +3075,9 @@ Dispersion corrected final energy* =  -4743.642444260     eV
  | trial step |    1.000000 |    0.000011 |    -4743.642289 | <-- min BFGS
  |  line step |    2.270025 | -1.246E-007 |    -4743.642444 | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
-  
+
  BFGS: finished iteration    11 with enthalpy= -4.74364244E+003 eV
-  
+
  +-----------+-----------------+-----------------+------------+-----+ <-- BFGS
  | Parameter |      value      |    tolerance    |    units   | OK? | <-- BFGS
  +-----------+-----------------+-----------------+------------+-----+ <-- BFGS
@@ -3085,27 +3085,27 @@ Dispersion corrected final energy* =  -4743.642444260     eV
  |  |F|max   |   7.359787E-002 |   5.000000E-002 |       eV/A | No  | <-- BFGS
  |  |dR|max  |   4.518898E-003 |   2.000000E-003 |          A | No  | <-- BFGS
  +-----------+-----------------+-----------------+------------+-----+ <-- BFGS
-  
+
 
 ================================================================================
  Starting BFGS iteration         12 ...
 ================================================================================
-  
+
  +------------+-------------+-------------+-----------------+ <-- min BFGS
  |    Step    |   lambda    |   F.delta   |    enthalpy     | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
  |  previous  |    0.000000 |    0.000015 |    -4743.642444 | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
-  
+
 
 --------------------------------------------------------------------------------
  BFGS: starting iteration        12 with trial guess (lambda=  1.000000)
 --------------------------------------------------------------------------------
- 
+
                            -------------------------------
                                      Cell Contents
                            -------------------------------
- 
+
             xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
             x  Element    Atom        Fractional coordinates of atoms  x
             x            Number           u          v          w      x
@@ -3140,8 +3140,8 @@ Dispersion corrected final energy* =  -4743.642444260     eV
             x  O            4         0.354391   0.441937   0.480016   x
             x  O            5         0.332897   0.480388   0.418847   x
             xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- 
- 
+
+
 ------------------------------------------------------------------------ <-- SCF
 SCF loop      Energy                           Energy gain       Timer   <-- SCF
                                                per atom          (sec)   <-- SCF
@@ -3154,16 +3154,16 @@ Initial  -4.74212331E+003                                        625.82  <-- SCF
       5  -4.74209573E+003                    1.59950678E-006     638.93  <-- SCF
       6  -4.74209574E+003                    1.58828366E-007     641.53  <-- SCF
 ------------------------------------------------------------------------ <-- SCF
- 
+
 Final energy =  -4742.095737485     eV
 (energy not corrected for finite basis set)
- 
+
 
 Dispersion corrected final energy* =  -4743.642764758     eV
 
  * not corrected for finite basis set
 
- 
+
  *********************************** Forces ***********************************
  *                                                                            *
  *                        Cartesian components (eV/A)                         *
@@ -3201,23 +3201,23 @@ Dispersion corrected final energy* =  -4743.642764758     eV
  * O         5      0.01742             -0.00731              0.02694         *
  *                                                                            *
  ******************************************************************************
-  
+
  +------------+-------------+-------------+-----------------+ <-- min BFGS
  |    Step    |   lambda    |   F.delta   |    enthalpy     | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
  |  previous  |    0.000000 |    0.000015 |    -4743.642444 | <-- min BFGS
  | trial step |    1.000000 |  9.639E-006 |    -4743.642765 | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
-  
+
 
 --------------------------------------------------------------------------------
  BFGS: improving iteration        12 with line minimization (lambda=  2.967566)
 --------------------------------------------------------------------------------
- 
+
                            -------------------------------
                                      Cell Contents
                            -------------------------------
- 
+
             xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
             x  Element    Atom        Fractional coordinates of atoms  x
             x            Number           u          v          w      x
@@ -3252,8 +3252,8 @@ Dispersion corrected final energy* =  -4743.642764758     eV
             x  O            4         0.354438   0.441941   0.480018   x
             x  O            5         0.332855   0.480376   0.418856   x
             xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- 
- 
+
+
 ------------------------------------------------------------------------ <-- SCF
 SCF loop      Energy                           Energy gain       Timer   <-- SCF
                                                per atom          (sec)   <-- SCF
@@ -3267,16 +3267,16 @@ Initial  -4.74214731E+003                                        646.85  <-- SCF
       6  -4.74209495E+003                    5.53093673E-007     663.23  <-- SCF
       7  -4.74209495E+003                   -2.06597557E-009     665.83  <-- SCF
 ------------------------------------------------------------------------ <-- SCF
- 
+
 Final energy =  -4742.094946003     eV
 (energy not corrected for finite basis set)
- 
+
 
 Dispersion corrected final energy* =  -4743.642997988     eV
 
  * not corrected for finite basis set
 
- 
+
  *********************************** Forces ***********************************
  *                                                                            *
  *                        Cartesian components (eV/A)                         *
@@ -3314,7 +3314,7 @@ Dispersion corrected final energy* =  -4743.642997988     eV
  * O         5      0.01660             -0.00386              0.02161         *
  *                                                                            *
  ******************************************************************************
-  
+
  +------------+-------------+-------------+-----------------+ <-- min BFGS
  |    Step    |   lambda    |   F.delta   |    enthalpy     | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
@@ -3322,9 +3322,9 @@ Dispersion corrected final energy* =  -4743.642997988     eV
  | trial step |    1.000000 |  9.639E-006 |    -4743.642765 | <-- min BFGS
  |  line step |    2.967566 |  2.579E-007 |    -4743.642998 | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
-  
+
  BFGS: finished iteration    12 with enthalpy= -4.74364300E+003 eV
-  
+
  +-----------+-----------------+-----------------+------------+-----+ <-- BFGS
  | Parameter |      value      |    tolerance    |    units   | OK? | <-- BFGS
  +-----------+-----------------+-----------------+------------+-----+ <-- BFGS
@@ -3332,27 +3332,27 @@ Dispersion corrected final energy* =  -4743.642997988     eV
  |  |F|max   |   8.117984E-002 |   5.000000E-002 |       eV/A | No  | <-- BFGS
  |  |dR|max  |   8.009957E-003 |   2.000000E-003 |          A | No  | <-- BFGS
  +-----------+-----------------+-----------------+------------+-----+ <-- BFGS
-  
+
 
 ================================================================================
  Starting BFGS iteration         13 ...
 ================================================================================
-  
+
  +------------+-------------+-------------+-----------------+ <-- min BFGS
  |    Step    |   lambda    |   F.delta   |    enthalpy     | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
  |  previous  |    0.000000 |    0.000017 |    -4743.642998 | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
-  
+
 
 --------------------------------------------------------------------------------
  BFGS: starting iteration        13 with trial guess (lambda=  1.000000)
 --------------------------------------------------------------------------------
- 
+
                            -------------------------------
                                      Cell Contents
                            -------------------------------
- 
+
             xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
             x  Element    Atom        Fractional coordinates of atoms  x
             x            Number           u          v          w      x
@@ -3387,8 +3387,8 @@ Dispersion corrected final energy* =  -4743.642997988     eV
             x  O            4         0.354437   0.441943   0.480024   x
             x  O            5         0.332841   0.480373   0.418866   x
             xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- 
- 
+
+
 ------------------------------------------------------------------------ <-- SCF
 SCF loop      Energy                           Energy gain       Timer   <-- SCF
                                                per atom          (sec)   <-- SCF
@@ -3401,16 +3401,16 @@ Initial  -4.74208029E+003                                        671.18  <-- SCF
       5  -4.74209514E+003                    3.20404894E-008     684.28  <-- SCF
       6  -4.74209514E+003                    1.28442566E-007     686.90  <-- SCF
 ------------------------------------------------------------------------ <-- SCF
- 
+
 Final energy =  -4742.095141937     eV
 (energy not corrected for finite basis set)
- 
+
 
 Dispersion corrected final energy* =  -4743.643306393     eV
 
  * not corrected for finite basis set
 
- 
+
  *********************************** Forces ***********************************
  *                                                                            *
  *                        Cartesian components (eV/A)                         *
@@ -3448,23 +3448,23 @@ Dispersion corrected final energy* =  -4743.643306393     eV
  * O         5      0.00278              0.00301              0.00166         *
  *                                                                            *
  ******************************************************************************
-  
+
  +------------+-------------+-------------+-----------------+ <-- min BFGS
  |    Step    |   lambda    |   F.delta   |    enthalpy     | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
  |  previous  |    0.000000 |    0.000017 |    -4743.642998 | <-- min BFGS
  | trial step |    1.000000 |  9.408E-006 |    -4743.643306 | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
-  
+
 
 --------------------------------------------------------------------------------
  BFGS: improving iteration        13 with line minimization (lambda=  2.232361)
 --------------------------------------------------------------------------------
- 
+
                            -------------------------------
                                      Cell Contents
                            -------------------------------
- 
+
             xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
             x  Element    Atom        Fractional coordinates of atoms  x
             x            Number           u          v          w      x
@@ -3499,8 +3499,8 @@ Dispersion corrected final energy* =  -4743.643306393     eV
             x  O            4         0.354436   0.441945   0.480031   x
             x  O            5         0.332824   0.480369   0.418878   x
             xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- 
- 
+
+
 ------------------------------------------------------------------------ <-- SCF
 SCF loop      Energy                           Energy gain       Timer   <-- SCF
                                                per atom          (sec)   <-- SCF
@@ -3513,16 +3513,16 @@ Initial  -4.74207791E+003                                        692.24  <-- SCF
       5  -4.74209519E+003                    7.29971990E-009     705.41  <-- SCF
       6  -4.74209519E+003                    1.87447040E-007     708.03  <-- SCF
 ------------------------------------------------------------------------ <-- SCF
- 
+
 Final energy =  -4742.095191782     eV
 (energy not corrected for finite basis set)
- 
+
 
 Dispersion corrected final energy* =  -4743.643493798     eV
 
  * not corrected for finite basis set
 
- 
+
  *********************************** Forces ***********************************
  *                                                                            *
  *                        Cartesian components (eV/A)                         *
@@ -3560,7 +3560,7 @@ Dispersion corrected final energy* =  -4743.643493798     eV
  * O         5     -0.01520              0.01193             -0.02383         *
  *                                                                            *
  ******************************************************************************
-  
+
  +------------+-------------+-------------+-----------------+ <-- min BFGS
  |    Step    |   lambda    |   F.delta   |    enthalpy     | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
@@ -3568,9 +3568,9 @@ Dispersion corrected final energy* =  -4743.643493798     eV
  | trial step |    1.000000 |  9.408E-006 |    -4743.643306 | <-- min BFGS
  |  line step |    2.232361 | -5.319E-008 |    -4743.643494 | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
-  
+
  BFGS: finished iteration    13 with enthalpy= -4.74364349E+003 eV
-  
+
  +-----------+-----------------+-----------------+------------+-----+ <-- BFGS
  | Parameter |      value      |    tolerance    |    units   | OK? | <-- BFGS
  +-----------+-----------------+-----------------+------------+-----+ <-- BFGS
@@ -3578,27 +3578,27 @@ Dispersion corrected final energy* =  -4743.643493798     eV
  |  |F|max   |   8.823208E-002 |   5.000000E-002 |       eV/A | No  | <-- BFGS
  |  |dR|max  |   5.819671E-003 |   2.000000E-003 |          A | No  | <-- BFGS
  +-----------+-----------------+-----------------+------------+-----+ <-- BFGS
-  
+
 
 ================================================================================
  Starting BFGS iteration         14 ...
 ================================================================================
-  
+
  +------------+-------------+-------------+-----------------+ <-- min BFGS
  |    Step    |   lambda    |   F.delta   |    enthalpy     | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
  |  previous  |    0.000000 |    0.000016 |    -4743.643494 | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
-  
+
 
 --------------------------------------------------------------------------------
  BFGS: starting iteration        14 with trial guess (lambda=  1.000000)
 --------------------------------------------------------------------------------
- 
+
                            -------------------------------
                                      Cell Contents
                            -------------------------------
- 
+
             xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
             x  Element    Atom        Fractional coordinates of atoms  x
             x            Number           u          v          w      x
@@ -3633,8 +3633,8 @@ Dispersion corrected final energy* =  -4743.643493798     eV
             x  O            4         0.354441   0.441951   0.480035   x
             x  O            5         0.332807   0.480369   0.418882   x
             xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- 
- 
+
+
 ------------------------------------------------------------------------ <-- SCF
 SCF loop      Energy                           Energy gain       Timer   <-- SCF
                                                per atom          (sec)   <-- SCF
@@ -3647,16 +3647,16 @@ Initial  -4.74208994E+003                                        713.39  <-- SCF
       5  -4.74209556E+003                    4.94523634E-008     726.51  <-- SCF
       6  -4.74209556E+003                    7.48308363E-008     729.13  <-- SCF
 ------------------------------------------------------------------------ <-- SCF
- 
+
 Final energy =  -4742.095563329     eV
 (energy not corrected for finite basis set)
- 
+
 
 Dispersion corrected final energy* =  -4743.643915446     eV
 
  * not corrected for finite basis set
 
- 
+
  *********************************** Forces ***********************************
  *                                                                            *
  *                        Cartesian components (eV/A)                         *
@@ -3694,23 +3694,23 @@ Dispersion corrected final energy* =  -4743.643915446     eV
  * O         5     -0.00566              0.00557             -0.01861         *
  *                                                                            *
  ******************************************************************************
-  
+
  +------------+-------------+-------------+-----------------+ <-- min BFGS
  |    Step    |   lambda    |   F.delta   |    enthalpy     | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
  |  previous  |    0.000000 |    0.000016 |    -4743.643494 | <-- min BFGS
  | trial step |    1.000000 |    0.000011 |    -4743.643915 | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
-  
+
 
 --------------------------------------------------------------------------------
  BFGS: improving iteration        14 with line minimization (lambda=  3.538383)
 --------------------------------------------------------------------------------
- 
+
                            -------------------------------
                                      Cell Contents
                            -------------------------------
- 
+
             xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
             x  Element    Atom        Fractional coordinates of atoms  x
             x            Number           u          v          w      x
@@ -3745,8 +3745,8 @@ Dispersion corrected final energy* =  -4743.643915446     eV
             x  O            4         0.354453   0.441966   0.480045   x
             x  O            5         0.332764   0.480370   0.418893   x
             xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- 
- 
+
+
 ------------------------------------------------------------------------ <-- SCF
 SCF loop      Energy                           Energy gain       Timer   <-- SCF
                                                per atom          (sec)   <-- SCF
@@ -3759,16 +3759,16 @@ Initial  -4.74208784E+003                                        734.46  <-- SCF
       5  -4.74209578E+003                    2.57828780E-008     748.44  <-- SCF
       6  -4.74209579E+003                    4.40058504E-007     751.06  <-- SCF
 ------------------------------------------------------------------------ <-- SCF
- 
+
 Final energy =  -4742.095789425     eV
 (energy not corrected for finite basis set)
- 
+
 
 Dispersion corrected final energy* =  -4743.644266365     eV
 
  * not corrected for finite basis set
 
- 
+
  *********************************** Forces ***********************************
  *                                                                            *
  *                        Cartesian components (eV/A)                         *
@@ -3806,7 +3806,7 @@ Dispersion corrected final energy* =  -4743.644266365     eV
  * O         5      0.01846             -0.01073             -0.00371         *
  *                                                                            *
  ******************************************************************************
-  
+
  +------------+-------------+-------------+-----------------+ <-- min BFGS
  |    Step    |   lambda    |   F.delta   |    enthalpy     | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
@@ -3814,9 +3814,9 @@ Dispersion corrected final energy* =  -4743.644266365     eV
  | trial step |    1.000000 |    0.000011 |    -4743.643915 | <-- min BFGS
  |  line step |    3.538383 |  7.991E-007 |    -4743.644266 | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
-  
+
  BFGS: finished iteration    14 with enthalpy= -4.74364427E+003 eV
-  
+
  +-----------+-----------------+-----------------+------------+-----+ <-- BFGS
  | Parameter |      value      |    tolerance    |    units   | OK? | <-- BFGS
  +-----------+-----------------+-----------------+------------+-----+ <-- BFGS
@@ -3824,7 +3824,7 @@ Dispersion corrected final energy* =  -4743.644266365     eV
  |  |F|max   |   5.256506E-002 |   5.000000E-002 |       eV/A | No  | <-- BFGS
  |  |dR|max  |   1.067182E-002 |   2.000000E-003 |          A | No  | <-- BFGS
  +-----------+-----------------+-----------------+------------+-----+ <-- BFGS
-  
+
 
 ================================================================================
  Starting BFGS iteration         15 ...
@@ -3833,22 +3833,22 @@ Dispersion corrected final energy* =  -4743.644266365     eV
 Writing analysis data to cinoxacino.castep_bin
 
 Writing model to cinoxacino.check
-  
+
  +------------+-------------+-------------+-----------------+ <-- min BFGS
  |    Step    |   lambda    |   F.delta   |    enthalpy     | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
  |  previous  |    0.000000 |    0.000015 |    -4743.644266 | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
-  
+
 
 --------------------------------------------------------------------------------
  BFGS: starting iteration        15 with trial guess (lambda=  1.000000)
 --------------------------------------------------------------------------------
- 
+
                            -------------------------------
                                      Cell Contents
                            -------------------------------
- 
+
             xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
             x  Element    Atom        Fractional coordinates of atoms  x
             x            Number           u          v          w      x
@@ -3883,8 +3883,8 @@ Writing model to cinoxacino.check
             x  O            4         0.354487   0.441961   0.480054   x
             x  O            5         0.332738   0.480357   0.418899   x
             xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- 
- 
+
+
 ------------------------------------------------------------------------ <-- SCF
 SCF loop      Energy                           Energy gain       Timer   <-- SCF
                                                per atom          (sec)   <-- SCF
@@ -3897,16 +3897,16 @@ Initial  -4.74217604E+003                                        756.80  <-- SCF
       5  -4.74209493E+003                    5.25723844E-007     770.55  <-- SCF
       6  -4.74209494E+003                    4.43823279E-007     773.16  <-- SCF
 ------------------------------------------------------------------------ <-- SCF
- 
+
 Final energy =  -4742.094941876     eV
 (energy not corrected for finite basis set)
- 
+
 
 Dispersion corrected final energy* =  -4743.644519827     eV
 
  * not corrected for finite basis set
 
- 
+
  *********************************** Forces ***********************************
  *                                                                            *
  *                        Cartesian components (eV/A)                         *
@@ -3944,23 +3944,23 @@ Dispersion corrected final energy* =  -4743.644519827     eV
  * O         5      0.02444             -0.01073             -0.00015         *
  *                                                                            *
  ******************************************************************************
-  
+
  +------------+-------------+-------------+-----------------+ <-- min BFGS
  |    Step    |   lambda    |   F.delta   |    enthalpy     | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
  |  previous  |    0.000000 |    0.000015 |    -4743.644266 | <-- min BFGS
  | trial step |    1.000000 |  7.461E-006 |    -4743.644520 | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
-  
+
 
 --------------------------------------------------------------------------------
  BFGS: improving iteration        15 with line minimization (lambda=  2.016766)
 --------------------------------------------------------------------------------
- 
+
                            -------------------------------
                                      Cell Contents
                            -------------------------------
- 
+
             xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
             x  Element    Atom        Fractional coordinates of atoms  x
             x            Number           u          v          w      x
@@ -3995,8 +3995,8 @@ Dispersion corrected final energy* =  -4743.644519827     eV
             x  O            4         0.354522   0.441957   0.480063   x
             x  O            5         0.332711   0.480343   0.418905   x
             xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- 
- 
+
+
 ------------------------------------------------------------------------ <-- SCF
 SCF loop      Energy                           Energy gain       Timer   <-- SCF
                                                per atom          (sec)   <-- SCF
@@ -4009,16 +4009,16 @@ Initial  -4.74217569E+003                                        778.49  <-- SCF
       5  -4.74209384E+003                    3.65236628E-007     792.21  <-- SCF
       6  -4.74209385E+003                    4.66698036E-007     794.81  <-- SCF
 ------------------------------------------------------------------------ <-- SCF
- 
+
 Final energy =  -4742.093854701     eV
 (energy not corrected for finite basis set)
- 
+
 
 Dispersion corrected final energy* =  -4743.644549558     eV
 
  * not corrected for finite basis set
 
- 
+
  *********************************** Forces ***********************************
  *                                                                            *
  *                        Cartesian components (eV/A)                         *
@@ -4056,7 +4056,7 @@ Dispersion corrected final energy* =  -4743.644549558     eV
  * O         5      0.02969             -0.01022              0.00331         *
  *                                                                            *
  ******************************************************************************
-  
+
  +------------+-------------+-------------+-----------------+ <-- min BFGS
  |    Step    |   lambda    |   F.delta   |    enthalpy     | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
@@ -4064,9 +4064,9 @@ Dispersion corrected final energy* =  -4743.644549558     eV
  | trial step |    1.000000 |  7.461E-006 |    -4743.644520 | <-- min BFGS
  |  line step |    2.016766 |  4.834E-008 |    -4743.644550 | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
-  
+
  BFGS: finished iteration    15 with enthalpy= -4.74364455E+003 eV
-  
+
  +-----------+-----------------+-----------------+------------+-----+ <-- BFGS
  | Parameter |      value      |    tolerance    |    units   | OK? | <-- BFGS
  +-----------+-----------------+-----------------+------------+-----+ <-- BFGS
@@ -4074,27 +4074,27 @@ Dispersion corrected final energy* =  -4743.644549558     eV
  |  |F|max   |   4.327726E-002 |   5.000000E-002 |       eV/A | Yes | <-- BFGS
  |  |dR|max  |   1.191865E-002 |   2.000000E-003 |          A | No  | <-- BFGS
  +-----------+-----------------+-----------------+------------+-----+ <-- BFGS
-  
+
 
 ================================================================================
  Starting BFGS iteration         16 ...
 ================================================================================
-  
+
  +------------+-------------+-------------+-----------------+ <-- min BFGS
  |    Step    |   lambda    |   F.delta   |    enthalpy     | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
  |  previous  |    0.000000 |  7.573E-006 |    -4743.644550 | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
-  
+
 
 --------------------------------------------------------------------------------
  BFGS: starting iteration        16 with trial guess (lambda=  1.000000)
 --------------------------------------------------------------------------------
- 
+
                            -------------------------------
                                      Cell Contents
                            -------------------------------
- 
+
             xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
             x  Element    Atom        Fractional coordinates of atoms  x
             x            Number           u          v          w      x
@@ -4129,8 +4129,8 @@ Dispersion corrected final energy* =  -4743.644549558     eV
             x  O            4         0.354517   0.441953   0.480061   x
             x  O            5         0.332722   0.480339   0.418904   x
             xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- 
- 
+
+
 ------------------------------------------------------------------------ <-- SCF
 SCF loop      Energy                           Energy gain       Timer   <-- SCF
                                                per atom          (sec)   <-- SCF
@@ -4143,16 +4143,16 @@ Initial  -4.74208259E+003                                        800.15  <-- SCF
       5  -4.74209399E+003                    5.77503057E-007     813.17  <-- SCF
       6  -4.74209401E+003                    6.91389547E-007     815.78  <-- SCF
 ------------------------------------------------------------------------ <-- SCF
- 
+
 Final energy =  -4742.094007628     eV
 (energy not corrected for finite basis set)
- 
+
 
 Dispersion corrected final energy* =  -4743.644717801     eV
 
  * not corrected for finite basis set
 
- 
+
  *********************************** Forces ***********************************
  *                                                                            *
  *                        Cartesian components (eV/A)                         *
@@ -4190,16 +4190,16 @@ Dispersion corrected final energy* =  -4743.644717801     eV
  * O         5      0.02007             -0.00130             -0.00456         *
  *                                                                            *
  ******************************************************************************
-  
+
  +------------+-------------+-------------+-----------------+ <-- min BFGS
  |    Step    |   lambda    |   F.delta   |    enthalpy     | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
  |  previous  |    0.000000 |  7.573E-006 |    -4743.644550 | <-- min BFGS
  | trial step |    1.000000 |  5.687E-006 |    -4743.644718 | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
-  
+
  BFGS: finished iteration    16 with enthalpy= -4.74364472E+003 eV
-  
+
  +-----------+-----------------+-----------------+------------+-----+ <-- BFGS
  | Parameter |      value      |    tolerance    |    units   | OK? | <-- BFGS
  +-----------+-----------------+-----------------+------------+-----+ <-- BFGS
@@ -4207,17 +4207,17 @@ Dispersion corrected final energy* =  -4743.644717801     eV
  |  |F|max   |   4.070331E-002 |   5.000000E-002 |       eV/A | Yes | <-- BFGS
  |  |dR|max  |   7.504609E-004 |   2.000000E-003 |          A | Yes | <-- BFGS
  +-----------+-----------------+-----------------+------------+-----+ <-- BFGS
-  
+
  BFGS : Geometry optimization completed successfully.
 
 ================================================================================
  BFGS : Final Configuration:
 ================================================================================
- 
+
                            -------------------------------
                                      Cell Contents
                            -------------------------------
- 
+
             xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
             x  Element    Atom        Fractional coordinates of atoms  x
             x            Number           u          v          w      x
@@ -4252,11 +4252,11 @@ Dispersion corrected final energy* =  -4743.644717801     eV
             x  O            4         0.354517   0.441953   0.480061   x
             x  O            5         0.332722   0.480339   0.418904   x
             xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- 
- 
+
+
  BFGS : Final Enthalpy     = -4.74364472E+003 eV
  BFGS : Final <frequency>  =    2391.56413 cm-1
- 
+
  *********************************** Forces ***********************************
  *                                                                            *
  *                        Cartesian components (eV/A)                         *
@@ -4294,28 +4294,28 @@ Dispersion corrected final energy* =  -4743.644717801     eV
  * O         5      0.02007             -0.00130             -0.00456         *
  *                                                                            *
  ******************************************************************************
- 
+
  Pseudo atomic calculation performed for H 1s1
- 
+
  Converged in 15 iterations to a total energy of -12.1080 eV
- 
- 
+
+
  Pseudo atomic calculation performed for C 2s2 2p2
- 
+
  Converged in 15 iterations to a total energy of -145.3549 eV
- 
- 
+
+
  Pseudo atomic calculation performed for N 2s2 2p3
- 
+
  Converged in 22 iterations to a total energy of -262.0596 eV
- 
- 
+
+
  Pseudo atomic calculation performed for O 2s2 2p4
- 
+
  Converged in 24 iterations to a total energy of -428.3332 eV
- 
+
 Charge spilling parameter for spin component 1 = 1.41%
- 
+
      Atomic Populations (Mulliken)
      -----------------------------
 Species   Ion     s      p      d      f     Total  Charge (e)
@@ -4350,7 +4350,7 @@ Species   Ion     s      p      d      f     Total  Charge (e)
   O        4     1.82   4.87   0.00   0.00   6.69    -0.69
   O        5     1.82   4.73   0.00   0.00   6.55    -0.55
 ==============================================================
- 
+
             Bond              Population      Length (A)
 ============================================================
          H 10 -- O 4               0.47        0.98504
@@ -4474,8 +4474,8 @@ Species   Ion     s      p      d      f     Total  Charge (e)
          H 7  -- N 2               0.01        2.98278
          H 5  -- C 5               0.01        2.98558
 ============================================================
- 
- 
+
+
      Hirshfeld Analysis
      ------------------
 Species   Ion     Hirshfeld Charge (e)
@@ -4510,22 +4510,22 @@ Species   Ion     Hirshfeld Charge (e)
   O        4                -0.20
   O        5                -0.30
 ======================================
- 
+
 
 Writing analysis data to cinoxacino.castep_bin
 
 Writing model to cinoxacino.check
- 
- A BibTeX formatted list of references used in this run has been written to 
+
+ A BibTeX formatted list of references used in this run has been written to
  cinoxacino.bib
- 
+
 Initialisation time =      0.62 s
 Calculation time    =    820.06 s
 Finalisation time   =      4.36 s
 Total time          =    825.04 s
 Peak Memory Use     = 434588 kB
-  
-Overall parallel efficiency rating: Good (70%)                                  
-  
+
+Overall parallel efficiency rating: Good (70%)
+
 Data was distributed by:-
-G-vector (16-way); efficiency rating: Good (71%)                                
+G-vector (16-way); efficiency rating: Good (71%)

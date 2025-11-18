@@ -1,4 +1,4 @@
-/* 
+/*
 */
 @use 'styles/vars' as *;
 
@@ -44,7 +44,7 @@
 	// #endregion
 
 
-	// #region derived states 
+	// #region derived states
 	&:not(.disabled) .close:hover {
 		opacity: 0.60;
 	}

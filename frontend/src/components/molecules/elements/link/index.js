@@ -1,7 +1,7 @@
 'use client';
-/* 
-MOLECULES - ELEMENT - LINK
-General structure for UI Component.
+/*
+	MOLECULES - ELEMENT - LINK
+	General structure for UI Component.
 */
 // #region libraries
 import React from 'react';

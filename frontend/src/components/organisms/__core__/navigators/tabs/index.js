@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	ORGANISMS - NAVIGATOR TABS
 */
 // #region libraries

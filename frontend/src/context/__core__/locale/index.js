@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	controls locale stuff
 */
 
@@ -38,7 +38,7 @@ import { DEFAULT_LOCALE, SUPPORTED_LOCALES } from 'lib/__core__/i18n';
 // #endregion
 
 
-// #region hooks 
+// #region hooks
 import { useLocalStorage } from 'hooks';
 // #endregion
 
@@ -129,7 +129,7 @@ export function LocaleProvider({ name = 'LOCALE_V1', children }) {
 
 
 	const handlerSetLocale = (value) => {
-		// set new Locale manually...	
+		// set new Locale manually...
 		const supported = SUPPORTED_LOCALES.map(item => item.name);
 
 		if (supported.includes(value?.name)) {
@@ -166,7 +166,7 @@ export function LocaleProvider({ name = 'LOCALE_V1', children }) {
 
 
 	useEffect(() => {
-		// load translations from locales folder	
+		// load translations from locales folder
 		if (!locale) return;
 
 		const loadTranslations = async () => {

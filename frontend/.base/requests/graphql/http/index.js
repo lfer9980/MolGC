@@ -1,4 +1,4 @@
-/* 
+/*
 this code is for consume a GRAPHQL service with protocol HTTP.
 WORK IN PROGRESS, this code is not fully implemented yet.
 */

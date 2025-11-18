@@ -43,13 +43,13 @@
  |              your use of CASTEP                 |
  |                                                 |
  +-------------------------------------------------+
- 
- 
+
+
  This version was compiled for x86_64-rhel5-intel12.0 on Nov 12 2013
  Code version: 6201
- 
+
 License checkout of MS_castep successful
- 
+
  +---------------------------------------------------+
  |                                                   |
  |  Using DFT-SEDC - the DFT Semi-Empirical          |
@@ -64,32 +64,32 @@ License checkout of MS_castep successful
  | Erik R. McNellis, Joerg Meyer, and Karsten Reuter |
  | Phys. Rev. B 80, 205414 (2009)                    |
  +---------------------------------------------------+
- 
- 
+
+
  Pseudo atomic calculation performed for H 1s1
- 
+
  Converged in 13 iterations to a total energy of -12.4601 eV
- 
- 
+
+
  Pseudo atomic calculation performed for C 2s2 2p2
- 
+
  Converged in 17 iterations to a total energy of -145.7942 eV
- 
- 
+
+
  Pseudo atomic calculation performed for N 2s2 2p3
- 
+
  Converged in 21 iterations to a total energy of -262.6886 eV
- 
- 
+
+
  Pseudo atomic calculation performed for O 2s2 2p4
- 
+
  Converged in 23 iterations to a total energy of -429.2136 eV
- 
- 
+
+
  Pseudo atomic calculation performed for F 2s2 2p5
- 
+
  Converged in 15 iterations to a total energy of -657.5806 eV
- 
+
  Calculation parallelised over 15 processes.
  Data is distributed by G-vector(15-way)
 
@@ -97,7 +97,7 @@ License checkout of MS_castep successful
  CASTEP calculation from Materials Studio
 
  ***************************** General Parameters ******************************
-  
+
  output verbosity                               : normal  (1)
  write checkpoint data to                       : ofloxacina.check
  type of calculation                            : geometry optimization
@@ -111,7 +111,7 @@ License checkout of MS_castep successful
  write final potential to formatted file        : off
  write final density to formatted file          : off
  write BibTeX reference list                    : on
-  
+
  output         length unit                     : A
  output           mass unit                     : amu
  output           time unit                     : ps
@@ -128,26 +128,26 @@ License checkout of MS_castep successful
  output         dipole unit                     : D
  output         efield unit                     : eV/A/e
  output        entropy unit                     : J/mol/K
-  
+
  wavefunctions paging                           : none
  random number generator seed                   : randomised (113242038)
  data distribution                              : optimal for this architecture
  optimization strategy                          : balance speed and memory
 
  *********************** Exchange-Correlation Parameters ***********************
-  
+
  using functional                               : Perdew Burke Ernzerhof
  Divergence correction                          : off
  DFT+D: Semi-empirical dispersion correction    : on
  SEDC with                                      : TS correction scheme
 
  ************************* Pseudopotential Parameters **************************
-  
+
  pseudopotential representation                 : reciprocal space
  <beta|phi> representation                      : reciprocal space
 
  **************************** Basis Set Parameters *****************************
-  
+
  plane wave basis set cut-off                   :   300.0000   eV
  size of standard grid                          :     1.5000
  size of   fine   gmax                          :    13.3104   1/A
@@ -155,21 +155,21 @@ License checkout of MS_castep successful
  finite basis set correction                    : none
 
  **************************** Electronic Parameters ****************************
-  
- number of  electrons                           :  138.0    
- net charge of system                           :  0.000    
- net spin   of system                           :  0.000    
- number of  up  spins                           :  69.00    
- number of down spins                           :  69.00    
+
+ number of  electrons                           :  138.0
+ net charge of system                           :  0.000
+ net spin   of system                           :  0.000
+ number of  up  spins                           :  69.00
+ number of down spins                           :  69.00
  treating system as non-spin-polarized
  number of bands                                :         69
 
  ********************* Electronic Minimization Parameters **********************
-  
+
  Method: Treating system as non-metallic,
          and number of  SD  steps               :          1
          and number of  CG  steps               :          4
-  
+
  total energy / atom convergence tol.           : 0.2000E-05   eV
  eigen-energy convergence tolerance             : 0.1000E-05   eV
  max force / atom convergence tol.              : ignored
@@ -178,19 +178,19 @@ License checkout of MS_castep successful
  periodic dipole correction                     : NONE
 
  ************************** Density Mixing Parameters **************************
-  
+
  density-mixing scheme                          : Pulay
  max. length of mixing history                  :         20
- charge density mixing amplitude                : 0.5000    
+ charge density mixing amplitude                : 0.5000
  cut-off energy for mixing                      :  300.0       eV
  charge density mixing g-vector                 :  1.500       1/A
 
  *********************** Population Analysis Parameters ************************
-  
+
  Population analysis with cutoff                :  3.000       A
 
  ********************** Geometry Optimization Parameters ***********************
-  
+
  optimization method                            : BFGS
  variable cell method                           : fixed basis quality
  max. number of steps                           :        100
@@ -206,8 +206,8 @@ License checkout of MS_castep successful
  backup results every                           :          5   steps
 
  *******************************************************************************
-  
- 
+
+
                            -------------------------------
                                       Unit Cell
                            -------------------------------
@@ -215,142 +215,142 @@ License checkout of MS_castep successful
   20.0000000   0.0000000   0.0000000        0.3141593   0.0000000   0.0000000
    0.0000000  20.0000000   0.0000000        0.0000000   0.3141593   0.0000000
    0.0000000   0.0000000  20.0000000        0.0000000   0.0000000   0.3141593
- 
+
                        Lattice parameters(A)       Cell Angles
                     a =   20.000000          alpha =   90.000000
                     b =   20.000000          beta  =   90.000000
                     c =   20.000000          gamma =   90.000000
- 
+
                        Current cell volume = 8000.000045       A**3
- 
+
                            -------------------------------
                                      Cell Contents
                            -------------------------------
                          Total number of ions in cell =   46
                       Total number of species in cell =    5
                         Max number of any one species =   20
- 
+
             xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
             x  Element    Atom        Fractional coordinates of atoms  x
             x            Number           u          v          w      x
             x----------------------------------------------------------x
-            x  H            1         0.470627   0.314440   0.284441   x 
-            x  H            2         0.446625   0.378821   0.228106   x 
-            x  H            3         0.402044   0.352080   0.371729   x 
-            x  H            4         0.429265   0.428741   0.334966   x 
-            x  H            5         0.277782   0.301467   0.210064   x 
-            x  H            6         0.333805   0.344464   0.155483   x 
-            x  H            7         0.333701   0.442593   0.217290   x 
-            x  H            8         0.254541   0.412327   0.242626   x 
-            x  H            9         0.444210   0.219473   0.233672   x 
-            x  H           10         0.423436   0.256066   0.154920   x 
-            x  H           11         0.364098   0.204723   0.197568   x 
-            x  H           12         0.324214   0.243075   0.484537   x 
-            x  H           13         0.353763   0.322608   0.514156   x 
-            x  H           14         0.256577   0.286385   0.582881   x 
-            x  H           15         0.186850   0.366173   0.628006   x 
-            x  H           16         0.214641   0.570190   0.419259   x 
-            x  H           17         0.198970   0.209768   0.504114   x 
-            x  H           18         0.142397   0.275707   0.523891   x 
-            x  H           19         0.186098   0.275947   0.446052   x 
-            x  H           20         0.089825   0.547393   0.698787   x 
-            x  C            1         0.403323   0.242431   0.205041   x 
-            x  C            2         0.308299   0.401765   0.244359   x 
-            x  C            3         0.322336   0.334111   0.209070   x 
-            x  C            4         0.399159   0.383011   0.326473   x 
-            x  C            5         0.427675   0.344069   0.267261   x 
-            x  C            6         0.311452   0.296078   0.490754   x 
-            x  C            7         0.279683   0.387373   0.424281   x 
-            x  C            8         0.245419   0.414830   0.479280   x 
-            x  C            9         0.222183   0.481191   0.477589   x 
-            x  C           10         0.247401   0.303345   0.531403   x 
-            x  C           11         0.197090   0.400784   0.587205   x 
-            x  C           12         0.174655   0.465802   0.590742   x 
-            x  C           13         0.186216   0.511699   0.534947   x 
-            x  C           14         0.232169   0.518645   0.419496   x 
-            x  C           15         0.291464   0.425305   0.366043   x 
-            x  C           16         0.190054   0.263787   0.499536   x 
-            x  C           17         0.265243   0.490864   0.366048   x 
-            x  C           18         0.136132   0.481802   0.651396   x 
-            x  N            1         0.329168   0.399179   0.313815   x 
-            x  N            2         0.377069   0.298578   0.242367   x 
-            x  N            3         0.231821   0.375205   0.535160   x 
-            x  O            1         0.300996   0.321807   0.424211   x 
-            x  O            2         0.167072   0.570812   0.532939   x 
-            x  O            3         0.115854   0.546476   0.656959   x 
-            x  O            4         0.122170   0.440357   0.694984   x 
-            x  F            1         0.276886   0.529130   0.310361   x 
+            x  H            1         0.470627   0.314440   0.284441   x
+            x  H            2         0.446625   0.378821   0.228106   x
+            x  H            3         0.402044   0.352080   0.371729   x
+            x  H            4         0.429265   0.428741   0.334966   x
+            x  H            5         0.277782   0.301467   0.210064   x
+            x  H            6         0.333805   0.344464   0.155483   x
+            x  H            7         0.333701   0.442593   0.217290   x
+            x  H            8         0.254541   0.412327   0.242626   x
+            x  H            9         0.444210   0.219473   0.233672   x
+            x  H           10         0.423436   0.256066   0.154920   x
+            x  H           11         0.364098   0.204723   0.197568   x
+            x  H           12         0.324214   0.243075   0.484537   x
+            x  H           13         0.353763   0.322608   0.514156   x
+            x  H           14         0.256577   0.286385   0.582881   x
+            x  H           15         0.186850   0.366173   0.628006   x
+            x  H           16         0.214641   0.570190   0.419259   x
+            x  H           17         0.198970   0.209768   0.504114   x
+            x  H           18         0.142397   0.275707   0.523891   x
+            x  H           19         0.186098   0.275947   0.446052   x
+            x  H           20         0.089825   0.547393   0.698787   x
+            x  C            1         0.403323   0.242431   0.205041   x
+            x  C            2         0.308299   0.401765   0.244359   x
+            x  C            3         0.322336   0.334111   0.209070   x
+            x  C            4         0.399159   0.383011   0.326473   x
+            x  C            5         0.427675   0.344069   0.267261   x
+            x  C            6         0.311452   0.296078   0.490754   x
+            x  C            7         0.279683   0.387373   0.424281   x
+            x  C            8         0.245419   0.414830   0.479280   x
+            x  C            9         0.222183   0.481191   0.477589   x
+            x  C           10         0.247401   0.303345   0.531403   x
+            x  C           11         0.197090   0.400784   0.587205   x
+            x  C           12         0.174655   0.465802   0.590742   x
+            x  C           13         0.186216   0.511699   0.534947   x
+            x  C           14         0.232169   0.518645   0.419496   x
+            x  C           15         0.291464   0.425305   0.366043   x
+            x  C           16         0.190054   0.263787   0.499536   x
+            x  C           17         0.265243   0.490864   0.366048   x
+            x  C           18         0.136132   0.481802   0.651396   x
+            x  N            1         0.329168   0.399179   0.313815   x
+            x  N            2         0.377069   0.298578   0.242367   x
+            x  N            3         0.231821   0.375205   0.535160   x
+            x  O            1         0.300996   0.321807   0.424211   x
+            x  O            2         0.167072   0.570812   0.532939   x
+            x  O            3         0.115854   0.546476   0.656959   x
+            x  O            4         0.122170   0.440357   0.694984   x
+            x  F            1         0.276886   0.529130   0.310361   x
             xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- 
- 
+
+
                          No user defined ionic velocities
- 
+
                            -------------------------------
                                    Details of Species
                            -------------------------------
- 
+
                                Mass of species in AMU
                                     H    1.0080000
                                     C   12.0109997
                                     N   14.0070000
                                     O   15.9989996
                                     F   18.9979992
- 
+
                           Electric Quadrupole Moment (Barn)
                                     H    0.0028600 Isotope  2
                                     C    0.0332700 Isotope 11
                                     N    0.0204400 Isotope 14
                                     O   -0.0255800 Isotope 17
                                     F    1.0000000 No Isotope Defined
- 
+
                           Files used for pseudopotentials:
                                     H H_00PBE.usp
                                     C C_00PBE.usp
                                     N N_00PBE.usp
                                     O O_00PBE.usp
                                     F F_00PBE.usp
- 
+
                            -------------------------------
                               k-Points For BZ Sampling
                            -------------------------------
                        MP grid size for SCF calculation is  1  1  1
                          Number of kpoints used =           1
- 
+
              +++++++++++++++++++++++++++++++++++++++++++++++++++++++
              +  Number       Fractional coordinates        Weight  +
              +-----------------------------------------------------+
              +     1   0.000000   0.000000   0.000000   1.0000000  +
              +++++++++++++++++++++++++++++++++++++++++++++++++++++++
- 
+
                            -------------------------------
                                Symmetry and Constraints
                            -------------------------------
- 
+
                       Maximum deviation from symmetry =  0.00000         ANG
- 
+
          There are no symmetry operations specified or generated for this cell
          There are no ionic constraints specified or generated for this cell
                       Point group of crystal =     1: C1, 1, 1
- 
- 
+
+
                          Centre of mass is NOT constrained
- 
+
                          Number of cell constraints= 6
                          Cell constraints are:  0 0 0 0 0 0
- 
+
                          External pressure/stress (GPa)
                           0.00000   0.00000   0.00000
                                     0.00000   0.00000
                                               0.00000
- 
+
                                 --------------------
                                   DFT-D parameters
                                 --------------------
- 
-                          Dispersion-correction scheme : TS                                                                              
+
+                          Dispersion-correction scheme : TS
                         Parameter sR :   0.940000 (default)
                         Parameter d  :  20.000000 (default)
- 
+
         xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
         x              Atomic DFT-D parameters                             x
         x  Species      C6            alpha        R0                      x
@@ -362,8 +362,8 @@ License checkout of MS_castep successful
         x  O             9.3214       0.8002       1.6881   (default)      x
         x  F             5.6885       0.5631       1.6087   (default)      x
         xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- 
-  
+
+
 +---------------- MEMORY AND SCRATCH DISK ESTIMATES PER PROCESS --------------+
 |                                                     Memory          Disk    |
 | Model and support data                               56.4 MB        55.3 MB |
@@ -413,10 +413,10 @@ Initial  -2.79900839E+003                                          1.24  <-- SCF
      33  -6.32961253E+003                    7.81286318E-007      43.91  <-- SCF
      34  -6.32961255E+003                    4.97849498E-007      44.98  <-- SCF
 ------------------------------------------------------------------------ <-- SCF
- 
+
 Final energy =  -6329.612549952     eV
 (energy not corrected for finite basis set)
- 
+
 
 Dispersion corrected final energy* =  -6330.412118656     eV
 
@@ -426,7 +426,7 @@ Dispersion corrected final energy* =  -6330.412118656     eV
 Writing analysis data to ofloxacina.castep_bin
 
 Writing model to ofloxacina.check
- 
+
 +---------------- MEMORY AND SCRATCH DISK ESTIMATES PER PROCESS --------------+
 |                                                     Memory          Disk    |
 | Model and support data                               56.4 MB        55.3 MB |
@@ -437,8 +437,8 @@ Writing model to ofloxacina.check
 |                                                                             |
 | Requirements will fluctuate during execution and may exceed these estimates |
 +-----------------------------------------------------------------------------+
- 
- 
+
+
  *********************************** Forces ***********************************
  *                                                                            *
  *                        Cartesian components (eV/A)                         *
@@ -494,7 +494,7 @@ Writing model to ofloxacina.check
  *                                                                            *
  ******************************************************************************
  BFGS: finished iteration     0 with enthalpy= -6.33041212E+003 eV
-  
+
  +-----------+-----------------+-----------------+------------+-----+ <-- BFGS
  | Parameter |      value      |    tolerance    |    units   | OK? | <-- BFGS
  +-----------+-----------------+-----------------+------------+-----+ <-- BFGS
@@ -502,27 +502,27 @@ Writing model to ofloxacina.check
  |  |F|max   |   5.165483E-002 |   5.000000E-002 |       eV/A | No  | <-- BFGS
  |  |dR|max  |   0.000000E+000 |   2.000000E-003 |          A | No  | <-- BFGS
  +-----------+-----------------+-----------------+------------+-----+ <-- BFGS
-  
+
 
 ================================================================================
  Starting BFGS iteration          1 ...
 ================================================================================
-  
+
  +------------+-------------+-------------+-----------------+ <-- min BFGS
  |    Step    |   lambda    |   F.delta   |    enthalpy     | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
  |  previous  |    0.000000 |    0.000016 |    -6330.412119 | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
-  
+
 
 --------------------------------------------------------------------------------
  BFGS: starting iteration         1 with trial guess (lambda=  1.000000)
 --------------------------------------------------------------------------------
- 
+
                            -------------------------------
                                      Cell Contents
                            -------------------------------
- 
+
             xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
             x  Element    Atom        Fractional coordinates of atoms  x
             x            Number           u          v          w      x
@@ -574,8 +574,8 @@ Writing model to ofloxacina.check
             x  O            4         0.122156   0.440364   0.694995   x
             x  F            1         0.276882   0.529119   0.310377   x
             xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- 
- 
+
+
 ------------------------------------------------------------------------ <-- SCF
 SCF loop      Energy                           Energy gain       Timer   <-- SCF
                                                per atom          (sec)   <-- SCF
@@ -588,16 +588,16 @@ Initial  -6.32963205E+003                                         49.87  <-- SCF
       5  -6.32961272E+003                    2.49302367E-007      55.33  <-- SCF
       6  -6.32961272E+003                    5.47031711E-008      56.41  <-- SCF
 ------------------------------------------------------------------------ <-- SCF
- 
+
 Final energy =  -6329.612721694     eV
 (energy not corrected for finite basis set)
- 
+
 
 Dispersion corrected final energy* =  -6330.412482687     eV
 
  * not corrected for finite basis set
 
- 
+
  *********************************** Forces ***********************************
  *                                                                            *
  *                        Cartesian components (eV/A)                         *
@@ -652,16 +652,16 @@ Dispersion corrected final energy* =  -6330.412482687     eV
  * F         1     -0.00414             -0.01341              0.02078         *
  *                                                                            *
  ******************************************************************************
-  
+
  +------------+-------------+-------------+-----------------+ <-- min BFGS
  |    Step    |   lambda    |   F.delta   |    enthalpy     | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
  |  previous  |    0.000000 |    0.000016 |    -6330.412119 | <-- min BFGS
  | trial step |    1.000000 |  8.917E-006 |    -6330.412483 | <-- min BFGS
  +------------+-------------+-------------+-----------------+ <-- min BFGS
-  
+
  BFGS: finished iteration     1 with enthalpy= -6.33041248E+003 eV
-  
+
  +-----------+-----------------+-----------------+------------+-----+ <-- BFGS
  | Parameter |      value      |    tolerance    |    units   | OK? | <-- BFGS
  +-----------+-----------------+-----------------+------------+-----+ <-- BFGS
@@ -669,17 +669,17 @@ Dispersion corrected final energy* =  -6330.412482687     eV
  |  |F|max   |   3.271900E-002 |   5.000000E-002 |       eV/A | Yes | <-- BFGS
  |  |dR|max  |   6.427982E-004 |   2.000000E-003 |          A | Yes | <-- BFGS
  +-----------+-----------------+-----------------+------------+-----+ <-- BFGS
-  
+
  BFGS : Geometry optimization completed successfully.
 
 ================================================================================
  BFGS : Final Configuration:
 ================================================================================
- 
+
                            -------------------------------
                                      Cell Contents
                            -------------------------------
- 
+
             xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
             x  Element    Atom        Fractional coordinates of atoms  x
             x            Number           u          v          w      x
@@ -731,11 +731,11 @@ Dispersion corrected final energy* =  -6330.412482687     eV
             x  O            4         0.122156   0.440364   0.694995   x
             x  F            1         0.276882   0.529119   0.310377   x
             xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- 
- 
+
+
  BFGS : Final Enthalpy     = -6.33041248E+003 eV
  BFGS : Final <frequency>  unchanged from initial value
- 
+
  *********************************** Forces ***********************************
  *                                                                            *
  *                        Cartesian components (eV/A)                         *
@@ -790,33 +790,33 @@ Dispersion corrected final energy* =  -6330.412482687     eV
  * F         1     -0.00414             -0.01341              0.02078         *
  *                                                                            *
  ******************************************************************************
- 
+
  Pseudo atomic calculation performed for H 1s1
- 
+
  Converged in 13 iterations to a total energy of -12.4601 eV
- 
- 
+
+
  Pseudo atomic calculation performed for C 2s2 2p2
- 
+
  Converged in 17 iterations to a total energy of -145.7942 eV
- 
- 
+
+
  Pseudo atomic calculation performed for N 2s2 2p3
- 
+
  Converged in 21 iterations to a total energy of -262.6886 eV
- 
- 
+
+
  Pseudo atomic calculation performed for O 2s2 2p4
- 
+
  Converged in 23 iterations to a total energy of -429.2136 eV
- 
- 
+
+
  Pseudo atomic calculation performed for F 2s2 2p5
- 
+
  Converged in 15 iterations to a total energy of -657.5806 eV
- 
+
 Charge spilling parameter for spin component 1 = 1.34%
- 
+
      Atomic Populations (Mulliken)
      -----------------------------
 Species   Ion     s      p      d      f     Total  Charge (e)
@@ -868,7 +868,7 @@ Species   Ion     s      p      d      f     Total  Charge (e)
   O        4     1.83   4.77   0.00   0.00   6.60    -0.60
   F        1     1.93   5.42   0.00   0.00   7.35    -0.35
 ==============================================================
- 
+
             Bond              Population      Length (A)
 ============================================================
          H 20 -- O 3               0.49        0.98527
@@ -1093,8 +1093,8 @@ Species   Ion     s      p      d      f     Total  Charge (e)
          H 6  -- H 11             -0.01        2.98103
          H 1  -- H 10             -0.01        2.99409
 ============================================================
- 
- 
+
+
      Hirshfeld Analysis
      ------------------
 Species   Ion     Hirshfeld Charge (e)
@@ -1146,25 +1146,25 @@ Species   Ion     Hirshfeld Charge (e)
   O        4                -0.31
   F        1                -0.08
 ======================================
- 
+
 
 Writing analysis data to ofloxacina.castep_bin
 
 Writing model to ofloxacina.check
- 
- A BibTeX formatted list of references used in this run has been written to 
+
+ A BibTeX formatted list of references used in this run has been written to
  ofloxacina.bib
- 
+
 Initialisation time =      0.49 s
 Calculation time    =     60.45 s
 Finalisation time   =      2.43 s
 Total time          =     63.38 s
 Peak Memory Use     = 317316 kB
-  
-Overall parallel efficiency rating: Good (74%)                                  
-  
+
+Overall parallel efficiency rating: Good (74%)
+
 Data was distributed by:-
-G-vector (15-way); efficiency rating: Good (74%)                                
-  
+G-vector (15-way); efficiency rating: Good (74%)
+
 Parallel notes:
-1) Calculation only took 61.0 s, so efficiency estimates may be inaccurate.     
+1) Calculation only took 61.0 s, so efficiency estimates may be inaccurate.

@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	handles timerX logic
 */
 // #region libraries

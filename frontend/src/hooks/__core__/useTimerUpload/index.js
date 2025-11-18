@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	HOOK FOR DEVELOPMENT
 	this hook imitates upload progress to a backend or API
 */

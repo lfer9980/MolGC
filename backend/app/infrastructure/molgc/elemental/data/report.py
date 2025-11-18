@@ -19,11 +19,7 @@ from app.infrastructure.molgc.elemental.utils import MoleculesPlotter, TopsisUW
 class DataReport:
     """Class to generate reports from processed data."""
 
-    def __init__(self, output_path: str = "../../files_ind_eval"):
-        """
-        :param output_path:
-        """
-        self.output_path = output_path
+    def __init__(self):
         self.plotter = MoleculesPlotter()
         self.columns_mae = ["functional", "percentage"]
 
@@ -42,8 +38,8 @@ class DataReport:
 
             mae_np = (
                 (
-                        data[ref_idx].energy["save_info"]["distance"]
-                        - item.energy["save_info"]["distance"]
+                    data[ref_idx].energy["save_info"]["distance"]
+                    - item.energy["save_info"]["distance"]
                 )
                 .abs()
                 .mean()
@@ -61,7 +57,7 @@ class DataReport:
 
         return mae_values
 
-    def mae_grouped_chart(self, data: dict) -> str:
+    def mae_grouped_chart(self, prefix: str, data: dict) -> str:
         """Generates JSON Structure.
 
         :param data:
@@ -126,7 +122,7 @@ class DataReport:
         return rmsd_values
 
     def mae_topsis_chart(
-            self, data: list[ReportVariantModel]
+        self, data: list[ReportVariantModel]
     ) -> tuple[str, list[dict]]:
         """Generates the data structure for the MAE general report.
 
@@ -182,7 +178,7 @@ class DataReport:
                     "family": "AVERAGE",
                     "functional": functional,
                     "mean": overall,
-                }
+                },
             )
 
         # Prepare data
@@ -210,16 +206,17 @@ class DataReport:
         datasets = []
         for family, functional_data in grouped_by_family.items():
             dataset_values = [functional_data.get(label, 0) for label in labels]
-            datasets.append({
-                "type": f"{'bar' if family != 'AVERAGE' else 'line'}",
-                "label": family,
-                "data": dataset_values
-            })
+            datasets.append(
+                {
+                    "type": f"{'bar' if family != 'AVERAGE' else 'line'}",
+                    "label": family,
+                    "data": dataset_values,
+                }
+            )
 
         return {
             "labels": labels,
             "datasets": datasets,
-            "title": "MAE General - Average by Family and Functional",
         }
 
     @staticmethod

@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	MOLECULES - CARD PROFILE
 */
 // #region libraries

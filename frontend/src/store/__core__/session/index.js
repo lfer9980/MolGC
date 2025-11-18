@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	handles session info
 */
 
@@ -29,7 +29,7 @@ import { ReducerAuth } from './reducer';
 // #endregion
 
 
-// #region hooks 
+// #region hooks
 import { useLocalStorage } from 'hooks';
 // #endregion
 

@@ -1,6 +1,6 @@
 'use client';
-/* 
-	Hook for analysis: 
+/*
+	Hook for analysis:
 */
 
 // #region libraries

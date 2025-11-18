@@ -1,5 +1,5 @@
-import os
 import hashlib
+import os
 from pathlib import Path
 
 from app import settings
@@ -17,9 +17,13 @@ class ManualFileService:
     def __init__(self, repository: FileRepository):
         self.repository = repository
         self.storage_path = (
-            Path(__file__).resolve().parent.parent.parent.parent.parent
-            / settings.application.storage_path
-        ) if not os.getenv("STORAGE_PATH") else Path(os.getenv("STORAGE_PATH"))
+            (
+                Path(__file__).resolve().parent.parent.parent.parent.parent
+                / settings.application.storage_path
+            )
+            if not os.getenv("STORAGE_PATH")
+            else Path(os.getenv("STORAGE_PATH"))
+        )
         self.max_size = settings.application.max_file_size
 
     async def execute(

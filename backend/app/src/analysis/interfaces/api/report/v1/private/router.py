@@ -1,9 +1,9 @@
 from app.gateways.web.auth.dependencies import jwt_bearer
 from fastapi import APIRouter, Depends
 
+from .get_all import router as get_all_router
 from .get_by_id import router as get_by_id_router
 from .get_resume import router as get_resume_router
-from .get_all import router as get_all_router
 
 router = APIRouter(
     prefix="",

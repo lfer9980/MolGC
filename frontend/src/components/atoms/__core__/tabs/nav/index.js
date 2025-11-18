@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	ATOMS - TABS NAV
 */
 // #region libraries

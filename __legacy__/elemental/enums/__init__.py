@@ -1,10 +1,10 @@
-from .individual import FuncEnum, ExtEnum
 from .file import FileModel
 from .functional import FunctionalModel
+from .individual import ExtEnum, FuncEnum
 
 __all__ = [
-    'FuncEnum',
-    'ExtEnum',
-    'FileModel',
-    'FunctionalModel',
+    "FuncEnum",
+    "ExtEnum",
+    "FileModel",
+    "FunctionalModel",
 ]

@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	ATOMS - INPUT AUTH PASSWORD
 */
 // #region libraries

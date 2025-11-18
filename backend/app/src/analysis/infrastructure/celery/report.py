@@ -9,8 +9,9 @@ from app.src.analysis.infrastructure.celery.subtasks import (
     save_topsis_data,
     update_job_status,
 )
-from app.src.analysis.infrastructure.repository.report_repository import ReportRepositorySQL
-
+from app.src.analysis.infrastructure.repository.report_repository import (
+    ReportRepositorySQL,
+)
 from celery import shared_task
 
 ReportsType = tuple[list[dict], list[dict], str, list[dict]]

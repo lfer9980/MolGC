@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	hook for handle elements on screen using the hook useObserver
 */
 

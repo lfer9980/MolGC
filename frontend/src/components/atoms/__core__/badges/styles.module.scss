@@ -1,4 +1,4 @@
-/* 
+/*
 */
 @use 'styles/vars' as *;
 
@@ -43,7 +43,7 @@
 	// #endregion
 
 
-	// #region others  
+	// #region others
 	&.border {
 		border: 0.2rem solid;
 	}
@@ -59,7 +59,7 @@
 	// #endregion
 
 
-	// #region derived states 
+	// #region derived states
 	.black {
 		color: $gray30;
 	}

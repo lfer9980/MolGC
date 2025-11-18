@@ -1,5 +1,5 @@
 'use client';
-/* 
+/*
 	TEMPLATE - REPORT
 */
 // #region libraries
@@ -28,8 +28,8 @@ import {
 
 
 // #region utils
+import { CHART_BAR_LEGEND_ENUM } from 'lib/enums/charts';
 import { COLUMNS_TOPSIS_REPORT } from 'lib/data/tables/TOPSIS';
-import { CHART_BAR_LEGEND_ENUM, CHART_ENUM } from 'lib/enums/charts';
 // #endregion
 
 
@@ -63,8 +63,8 @@ function ReportMolGC({
 
 	function renderChart(el, key) {
 		const common = {
-			title: el.type === 'rmsd' ? 'RMSD' : 'Bond Lenghts',
-			label: el.data?.title,
+			title: el.title?.split('-')[0] ?? '',
+			label: el.title?.split('-')[1] ?? '',
 			theme: 'light',
 			noHover: true
 		};
@@ -75,9 +75,7 @@ function ReportMolGC({
 					<ChartWrap {...common} key={key}>
 						<ChartBar
 							positionLegend={CHART_BAR_LEGEND_ENUM.BOTTOM}
-							aspect={CHART_ENUM.STACKED}
 							data={el.data}
-							transparency
 						/>
 					</ChartWrap>
 				);

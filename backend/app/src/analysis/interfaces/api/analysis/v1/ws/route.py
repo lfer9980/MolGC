@@ -29,8 +29,8 @@ def ws_info():
 
 @router.websocket("/ws")
 async def ws_analysis(
-        websocket: WebSocket,
-        session: AsyncSession = Depends(get_session_dependency),
+    websocket: WebSocket,
+    session: AsyncSession = Depends(get_session_dependency),
 ):
     # Auth
     auth_header = websocket.headers.get("Authorization")

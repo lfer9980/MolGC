@@ -1,6 +1,6 @@
 'use client';
-/* 
-	ROUTES - DEVELOPERS 
+/*
+	ROUTES - DEVELOPERS
 */
 
 // #region libraries
