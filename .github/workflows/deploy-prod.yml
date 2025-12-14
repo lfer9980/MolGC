@@ -144,7 +144,7 @@ jobs:
           DATABASE_URL: postgresql+asyncpg://testuser:testpass@localhost:5432/testdb
 
   deploy:
-    name: Deploy to VPS (Secure)
+    name: Deploy to VPS
     needs: [integration-postgres]
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
@@ -184,7 +184,7 @@ jobs:
           scp env_remote.tmp ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.WORK_DIR }}/${{ secrets.APP_NAME }}/.env
           rm env_remote.tmp
 
-      - name: Deploy on remote (secure deployment)
+      - name: Deploy on remote
         run: |
           ssh -T ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} << 'ENDSSH'
             set -e
@@ -233,32 +233,6 @@ jobs:
             docker tag ${REGISTRY}/${IMAGE_NAME_BACKEND}:${{ github.sha }} ${REGISTRY}/${IMAGE_NAME_BACKEND}:latest
             docker tag ${REGISTRY}/${IMAGE_NAME_FRONTEND}:${{ github.sha }} ${REGISTRY}/${IMAGE_NAME_FRONTEND}:latest
             docker tag ${REGISTRY}/${IMAGE_NAME_DOCS}:${{ github.sha }} ${REGISTRY}/${IMAGE_NAME_DOCS}:latest
-            echo ""
-
-            # Run migrations BEFORE deploying
-            echo "========================================="
-            echo "🔄 Running database migrations..."
-            echo "========================================="
-
-            docker run --rm \
-              --add-host host.docker.internal:host-gateway \
-              --env-file .env \
-              -e elementalback_application__app_env=production \
-              -e DATABASE_URL="${DATABASE_URL}" \
-              --memory="512m" \
-              --cpus="0.5" \
-              --pids-limit=100 \
-              ${REGISTRY}/${IMAGE_NAME_BACKEND}:${{ github.sha }} \
-              sh -c "alembic -c /app/alembic.ini upgrade head"
-
-            MIGRATION_EXIT=$?
-            if [ $MIGRATION_EXIT -ne 0 ]; then
-              echo "❌ Migrations failed with exit code $MIGRATION_EXIT"
-              echo "🛑 Aborting deployment to prevent data corruption"
-              exit $MIGRATION_EXIT
-            fi
-
-            echo "✅ Migrations completed successfully"
             echo ""
 
             # Deploy services with resource limits
