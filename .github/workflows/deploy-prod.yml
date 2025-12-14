@@ -155,7 +155,7 @@ jobs:
       - name: Setup SSH agent
         uses: webfactory/ssh-agent@v0.5.4
         with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY_DEPLOYER }}  # Nueva clave del usuario deployer
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY_DEVOPS }}
 
       - name: Add remote host to known_hosts
         run: |
@@ -165,7 +165,7 @@ jobs:
       - name: Copy docker-compose to remote
         run: |
           scp docker-compose.prod.yml \
-            deployer@${{ secrets.SSH_HOST }}:/home/deployer/app/docker-compose.prod.yml
+            ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.WORK_DIR }}/${{ secrets.APP_NAME }}/docker-compose.prod.yml
 
       - name: Create .env file for remote
         run: |
@@ -177,17 +177,24 @@ jobs:
             echo "IMAGE_NAME_BACKEND=${{ env.IMAGE_NAME_BACKEND }}" >> env_remote.tmp
             echo "IMAGE_NAME_FRONTEND=${{ env.IMAGE_NAME_FRONTEND }}" >> env_remote.tmp
             echo "IMAGE_NAME_DOCS=${{ env.IMAGE_NAME_DOCS }}" >> env_remote.tmp
+            echo "APP_NAME=${{ secrets.APP_NAME }}" >> env_remote.tmp
 
       - name: Upload .env to remote
         run: |
-          scp env_remote.tmp deployer@${{ secrets.SSH_HOST }}:/home/deployer/app/.env
+          scp env_remote.tmp ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.WORK_DIR }}/${{ secrets.APP_NAME }}/.env
           rm env_remote.tmp
 
       - name: Deploy on remote (secure deployment)
         run: |
-          ssh -T deployer@${{ secrets.SSH_HOST }} << 'ENDSSH'
+          ssh -T ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} << 'ENDSSH'
             set -e
-            cd /home/deployer/app
+            
+            # Variables from secrets
+            APP_NAME="${{ secrets.APP_NAME }}"
+            WORK_DIR="${{ secrets.WORK_DIR }}"
+            APP_DIR="${WORK_DIR}/${APP_NAME}"
+            
+            cd "${APP_DIR}"
 
             # Load environment variables
             export $(cat .env | grep -v '^#' | xargs)
@@ -195,12 +202,17 @@ jobs:
             echo "========================================="
             echo "🚀 Starting secure deployment..."
             echo "========================================="
+            echo "App: ${APP_NAME}"
+            echo "Directory: ${APP_DIR}"
+            echo "User: $(whoami)"
+            echo ""
 
             # Verificar límites de recursos del sistema
             echo "📊 System resources check:"
             echo "CPU cores: $(nproc)"
             echo "Memory: $(free -h | awk '/^Mem:/ {print $2}')"
-            echo "Disk: $(df -h / | awk 'NR==2 {print $4 " available"}')"
+            echo "Disk: $(df -h ${APP_DIR} | awk 'NR==2 {print $4 " available"}')"
+            echo ""
 
             # Pull latest images with SHA tags
             echo "📥 Pulling Docker images..."
@@ -208,17 +220,20 @@ jobs:
             docker pull ${REGISTRY}/${IMAGE_NAME_FRONTEND}:${{ github.sha }}
             docker pull ${REGISTRY}/${IMAGE_NAME_DOCS}:${{ github.sha }}
 
-            # Verificar integridad de imágenes (opcional pero recomendado)
+            # Verificar integridad de imágenes
             echo "🔍 Verifying image digests..."
-            docker inspect ${REGISTRY}/${IMAGE_NAME_BACKEND}:${{ github.sha }} --format='{{.Id}}'
-            docker inspect ${REGISTRY}/${IMAGE_NAME_FRONTEND}:${{ github.sha }} --format='{{.Id}}'
-            docker inspect ${REGISTRY}/${IMAGE_NAME_DOCS}:${{ github.sha }} --format='{{.Id}}'
+            docker inspect ${REGISTRY}/${IMAGE_NAME_BACKEND}:${{ github.sha }} --format='{{.Id}}' > /dev/null
+            docker inspect ${REGISTRY}/${IMAGE_NAME_FRONTEND}:${{ github.sha }} --format='{{.Id}}' > /dev/null
+            docker inspect ${REGISTRY}/${IMAGE_NAME_DOCS}:${{ github.sha }} --format='{{.Id}}' > /dev/null
+            echo "✅ All images verified"
+            echo ""
 
             # Tag as latest for docker-compose
             echo "🏷️  Tagging images as latest..."
             docker tag ${REGISTRY}/${IMAGE_NAME_BACKEND}:${{ github.sha }} ${REGISTRY}/${IMAGE_NAME_BACKEND}:latest
             docker tag ${REGISTRY}/${IMAGE_NAME_FRONTEND}:${{ github.sha }} ${REGISTRY}/${IMAGE_NAME_FRONTEND}:latest
             docker tag ${REGISTRY}/${IMAGE_NAME_DOCS}:${{ github.sha }} ${REGISTRY}/${IMAGE_NAME_DOCS}:latest
+            echo ""
 
             # Run migrations BEFORE deploying
             echo "========================================="
@@ -244,6 +259,7 @@ jobs:
             fi
 
             echo "✅ Migrations completed successfully"
+            echo ""
 
             # Deploy services with resource limits
             echo "========================================="
@@ -259,12 +275,14 @@ jobs:
             fi
 
             echo "✅ Services deployed successfully"
+            echo ""
 
             # Monitoring inicial de recursos
             echo "========================================="
             echo "📊 Initial resource usage:"
             echo "========================================="
             docker stats --no-stream --format "table {{.Name}}\t{{.CPUPerc}}\t{{.MemUsage}}"
+            echo ""
 
             # Wait for backend health check
             echo "========================================="
@@ -288,9 +306,10 @@ jobs:
             if [ $RETRY_COUNT -eq $MAX_RETRIES ]; then
               echo "❌ Backend health check failed after $MAX_RETRIES attempts"
               echo "📋 Backend logs:"
-              docker logs backend --tail 50
+              docker logs ${APP_NAME}_backend --tail 50 || docker logs backend --tail 50 || true
               exit 1
             fi
+            echo ""
 
             # Verificar frontend health
             echo "🏥 Checking frontend health..."
@@ -309,6 +328,7 @@ jobs:
             if [ $RETRY_COUNT -eq $MAX_RETRIES ]; then
               echo "⚠️  Frontend health check timeout (may still be starting)"
             fi
+            echo ""
 
             # Clean up old images
             echo "========================================="
@@ -346,6 +366,7 @@ jobs:
             # Prune dangling images
             echo "🧹 Pruning dangling images..."
             docker image prune -f
+            echo ""
 
             # Security check: verificar procesos sospechosos
             echo "========================================="
@@ -361,18 +382,23 @@ jobs:
                 fi
               fi
             done
+            echo ""
 
             echo "========================================="
             echo "✅ Deployment completed successfully!"
             echo "========================================="
             echo "📊 Current running services:"
             docker compose -f docker-compose.prod.yml ps
-            
             echo ""
+            
             echo "🔒 Security measures active:"
             echo "  ✓ Resource limits enforced"
             echo "  ✓ Read-only filesystems where possible"
             echo "  ✓ Capabilities dropped"
             echo "  ✓ Network isolation"
             echo "  ✓ Non-privileged containers"
+            echo ""
+            echo "📁 App Directory: ${APP_DIR}"
+            echo "👤 Deployed by: $(whoami)"
+            echo "🕐 Timestamp: $(date)"
           ENDSSH

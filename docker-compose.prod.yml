@@ -3,6 +3,7 @@ version: "3.8"
 services:
   redis:
     image: redis:7-alpine
+    container_name: ${APP_NAME}_redis
     restart: unless-stopped
     volumes:
       - redis_data:/data
@@ -24,6 +25,7 @@ services:
 
   backend:
     image: ${REGISTRY}/${IMAGE_NAME_BACKEND}:latest
+    container_name: ${APP_NAME}_backend
     restart: unless-stopped
     extra_hosts:
       - "host.docker.internal:host-gateway"
@@ -64,6 +66,7 @@ services:
 
   celery_worker:
     image: ${REGISTRY}/${IMAGE_NAME_BACKEND}:latest
+    container_name: ${APP_NAME}_celery_worker
     restart: unless-stopped
     extra_hosts:
       - "host.docker.internal:host-gateway"
@@ -103,6 +106,7 @@ services:
 
   celery_beat:
     image: ${REGISTRY}/${IMAGE_NAME_BACKEND}:latest
+    container_name: ${APP_NAME}_celery_beat
     restart: unless-stopped
     extra_hosts:
       - "host.docker.internal:host-gateway"
@@ -133,6 +137,7 @@ services:
 
   frontend:
     image: ${REGISTRY}/${IMAGE_NAME_FRONTEND}:latest
+    container_name: ${APP_NAME}_frontend
     restart: unless-stopped
     env_file:
       - .env
@@ -172,6 +177,7 @@ services:
 
   docs:
     image: ${REGISTRY}/${IMAGE_NAME_DOCS}:latest
+    container_name: ${APP_NAME}_docs
     restart: unless-stopped
     env_file:
       - .env
@@ -202,14 +208,18 @@ services:
 
 volumes:
   redis_data:
+    name: ${APP_NAME}_redis_data
     driver: local
   files_data:
+    name: ${APP_NAME}_files_data
     driver: local
   celery_beat_data:
+    name: ${APP_NAME}_celery_beat_data
     driver: local
 
 networks:
   app_net:
+    name: ${APP_NAME}_network
     driver: bridge
     driver_opts:
       com.docker.network.bridge.name: app_bridge
