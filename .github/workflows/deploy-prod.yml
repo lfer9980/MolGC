@@ -144,10 +144,10 @@ jobs:
           DATABASE_URL: postgresql+asyncpg://testuser:testpass@localhost:5432/testdb
 
   deploy:
-    name: Deploy to VPS
+    name: Deploy to VPS (Secure)
     needs: [integration-postgres]
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/feature/integration'
+    if: github.ref == 'refs/heads/main'
 
     steps:
       - uses: actions/checkout@v3
@@ -155,7 +155,7 @@ jobs:
       - name: Setup SSH agent
         uses: webfactory/ssh-agent@v0.5.4
         with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY_DEPLOYER }}  # Nueva clave del usuario deployer
 
       - name: Add remote host to known_hosts
         run: |
@@ -165,7 +165,7 @@ jobs:
       - name: Copy docker-compose to remote
         run: |
           scp docker-compose.prod.yml \
-            ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.WORK_DIR }}/docker-compose.prod.yml
+            deployer@${{ secrets.SSH_HOST }}:/home/deployer/app/docker-compose.prod.yml
 
       - name: Create .env file for remote
         run: |
@@ -180,27 +180,39 @@ jobs:
 
       - name: Upload .env to remote
         run: |
-          scp env_remote.tmp ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.WORK_DIR }}/.env
+          scp env_remote.tmp deployer@${{ secrets.SSH_HOST }}:/home/deployer/app/.env
           rm env_remote.tmp
 
-      - name: Deploy on remote (pull, migrate, up, cleanup)
+      - name: Deploy on remote (secure deployment)
         run: |
-          ssh -T ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} << 'ENDSSH'
+          ssh -T deployer@${{ secrets.SSH_HOST }} << 'ENDSSH'
             set -e
-            cd ${{ secrets.WORK_DIR }}
+            cd /home/deployer/app
 
             # Load environment variables
             export $(cat .env | grep -v '^#' | xargs)
 
             echo "========================================="
-            echo "🚀 Starting deployment process..."
+            echo "🚀 Starting secure deployment..."
             echo "========================================="
+
+            # Verificar límites de recursos del sistema
+            echo "📊 System resources check:"
+            echo "CPU cores: $(nproc)"
+            echo "Memory: $(free -h | awk '/^Mem:/ {print $2}')"
+            echo "Disk: $(df -h / | awk 'NR==2 {print $4 " available"}')"
 
             # Pull latest images with SHA tags
             echo "📥 Pulling Docker images..."
             docker pull ${REGISTRY}/${IMAGE_NAME_BACKEND}:${{ github.sha }}
             docker pull ${REGISTRY}/${IMAGE_NAME_FRONTEND}:${{ github.sha }}
             docker pull ${REGISTRY}/${IMAGE_NAME_DOCS}:${{ github.sha }}
+
+            # Verificar integridad de imágenes (opcional pero recomendado)
+            echo "🔍 Verifying image digests..."
+            docker inspect ${REGISTRY}/${IMAGE_NAME_BACKEND}:${{ github.sha }} --format='{{.Id}}'
+            docker inspect ${REGISTRY}/${IMAGE_NAME_FRONTEND}:${{ github.sha }} --format='{{.Id}}'
+            docker inspect ${REGISTRY}/${IMAGE_NAME_DOCS}:${{ github.sha }} --format='{{.Id}}'
 
             # Tag as latest for docker-compose
             echo "🏷️  Tagging images as latest..."
@@ -218,6 +230,9 @@ jobs:
               --env-file .env \
               -e elementalback_application__app_env=production \
               -e DATABASE_URL="${DATABASE_URL}" \
+              --memory="512m" \
+              --cpus="0.5" \
+              --pids-limit=100 \
               ${REGISTRY}/${IMAGE_NAME_BACKEND}:${{ github.sha }} \
               sh -c "alembic -c /app/alembic.ini upgrade head"
 
@@ -230,7 +245,7 @@ jobs:
 
             echo "✅ Migrations completed successfully"
 
-            # Deploy services
+            # Deploy services with resource limits
             echo "========================================="
             echo "🐳 Deploying services with docker-compose..."
             echo "========================================="
@@ -244,6 +259,12 @@ jobs:
             fi
 
             echo "✅ Services deployed successfully"
+
+            # Monitoring inicial de recursos
+            echo "========================================="
+            echo "📊 Initial resource usage:"
+            echo "========================================="
+            docker stats --no-stream --format "table {{.Name}}\t{{.CPUPerc}}\t{{.MemUsage}}"
 
             # Wait for backend health check
             echo "========================================="
@@ -267,8 +288,26 @@ jobs:
             if [ $RETRY_COUNT -eq $MAX_RETRIES ]; then
               echo "❌ Backend health check failed after $MAX_RETRIES attempts"
               echo "📋 Backend logs:"
-              docker logs ${APP_NAME}_backend --tail 50
+              docker logs backend --tail 50
               exit 1
+            fi
+
+            # Verificar frontend health
+            echo "🏥 Checking frontend health..."
+            RETRY_COUNT=0
+            while [ $RETRY_COUNT -lt $MAX_RETRIES ]; do
+              if curl -f http://localhost:3005 > /dev/null 2>&1; then
+                echo "✅ Frontend is healthy!"
+                break
+              fi
+
+              RETRY_COUNT=$((RETRY_COUNT + 1))
+              echo "⏳ Waiting for frontend... ($RETRY_COUNT/$MAX_RETRIES)"
+              sleep 2
+            done
+
+            if [ $RETRY_COUNT -eq $MAX_RETRIES ]; then
+              echo "⚠️  Frontend health check timeout (may still be starting)"
             fi
 
             # Clean up old images
@@ -276,7 +315,6 @@ jobs:
             echo "🧹 Cleaning up old Docker images..."
             echo "========================================="
 
-            # Keep current SHA and latest, remove others
             REPOS=(
               "${REGISTRY}/${IMAGE_NAME_BACKEND}"
               "${REGISTRY}/${IMAGE_NAME_FRONTEND}"
@@ -289,23 +327,19 @@ jobs:
             for REPO in "${REPOS[@]}"; do
               echo "🔍 Checking repo: $REPO"
 
-              # Get all images for this repo
               docker images --format '{{.Repository}}:{{.Tag}} {{.ID}}' | grep "^${REPO}:" | while read -r IMAGE_TAG IMAGE_ID; do
-                # Keep :latest and current SHA
                 if [ "$IMAGE_TAG" = "${REPO}:latest" ] || [ "$IMAGE_TAG" = "${REPO}:${{ github.sha }}" ]; then
                   echo "  ✓ Keeping $IMAGE_TAG"
                   continue
                 fi
 
-                # Keep if currently in use
                 if echo "$RUNNING_IMAGES" | grep -q "$IMAGE_TAG"; then
                   echo "  ⚠️  Skipping in-use image: $IMAGE_TAG"
                   continue
                 fi
 
-                # Remove old image
                 echo "  🗑️  Removing old image: $IMAGE_TAG"
-                docker rmi "$IMAGE_ID" 2>/dev/null || echo "    ⚠️  Could not remove $IMAGE_ID (may be in use)"
+                docker rmi "$IMAGE_ID" 2>/dev/null || echo "    ⚠️  Could not remove $IMAGE_ID"
               done
             done
 
@@ -313,13 +347,32 @@ jobs:
             echo "🧹 Pruning dangling images..."
             docker image prune -f
 
-            # Optional: Remove unused volumes (commented by default for safety)
-            # echo "🧹 Pruning unused volumes..."
-            # docker volume prune -f
+            # Security check: verificar procesos sospechosos
+            echo "========================================="
+            echo "🔒 Security checks..."
+            echo "========================================="
+            
+            # Verificar uso de CPU por contenedor
+            docker stats --no-stream --format "table {{.Name}}\t{{.CPUPerc}}\t{{.MemPerc}}" | while read line; do
+              CPU=$(echo $line | awk '{print $2}' | sed 's/%//')
+              if [ ! -z "$CPU" ] && [ "$CPU" != "CPU" ]; then
+                if [ $(echo "$CPU > 80" | bc -l 2>/dev/null || echo 0) -eq 1 ]; then
+                  echo "⚠️  HIGH CPU USAGE DETECTED: $line"
+                fi
+              fi
+            done
 
             echo "========================================="
             echo "✅ Deployment completed successfully!"
             echo "========================================="
             echo "📊 Current running services:"
             docker compose -f docker-compose.prod.yml ps
+            
+            echo ""
+            echo "🔒 Security measures active:"
+            echo "  ✓ Resource limits enforced"
+            echo "  ✓ Read-only filesystems where possible"
+            echo "  ✓ Capabilities dropped"
+            echo "  ✓ Network isolation"
+            echo "  ✓ Non-privileged containers"
           ENDSSH

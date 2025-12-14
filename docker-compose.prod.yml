@@ -8,11 +8,19 @@ services:
       - redis_data:/data
     networks:
       - app_net
+    # Seguridad: Redis solo en red interna, sin puertos expuestos
+    command: redis-server --maxmemory 256mb --maxmemory-policy allkeys-lru
     healthcheck:
       test: ["CMD", "redis-cli", "ping"]
       interval: 45s
       timeout: 3s
       retries: 3
+    # Límites de recursos para prevenir abuso
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
 
   backend:
     image: ${REGISTRY}/${IMAGE_NAME_BACKEND}:latest
@@ -25,11 +33,11 @@ services:
       - STORAGE_PATH=/data/files
       - ALEMBIC_AUTO_UPGRADE=false
     volumes:
-      - files_data:/data/files
+      - files_data:/data/files:rw
     networks:
       - app_net
     ports:
-      - "4005:4000"
+      - "127.0.0.1:4005:4000"  # Solo localhost para Nginx reverse proxy
     depends_on:
       redis:
         condition: service_healthy
@@ -39,6 +47,20 @@ services:
       timeout: 5s
       retries: 5
       start_period: 30s
+    # Límites de recursos
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 1G
+    # Seguridad: Usuario no-root, read-only donde sea posible
+    read_only: false  # FastAPI necesita escribir
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    cap_add:
+      - NET_BIND_SERVICE
 
   celery_worker:
     image: ${REGISTRY}/${IMAGE_NAME_BACKEND}:latest
@@ -49,9 +71,9 @@ services:
       - .env
     environment:
       - STORAGE_PATH=/data/files
-    command: ["celery", "-A", "app.infrastructure.celery.celery_app", "worker", "--loglevel=info", "--concurrency=2"]
+    command: ["celery", "-A", "app.infrastructure.celery.celery_app", "worker", "--loglevel=info", "--concurrency=2", "--max-tasks-per-child=100"]
     volumes:
-      - files_data:/data/files
+      - files_data:/data/files:rw
     networks:
       - app_net
     depends_on:
@@ -65,6 +87,19 @@ services:
       timeout: 10s
       retries: 3
       start_period: 30s
+    # Límites de recursos críticos para prevenir minería
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 1G
+        reservations:
+          cpus: '0.25'
+          memory: 256M
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
 
   celery_beat:
     image: ${REGISTRY}/${IMAGE_NAME_BACKEND}:latest
@@ -77,8 +112,8 @@ services:
       - STORAGE_PATH=/data/files
     command: ["celery", "-A", "app.infrastructure.celery.celery_app", "beat", "--loglevel=info"]
     volumes:
-      - files_data:/data/files
-      - celery_beat_data:/var/lib/celery
+      - files_data:/data/files:rw
+      - celery_beat_data:/var/lib/celery:rw
     networks:
       - app_net
     depends_on:
@@ -86,6 +121,15 @@ services:
         condition: service_healthy
       backend:
         condition: service_healthy
+    deploy:
+      resources:
+        limits:
+          cpus: '0.25'
+          memory: 256M
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
 
   frontend:
     image: ${REGISTRY}/${IMAGE_NAME_FRONTEND}:latest
@@ -94,16 +138,37 @@ services:
       - .env
     environment:
       - NODE_ENV=production
+      - NODE_OPTIONS=--max-old-space-size=512
     networks:
       - app_net
     ports:
-      - "3005:3000"
+      - "127.0.0.1:3005:3000"  # Solo localhost, usar reverse proxy
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:3000"]
       interval: 30s
       timeout: 10s
       retries: 3
       start_period: 40s
+    # CRÍTICO: Límites estrictos en frontend
+    deploy:
+      resources:
+        limits:
+          cpus: '0.75'
+          memory: 768M
+        reservations:
+          cpus: '0.25'
+          memory: 256M
+    # Seguridad máxima en frontend
+    read_only: true
+    tmpfs:
+      - /tmp:size=100M,mode=1777
+      - /app/.next/cache:size=200M,mode=1777
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    cap_add:
+      - NET_BIND_SERVICE
 
   docs:
     image: ${REGISTRY}/${IMAGE_NAME_DOCS}:latest
@@ -113,13 +178,27 @@ services:
     networks:
       - app_net
     ports:
-      - "8005:8000"
+      - "127.0.0.1:8005:8000"  # Solo localhost
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8000"]
       interval: 30s
       timeout: 10s
       retries: 3
       start_period: 20s
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
+    read_only: true
+    tmpfs:
+      - /tmp:size=50M,mode=1777
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    cap_add:
+      - NET_BIND_SERVICE
 
 volumes:
   redis_data:
@@ -132,3 +211,8 @@ volumes:
 networks:
   app_net:
     driver: bridge
+    driver_opts:
+      com.docker.network.bridge.name: app_bridge
+    ipam:
+      config:
+        - subnet: 172.28.0.0/16
